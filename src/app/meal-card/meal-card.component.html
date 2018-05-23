@@ -1,0 +1,28 @@
+
+<div class="row" >
+    <div class="col-md-6" *ngFor="let data of mealData" >
+        <div class="media weekaCard w-100 mb-5 align-items-center" >
+            <img  src="{{data.image}}" alt="Generic placeholder image">
+            <div class="media-body position-relative text-center">
+            <h3 class="mt-0">{{data.mealTitel}}</h3>
+            <p>{{data.mealDescription}}</p>
+                <div class="price rounded-circle position-absolute">
+                    <h3> {{data.mealPrice}} ج </h3>
+                    <div class="price-bg rounded-circle position-absolute">
+                    </div>
+                </div>
+                <button class="small-btn">اطلب</button>
+                <div class="media-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>الشيف: {{data.cookerName}}</p>
+                        </div>
+                        <div class="col-md-6">
+                                <p>عدد مرات الطلب: {{data.orders}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+</div>
