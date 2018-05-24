@@ -23,6 +23,11 @@ coverage
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
+
+#ignore dist folder 
+
+dist/
+
 # Bower dependency directory (https://bower.io/)
 bower_components
 
@@ -111,3 +116,9 @@ Thumbs.db
 
 # igonre conf file 
 conf.json
+
+
+
+#ignore dist dir 
+
+dist/

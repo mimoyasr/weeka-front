@@ -1,0 +1,33 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+@import '../../scss/general';
+
+
+#how-we-work
+{
+    h3
+    {
+        font-size: 20px;
+    }
+}
+
+
+#fold
+{
+    background: #232323;
+    height: 90vh;
+    nav
+    {
+        margin-top: 10px 
+    }
+    a
+    {
+        // font-size: 18px;
+        // @include calculateRem(3rem);
+        @include font-size(18px);
+    }
+    a.border
+    {
+        margin-left: 10px
+    }
+}
