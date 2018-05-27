@@ -1,8 +1,13 @@
 <div class="row">
-    <div class="col-md-6" *ngFor="let data of mealData">
+    <div class="col-md-12 col-lg-6 " *ngFor="let data of mealData; let i=index">
         <div class="media weekaCard w-100 mb-5 align-items-center">
             <img src="{{data.image}}" alt="Generic placeholder image">
             <div class="media-body position-relative text-center">
+                <img class="fav" *ngIf="data.favorite=='false'; else elseCase" [(ngModel)]="data.favorite" src="../../assets/images/not-fav.png"
+                    alt="">
+                <ng-template #elseCase>
+                    <img class="fav" src="../../assets/images/fav.png" alt="">
+                </ng-template>
                 <h3 class="mt-0">{{data.mealTitel}}</h3>
                 <p>{{data.mealDescription}}</p>
                 <div class="price rounded-circle position-absolute">
@@ -21,7 +26,14 @@
                         </div>
                     </div>
                 </div>
+                <!-- https://npm.runkit.com/ngx-rating -->
+                <rating [(ngModel)]="data.mealRate" [readonly]="true" [float]="true" fullIcon="◆" emptyIcon="◇">
+                    {{data.mealRate}}
+                </rating>
+
             </div>
+
+
         </div>
     </div>
 </div>

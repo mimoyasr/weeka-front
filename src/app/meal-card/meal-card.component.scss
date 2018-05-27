@@ -1,5 +1,20 @@
 @import '../../scss/variables';
 @import '../../scss/mixins';
 @import '../../scss/general';
+rating{
+    transform: rotate(-90deg);
+    position: absolute;
+    top: 30%;
+    left: -5%;
+}
 
+i.star-icon{
+font-size: 1.5em;
+}
 
+.fav
+{
+    position: absolute;
+    right: 4%;
+    top: -12%;
+}
