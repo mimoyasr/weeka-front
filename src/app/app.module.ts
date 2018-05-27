@@ -5,7 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
+import {RatingModule} from "ngx-rating";
 //App component
 import { AppComponent } from './app.component';
 import { HomeGuestComponent } from './home-guest/home-guest.component';
@@ -34,7 +34,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     StarRatingModule.forRoot(),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RatingModule
   ],
   providers: [QueryService],
   bootstrap: [AppComponent]

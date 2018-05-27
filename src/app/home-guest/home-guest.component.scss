@@ -8,26 +8,39 @@
     h3
     {
         font-size: 20px;
+        font-family: $headlinesFonts;
     }
 }
 
 
 #fold
 {
-    background: #232323;
-    height: 90vh;
+    @include backgroundImg('/assets/images/home-page/hero-img.png');
+    height:850px;
     nav
     {
         margin-top: 10px 
     }
     a
     {
-        // font-size: 18px;
-        // @include calculateRem(3rem);
         @include font-size(18px);
     }
     a.border
     {
         margin-left: 10px
     }
+}
+.cut {
+    position: absolute;
+    z-index: 1;
+    bottom: -188px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-top: 254px solid transparent;
+    border-right: 130px solid #ffffff;
+}
+#cards 
+{
+    top:-330px;
 }
