@@ -5,7 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import {RatingModule} from "ngx-rating";
+import { RatingModule } from "ngx-rating";
 //App component
 import { AppComponent } from './app.component';
 import { HomeGuestComponent } from './home-guest/home-guest.component';
@@ -23,11 +23,21 @@ import { MealCommentComponent } from './meal-comment/meal-comment.component';
 import { QueryService } from './query.service';
 
 const appRoutes: Routes = [
+<<<<<<< HEAD
   { path: '',component:HomeGuestComponent },
   { path: 'becomeacooker',component:BecomeAcookerComponent},
   { path: 'login',component:LoginComponent},
   { path: 'registration',component:RegistrationComponent},
    
+=======
+  { path: '', component: HomeGuestComponent },
+  { path: 'becomeacooker', component: BecomeAcookerComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'registration', component: RegistrationComponent },
+  { path: 'singleItem/:name', component: SingleItemComponent }
+
+
+>>>>>>> 61fe628abaf9c6b526aff897232a4aaa9f13694d
 ];
 
 @NgModule({

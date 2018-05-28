@@ -7,10 +7,10 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class QueryService {
 
-  constructor(private http:HttpClient) {  
+  constructor(private http: HttpClient) {
   }
-  
-  getData(path: string):Observable<any>{
-    return this.http.get(path)
+
+  getData(path: string): Observable<any> {
+    return this.http.get(path);
   }
 }
