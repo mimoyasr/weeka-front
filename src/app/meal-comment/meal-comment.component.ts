@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  NgModel } from '@angular/forms';
+import { NgModel } from '@angular/forms';
 import { QueryService } from '../query.service';
 
 
@@ -12,17 +12,17 @@ import { QueryService } from '../query.service';
 export class MealCommentComponent implements OnInit {
   public comments: Array<object>;
 
-  constructor(private q: QueryService) { 
-    this.comments=[];
+  constructor(private q: QueryService) {
+    this.comments = [];
     this.getComments();
-    
+
   }
 
 
- //function to get comments from json file   
+  //function to get comments from json file   
 
   getComments(): void {
-    let path: string = './assets/meal-comment.json';
+    let path: string = '../../assets/meal-comment.json';
     this.q.getData(path).subscribe(
       res => {
         this.comments = res;
@@ -35,8 +35,8 @@ export class MealCommentComponent implements OnInit {
   }
 
   ngOnInit() {
-  
-  
+
+
   }
 
 }
