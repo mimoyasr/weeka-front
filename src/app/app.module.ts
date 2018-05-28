@@ -15,6 +15,7 @@ import { StarRatingModule } from 'angular-star-rating';
 
 //services
 import { QueryService } from './query.service';
+import { NewMealComponent } from './new-meal/new-meal.component';
 
 const appRoutes: Routes = [
   { path: '',component:HomeGuestComponent },
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
     HomeGuestComponent,
     FooterComponent,
     MealCardComponent,
+    NewMealComponent,
   ],
   imports: [
     BrowserModule,
