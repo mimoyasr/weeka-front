@@ -5,7 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
+import {RatingModule} from "ngx-rating";
 //App component
 import { AppComponent } from './app.component';
 import { HomeGuestComponent } from './home-guest/home-guest.component';
@@ -13,10 +13,11 @@ import { FooterComponent } from './footer/footer.component';
 import { MealCardComponent } from './meal-card/meal-card.component';
 import { StarRatingModule } from 'angular-star-rating';
 import { BecomeAcookerComponent } from './become-acooker/become-acooker.component';
+import { SingleItemComponent } from './single-item/single-item.component';
+import { LoginComponent } from './login/login.component';
 
 //services
 import { QueryService } from './query.service';
-import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
   { path: '',component:HomeGuestComponent },
@@ -31,6 +32,7 @@ const appRoutes: Routes = [
     MealCardComponent,
     BecomeAcookerComponent,
     LoginComponent,
+    SingleItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     StarRatingModule.forRoot(),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RatingModule
   ],
   providers: [QueryService],
   bootstrap: [AppComponent]

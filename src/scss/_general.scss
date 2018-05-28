@@ -6,7 +6,7 @@ body{
 // Headline
 .headline
 {
-    h3
+    h2
     {
     font-family: $headlinesFonts;
     @include font-size(40px);
@@ -91,3 +91,13 @@ input::-webkit-input-placeholder
     color: $textColor;
 }
 
+//ancors 
+a{
+    color: $whiteColor;
+    text-decoration: none;
+}
+
+//fonts
+.headlinesFonts{
+    font-family: $headlinesFonts;
+}

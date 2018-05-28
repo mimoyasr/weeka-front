@@ -1,4 +1,46 @@
 [
+<<<<<<< HEAD
+    {
+        "image": "../assets/images/home-page/meal-card1.jpg",
+        "mealTitel": "سلطة السيزر بالجمبرى",
+        "mealPrice": "65",
+        "mealDescription": "الجمبرى المشوي مع الخس الطازج و الطماطم و قطع الخبز المحمص",
+        "mealRate": "4",
+        "cookerName": "محمد علي",
+        "orders": "25",
+        "favorite": "false"
+    },
+    {
+        "image": "../assets/images/home-page/meal-card2.jpg",
+        "mealTitel": "اصابع الدجاج المقليه",
+        "mealPrice": "45",
+        "mealDescription": "أصابع الدجاج المقلية مع صوص البافلو مقدمة مع صوص الرانش",
+        "mealRate": "4",
+        "cookerName": "محسن حسين",
+        "orders": "25",
+        "favorite": "false"
+    },
+    {
+        "image": "../assets/images/home-page/meal-card3.jpg",
+        "mealTitel": "طبق الدجاج المشوي",
+        "mealPrice": "77",
+        "mealDescription": "الدجاج المشوي الصحي و اللذيذ مع الفاصولياو شرائح الجزر و المشروم الطازج",
+        "mealRate": "4",
+        "cookerName": "محمد على",
+        "orders": "25",
+        "favorite": "false"
+    },
+    {
+        "image": "../assets/images/home-page/meal-card4.jpg",
+        "mealTitel": "الإسباجتي الإيطالي",
+        "mealPrice": "33",
+        "mealDescription": "إسباجتي باستا المطهية مع زيت الزيتون و الثوم و تقدم مع قطع طماطم ",
+        "mealRate": "4",
+        "cookerName": "محمد على",
+        "orders": "25",
+        "favorite": "true"
+    }
+=======
 {
 
     "image": "../assets/images/home-page/meal-card1.jpg",
@@ -16,7 +58,7 @@
 "mealTitel": "اصابع الدجاج المقليه",
 "mealPrice": "45",
 "mealDescription":"أصابع الدجاج المقلية مع صوص البافلو مقدمة مع صوص الرانش",
-"mealRate":"4",
+"mealRate":"1",
 "cookerName":"محسن حسين",
 "orders":"25",
 "favorite":"false"
@@ -43,4 +85,5 @@
 "orders":"25",
 "favorite":"true"
 }
+>>>>>>> d7d40502e59d5bedfa061bc5ba6c7e544a167fb4
 ]
