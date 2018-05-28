@@ -12,13 +12,15 @@ import { HomeGuestComponent } from './home-guest/home-guest.component';
 import { FooterComponent } from './footer/footer.component';
 import { MealCardComponent } from './meal-card/meal-card.component';
 import { StarRatingModule } from 'angular-star-rating';
+import { BecomeAcookerComponent } from './become-acooker/become-acooker.component';
 
 //services
 import { QueryService } from './query.service';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
   { path: '',component:HomeGuestComponent },
-  
+  { path: 'becomeacooker',component:BecomeAcookerComponent} 
 ];
 
 @NgModule({
@@ -27,6 +29,8 @@ const appRoutes: Routes = [
     HomeGuestComponent,
     FooterComponent,
     MealCardComponent,
+    BecomeAcookerComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
