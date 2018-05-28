@@ -4,7 +4,9 @@
     <div class="container">
       <div class="row">
         <div class="col-md-2 offset-md-7">
-          <img src="../assets/images/logo.png" alt="">
+          <a routerLink="">
+            <img src="../assets/images/logo.png" alt="">
+          </a>
         </div>
         <div class="col-md-3">
           <a routerLink="../login" class="border p-2">تسجيل الدخول</a>
@@ -24,7 +26,7 @@
           <h2>أصبح طباخ
           </h2>
           <hr>
-      </div>
+        </div>
 
         <!-- form -->
         <form>
@@ -78,19 +80,21 @@
 
           <div class="form-group">
             <span class="pl-2">النوع</span>
-            <div class="radio d-inline-block">           
-                <input id="radio-1" name="radio" type="radio" checked>
-                <label for="radio-1" class="radio-label">ذكر</label>
-              </div>
-            
-              <div class="radio d-inline-block">
-                <input id="radio-2" name="radio" type="radio">
-                <label  for="radio-2" class="radio-label ml-3">أنثى</label>
-              </div>
-            
+            <div class="radio d-inline-block">
+              <input id="radio-1" name="radio" type="radio" checked>
+              <label for="radio-1" class="radio-label">ذكر</label>
+            </div>
+
+            <div class="radio d-inline-block">
+              <input id="radio-2" name="radio" type="radio">
+              <label for="radio-2" class="radio-label ml-3">أنثى</label>
+            </div>
+
           </div>
 
-          <div class="text-center"><button type="submit" class="btn big-btn">أصبح طباخ</button></div>
+          <div class="text-center">
+            <button type="submit" class="btn big-btn">أصبح طباخ</button>
+          </div>
         </form>
 
 
