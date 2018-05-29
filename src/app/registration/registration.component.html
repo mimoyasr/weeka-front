@@ -36,11 +36,16 @@
         </div>
 
         <!-- form -->
-        <form>
+        <form name="register" #register="ngForm" (ngSubmit)="registerFunc(register)" novalidate>
           <div class="form-group">
             <div class="row">
               <div class="col-6">
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="الأسم الأول">
+                <input type="text" #fName="ngModel" name="fName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                  placeholder="الأسم الأول">
+                <!-- error message -->
+                <div *ngIf="fName.invalid && (fName.dirty || fName.touched)">
+                  <div *ngIf="fName.errors.required" class="text-danger">Address is required!</div>
+                </div>
               </div>
               <div class="col-6">
                 <input type="text" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="الأسم الأخير">
