@@ -17,6 +17,8 @@ import { SingleItemComponent } from './single-item/single-item.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { MealCommentComponent } from './meal-comment/meal-comment.component';
+import { HomeMenuComponent } from './home-menu/home-menu.component';
+import { CartComponent } from './cart/cart.component';
 
 
 //services
@@ -43,6 +45,8 @@ const appRoutes: Routes = [
     SingleItemComponent,
     RegistrationComponent,
     MealCommentComponent,
+    CartComponent,
+    HomeMenuComponent,
   ],
   imports: [
     BrowserModule,
