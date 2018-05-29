@@ -40,18 +40,39 @@
         </div>
 
         <!-- form -->
-        <form>
+        <form name="login" #login="ngForm" (ngSubmit)="loginData(login)" novalidate>
           <div class="form-group">
-            <input type="email" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" placeholder="البريد الإلكترونى">
+            <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control" aria-describedby="emailHelp" placeholder="البريد الإلكترونى" name="userEmail"  #email="ngModel" [(ngModel)]="userLogin.userEmail" required />
+          </div>
+
+          <!-- validation Email message -->
+          <div *ngIf="email.invalid && (email.dirty || email.touched)">
+              <div class="error-msg" *ngIf="email.errors.required">
+                  * هذا الحقل مطلوب
+              </div>
+              <div class="error-msg" *ngIf="email.errors && login.submitted">
+                  * البريد الالكترونى غير صحيح
+              </div>
           </div>
 
           <div class="form-group">
-            <input type="password" class="form-control" id="exampleInputEmail4" aria-describedby="emailHelp" placeholder="كلمة السر">
+            <input type="password" class="form-control" aria-describedby="emailHelp" placeholder="كلمة السر" name="userPass" [(ngModel)]="userLogin.userPass" #pass="ngModel" required />
           </div>
 
-          <div class="text-left forget-pass">
-            <a href="#" class="text-dark">نسيت كلمة السر؟</a>
+          <!-- validation Password message -->
+          <div *ngIf="pass.invalid && (pass.dirty || pass.touched)">
+              <div class="error-msg" *ngIf="pass.errors.required">
+                  * هذا الحقل مطلوب
+              </div>
           </div>
+
+          <!-- validation member message -->
+              <div #errorMsg class="error-msg text-center" *ngIf="checkUserFlage">
+                بيانات غير صحيحة
+              </div>
+
+
+          <div class="text-left forget-pass"><a href="#" class="text-dark">نسيت كلمة السر؟</a></div>
 
           <div class="text-center">
             <button type="submit" class="btn big-btn">تسجيل الدخول</button>
