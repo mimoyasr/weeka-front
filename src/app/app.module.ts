@@ -15,6 +15,7 @@ import { StarRatingModule } from 'angular-star-rating';
 import { BecomeAcookerComponent } from './become-acooker/become-acooker.component';
 import { SingleItemComponent } from './single-item/single-item.component';
 import { LoginComponent } from './login/login.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 //services
 import { QueryService } from './query.service';
@@ -22,7 +23,9 @@ import { QueryService } from './query.service';
 const appRoutes: Routes = [
   { path: '',component:HomeGuestComponent },
   { path: 'becomeacooker',component:BecomeAcookerComponent},
-  { path: 'login',component:LoginComponent} 
+  { path: 'login',component:LoginComponent},
+  { path: 'registration',component:RegistrationComponent} 
+   
 ];
 
 @NgModule({
@@ -34,6 +37,7 @@ const appRoutes: Routes = [
     BecomeAcookerComponent,
     LoginComponent,
     SingleItemComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
