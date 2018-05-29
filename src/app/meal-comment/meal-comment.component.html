@@ -1,34 +1,56 @@
 <section>
   <div class="container">
     <!-- users comments -->
-
-
+    <div class="row mb-2" *ngFor="let obj of comments">
+      <div class="col-sm-8 ">
+        <div class="media  mt-3">
+          <img class=" p-4 " src="{{obj.userImage}}" alt="Generic placeholder image">
+          <div class="media-body pt-4 pb-4 pr-1 pl-4 ">
+            <h5 class="mt-0 font-weight-bold">{{obj.userName}}</h5>
+            <p>{{obj.userComment}}</p>
+            <p class="card-text">
+              <small>التاريخ:
+                <span class="date">{{obj.date}}</span> &nbsp; الوقت:
+                <span class="time">{{obj.time}}
+                  <span class="date"> </span>
+                </span>
+              </small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- empty comment -->
     <div class="row mb-4">
-      <div class="col-sm-8 p-0">
-          <div class="media  mt-3" >
-              <img class=" p-4 " src="" alt="Generic placeholder image">
-              <div class="media-body pt-4 pb-4 pr-1 pl-4 ">
-                <h5 class="mt-0"></h5>
-                <textarea name="comment" id="comment" cols="70" rows="2" placeholder="أضف تعليق"></textarea>
-                <p class="card-text"><small>التاريخ:<span class="date"></span> &nbsp; الوقت: <span class="time"><span class="date"> </span></span> </small></p>
-              </div>
-            </div> 
+      <div class="col-sm-8 ">
+        <div class="media  mt-3">
+          <img class=" p-4 " src="" alt="Generic placeholder image">
+          <div class="media-body pt-4 pb-4 pr-1 pl-4 ">
+            <h5 class="mt-0 font-weight-bold">سارة احمد</h5>
+            <textarea name="comment" id="comment" cols="70" rows="2" placeholder="أضف تعليق"  [(ngModel)]="userComment"></textarea>
+            <p class="card-text">
+              <small>التاريخ:
+                <span class="date"></span> &nbsp; الوقت:
+                <span class="time">
+                  <span class="date"> </span>
+                </span>
+              </small>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
 
 
     <!-- comment button -->
-    <div class="row">
-      <div class="">
-      <button class="btn big-btn mt-2">تعليق</button>
-     
-
+    <div class="row  ">
+      <div class="col-sm-8">
+        <div class="row justify-content-end">
+          <button class="btn big-btn mt-2 ml-3" (click)="addNewComment()">تعليق</button>
+        </div>
       </div>
-
     </div>
-
 
   </div>
 </section>

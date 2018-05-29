@@ -4,6 +4,7 @@
 section{
 
   div.media{   
+
           box-shadow: 0px 3px 10px 0px rgba(133, 133, 133, 0.25); 
           textarea {
                   resize: none;
@@ -17,6 +18,11 @@ section{
 
                
               }     
+              small{
+                @include font-size(12px)
+              }
+          
+          
   }
 
 }

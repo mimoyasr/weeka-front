@@ -23,13 +23,11 @@ import { MealCommentComponent } from './meal-comment/meal-comment.component';
 import { QueryService } from './query.service';
 
 const appRoutes: Routes = [
-<<<<<<< HEAD
   { path: '',component:HomeGuestComponent },
   { path: 'becomeacooker',component:BecomeAcookerComponent},
   { path: 'login',component:LoginComponent},
   { path: 'registration',component:RegistrationComponent},
    
-=======
   { path: '', component: HomeGuestComponent },
   { path: 'becomeacooker', component: BecomeAcookerComponent },
   { path: 'login', component: LoginComponent },
@@ -37,7 +35,6 @@ const appRoutes: Routes = [
   { path: 'singleItem/:name', component: SingleItemComponent }
 
 
->>>>>>> 61fe628abaf9c6b526aff897232a4aaa9f13694d
 ];
 
 @NgModule({
