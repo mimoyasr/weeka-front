@@ -1,0 +1,26 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+@import '../../scss/general';
+@import '../../scss/forms';
+.login{
+    @include backgroundImg('../../assets/images/login-page/login-dark-bg.jpg',right);
+        .form-bg{
+            @include backgroundImg('../../assets/images/login-page/login-light-bg.jpg',right);
+        }
+        .forget-pass{
+            margin: 42px 0px;
+            a{
+                color: $textColor;
+            }
+        }
+        .main-form{
+            padding: 70px 35px;
+        }
+        .make-account{
+            width: 60%;
+            p{
+                margin-bottom: 38px;
+            }
+        }
+
+    }

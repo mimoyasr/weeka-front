@@ -21,7 +21,8 @@ import { QueryService } from './query.service';
 
 const appRoutes: Routes = [
   { path: '',component:HomeGuestComponent },
-  { path: 'becomeacooker',component:BecomeAcookerComponent} 
+  { path: 'becomeacooker',component:BecomeAcookerComponent},
+  { path: 'login',component:LoginComponent} 
 ];
 
 @NgModule({

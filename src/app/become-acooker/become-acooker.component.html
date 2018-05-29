@@ -7,8 +7,8 @@
           <img src="../assets/images/logo.png" alt="">
         </div>
         <div class="col-md-3">
-          <a href="#" class="border p-2">تسجيل الدخول</a>
-          <a routerLink="becomeacooker" class="headlinesFonts pr-3">اصبح طباخ</a>
+          <a routerLink="../login" class="border p-2">تسجيل الدخول</a>
+          <a routerLink="../becomeacooker" class="headlinesFonts pr-3">اصبح طباخ</a>
         </div>
       </div>
     </div>
@@ -52,11 +52,22 @@
           </div>
 
           <div class="form-group">
-            <input type="text" class="form-control" id="exampleInputEmail6" aria-describedby="emailHelp" placeholder="رقم التليفون">
+            <div class="row">
+              <div class="col-9">
+                <input type="text" class="form-control" id="exampleInputEmail6" aria-describedby="emailHelp" placeholder="رقم التليفون">
+              </div>
+              <div class="col-3">
+                <select class="form-control" id="exampleFormControlSelect1">
+                  <option>012</option>
+                  <option>010</option>
+                  <option>011</option>
+                </select>
+              </div>
+            </div>
           </div>
 
           <div class="form-group">
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="exampleFormControlSelect7">
               <option>المنطقة</option>
               <option>لوران</option>
               <option>العجمي</option>
