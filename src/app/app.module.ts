@@ -5,7 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import {RatingModule} from "ngx-rating";
+import { RatingModule } from "ngx-rating";
 //App component
 import { AppComponent } from './app.component';
 import { HomeGuestComponent } from './home-guest/home-guest.component';
@@ -16,16 +16,20 @@ import { BecomeAcookerComponent } from './become-acooker/become-acooker.componen
 import { SingleItemComponent } from './single-item/single-item.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { MealCommentComponent } from './meal-comment/meal-comment.component';
+
 
 //services
 import { QueryService } from './query.service';
 
 const appRoutes: Routes = [
-  { path: '',component:HomeGuestComponent },
-  { path: 'becomeacooker',component:BecomeAcookerComponent},
-  { path: 'login',component:LoginComponent},
-  { path: 'registration',component:RegistrationComponent} 
-   
+  { path: '', component: HomeGuestComponent },
+  { path: 'becomeacooker', component: BecomeAcookerComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'registration', component: RegistrationComponent },
+  { path: 'singleItem/:name', component: SingleItemComponent }
+
+
 ];
 
 @NgModule({
@@ -38,6 +42,7 @@ const appRoutes: Routes = [
     LoginComponent,
     SingleItemComponent,
     RegistrationComponent,
+    MealCommentComponent,
   ],
   imports: [
     BrowserModule,
