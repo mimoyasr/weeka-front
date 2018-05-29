@@ -14,6 +14,7 @@ export class MealCommentComponent implements OnInit {
   public newComment:object;
   public userComment:string;
 
+<<<<<<< HEAD
 
   constructor(private q: QueryService) {
     this.comments = [];
@@ -21,6 +22,11 @@ export class MealCommentComponent implements OnInit {
     this.newComment={};
     
     
+=======
+  constructor(private q: QueryService) {
+    this.comments = [];
+    this.getComments();
+>>>>>>> 4a65d9d109698a283f82e77ede6bda010ecc6e50
 
   }
 
@@ -28,7 +34,7 @@ export class MealCommentComponent implements OnInit {
   //function to get comments from json file   
 
   getComments(): void {
-    let path: string = './assets/meal-comment.json';
+    let path: string = '../../assets/meal-comment.json';
     this.q.getData(path).subscribe(
       res => {
         this.comments = res;
