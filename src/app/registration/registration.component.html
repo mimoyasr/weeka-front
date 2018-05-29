@@ -39,40 +39,96 @@
         <form name="register" #register="ngForm" (ngSubmit)="registerFunc(register)" novalidate>
           <div class="form-group">
             <div class="row">
+              <!-- first name -->
               <div class="col-6">
-                <input type="text" #fName="ngModel" name="fName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                  placeholder="الأسم الأول">
-                <!-- error message -->
-                <div *ngIf="fName.invalid && (fName.dirty || fName.touched)">
-                  <div *ngIf="fName.errors.required" class="text-danger">Address is required!</div>
+                <input type="text" name="fName" #fName="ngModel" [(ngModel)]="RegisterData.fName" required class="form-control" id="exampleInputEmail1"
+                  aria-describedby="emailHelp" placeholder="الأسم الأول">
+
+                <!-- validation  message -->
+                <div *ngIf="fName.invalid && (fName.dirty || fName.touched || register.submitted)">
+                  <div *ngIf="fName.errors.required" class="text-danger">
+                    * هذا الحقل مطلوب
+                  </div>
+                </div>
+
+              </div>
+              <!-- last name -->
+              <div class="col-6">
+                <input type="text" name="lName" #lName="ngModel" [(ngModel)]="RegisterData.lName" required class="form-control" id="exampleInputEmail2"
+                  aria-describedby="emailHelp" placeholder="الأسم الأخير">
+
+                <!-- validation  message -->
+                <div *ngIf="lName.invalid && (lName.dirty || lName.touched || register.submitted)">
+                  <div *ngIf="lName.errors.required" class="text-danger">
+                    * هذا الحقل مطلوب
+                  </div>
                 </div>
               </div>
-              <div class="col-6">
-                <input type="text" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="الأسم الأخير">
-              </div>
+
             </div>
           </div>
 
+          <!-- email address -->
           <div class="form-group">
-            <input type="email" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" placeholder="البريد الإلكترونى">
+            <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="userEmail" #email="ngModel" [(ngModel)]="RegisterData.userEmail"
+              required class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" placeholder="البريد الإلكترونى">
+          </div>
+          <!-- validation Email message -->
+          <div *ngIf="email.invalid && (email.dirty || email.touched)">
+            <div class="text-danger" *ngIf="email.errors.required">
+              * هذا الحقل مطلوب
+            </div>
+          </div>
+          <div class="text-danger" *ngIf="email.errors && register.submitted">
+            * البريد الالكترونى غير صحيح
           </div>
 
+          <!-- password -->
           <div class="form-group">
-            <input type="password" class="form-control" id="exampleInputEmail4" aria-describedby="emailHelp" placeholder="كلمة السر">
+            <input type="password" name="pass" #pass="ngModel" [(ngModel)]="RegisterData.pass" required class="form-control" id="exampleInputEmail4"
+              aria-describedby="emailHelp" placeholder="كلمة السر">
+          </div>
+          <!-- validation  message -->
+          <div *ngIf="pass.invalid && (pass.dirty || pass.touched || register.submitted)">
+            <div *ngIf="pass.errors.required" class="text-danger">
+              * هذا الحقل مطلوب
+            </div>
           </div>
 
+          <!-- matched password -->
           <div class="form-group">
-            <input type="password" class="form-control" id="exampleInputEmail5" aria-describedby="emailHelp" placeholder="تأكيد كلمة السر">
+            <input type="password" name="pass2" #pass2="ngModel" [(ngModel)]="RegisterData.pass2" required class="form-control" id="exampleInputEmail5"
+              aria-describedby="emailHelp" placeholder="تأكيد كلمة السر">
+          </div>
+          <!-- validation  message -->
+          <div *ngIf="pass2.invalid && (pass2.dirty || pass2.touched || register.submitted)">
+            <div *ngIf="pass2.errors.required" class="text-danger">
+              * هذا الحقل مطلوب
+            </div>
+          </div>
+          <div *ngIf="pass2.touched && pass2.value != pass.value" class="text-danger">
+            * كلمة السر غير متطابقة
           </div>
 
+          <!-- phone number  -->
           <div class="form-group">
             <div class="row">
               <div class="col-9">
-                <input type="text" class="form-control" id="exampleInputEmail6" aria-describedby="emailHelp" placeholder="رقم التليفون">
+                <input type="text" pattern="[0-9]{8}" name="phone" #phone="ngModel" [(ngModel)]="RegisterData.phone" required class="form-control"
+                  id="exampleInputEmail6" aria-describedby="emailHelp" placeholder="رقم التليفون">
+                <!-- validation  message -->
+                <div *ngIf="phone.invalid && (phone.dirty || phone.touched || register.submitted)">
+                  <div *ngIf="phone.errors.required" class="text-danger">
+                    * هذا الحقل مطلوب
+                  </div>
+                </div>
+                <div class="text-danger" *ngIf="phone.errors && register.submitted">
+                  * رقم التليفون غير صحيح
+                </div>
               </div>
               <div class="col-3">
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option>012</option>
+                <select class="form-control" name="numPref" [(ngModel)]="RegisterData.numPref" id="exampleFormControlSelect1">
+                  <option selected>012</option>
                   <option>010</option>
                   <option>011</option>
                 </select>
@@ -83,12 +139,12 @@
           <div class="form-group">
             <span class="pl-2">النوع</span>
             <div class="radio d-inline-block">
-              <input id="radio-1" name="radio" type="radio" checked>
+              <input id="radio-1" name="gender" value="male" [(ngModel)]="RegisterData.gender" type="radio" checked>
               <label for="radio-1" class="radio-label">ذكر</label>
             </div>
 
             <div class="radio d-inline-block">
-              <input id="radio-2" name="radio" type="radio">
+              <input id="radio-2" name="gender" value="female" [(ngModel)]="RegisterData.gender" type="radio">
               <label for="radio-2" class="radio-label ml-3">أنثى</label>
             </div>
 

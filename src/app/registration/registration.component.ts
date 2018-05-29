@@ -9,7 +9,14 @@ import { NgForm, NgModel } from '@angular/forms';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor() { }
+  RegisterData: object;
+
+  constructor() {
+    this.RegisterData = {
+      "numPref": "012",
+      "gender": "male"
+    };
+  }
 
   ngOnInit() {
   }
@@ -17,10 +24,11 @@ export class RegistrationComponent implements OnInit {
   //=========== form validation function =============
   registerFunc(data: NgForm): void {
     if (data.valid) {
-      alert("Information saved successfully");
+      // post request to save regiteration data object in database
+      console.log(this.RegisterData);
     }
     else {
-      alert("Oops! Please enter a valid data.");
+      console.log("data is not correct");
     }
   }
 }
