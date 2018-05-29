@@ -21,16 +21,9 @@ import { MealCommentComponent } from './meal-comment/meal-comment.component';
 
 //services
 import { QueryService } from './query.service';
+import { HomeMenuComponent } from './home-menu/home-menu.component';
 
 const appRoutes: Routes = [
-<<<<<<< HEAD
-  { path: '',component:HomeGuestComponent },
-  { path: 'becomeacooker',component:BecomeAcookerComponent},
-  { path: 'login',component:LoginComponent},
-  { path: 'registration',component:RegistrationComponent},
-   
-=======
->>>>>>> 4a65d9d109698a283f82e77ede6bda010ecc6e50
   { path: '', component: HomeGuestComponent },
   { path: 'becomeacooker', component: BecomeAcookerComponent },
   { path: 'login', component: LoginComponent },
@@ -51,6 +44,7 @@ const appRoutes: Routes = [
     SingleItemComponent,
     RegistrationComponent,
     MealCommentComponent,
+    HomeMenuComponent,
   ],
   imports: [
     BrowserModule,
