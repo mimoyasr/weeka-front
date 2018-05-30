@@ -1,27 +1,51 @@
 <section>
-  <div class="container">
+  <!-- ==========Navbar========== -->
+  <div class="nav pt-4 pb-3 bg-dark text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2 offset-md-7">
+          <a routerLink="">
+            <img src="../assets/images/logo.png" alt="">
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a routerLink="../../login" class="border p-2">تسجيل الدخول</a>
+          <a routerLink="../../becomeacooker" class="headlinesFonts pr-3">اصبح طباخ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container singleMeal">
     <div class="row">
       <!-- ============= single product ============== -->
       <div class="col-md-8">
         <div class="card mb-3">
-          <img class="card-img-top" src="http://via.placeholder.com/350x150" alt="Card image cap">
+          <img class="card-img-top" src="{{singleData.singleImg}}" alt="Card image cap">
 
-          <div class="card-body">
+          <div class="card-body pr-0">
+            <!-- ============== favourite ================ -->
+            <img class="fav rounded-circle p-3" *ngIf="singleData.favorite=='false'; else elseCase" [(ngModel)]="singleData.favorite"
+              src="../../assets/images/not-fav.png" alt="">
+            <ng-template #elseCase>
+              <img class="fav rounded-circle p-3" src="../../assets/images/fav.png" alt="">
+            </ng-template>
+
             <div class="d-flex justify-content-between headline">
-              <h2 class="card-title">اصابع الدجاج المقلية</h2>
-              <h2>45 ج</h2>
+              <h2 class="card-title mb-4">{{singleData.mealTitel}}</h2>
+              <h2 class="pl-5">{{singleData.mealPrice}} ج</h2>
+              <!-- =========== rating ========== -->
+              <!-- https://npm.runkit.com/ngx-rating -->
+              <rating [(ngModel)]="singleData.mealRate" [readonly]="true" [float]="true" fullIcon="◆" emptyIcon="◇">
+                {{singleData.mealRate}}
+              </rating>
             </div>
-            <!-- =========== rating ========== -->
-            <div>
-              <h4></h4>
+            <p class="mb-4">{{singleData.mealDescription}}</p>
+            <div class="d-flex justify-content-between pl-5">
+              <p class="card-title">الشيف : {{singleData.cookerName}}</p>
+              <p>عدد مرات الطلب: {{singleData.orders}}</p>
             </div>
-            <p>أصابع الدجاج المقلية مع صوص البافلو مقدمة مع صوص الرانش و السلطة الفرنسية والليمون الطازج و تقدم مع الأرز البستمي
-              و الخضار السوتيه والبطاطس المقلية والعيش البوري المميز.</p>
-            <div class="d-flex justify-content-between">
-              <p class="card-title">الشيف : محسن حسين</p>
-              <p>عدد مرات الطلب: 25</p>
-            </div>
-            <button class="small-btn">اطلب</button>
+            <button class="small-btn" (click)="addToCart()">اطلب</button>
 
           </div>
 
@@ -30,10 +54,12 @@
 
       <!-- =========== cart component =============== -->
       <div class="col-md-4">
-
+        <app-cart [cartProduct]="allCartMeals"></app-cart>
       </div>
     </div>
-
+  </div>
+  <div class="container mealCmnts">
     <!-- ================= comments component ================ -->
+    <app-meal-comment></app-meal-comment>
   </div>
 </section>

@@ -1,9 +1,15 @@
 <div class="row">
     <div class="col-md-12 col-lg-6 " *ngFor="let data of mealData; let i=index">
         <div class="media weekaCard w-100 mb-5 align-items-center">
+<<<<<<< HEAD
             <img src="{{data.image}}" alt="Generic placeholder image">
 
             
+=======
+            <a routerLink="/singleItem/{{(data.mealTitel)}}">
+                <img src="{{data.image}}" alt="Generic placeholder image">
+            </a>
+>>>>>>> 1d56c3fe37f74a32bc1fbf7c71d6cdfca730db23
             <div class="media-body position-relative text-center">
                     <!-- <div class="btn-group btn-group-toggle">
                             <label class="btn-primary" ngbButtonLabel>
