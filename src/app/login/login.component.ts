@@ -44,15 +44,14 @@ export class LoginComponent implements OnInit {
 
   loginData(userData:NgForm):void{
     if(userData.valid && !userData.controls.userEmail.errors){
-      for (const member of this.jsonData){
+      for (const member of this.jsonData){      
         if ( member.userEmail === this.userLogin.userEmail && member.userPass === this.userLogin.userPass ){          
-          console.log('you are a member');
-        }else{
+          console.log('you are a member'); 
         }
       }
-      this.checkUserFlage = true;
     }else{
-
+      this.checkUserFlage = true;
+      
     }
   }
 

@@ -1,0 +1,38 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+@import '../../scss/general';
+
+//Decrease And Increase Input
+.qty-input {
+    position: relative;
+    font-family: $headlinesFontBold;
+    display: inline-block;
+    i{
+        cursor: pointer;
+        height: 35px;
+        float: left;
+        line-height: 35px;
+        text-align: center;
+        transition: all 150ms ease-out;
+        width: 35px;
+        background: $sconedColor;
+        color: $headlinesColor;
+        font-size: 16px;
+        &:active{
+            background-color: $mainColor;
+            transition: none;
+            color:$whiteColor;
+        }  
+    }
+    input{
+        border:0px;
+        float: left;
+        font-size: 16px;
+        height: 40px;
+        text-align: center;
+        outline: none;
+        width: 40px;
+    }
+  }
+
+  

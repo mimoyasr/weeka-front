@@ -21,6 +21,7 @@ import { MealCommentComponent } from './meal-comment/meal-comment.component';
 
 //services
 import { QueryService } from './query.service';
+import { CartComponent } from './cart/cart.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeGuestComponent },
@@ -43,6 +44,7 @@ const appRoutes: Routes = [
     SingleItemComponent,
     RegistrationComponent,
     MealCommentComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
