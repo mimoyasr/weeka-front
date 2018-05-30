@@ -1,5 +1,6 @@
 [
     {
+        "id":"1",
         "image": "../assets/images/home-page/meal-card1.jpg",
         "singleImg": "../assets/images/single-page/meal1-S.jpg",
         "mealTitel": "سلطة السيزر بالجمبرى",
@@ -11,6 +12,7 @@
         "favorite": "false"
     },
     {
+        "id":"2",
         "image": "../assets/images/home-page/meal-card2.jpg",
         "singleImg": "../assets/images/single-page/meal2-S.jpg",
         "mealTitel": "اصابع الدجاج المقليه",
@@ -22,6 +24,7 @@
         "favorite": "false"
     },
     {
+        "id":"3",
         "image": "../assets/images/home-page/meal-card3.jpg",
         "singleImg": "../assets/images/single-page/meal3-S.jpg",
         "mealTitel": "طبق الدجاج المشوي",
@@ -33,6 +36,7 @@
         "favorite": "false"
     },
     {
+        "id":"4",
         "image": "../assets/images/home-page/meal-card4.jpg",
         "singleImg": "../assets/images/single-page/meal4-S.jpg",
         "mealTitel": "الإسباجتي الإيطالي",

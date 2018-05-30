@@ -1,16 +1,17 @@
-<section class="cart">
+<aside class="cart">
+  <div class="cart-content" *ngIf="allCartMeals.size != 0">
   <h3 class="text-center mt-0">طلبك</h3>
-  <div class="media">
-    <img class="ml-4" width="90" height="90" src="../../assets/images/meal-comment/person1.jpg" alt="Generic placeholder image">
+  <div class="media" *ngFor="let product of allCartMeals">
+    <img class="ml-4" width="90" height="90" src={{product.image}} alt="Generic placeholder image">
     <div class="media-body">
       <div class="order-content d-flex justify-content-between">
         <div class="details">
-          <h4 class="mt-0 d-inline-block meal-title">طبق الدجاج المشوى</h4>          
+          <h4 class="mt-0 d-inline-block meal-title">{{product.mealTitel}}</h4>          
           <div class="price-qt d-flex align-items-center justify-content-between">
-            <div class="qty-input"><i class="less">+</i>
-              <input type="text" value="1"/><i class="more">-</i>
+            <div class="qty-input"><i (click)="plus()" class="more">+</i>
+              <input #inputNum type="text" value="1"/><i (click)="minus()" class="less">-</i>
             </div>
-            <h4 class="ar-price">75ج</h4>
+            <h4 class="ar-price">{{product.mealPrice}}ج</h4>
         </div>
       </div>
       <i class="icon-cancel"></i>
@@ -49,7 +50,11 @@
 
     <button class="btn checkout-btn">الحساب</button>        
   </div>
+</div>
 
+<div class="empty-cart text-center" *ngIf="allCartMeals.size == 0">
+  <i class="icon-basket"></i>
+  <h3>السلة فارغة</h3>
+</div>
 
-
-</section>
+</aside>

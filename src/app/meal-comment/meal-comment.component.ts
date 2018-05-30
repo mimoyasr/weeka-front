@@ -14,19 +14,10 @@ export class MealCommentComponent implements OnInit {
   public newComment:object;
   public userComment:string;
 
-<<<<<<< HEAD
-
-  constructor(private q: QueryService) {
-    this.comments = [];
-    this.getComments();
-    this.newComment={};
-    
-=======
   constructor(private q: QueryService) {
     this.comments = [];
     this.getComments();
 
->>>>>>> 383eb12eea8ea31c22fdd8d9652ca564e30fec41
   }
 
 

@@ -14,13 +14,16 @@ export class SingleItemComponent implements OnInit {
   singleName: string;
   singleData: object;
   mealData: Array<any>;
+  allCartMeals:Set<any>;
 
   constructor(private active: ActivatedRoute,
     private query: QueryService) {
 
     this.singleData = {};
     this.mealData = [];
+    this.allCartMeals = new Set();   
     this.getMealData();
+    
 
     // ========= accessing name comes from url ===========    
     this.active.params.subscribe(
@@ -49,6 +52,13 @@ export class SingleItemComponent implements OnInit {
       }
     }
   }
+
+  //============ Add To Cart ==========
+  addToCart():void{
+    this.allCartMeals.add(this.singleData); 
+       
+  }
+
   ngOnInit() {
   }
 
