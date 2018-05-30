@@ -78,6 +78,18 @@ body{
     min-width: 87px;
     min-height: 28px;
 }
+.big-btn{
+    background: $mainColor;
+    @include font-size(16px);
+    min-width: 153px;
+    min-height: 35px;
+}
+//input placeholder color
+input::-webkit-input-placeholder
+,input::-moz-input-placeholder
+,input:-ms-input-placeholder{
+    color: $textColor;
+}
 
 //ancors 
 a{

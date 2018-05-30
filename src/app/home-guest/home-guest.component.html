@@ -3,14 +3,14 @@
     <div class="container">
       <div class="row">
         <div class="col-md-2 offset-md-7">
-      <img src="../assets/images/logo.png" alt="">
+          <img src="../assets/images/logo.png" alt="">
+        </div>
+        <div class="col-md-3">
+          <a href="#" class="border p-2">تسجيل الدخول</a>
+          <a routerLink="becomeacooker" class="headlinesFonts pr-3">اصبح طباخ</a>
+        </div>
+      </div>
     </div>
-    <div class="col-md-3">
-      <a href="#" class="border p-2">تسجيل الدخول</a>
-      <a href="#" class="headlinesFonts pr-3" >اصبح طباخ</a>
-    </div>
-  </div>
-</div> 
   </div>
   <!-- <div class="row">
     <h1>الشعار المفروض يتكتب هنا بسس احنا لسه مالفنهوش</h1>
@@ -18,19 +18,21 @@
 </section>
 
 <section id="cards" class="position-relative">
-    <div class="container">
-      <app-meal-card>
-      </app-meal-card>
-    </div>
+  <!-- <div class="card" style="border-width: 13400">
+
+  </div> -->
+  <div class="container">
+    <app-meal-card></app-meal-card>
+  </div>
 </section>
 
 <section id="how-we-work" class="text-center mb-5">
   <div class="headline">
-    <h2>كيف نعمل  ؟ </h2>
+    <h2>كيف نعمل ؟ </h2>
     <hr>
   </div>
   <div class="container">
-  <div class="row">
+    <div class="row">
       <div class="col-md-3" *ngFor="let data of workData">
         <img src="{{data.icon}}" class="mb-4" alt="">
         <h3 class="mb-4">{{data.titel}}</h3>
@@ -38,7 +40,4 @@
       </div>
     </div>
   </div>
- </section>
-
-
-
+</section>
