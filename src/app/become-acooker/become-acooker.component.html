@@ -29,66 +29,119 @@
         </div>
 
         <!-- form -->
-        <form>
+        <form name="registerForm" #registerForm="ngForm" (ngSubmit)="register(registerForm)" novalidate>
           <div class="form-group">
             <div class="row">
               <div class="col-6">
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="الأسم الأول">
+                <input type="text" name="user_firstname" [(ngModel)]="user_firstname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                  placeholder="الأسم الأول" #fname="ngModel" required>
+                <!--  first name validation  -->
+                <div *ngIf="fname.invalid && (fname.dirty || fname.touched)" class="text-danger">
+                  <div *ngIf="fname.errors.required">
+                    * هذا الحقل مطلوب
+                  </div>
+                </div>
               </div>
+
+
               <div class="col-6">
-                <input type="text" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="الأسم الأخير">
+                <input type="text" name="user_lastname" [(ngModel)]="user_lastname" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp"
+                  placeholder="الأسم الأخير" #lname="ngModel" required>
+                <!--  last name validation  -->
+                <div *ngIf="lname.invalid && (lname.dirty || lname.touched)" class="text-danger">
+                  <div *ngIf="lname.errors.required">
+                    * هذا الحقل مطلوب
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="form-group">
-            <input type="email" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" placeholder="البريد الإلكترونى">
+            <input type="email" name="user_email" [(ngModel)]="user_email" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp"
+              placeholder="البريد الإلكترونى" #Email="ngModel" required>
+            <!--  email  validation  -->
+            <div *ngIf="Email.invalid && (Email.dirty || Email.touched)" class="text-danger">
+              <div *ngIf="Email.errors.required">
+                * هذا الحقل مطلوب
+              </div>
+            </div>
           </div>
 
           <div class="form-group">
-            <input type="password" class="form-control" id="exampleInputEmail4" aria-describedby="emailHelp" placeholder="كلمة السر">
+            <input type="password" name="user_password" [(ngModel)]="user_password" class="form-control" id="exampleInputEmail4" aria-describedby="emailHelp"
+              placeholder="كلمة السر" required #password="ngModel">
+            <!--  password  validation  -->
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+              <div *ngIf="password.errors.required">
+                * هذا الحقل مطلوب
+              </div>
+            </div>
+
           </div>
 
           <div class="form-group">
-            <input type="password" class="form-control" id="exampleInputEmail5" aria-describedby="emailHelp" placeholder="تأكيد كلمة السر">
+            <input type="password" name="user_password_confirm" [(ngModel)]="user_password_confirm" class="form-control" id="exampleInputEmail5"
+              aria-describedby="emailHelp" placeholder="تأكيد كلمة السر" required #confirmpassword="ngModel">
+            <!-- confirm  password  validation  -->
+            <div *ngIf="confirmpassword.invalid && (confirmpassword.dirty || confirmpassword.touched)" class="text-danger">
+              <div *ngIf="confirmpassword.errors.required">
+                * هذا الحقل مطلوب
+              </div>
+            </div>
+            <div *ngIf="confirmpassword.value !=password.value" class="text-danger">
+              * كلمة السر غير مطابقة
+
+            </div>
+
+
           </div>
 
           <div class="form-group">
             <div class="row">
               <div class="col-9">
-                <input type="text" class="form-control" id="exampleInputEmail6" aria-describedby="emailHelp" placeholder="رقم التليفون">
+                <input type="tel" name="user_tel" [(ngModel)]="user_tel" maxlength="8" class="form-control" id="exampleInputEmail6" aria-describedby="emailHelp"
+                  placeholder="رقم التليفون" required #telephone="ngModel">
+                <!-- telephone  validation  -->
+                <div *ngIf="telephone.invalid && (telephone.dirty || telephone.touched) " class="text-danger">
+                  <div *ngIf="telephone.errors.required">
+                    * هذا الحقل مطلوب
+                  </div>
+                </div>
               </div>
+
               <div class="col-3">
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option>012</option>
-                  <option>010</option>
-                  <option>011</option>
+                <select class="form-control" id="exampleFormControlSelect1" name="user_tel_key" [(ngModel)]="user_tel_key" required #key="ngModel">
+                  <option value="010">010</option>
+                  <option value="011">011</option>
+                  <option value="012">012</option>
                 </select>
+                <span *ngIf="registerForm.submitted==true && registerForm.valid==false && !key.valid " class="text-danger">مطلوب</span>
               </div>
             </div>
           </div>
 
           <div class="form-group">
-            <select class="form-control" id="exampleFormControlSelect7">
-              <option>المنطقة</option>
-              <option>لوران</option>
-              <option>العجمي</option>
-              <option>ابوقير</option>
-              <option>جليم</option>
+            <select class="form-control" id="exampleFormControlSelect7" name="user_area" [(ngModel)]="user_area" required #area="ngModel">
+              <option *ngFor="let area of areas" value="{{area.areaName}}">{{area.areaName}}</option>
             </select>
+            <span *ngIf="registerForm.submitted==true && registerForm.valid==false  && !area.valid " class="text-danger">* هذا الحقل مطلوب</span>
+
+
           </div>
 
           <div class="form-group">
             <span class="pl-2">النوع</span>
             <div class="radio d-inline-block">
-              <input id="radio-1" name="radio" type="radio" checked>
+              <input id="radio-1" name="user_gender" type="radio" [(ngModel)]="user_gender" value="male" required #gender="ngModel" checked>
               <label for="radio-1" class="radio-label">ذكر</label>
             </div>
 
             <div class="radio d-inline-block">
-              <input id="radio-2" name="radio" type="radio">
+              <input id="radio-2" name="user_gender" type="radio" [(ngModel)]="user_gender" value="female" required>
               <label for="radio-2" class="radio-label ml-3">أنثى</label>
             </div>
+            <div *ngIf="registerForm.submitted==true && registerForm.valid==false  && !gender.valid " class="text-danger">* هذا الحقل مطلوب</div>
 
           </div>
 
@@ -96,10 +149,7 @@
             <button type="submit" class="btn big-btn">أصبح طباخ</button>
           </div>
         </form>
-
-
       </div>
-
     </div>
   </div>
 

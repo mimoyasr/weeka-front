@@ -11,13 +11,15 @@ import { QueryService } from '../query.service';
 })
 export class MealCommentComponent implements OnInit {
   public comments: Array<object>;
-  public newComment:object;
-  public userComment:string;
+  public newComment: object;
+  public userComment: string;
+
 
   constructor(private q: QueryService) {
     this.comments = [];
     this.getComments();
-
+    this.newComment={};
+    
   }
 
 
@@ -37,12 +39,12 @@ export class MealCommentComponent implements OnInit {
   }
   // function to add new comment
 
-  addNewComment():void{
-    this.newComment['userComment']=this.userComment;
-    this.newComment['mealRate']="5";
-    this.newComment['mealId']="";
+  addNewComment(): void {
+    this.newComment['userComment'] = this.userComment;
+    this.newComment['mealRate'] = "5";
+    this.newComment['mealId'] = "";
     this.comments.push(this.newComment);
-    this.userComment="";
+    this.userComment = "";
 
     console.log(this.newComment);
 

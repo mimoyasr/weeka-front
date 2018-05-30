@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 
+//Services
+import { TransferDataService } from '../transfer-data.service';
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -8,7 +11,10 @@ import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 export class CartComponent implements OnInit {
   @ViewChild("inputNum") inputNum:ElementRef;
   @Input('cartProduct') allCartMeals:Array<object>;
-  constructor() { 
+  constructor( private transfer:TransferDataService ) { 
+
+    this.transfer.setItemInput(5);
+
   }
   
   ngOnInit() {

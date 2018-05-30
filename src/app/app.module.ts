@@ -23,6 +23,7 @@ import { CartComponent } from './cart/cart.component';
 
 //services
 import { QueryService } from './query.service';
+import { TransferDataService } from './transfer-data.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeGuestComponent },
@@ -57,7 +58,7 @@ const appRoutes: Routes = [
     FormsModule,
     RatingModule
   ],
-  providers: [QueryService],
+  providers: [QueryService,TransferDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

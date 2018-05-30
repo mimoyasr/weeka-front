@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm, NgModel } from '@angular/forms';
+
 
 @Component({
   selector: 'app-registration',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor() { }
+  RegisterData: object;
+
+  constructor() {
+    this.RegisterData = {
+      "numPref": "012",
+      "gender": "male"
+    };
+  }
 
   ngOnInit() {
   }
 
+  //=========== form validation function =============
+  registerFunc(data: NgForm): void {
+    if (data.valid) {
+      // post request to save regiteration data object in database
+      console.log(this.RegisterData);
+    }
+    else {
+      console.log("data is not correct");
+    }
+  }
 }
