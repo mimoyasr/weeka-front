@@ -16,7 +16,6 @@ export class SingleItemComponent implements OnInit {
   singleData: object;
   mealData: Array<any>;
   allCartMeals:Set<any>;
-  itemNum:number;
 
   constructor(private active: ActivatedRoute,
     private query: QueryService,
@@ -26,11 +25,7 @@ export class SingleItemComponent implements OnInit {
     this.mealData = [];
     this.allCartMeals = new Set();   
     this.getMealData();
-    //============= transfer data =============
-    this.itemNum = this.transfer.getItemInput();
-    console.log(this.itemNum)
     
-
     // ========= accessing name comes from url ===========    
     this.active.params.subscribe(
       params => this.singleName = (params.name).replace(/%20/g, ' ')
@@ -61,10 +56,17 @@ export class SingleItemComponent implements OnInit {
 
   //============ Add To Cart ==========
   addToCart():void{
-    this.allCartMeals.add(this.singleData); 
+    if(this.allCartMeals.size == 0){
+      this.allCartMeals.add(this.singleData);
+      // console.log(this.allCartMeals.entries().next().value[0].qty);
+    }else{
+      this.allCartMeals.entries().next().value[0].qty = parseInt(this.allCartMeals.entries().next().value[0].qty) + 1 ;
+      
+    }
+  }
+  ngOnInit() {
+    
   }
 
-  ngOnInit() {
-  }
 
 }
