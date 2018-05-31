@@ -19,10 +19,12 @@ import { RegistrationComponent } from './registration/registration.component';
 import { MealCommentComponent } from './meal-comment/meal-comment.component';
 import { HomeMenuComponent } from './home-menu/home-menu.component';
 import { CartComponent } from './cart/cart.component';
+import { NgbdRatingBasic } from './rating';
 
 
 //services
 import { QueryService } from './query.service';
+import { TransferDataService} from './transfer-data.service';
 import { NewMealComponent } from './new-meal/new-meal.component';
 
 const appRoutes: Routes = [

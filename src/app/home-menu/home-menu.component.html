@@ -1,39 +1,21 @@
-
-<!-- <div class="container">
+<div class="container">
     <div class="row justify-content-center ">
-        <div class=" col-sm-8  align-self-stretch" >
-            <div class="btn-group mr-3 group ">
-                <button type="button" class="btn menubtn ">اختر منطقتك</button>
-                <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
-                  <button class="btn menubtn  dropdown-toggle-split " ngbDropdownToggle (click)=" getAreas()"></button>
-                  <button class="btn big-btn">المنيو</button>
-                  <div class="dropdown-menu" ngbDropdownMenu >
-                    <button class="dropdown-item" *ngFor="let area of areas">{{area.areaName}}</button>
+        <div class=" col-sm-8 home-menu" >
+          <div class="row no-gutters">
+            <div class="col-sm-9">
+                <div class="btn-group w-100 btn-group-justified">
+                    <div class="btn-group w-100" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+                      <button class="btn search text-righ" ngbDropdownToggle (click)=" getAreas()">اختر منطقتك</button>
+                      <div class="dropdown-menu" ngbDropdownMenu>
+                        <button class="dropdown-item" *ngFor="let area of areas">{{area.areaName}}</button>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-
-
-
-        </div>
-      </div>
-</div>
- -->
- <div class="container">
-    <div class="row justify-content-center ">
-        <div class=" col-sm-6 sara" >
-            <div class="btn-group mr-3 btn-group-justified">
-                <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
-                  <button class="btn search" ngbDropdownToggle (click)=" getAreas()">اختر منطقتك</button>
-                  <div class="dropdown-menu" ngbDropdownMenu>
-                    <button class="dropdown-item" *ngFor="let area of areas">{{area.areaName}}</button>
-                  </div>
-                </div>
-              </div>
-        </div>
-
-        <div class="col-sm-2">
-               <button class="btn big-btn menu">المنيو</button>
+            </div>
+            <div class="col-sm-3">
+                <button class="btn big-btn menu w-100">المنيو</button>
+          </div>
+          </div>  
         </div>
       </div>
 </div>

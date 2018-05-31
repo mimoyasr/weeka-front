@@ -17,6 +17,11 @@
 {
     @include backgroundImg('/assets/images/home-page/hero-img.png');
     height:850px;
+    h1
+    {
+        font-size: 35px;
+        font-family: $headlinesFonts;
+    }
     nav
     {
         margin-top: 10px 
@@ -43,4 +48,8 @@
 #cards 
 {
     top:-330px;
+}
+#how-we-work
+{
+    padding: $section-space;
 }
