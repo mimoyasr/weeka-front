@@ -12,28 +12,6 @@
         "e2e": "ng e2e"
     },
     "dependencies": {
-<<<<<<< HEAD
-        "@angular/animations": "^6.0.3",
-        "@angular/cdk": "^6.2.0",
-        "@angular/common": "^6.0.2",
-        "@angular/compiler": "^6.0.2",
-        "@angular/core": "^6.0.2",
-        "@angular/forms": "^6.0.2",
-        "@angular/http": "^6.0.2",
-        "@angular/material": "^6.2.0",
-        "@angular/platform-browser": "^6.0.2",
-        "@angular/platform-browser-dynamic": "^6.0.2",
-        "@angular/router": "^6.0.2",
-        "@ng-bootstrap/ng-bootstrap": "^2.0.0",
-        "angular-star-rating": "^4.0.0-beta.3",
-        "bootstrap": "^4.1.1",
-        "cookie-parser": "~1.4.3",
-        "core-js": "^2.5.4",
-        "debug": "~2.6.9",
-        "express": "~4.16.0",
-        "http-errors": "~1.6.2",
-        "jade": "~1.11.0",
-=======
         "@angular/animations": "6.0.2",
         "@angular/common": "6.0.2",
         "@angular/compiler": "6.0.2",
@@ -52,7 +30,6 @@
         "express": "4.16.0",
         "http-errors": "1.6.2",
         "jade": "1.11.0",
->>>>>>> 5eb0d6429c501e9ae2abb371b1774bc16adccc46
         "jquery-ui-sass": "0.0.1",
         "morgan": "1.9.0",
         "ngx-rating": "0.0.9",

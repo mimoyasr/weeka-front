@@ -7,7 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RatingModule } from "ngx-rating";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTabsModule } from '@angular/material/tabs';
 
 
 //App component
@@ -63,8 +62,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     RatingModule,
-    BrowserAnimationsModule,
-    MatTabsModule
+    BrowserAnimationsModule
   ],
   providers: [QueryService, TransferDataService],
   bootstrap: [AppComponent]
