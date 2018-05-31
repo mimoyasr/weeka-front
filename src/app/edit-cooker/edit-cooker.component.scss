@@ -1,0 +1,67 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+@import '../../scss/general';
+nav
+{
+    .btn:focus{
+        @include boxShadow(none);
+    }
+    .dropdown-item{
+        padding: 10px 15px;
+        text-align: right;
+        &:hover{
+            background-color: $mainColor;
+            color: #fff;
+        }
+        &:focus{
+        background-color: transparent;
+        outline: none;
+        }
+        
+    }
+}
+.tabs{
+    padding: $section-space 0;
+    .btn{
+        @include font-size(25px);
+    }
+    .edit{
+        padding-top: $section-space;
+        .cooker-img{
+            border: 5px solid $mainColor;
+        }
+        .cooker-data{
+            
+            .cooker-info{
+                position: relative;
+                bottom: 280px;
+                z-index: -1;
+                width: 100%;
+                padding: 60px 10px ;
+                border-radius: 0;
+                box-shadow: 0px 3px 10px 0px rgba(133, 133, 133, 0.25);
+                // margin-bottom: 50px;
+            }
+            .cooker-address{
+                margin-bottom: $section-space;
+                h5
+                {
+                    font-family: $headlinesFonts;
+                    @include font-size(18px);   
+                }
+                select, .time-picker{
+                    border-top: 0;
+                    border-left: 0;
+                    border-right: 0;
+                    border-radius: 0;
+                    border-color: $textColor;
+                    &:focus{
+                        box-shadow: none;
+                        border-color: $sconedColor;
+                    }
+                }   
+            }
+        }
+        
+    }
+}

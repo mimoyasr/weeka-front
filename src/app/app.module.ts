@@ -6,6 +6,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RatingModule } from "ngx-rating";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTabsModule } from '@angular/material/tabs';
+
+
 //App component
 import { AppComponent } from './app.component';
 import { HomeGuestComponent } from './home-guest/home-guest.component';
@@ -23,6 +27,7 @@ import { CartComponent } from './cart/cart.component';
 
 //services
 import { QueryService } from './query.service';
+import { EditCookerComponent } from './edit-cooker/edit-cooker.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeGuestComponent },
@@ -47,6 +52,7 @@ const appRoutes: Routes = [
     MealCommentComponent,
     CartComponent,
     HomeMenuComponent,
+    EditCookerComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +61,9 @@ const appRoutes: Routes = [
     StarRatingModule.forRoot(),
     HttpClientModule,
     FormsModule,
-    RatingModule
+    RatingModule,
+    BrowserAnimationsModule,
+    MatTabsModule
   ],
   providers: [QueryService],
   bootstrap: [AppComponent]

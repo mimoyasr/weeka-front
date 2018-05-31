@@ -62,7 +62,16 @@
   $remSize: $size / 16px;
   @return $remSize * 1rem;
 }
-  @mixin font-size($size) { 
-    font-size: $size;
-    font-size: calculateRem($size);
-  }
+@mixin font-size($size) { 
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+
+// ============== box shadow ===========
+@mixin boxShadow($shadow){
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  -o-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
