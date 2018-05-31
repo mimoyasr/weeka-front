@@ -45,7 +45,7 @@
               <p class="card-title">الشيف : {{singleData.cookerName}}</p>
               <p>عدد مرات الطلب: {{singleData.orders}}</p>
             </div>
-            <button class="small-btn">اطلب</button>
+            <button class="small-btn" (click)="addToCart()">اطلب</button>
 
           </div>
 
@@ -54,7 +54,7 @@
 
       <!-- =========== cart component =============== -->
       <div class="col-md-4">
-        <app-cart></app-cart>
+        <app-cart [cartProduct]="allCartMeals"></app-cart>
       </div>
     </div>
   </div>

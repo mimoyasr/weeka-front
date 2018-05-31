@@ -13,10 +13,13 @@ export class MealCommentComponent implements OnInit {
   public comments: Array<object>;
   public newComment: object;
   public userComment: string;
+  public userRate: number;
+
 
   constructor(private q: QueryService) {
     this.comments = [];
     this.getComments();
+    this.newComment = {};
 
   }
 
@@ -39,7 +42,7 @@ export class MealCommentComponent implements OnInit {
 
   addNewComment(): void {
     this.newComment['userComment'] = this.userComment;
-    this.newComment['mealRate'] = "5";
+    this.newComment['mealRate'] = this.userRate;
     this.newComment['mealId'] = "";
     this.comments.push(this.newComment);
     this.userComment = "";

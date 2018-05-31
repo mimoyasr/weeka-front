@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 
 // ============= service ==============
 import { QueryService } from '../query.service';
+import { TransferDataService } from '../transfer-data.service';
 
 @Component({
   selector: 'app-single-item',
@@ -14,14 +15,17 @@ export class SingleItemComponent implements OnInit {
   singleName: string;
   singleData: object;
   mealData: Array<any>;
+  allCartMeals:Set<any>;
 
   constructor(private active: ActivatedRoute,
-    private query: QueryService) {
+    private query: QueryService,
+    private transfer:TransferDataService) {
 
     this.singleData = {};
     this.mealData = [];
+    this.allCartMeals = new Set();   
     this.getMealData();
-
+    
     // ========= accessing name comes from url ===========    
     this.active.params.subscribe(
       params => this.singleName = (params.name).replace(/%20/g, ' ')
@@ -49,7 +53,20 @@ export class SingleItemComponent implements OnInit {
       }
     }
   }
-  ngOnInit() {
+
+  //============ Add To Cart ==========
+  addToCart():void{
+    if(this.allCartMeals.size == 0){
+      this.allCartMeals.add(this.singleData);
+      // console.log(this.allCartMeals.entries().next().value[0].qty);
+    }else{
+      this.allCartMeals.entries().next().value[0].qty = parseInt(this.allCartMeals.entries().next().value[0].qty) + 1 ;
+      
+    }
   }
+  ngOnInit() {
+    
+  }
+
 
 }

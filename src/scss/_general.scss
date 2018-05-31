@@ -93,6 +93,10 @@ body{
     background: $whiteColor;
     color: $mainColor;
 }
+button:focus{
+    box-shadow: none;
+    outline: 0;
+}
 //input placeholder color
 input::-webkit-input-placeholder
 ,input::-moz-input-placeholder
