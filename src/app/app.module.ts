@@ -25,14 +25,15 @@ import { NgbdRatingBasic } from './rating';
 //services
 import { QueryService } from './query.service';
 import { TransferDataService} from './transfer-data.service';
-import { NewMealComponent } from './new-meal/new-meal.component';
+import { AddNewMealComponent } from './add-new-meal/add-new-meal.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeGuestComponent },
   { path: 'becomeacooker', component: BecomeAcookerComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'singleItem/:name', component: SingleItemComponent }
+  { path: 'singleItem/:name', component: SingleItemComponent },
+  { path: 'newMeal', component: AddNewMealComponent }
 
 
 ];
@@ -43,7 +44,6 @@ const appRoutes: Routes = [
     HomeGuestComponent,
     FooterComponent,
     MealCardComponent,
-    NewMealComponent,
     BecomeAcookerComponent,
     LoginComponent,
     SingleItemComponent,
@@ -51,6 +51,7 @@ const appRoutes: Routes = [
     MealCommentComponent,
     CartComponent,
     HomeMenuComponent,
+    AddNewMealComponent,
   ],
   imports: [
     BrowserModule,

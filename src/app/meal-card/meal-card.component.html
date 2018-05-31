@@ -13,7 +13,7 @@
                     <img class="fav" src="../../assets/images/fav.png" alt="">
                 </ng-template> -->
                 
-                <div class="btn-group btn-group-toggle">
+                <!-- <div class="btn-group btn-group-toggle">
                         <label class="btn-primary" ngbButtonLabel>
                           <input type="checkbox" ngbButton [(ngModel)]="data.favorite"> 
                         </label>
@@ -22,7 +22,7 @@
                 alt="">
             <ng-template #elseCase>
                 <img class="fav" src="../../assets/images/fav.png" alt="" >
-            </ng-template>
+            </ng-template> -->
 
                 <h3 class="mt-0">{{data.mealTitel}}</h3>
                 <p>{{data.mealDescription}}</p>
@@ -43,27 +43,14 @@
                     </div>
                 </div>
                 <!-- https://npm.runkit.com/ngx-rating -->
-                <!-- <rating [(ngModel)]="data.mealRate" [readonly]="true" [float]="true" fullIcon="★" emptyIcon="☆">
-                    {{data.mealRate}}
-                </rating> -->
-
-                <!-- <ngb-rating class="half" [readonly]="readonly" max=5 [(rate)]="data.mealRate"></ngb-rating> -->
-
-
-                <ng-template #t let-fill="fill">
+                <!-- <ng-template #t let-fill="fill">
                     <span class="star" [class.full]="fill === 100">
                       <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
                     </span>
                   </ng-template>
-                  
-                  <ngb-rating [(rate)]="data.mealRate" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
-
-
-
-
+                  <ngb-rating [(rate)]="data.mealRate" [starTemplate]="t" [readonly]="true" max="5">               
+                  </ngb-rating> -->
             </div>
-
-
         </div>
     </div>
 </div>
