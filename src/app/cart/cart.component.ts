@@ -10,11 +10,8 @@ import { TransferDataService } from '../transfer-data.service';
 })
 export class CartComponent implements OnInit {
   @ViewChild("inputNum") inputNum:ElementRef;
-  @Input('cartProduct') allCartMeals:Array<object>;
+  @Input('cartProduct') allCartMeals:Set<object>;
   constructor( private transfer:TransferDataService ) { 
-
-    this.transfer.setItemInput(5);
-
   }
   
   ngOnInit() {
@@ -31,6 +28,16 @@ export class CartComponent implements OnInit {
 
   plus():void{
     this.inputNum.nativeElement.value = parseInt(this.inputNum.nativeElement.value) + 1 ;    
+  }
+
+  //Delete Item From Cart
+  removeItem(id):void{
+    this.allCartMeals.forEach(element => {
+      if(element["id"] == id){
+        this.allCartMeals.clear();
+      }
+    });
+    
   }
 
 }

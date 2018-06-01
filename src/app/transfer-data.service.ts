@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TransferDataService {
-  private itemInput: number;
-  constructor() {
-    this.itemInput = 1;
-   }
 
-  // To Set Number Of The Meal 
-  public setItemInput(val: number): void {
-      this.itemInput = val;
+  private data = new BehaviorSubject([]);
+
+  //let me see data from any where
+  cast = this.data.asObservable();
+
+  constructor() { }
+
+  // let me change on the data
+  editData(newData){
+    this.data.next(newData);
   }
-  // To Get Number Of The Meal  
-  public getItemInput(): number {
-      return this.itemInput;
-  }
+
 
 }

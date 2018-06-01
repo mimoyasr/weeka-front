@@ -6,6 +6,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RatingModule } from "ngx-rating";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 //App component
 import { AppComponent } from './app.component';
 import { HomeGuestComponent } from './home-guest/home-guest.component';
@@ -19,6 +22,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { MealCommentComponent } from './meal-comment/meal-comment.component';
 import { HomeMenuComponent } from './home-menu/home-menu.component';
 import { CartComponent } from './cart/cart.component';
+import { EditCookerComponent } from './edit-cooker/edit-cooker.component';
 import { NgbdRatingBasic } from './rating';
 
 
@@ -52,6 +56,7 @@ const appRoutes: Routes = [
     CartComponent,
     HomeMenuComponent,
     AddNewMealComponent,
+    EditCookerComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,9 +65,10 @@ const appRoutes: Routes = [
     StarRatingModule.forRoot(),
     HttpClientModule,
     FormsModule,
-    RatingModule
+    RatingModule,
+    BrowserAnimationsModule
   ],
-  providers: [QueryService,TransferDataService],
+  providers: [QueryService, TransferDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

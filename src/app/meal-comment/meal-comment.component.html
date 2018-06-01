@@ -20,6 +20,11 @@
                 </span>
               </small>
             </p>
+
+              <rating [(ngModel)]="obj.mealRate" [readonly]="true" [float]="true" fullIcon="✦" emptyIcon="✧">
+                {{obj.mealRate}}
+            </rating>
+
           </div>
         </div>
       </div>
@@ -31,7 +36,7 @@
           <img class=" p-4 " src="" alt="Generic placeholder image">
           <div class="media-body pt-4 pb-4 pr-1 pl-4 ">
             <h5 class="mt-0 font-weight-bold">سارة احمد</h5>
-            <textarea name="comment" id="comment" cols="70" rows="2" placeholder="أضف تعليق" [(ngModel)]="userComment"></textarea>
+            <textarea  name="comment" id="comment" cols="70" rows="2" placeholder="أضف تعليق" [(ngModel)]="userComment"></textarea>
             <p class="card-text">
               <small>التاريخ:
                 <span class="date"></span> &nbsp; الوقت:
@@ -39,6 +44,9 @@
                   <span class="date"> </span>
                 </span>
               </small>
+              <rating  [(ngModel)]="userRate"  [readonly]="true" [float]="true" fullIcon="✦" emptyIcon="✧" >
+               
+            </rating>
             </p>
           </div>
         </div>
