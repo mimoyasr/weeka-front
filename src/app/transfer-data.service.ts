@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class TransferDataService {
 
-  private data = new BehaviorSubject([]);
+  private data = new BehaviorSubject(new Set);
 
   //let me see data from any where
   cast = this.data.asObservable();

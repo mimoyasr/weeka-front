@@ -30,7 +30,7 @@ export class MealCommentComponent implements OnInit {
     this.q.getData(path).subscribe(
       res => {
         this.comments = res;
-        console.log(this.comments);
+        // console.log(this.comments);
       },
       err => {
         console.log(err);
