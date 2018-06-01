@@ -8,9 +8,9 @@ body{
 {
     h2
     {
-    font-family: $headlinesFonts;
-    @include font-size(40px);
-}
+        font-family: $headlinesFonts;
+        @include font-size(40px);
+    }
     hr
     {
         width: 35px;
@@ -118,4 +118,18 @@ a{
 //fonts
 .headlinesFonts{
     font-family: $headlinesFonts;
+}
+
+//navbar dropdown
+.navdrop{
+    .dropdown-toggle::after{
+        display: none;
+    }
+    .dropdown-menu{
+        background-color: $sconedColor;
+        color: $textColor;
+    }  
+} 
+.textFont{
+    font-family: $textFonts;
 }
