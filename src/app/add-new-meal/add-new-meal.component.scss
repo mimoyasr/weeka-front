@@ -1,0 +1,8 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+@import '../../scss/general';
+#newMeal
+{
+    // @include backgroundImg('../../assets/images/patern.jpg');
+    height: 100vh;
+}

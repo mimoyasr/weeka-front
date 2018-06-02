@@ -22,6 +22,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { MealCommentComponent } from './meal-comment/meal-comment.component';
 import { HomeMenuComponent } from './home-menu/home-menu.component';
 import { CartComponent } from './cart/cart.component';
+import { AddNewMealComponent } from './add-new-meal/add-new-meal.component';
 
 
 //services
@@ -34,8 +35,8 @@ const appRoutes: Routes = [
   { path: 'becomeacooker', component: BecomeAcookerComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'singleItem/:name', component: SingleItemComponent }
-
+  { path: 'singleItem/:name', component: SingleItemComponent },
+  { path: 'newMeal', component: AddNewMealComponent }
 
 ];
 
@@ -53,6 +54,7 @@ const appRoutes: Routes = [
     CartComponent,
     HomeMenuComponent,
     EditCookerComponent,
+    AddNewMealComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     RatingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [QueryService, TransferDataService],
   bootstrap: [AppComponent]
