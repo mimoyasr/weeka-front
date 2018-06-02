@@ -22,19 +22,22 @@ import { RegistrationComponent } from './registration/registration.component';
 import { MealCommentComponent } from './meal-comment/meal-comment.component';
 import { HomeMenuComponent } from './home-menu/home-menu.component';
 import { CartComponent } from './cart/cart.component';
+import { EditCookerComponent } from './edit-cooker/edit-cooker.component';
+import { NgbdRatingBasic } from './rating';
 
 
 //services
 import { QueryService } from './query.service';
-import { EditCookerComponent } from './edit-cooker/edit-cooker.component';
-import { TransferDataService } from './transfer-data.service';
+import { TransferDataService} from './transfer-data.service';
+import { AddNewMealComponent } from './add-new-meal/add-new-meal.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeGuestComponent },
   { path: 'becomeacooker', component: BecomeAcookerComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'singleItem/:name', component: SingleItemComponent }
+  { path: 'singleItem/:name', component: SingleItemComponent },
+  { path: 'newMeal', component: AddNewMealComponent }
 
 
 ];
@@ -52,6 +55,7 @@ const appRoutes: Routes = [
     MealCommentComponent,
     CartComponent,
     HomeMenuComponent,
+    AddNewMealComponent,
     EditCookerComponent,
   ],
   imports: [
