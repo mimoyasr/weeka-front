@@ -8,8 +8,8 @@
         <div class="details">
           <h4 class="mt-0 d-inline-block meal-title">{{product.mealTitel}}</h4>          
           <div class="price-qt d-flex align-items-center justify-content-between">
-            <div class="qty-input"><i (click)="plus()" class="more">+</i>
-              <input #inputNum type="text" value={{product.qty}}/><i (click)="minus()" class="less">-</i>
+            <div class="qty-input"><i (click)="plus(product.id)" class="more">+</i>
+              <input type="text" value={{product.qty}}/><i (click)="minus(product.id)" class="less">-</i>
             </div>
             <h4 class="ar-price"> {{product.mealPrice}}ج</h4>
         </div>
@@ -20,7 +20,7 @@
   </div>
 
   <div class="checkout text-center">
-    <button class="btn cancel-order">إلغاء الطلب</button>
+    <button class="btn cancel-order" (click)="cancelOrder()">إلغاء الطلب</button>
     <div class="row">
       <div class="col-6">
         <h4>المجموع</h4>
