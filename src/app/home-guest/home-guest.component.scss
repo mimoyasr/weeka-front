@@ -17,6 +17,11 @@
 {
     @include backgroundImg('/assets/images/home-page/hero-img.png');
     height:850px;
+    h1
+    {
+        font-size: 35px;
+        font-family: $headlinesFonts;
+    }
     nav
     {
         margin-top: 10px 
@@ -28,6 +33,18 @@
     a.border
     {
         margin-left: 10px
+    }
+    #fold-data
+    {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 35%;
+        h1
+        {
+            padding-bottom: 25px;
+            @include font-size(40px);
+        }
     }
 }
 .cut {
@@ -43,4 +60,8 @@
 #cards 
 {
     top:-330px;
+}
+#how-we-work
+{
+    padding: $section-space;
 }

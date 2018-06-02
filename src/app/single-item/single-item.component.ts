@@ -15,17 +15,17 @@ export class SingleItemComponent implements OnInit {
   singleName: string;
   singleData: object;
   mealData: Array<any>;
-  allCartMeals: Set<any>;
+  allCartMeals:Set<any>;
 
   constructor(private active: ActivatedRoute,
     private query: QueryService,
-    private transfer: TransferDataService) {
+    private transfer:TransferDataService) {
 
     this.singleData = {};
     this.mealData = [];
-    this.allCartMeals = new Set();
+    this.allCartMeals = new Set();   
     this.getMealData();
-
+    
     // ========= accessing name comes from url ===========    
     this.active.params.subscribe(
       params => this.singleName = (params.name).replace(/%20/g, ' ')
@@ -55,17 +55,22 @@ export class SingleItemComponent implements OnInit {
   }
 
   //============ Add To Cart ==========
-  addToCart(): void {
-    if (this.allCartMeals.size == 0) {
+  addToCart():void{
+    if(this.allCartMeals.size >= 0){
+      
+      this.allCartMeals.forEach(element => {
+        if(element["id"] == this.singleData['id']){
+          element['qty'] = parseInt(element['qty']) + 1;
+        }
+      });
       this.allCartMeals.add(this.singleData);
-      // console.log(this.allCartMeals.entries().next().value[0].qty);
-    } else {
-      this.allCartMeals.entries().next().value[0].qty = parseInt(this.allCartMeals.entries().next().value[0].qty) + 1;
-
+    }else{
+      
     }
   }
   ngOnInit() {
-
+    //listen to data from the service
+    this.transfer.cast.subscribe(product => this.allCartMeals = product);
   }
 
 
