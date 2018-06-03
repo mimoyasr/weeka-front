@@ -11,25 +11,45 @@ import { TransferDataService } from '../transfer-data.service';
 export class CartComponent implements OnInit {
   // @Input('cartProduct') allCartMeals:Set<object>;
   allCartMeals:Set<object>;
+  singlePrice: number;
   mealPrice:any;
   delivery:number;
   total:any;
   arr:Array<any>;
+  flag:boolean;
   constructor( private transfer:TransferDataService ) { 
     this.mealPrice = 0;
     this.delivery = 10;
     this.total = 0;
     this.arr = [];
+    this.allCartMeals = new Set();   
+this.flag = false
   }
   
   ngOnInit() {
     //listen to data from the service
-    this.transfer.cast.subscribe(product => this.allCartMeals = product)
+    this.transfer.cast.subscribe(
+      product => {this.allCartMeals = product;
+        this.flag = true;
+        console.log(this.flag)
+        if(this.flag){
+          this.addPrice();
+          console.log("done")
+        }
+        // if(this.allCartMeals.size != 0){
+        //   this.addPrice();
+
+        // }
+
+      })
+         
     console.log(this.allCartMeals);
   } 
   ngDoCheck(){
-    this.addPrice();
+    
   } 
+  ngAfterViewChecked(){
+  }
 
   // Decrease And Increase Quantity
   minus(id):void{
@@ -70,7 +90,8 @@ export class CartComponent implements OnInit {
   addPrice():void{
     if(this.allCartMeals.size != 0){
       this.allCartMeals.forEach(element => { 
-        this.mealPrice = (parseInt(element['mealPrice']) * parseInt(element['qty']));
+        this.singlePrice = (parseInt(element['mealPrice']) * parseInt(element['qty']));
+        this.mealPrice += this.singlePrice ;
         // this.mealPrice = (parseInt(element['mealPrice']));
         
       });

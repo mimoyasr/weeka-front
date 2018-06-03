@@ -24,12 +24,13 @@ import { HomeMenuComponent } from './home-menu/home-menu.component';
 import { CartComponent } from './cart/cart.component';
 import { EditCookerComponent } from './edit-cooker/edit-cooker.component';
 import { NgbdRatingBasic } from './rating';
+import { AddNewMealComponent } from './add-new-meal/add-new-meal.component';
 
 
 //services
 import { QueryService } from './query.service';
 import { TransferDataService} from './transfer-data.service';
-import { AddNewMealComponent } from './add-new-meal/add-new-meal.component';
+// import { AddNewMealComponent } from './add-new-meal/add-new-meal.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeGuestComponent },
@@ -57,6 +58,7 @@ const appRoutes: Routes = [
     HomeMenuComponent,
     AddNewMealComponent,
     EditCookerComponent,
+    AddNewMealComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     RatingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [QueryService, TransferDataService],
   bootstrap: [AppComponent]
