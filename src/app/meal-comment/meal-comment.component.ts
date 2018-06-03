@@ -14,13 +14,13 @@ export class MealCommentComponent implements OnInit {
   public newComment: object;
   public userComment: string;
   public userRate: number;
-
+  mealRate:number
 
   constructor(private q: QueryService) {
     this.comments = [];
     this.getComments();
     this.newComment = {};
-
+    this.mealRate=0;
   }
 
 
