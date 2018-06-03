@@ -1,13 +1,53 @@
 @import '../../scss/variables';
 @import '../../scss/mixins';
 @import '../../scss/general';
-rating{
+ngb-rating{
     transform: rotate(-90deg);
     position: absolute;
     top: 30%;
     left: -5%;
+    z-index: 2;
+}
+.star {
+    font-size: 1.25rem;
+    color: #949494;
+    transform: rotate(90deg);
+    display: inline-block;
+  }
+  .filled {
+    color: #fed118;
+  }
+  .bad {
+    color: #deb0b0;
+    // outline: #000;
+  }
+//   .filled.bad {
+//     color: #ff1e1e;
+//   }
+
+
+
+label.btn-primary
+{
+    background: transparent;
+    border: none;
+    
 }
 
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active, 
+.show > .btn-primary.dropdown-toggle
+{
+background: transparent;
+border: none;
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus ,
+.btn-primary:focus, .btn-primary.focus
+{
+    box-shadow: none;
+}
 i.star-icon{
 font-size: 1.5em;
 }
@@ -15,6 +55,6 @@ font-size: 1.5em;
 .fav
 {
     position: absolute;
-    right: 4%;
-    top: -12%;
+    right: 2%;
+    top: -18%;
 }

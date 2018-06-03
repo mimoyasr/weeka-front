@@ -3,6 +3,7 @@
 @import '../../scss/general';
 #newMeal
 {
+    @include backgroundImg('../../assets/images/patern.jpg');
     // @include backgroundImg('../../assets/images/patern.jpg');
     height: 100vh;
 }

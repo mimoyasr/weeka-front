@@ -1,47 +1,50 @@
-<section id="fold">
-  <div class="nav pt-5 text-white">
+<section id="home-guest">
+  <!-- Start Fold section include navbar and hero image-->
+  <section id="fold">
+    <div class="nav pt-5 text-white">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2 offset-md-7">
+            <a routerLink=" ">
+              <img src="../assets/images/logo.png" alt="">
+            </a>
+          </div>
+          <div class="col-md-3">
+            <a routerLink="login" class="border p-2">تسجيل الدخول</a>
+            <a routerLink="becomeacooker" class="headlinesFonts pr-3">اصبح طباخ</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Start Fold data include the slogan and menu-->
+    <section id="fold-data">
+      <div class="container">
+          <h1 class="text-white text-center">
+            الشعار المفروض يتكتب هنا بس احنا لسه مالفنهوش</h1>
+      </div>
+      <app-home-menu></app-home-menu>
+    </section>
+  </section>
+  <!-- Start top Meal cards section independs on user area-->
+  <section id="cards" class="position-relative">
     <div class="container">
-      <div class="row">
-        <div class="col-md-2 offset-md-7">
-          <a routerLink=" ">
-            <img src="../assets/images/logo.png" alt="">
-          </a>
-        </div>
-        <div class="col-md-3">
-          <a routerLink="login" class="border p-2">تسجيل الدخول</a>
-          <a routerLink="becomeacooker" class="headlinesFonts pr-3">اصبح طباخ</a>
+      <app-meal-card></app-meal-card>
+    </div>
+    <section id="how-we-work" class="text-center mb-5">
+      <div class="headline">
+        <h2>كيف نعمل ؟ </h2>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3" *ngFor="let data of workData">
+            <img src="{{data.icon}}" class="mb-4" alt="">
+            <h3 class="mb-4">{{data.titel}}</h3>
+            <p>{{data.data}}</p>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <app-home-menu></app-home-menu>
-
-  <!-- <div class="row">
-    <h1>الشعار المفروض يتكتب هنا بسس احنا لسه مالفنهوش</h1>
-  </div> -->
+    </section>
+  </section>
 </section>
-
-<section id="cards" class="position-relative">
-  <div class="container">
-    <app-meal-card></app-meal-card>
-  </div>
-</section>
-
-<section id="how-we-work" class="text-center mb-5">
-  <div class="headline">
-    <h2>كيف نعمل ؟ </h2>
-    <hr>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3" *ngFor="let data of workData">
-        <img src="{{data.icon}}" class="mb-4" alt="">
-        <h3 class="mb-4">{{data.titel}}</h3>
-        <p>{{data.data}}</p>
-      </div>
-    </div>
-  </div>
-</section>
-<app-meal-comment></app-meal-comment>
-
 <app-edit-cooker></app-edit-cooker>
