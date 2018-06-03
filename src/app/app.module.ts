@@ -58,7 +58,6 @@ const appRoutes: Routes = [
     HomeMenuComponent,
     AddNewMealComponent,
     EditCookerComponent,
-    AddNewMealComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +67,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     RatingModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
   ],
   providers: [QueryService, TransferDataService],
   bootstrap: [AppComponent]
