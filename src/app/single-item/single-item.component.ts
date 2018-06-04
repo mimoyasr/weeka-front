@@ -4,6 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 // ============= service ==============
 import { QueryService } from '../query.service';
 import { TransferDataService } from '../transfer-data.service';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-single-item',
@@ -54,7 +55,7 @@ export class SingleItemComponent implements OnInit {
 
   //============ Add To Cart ==========
   addToCart():void{
-      this.allCartMeals.add(this.singleData);
+      this.allCartMeals.add(this.singleData); 
   }
   ngOnInit() {
     //listen to data from the service

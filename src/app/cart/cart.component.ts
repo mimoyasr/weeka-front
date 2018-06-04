@@ -29,7 +29,6 @@ export class CartComponent implements OnInit {
     this.addPrice();
   } 
 
-  
   // Decrease And Increase Quantity
   minus(id):void{
     this.allCartMeals.forEach(element => {
@@ -66,6 +65,7 @@ export class CartComponent implements OnInit {
         this.allCartMeals.delete(element);
       }
     });
+    this.addPrice();
     
   }
 
@@ -77,10 +77,10 @@ export class CartComponent implements OnInit {
         this.totalOneMeal = element['totalOneMeal'];
         
       }else{
-        // this.totalOneMeal = 0;
         this.totalOneMeal = this.totalOneMeal + element['totalOneMeal'];
       }
     })
+    this.total = this.delivery + this.totalOneMeal;
   }
 
   //cancel all order from cart

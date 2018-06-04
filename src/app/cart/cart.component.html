@@ -26,7 +26,9 @@
         <h4>المجموع</h4>
       </div>
       <div class="col-6">
-          <h4>{{totalOneMeal}} جنيه</h4>
+          <h4 *ngIf="totalOneMeal > 0">{{totalOneMeal}} جنيه</h4>
+          <h4 *ngIf="totalOneMeal == 0">{{allCartMeals.entries().next().value[0]["mealPrice"]}} جنيه</h4>
+          
       </div>
     </div>
 
@@ -44,7 +46,9 @@
               <h4> الإجمالى</h4>
           </div>
           <div class="col-6">
-              <h4>{{total}} جنيه</h4>
+              <h4 *ngIf="totalOneMeal > 0">{{total}} جنيه</h4>
+              <h4 *ngIf="totalOneMeal == 0">{{1 * allCartMeals.entries().next().value[0]["mealPrice"] + delivery }} جنيه</h4>
+              
           </div>
         </div>
 
