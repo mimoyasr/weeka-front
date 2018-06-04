@@ -54,18 +54,7 @@ export class SingleItemComponent implements OnInit {
 
   //============ Add To Cart ==========
   addToCart():void{
-    if(this.allCartMeals.size >= 0){
-      
-      this.allCartMeals.forEach(element => {
-        if(element["id"] == this.singleData['id']){
-          element['qty'] = parseInt(element['qty']) + 1;
-        }
-      });
       this.allCartMeals.add(this.singleData);
-    }else{
-      
-    }
-    
   }
   ngOnInit() {
     //listen to data from the service
