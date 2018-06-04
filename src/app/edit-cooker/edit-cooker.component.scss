@@ -17,51 +17,56 @@ nav
         background-color: transparent;
         outline: none;
         }
-        
     }
 }
+
 .tabs{
     padding: $section-space 0;
-    .btn{
-        @include font-size(25px);
-    }
+    
     .edit{
         padding-top: $section-space;
-        .cooker-img{
-            border: 5px solid $mainColor;
-        }
-        .cooker-data{
-            
-            .cooker-info{
-                position: relative;
-                bottom: 280px;
-                z-index: -1;
-                width: 100%;
-                padding: 60px 10px ;
-                border-radius: 0;
-                box-shadow: 0px 3px 10px 0px rgba(133, 133, 133, 0.25);
-                // margin-bottom: 50px;
-            }
-            .cooker-address{
-                margin-bottom: $section-space;
-                h5
-                {
-                    font-family: $headlinesFonts;
-                    @include font-size(18px);   
-                }
-                select, .time-picker{
-                    border-top: 0;
-                    border-left: 0;
-                    border-right: 0;
-                    border-radius: 0;
-                    border-color: $textColor;
-                    &:focus{
-                        box-shadow: none;
-                        border-color: $sconedColor;
-                    }
-                }   
-            }
-        }
-        
+    }
+}
+
+//========= bootstrap style override =========
+:host /deep/ .nav-pills{
+    padding-bottom: $section-space;
+    justify-content: center !important;
+}
+:host /deep/ .nav-pills .nav-link.active{
+    background-color: $mainColor;
+    color:#fff;
+}
+:host /deep/ .nav-pills .nav-link{
+    color: $headlinesColor;
+    font-family: $headlinesFonts;
+    @include font-size(25px);  
+    margin-left:10px;
+    border-radius: 0; 
+}
+:host /deep/ .btn-link,
+:host /deep/ .btn-outline{
+    display: none;
+}
+:host /deep/ input.form-control{
+    border: 0;
+    border-bottom: 1px solid $textColor;
+    border-radius: 0;    
+    width: 65px;
+    &:focus{
+        box-shadow: none;
+        border-color: $sconedColor;
+    }
+}
+:host /deep/ .btn-outline-primary{
+    color: $textColor;
+    border-color: $textColor;
+    &:focus{
+        box-shadow: none;
+        outline: 0;
+    }
+    &:hover,&:active{
+        background-color: $mainColor;
+        color: #fff;
     }
 }

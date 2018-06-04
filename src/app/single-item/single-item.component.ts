@@ -4,6 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 // ============= service ==============
 import { QueryService } from '../query.service';
 import { TransferDataService } from '../transfer-data.service';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-single-item',
@@ -16,11 +17,9 @@ export class SingleItemComponent implements OnInit {
   singleData: object;
   mealData: Array<any>;
   allCartMeals:Set<any>;
-
   constructor(private active: ActivatedRoute,
     private query: QueryService,
     private transfer:TransferDataService) {
-
     this.singleData = {};
     this.mealData = [];
     this.allCartMeals = new Set();   
@@ -56,21 +55,12 @@ export class SingleItemComponent implements OnInit {
 
   //============ Add To Cart ==========
   addToCart():void{
-    if(this.allCartMeals.size >= 0){
-      
-      this.allCartMeals.forEach(element => {
-        if(element["id"] == this.singleData['id']){
-          element['qty'] = parseInt(element['qty']) + 1;
-        }
-      });
-      this.allCartMeals.add(this.singleData);
-    }else{
-      
-    }
+      this.allCartMeals.add(this.singleData); 
   }
   ngOnInit() {
     //listen to data from the service
     this.transfer.cast.subscribe(product => this.allCartMeals = product);
+
   }
 
 

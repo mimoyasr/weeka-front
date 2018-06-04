@@ -77,7 +77,8 @@ body{
     @include font-size(14px);
     min-width: 87px;
     min-height: 28px;
-    font-family: $headlinesFontBold;        
+    font-family: $headlinesFontBold; 
+    border-radius: 0;       
 }
 .big-btn{
     background: $mainColor;

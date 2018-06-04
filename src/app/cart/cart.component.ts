@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef, Input} from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 
 //Services
 import { TransferDataService } from '../transfer-data.service';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-cart',
@@ -9,51 +10,27 @@ import { TransferDataService } from '../transfer-data.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  // @Input('cartProduct') allCartMeals:Set<object>;
   allCartMeals:Set<object>;
   singlePrice: number;
-  mealPrice:any;
   delivery:number;
   total:any;
-  arr:Array<any>;
-  flag:boolean;
+  totalOneMeal:number;
   constructor( private transfer:TransferDataService ) { 
-    this.mealPrice = 0;
     this.delivery = 10;
     this.total = 0;
-    this.arr = [];
     this.allCartMeals = new Set();   
-this.flag = false
+    this.totalOneMeal = 0;
   }
   
   ngOnInit() {
     //listen to data from the service
-    this.transfer.cast.subscribe(
-      product => {this.allCartMeals = product;
-        this.flag = true;
-        console.log(this.flag)
-        if(this.flag){
-          this.addPrice();
-          console.log("done")
-        }
-        // if(this.allCartMeals.size != 0){
-        //   this.addPrice();
-
-        // }
-
-      })
-         
-    console.log(this.allCartMeals);
+    this.transfer.cast.subscribe(product => this.allCartMeals = product)
+    // this.totalOneMeal = this.allCartMeals.entries().next().value[0]["mealPrice"];
+    this.addPrice();
   } 
-  ngDoCheck(){
-    
-  } 
-  ngAfterViewChecked(){
-  }
 
   // Decrease And Increase Quantity
   minus(id):void{
-
     this.allCartMeals.forEach(element => {
       if(element["id"] == id){
         if(parseInt(element['qty']) < 2){
@@ -64,15 +41,20 @@ this.flag = false
         
       }
     });
+    this.totalOneMeal = 0;
+    this.addPrice();
+
   }
 
   plus(id):void{
     this.allCartMeals.forEach(element => {
       if(element["id"] == id){
         element['qty'] = parseInt(element['qty']) + 1;
-        
       }
-    });
+    });  
+    this.totalOneMeal = 0;    
+    this.addPrice();
+    
   }
 
   //Delete Item From Cart
@@ -83,28 +65,32 @@ this.flag = false
         this.allCartMeals.delete(element);
       }
     });
+    this.addPrice();
     
   }
 
-  //for add meal price into var 
   addPrice():void{
-    if(this.allCartMeals.size != 0){
-      this.allCartMeals.forEach(element => { 
-        this.singlePrice = (parseInt(element['mealPrice']) * parseInt(element['qty']));
-        this.mealPrice += this.singlePrice ;
-        // this.mealPrice = (parseInt(element['mealPrice']));
+    this.allCartMeals.forEach(element => {
+      this.singlePrice = (parseInt(element['mealPrice']) * parseInt(element['qty']));
+      element['totalOneMeal'] = this.singlePrice;
+      if(this.allCartMeals.size < 2){
+        this.totalOneMeal = element['totalOneMeal'];
         
-      });
-      
-      // this.arr.push(this.mealPrice);
-      // console.log(this.arr);
-      this.total = this.delivery + this.mealPrice;      
-    }
+      }else{
+        this.totalOneMeal = this.totalOneMeal + element['totalOneMeal'];
+      }
+    })
+    this.total = this.delivery + this.totalOneMeal;
   }
 
   //cancel all order from cart
   cancelOrder():void{
     this.allCartMeals.clear();
+  }
+
+  //transfer the confirmed data to chef
+  chefNotifications():void{
+    this.transfer.cast.subscribe(product => this.allCartMeals = product )
   }
 
 }
