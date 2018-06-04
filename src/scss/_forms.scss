@@ -16,11 +16,9 @@
         padding: 50px 35px;
         width: 420px;
         input,select{
-            border-top: 0;
-            border-left: 0;
-            border-right: 0;
-            border-radius: 0;
-            border-color: $textColor;
+          border: 0;
+          border-bottom: 1px solid $textColor;
+          border-radius: 0;
             &:focus{
                 box-shadow: none;
                 border-color: $sconedColor;
