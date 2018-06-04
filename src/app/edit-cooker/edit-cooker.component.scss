@@ -31,6 +31,7 @@ nav
 //========= bootstrap style override =========
 :host /deep/ .nav-pills{
     padding-bottom: $section-space;
+    justify-content: center !important;
 }
 :host /deep/ .nav-pills .nav-link.active{
     background-color: $mainColor;
