@@ -16,11 +16,9 @@ export class SingleItemComponent implements OnInit {
   singleData: object;
   mealData: Array<any>;
   allCartMeals:Set<any>;
-
   constructor(private active: ActivatedRoute,
     private query: QueryService,
     private transfer:TransferDataService) {
-
     this.singleData = {};
     this.mealData = [];
     this.allCartMeals = new Set();   
@@ -67,10 +65,12 @@ export class SingleItemComponent implements OnInit {
     }else{
       
     }
+    
   }
   ngOnInit() {
     //listen to data from the service
     this.transfer.cast.subscribe(product => this.allCartMeals = product);
+
   }
 
 

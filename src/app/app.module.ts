@@ -25,6 +25,7 @@ import { CartComponent } from './cart/cart.component';
 import { EditCookerComponent } from './edit-cooker/edit-cooker.component';
 import { NgbdRatingBasic } from './rating';
 import { AddNewMealComponent } from './add-new-meal/add-new-meal.component';
+import { NotificationComponent } from './notification/notification.component';
 
 
 //services
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'singleItem/:name', component: SingleItemComponent },
-  { path: 'newMeal', component: AddNewMealComponent }
+  { path: 'newMeal', component: AddNewMealComponent },
+  { path: 'editCooker', component: EditCookerComponent }  
 
 
 ];
@@ -58,6 +60,7 @@ const appRoutes: Routes = [
     HomeMenuComponent,
     AddNewMealComponent,
     EditCookerComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,

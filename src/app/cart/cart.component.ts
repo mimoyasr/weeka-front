@@ -15,45 +15,37 @@ export class CartComponent implements OnInit {
   mealPrice:any;
   delivery:number;
   total:any;
-  arr:Array<any>;
   flag:boolean;
   constructor( private transfer:TransferDataService ) { 
     this.mealPrice = 0;
     this.delivery = 10;
     this.total = 0;
-    this.arr = [];
     this.allCartMeals = new Set();   
-this.flag = false
+    this.flag = false;
+
+    
   }
   
   ngOnInit() {
     //listen to data from the service
     this.transfer.cast.subscribe(
       product => {this.allCartMeals = product;
-        this.flag = true;
-        console.log(this.flag)
-        if(this.flag){
-          this.addPrice();
-          console.log("done")
-        }
-        // if(this.allCartMeals.size != 0){
-        //   this.addPrice();
-
-        // }
-
-      })
-         
-    console.log(this.allCartMeals);
+        // this.flag = true;
+        // console.log(this.flag)
+        // if(this.flag){
+          //   this.addPrice();
+          //   console.log("done")
+          // }
+          // this.addPrice();
+          
+        })
   } 
   ngDoCheck(){
-    
+    this.addPrice();
   } 
-  ngAfterViewChecked(){
-  }
 
   // Decrease And Increase Quantity
   minus(id):void{
-
     this.allCartMeals.forEach(element => {
       if(element["id"] == id){
         if(parseInt(element['qty']) < 2){
@@ -64,6 +56,7 @@ this.flag = false
         
       }
     });
+
   }
 
   plus(id):void{
@@ -72,7 +65,8 @@ this.flag = false
         element['qty'] = parseInt(element['qty']) + 1;
         
       }
-    });
+    });  
+    
   }
 
   //Delete Item From Cart
@@ -93,7 +87,6 @@ this.flag = false
         this.singlePrice = (parseInt(element['mealPrice']) * parseInt(element['qty']));
         this.mealPrice += this.singlePrice ;
         // this.mealPrice = (parseInt(element['mealPrice']));
-        
       });
       
       // this.arr.push(this.mealPrice);
@@ -105,6 +98,11 @@ this.flag = false
   //cancel all order from cart
   cancelOrder():void{
     this.allCartMeals.clear();
+  }
+
+  //transfer the confirmed data to chef
+  chefNotifications():void{
+    this.transfer.cast.subscribe(product => this.allCartMeals = product )
   }
 
 }
