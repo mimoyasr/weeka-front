@@ -4,28 +4,27 @@
             <a routerLink="/singleItem/{{(data.mealTitel)}}">
                 <img src="{{data.image}}" alt="Generic placeholder image">
             </a>
-
-            
-            <div class="media-body position-relative text-center">
-                    <!-- <div class="btn-group btn-group-toggle">
-                            <label class="btn-primary" ngbButtonLabel>
-                <img class="fav" *ngIf="data.favorite=='false'; else elseCase" ngbButton [(ngModel)]="data.favorite" src="../../assets/images/not-fav.png"
-                    alt="">
-                <ng-template #elseCase>
-                    <img class="fav" src="../../assets/images/fav.png" alt="">
-                </ng-template> -->
-                
-                <!-- <div class="btn-group btn-group-toggle">
-                        <label class="btn-primary" ngbButtonLabel>
-                          <input type="checkbox" ngbButton [(ngModel)]="data.favorite"> 
-                        </label>
+        <div class="media-body position-relative text-center">
+            <!-- Start fav meal icon -->
+                <div class="btn-group btn-group-toggle fav">
+                    <label class="btn-primary custom" ngbButtonLabel>
+                    <input type="checkbox" ngbButton [(ngModel)]="data.favorite">   
+                    <div *ngIf="data.favorite==false ">
+                        <img class="" src="../../assets/images/not-fav.png" alt="" >
+                    </div>
+                    <div *ngIf="data.favorite==true ">
+                        <img class="" src="../../assets/images/fav.png" alt="">
+                    </div>
+                    </label>
                 </div>
-                <img class="fav" *ngIf="data.favorite=='false'; else elseCase"  src="../../assets/images/not-fav.png"
-                alt="">
-            <ng-template #elseCase>
-                <img class="fav" src="../../assets/images/fav.png" alt="" >
-            </ng-template> -->
-
+            <!--end fav meal icon -->
+            <!--Start meal rating  -->
+            <ngb-rating [(rate)]="data.mealRate" max=5 [readonly]="true">
+                    <ng-template let-fill="fill">
+                      <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                    </ng-template>
+            </ngb-rating>
+            <!--end meal rating -->
                 <h3 class="mt-0">{{data.mealTitel}}</h3>
                 <p>{{data.mealDescription}}</p>
                 <div class="price rounded-circle position-absolute">
@@ -44,14 +43,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- https://npm.runkit.com/ngx-rating -->
-                <!-- <ng-template #t let-fill="fill">
-                    <span class="star" [class.full]="fill === 100">
-                      <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
-                    </span>
-                  </ng-template>
-                  <ngb-rating [(rate)]="data.mealRate" [starTemplate]="t" [readonly]="true" max="5">               
-                  </ngb-rating> -->
             </div>
         </div>
     </div>

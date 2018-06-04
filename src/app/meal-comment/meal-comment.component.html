@@ -21,9 +21,6 @@
               </small>
             </p>
 
-              <rating [(ngModel)]="obj.mealRate" [readonly]="true" [float]="true" fullIcon="✦" emptyIcon="✧">
-                {{obj.mealRate}}
-            </rating>
 
           </div>
         </div>
@@ -44,9 +41,13 @@
                   <span class="date"> </span>
                 </span>
               </small>
-              <rating  [(ngModel)]="userRate"  [readonly]="true" [float]="true" fullIcon="✦" emptyIcon="✧" >
-               
-            </rating>
+              <!--Start meal rating  -->
+              <ngb-rating [(rate)]="mealRate" max=5 >
+                  <ng-template let-fill="fill">
+                    <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                  </ng-template>
+              </ngb-rating>
+            <!--end meal rating -->
             </p>
           </div>
         </div>

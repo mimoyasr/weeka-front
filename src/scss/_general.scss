@@ -134,3 +134,57 @@ a{
 .textFont{
     font-family: $textFonts;
 }
+:focus
+{
+    outline: 0;
+}
+
+// Rating
+ngb-rating{
+    transform: rotate(-90deg);
+    position: absolute;
+    top: 30%;
+    left: -5%;
+    z-index: 2;
+}
+.star {
+    font-size: 1.25rem;
+    color: #949494;
+    transform: rotate(90deg);
+    display: inline-block;
+  }
+  .filled {
+    color: #fed118;
+  }
+
+label.btn-primary
+{
+    background: transparent;
+    border: none;   
+}
+
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active, 
+.show > .btn-primary.dropdown-toggle
+{
+background: transparent;
+border: none;
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus ,
+.btn-primary:focus, .btn-primary.focus
+{
+    box-shadow: none;
+}
+i.star-icon{
+font-size: 1.5em;
+}
+
+.fav
+{
+    position: absolute;
+    right: 2%;
+    top: -18%;
+}
+

@@ -34,11 +34,13 @@
             <div class="d-flex justify-content-between headline">
               <h2 class="card-title mb-4">{{singleData.mealTitel}}</h2>
               <h2 class="pl-5">{{singleData.mealPrice}} ج</h2>
-              <!-- =========== rating ========== -->
-              <!-- https://npm.runkit.com/ngx-rating -->
-              <rating [(ngModel)]="singleData.mealRate" [readonly]="true" [float]="true" fullIcon="◆" emptyIcon="◇">
-                {{singleData.mealRate}}
-              </rating>
+             <!--Start meal rating  -->
+              <ngb-rating [(rate)]="singleData.mealRate" max=5 [readonly]="true">
+                  <ng-template let-fill="fill">
+                    <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                  </ng-template>
+              </ngb-rating>
+            <!--end meal rating -->
             </div>
             <p class="mb-4">{{singleData.mealDescription}}</p>
             <div class="d-flex justify-content-between pl-5">
