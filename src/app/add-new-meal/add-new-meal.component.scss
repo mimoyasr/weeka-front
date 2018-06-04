@@ -3,7 +3,45 @@
 @import '../../scss/general';
 #newMeal
 {
-    @include backgroundImg('../../assets/images/patern.jpg');
-    // @include backgroundImg('../../assets/images/patern.jpg');
-    height: 100vh;
+    padding-bottom: $section-space;
+    .patern
+    {
+        @include backgroundImg('../../assets/images/patern.jpg');
+        height: 100vh;
+    }
+    .headline
+    {
+        padding-top: $section-space;
+    }
+    form{
+        width: 65%;
+        margin: 0 auto;
+        padding: 50px;
+    }
+    input,select,textarea{
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        border-radius: 0;
+        border-color: $textColor;
+        background: transparent;
+        &:focus{
+            box-shadow: none;
+            border-color: $sconedColor;
+        }
+    }
+
+
+
+
+
+
 }
+
+
+
+.img-ul-file-upload
+{
+    background: #000 !important;
+}
+
