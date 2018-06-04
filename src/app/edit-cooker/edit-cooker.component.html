@@ -23,106 +23,46 @@
   </nav>
 
   <div class="container tabs">
+    <ngb-tabset type="pills" class="mb-5">
 
-    <!-- =============== navigation tabs =================== -->
-    <div class="d-flex justify-content-center">
-      <div>
-        <button type="button" (click)="editFunc()" class="btn big-btn ml-5 headlinesFonts"> البيانات</button>
-        <button type="button" (click)="statFunc()" class="btn big-btn ml-5 headlinesFonts">احصائيات</button>
-        <button type="button" (click)="visaFunc()" class="btn big-btn ml-5 headlinesFonts">اموالك</button>
-        <button type="button" (click)="notifyFunc()" class="btn big-btn ml-5 headlinesFonts">الطلبات</button>
+      <ngb-tab>
+        <ng-template ngbTabTitle>
+          البيانات
+        </ng-template>
+        <ng-template ngbTabContent>
+          <app-cooker-data></app-cooker-data>
+        </ng-template>
+      </ngb-tab>
 
-      </div>
-    </div>
+      <ngb-tab>
+        <ng-template ngbTabTitle>
+          احصائيات
+        </ng-template>
+        <ng-template ngbTabContent>
 
-    <!-- ================ first tab content ================== -->
-    <div class="edit" *ngIf="editFlag">
-      <img class="cooker-img" src="../../assets/images/edit-cooker/chef_pp.jpg" alt="">
+        </ng-template>
+      </ngb-tab>
 
-      <div class="cooker-data">
-        <div class="cooker-info">
-          <div class="row justify-content-end">
-            <div class="col-md-4">
-              <h5 class="mb-3 textFont">محسن حسين</h5>
-              <p class="mb-3 pl-2">الأولاد هم أصعب نقاد للأكل، من الصعب جدا ارضائهم. أنا أم لأربعة بنات، طالما دللتهم بتحضير الوجبات المفضلة لكلا
-                منهم.
-              </p>
-            </div>
-            <div class="col-md-4 textFont">
-              <h5 class="mb-3">Mohsen_Hesain@gmail.com</h5>
-              <h5 class="mb-3">01275698252</h5>
-              <h5 class="mb-3">ذكر</h5>
-            </div>
-          </div>
-        </div>
+      <ngb-tab>
+        <ng-template ngbTabTitle>
+          اموالك
+        </ng-template>
+        <ng-template ngbTabContent>
 
-        <!-- ================ address section ================== -->
-        <div class="cooker-address">
-          <div class="headline mb-5">
-            <h2 class="text-center">العنوان</h2>
-            <hr class="mb-5">
-            <h5>لوران, 12, شارع الاقبال, الدور الثاني</h5>
-            <!-- ملاحظات -->
-            <h5>بجوار ماكدونالدز</h5>
-          </div>
-          <div>
-            <button class="small-btn"> تعديل العنوان</button>
-          </div>
-        </div>
+        </ng-template>
+      </ngb-tab>
 
-        <!-- ================ other info section ================== -->
-        <div class="cooker-address">
-          <div class="headline mb-5">
-            <h2 class="text-center">بيانات أخرى</h2>
-            <hr class="mb-5">
-            <h5>أيام العمل</h5>
-          </div>
-          <div class="row">
-            <div class="col-md-4">
-              <form>
-                <div class="form-group">
-                  <select class="form-control">
-                    <option selected>السبت</option>
-                    <option>الأحد</option>
-                    <option>الأثنين</option>
-                    <option>الثلاثاء</option>
-                    <option>الأربعاء</option>
-                    <option>الخميس</option>
-                    <option>الجمعة</option>
-                  </select>
-                </div>
-              </form>
-            </div>
-            <div class="col-md-4">
-              <ngb-timepicker class="time-picker" [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
-            </div>
-            <i class="icon-cancel"></i>
+      <ngb-tab>
+        <ng-template ngbTabTitle>
+          الطلبات
+        </ng-template>
+        <ng-template ngbTabContent>
+          <app-notification></app-notification>
+        </ng-template>
+      </ngb-tab>
 
-          </div>
+    </ngb-tabset>
 
-          <button class="small-btn pt-1 pb-1">+</button>
-        </div>
-      </div>
-      <div class="text-left">
-        <button class="small-btn">حفظ</button>
-      </div>
-    </div>
-
-
-    <!-- ================ second tab content ================== -->
-    <div class="stat" *ngIf="statFlag">
-      <h1>Stat</h1>
-    </div>
-
-    <!-- ================ third tab content ================== -->
-    <div class="money" *ngIf="visaFlag">
-      <h1>Visa</h1>
-    </div>
-
-    <!-- ================ fourth tab content ================== -->
-    <div class="notify" *ngIf="notifyFlag">
-      <app-notification></app-notification>
-    </div>
 
   </div>
 </section>

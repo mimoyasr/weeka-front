@@ -1,0 +1,76 @@
+<section class="data">
+  <div class="container">
+    <img class="cooker-img" src="../../assets/images/edit-cooker/chef_pp.jpg" alt="">
+
+    <div class="cooker-data">
+      <div class="cooker-info">
+        <div class="row justify-content-end">
+          <div class="col-md-4">
+            <h5 class="mb-3 textFont">محسن حسين</h5>
+            <p class="mb-3 pl-2">الأولاد هم أصعب نقاد للأكل، من الصعب جدا ارضائهم. أنا أم لأربعة بنات، طالما دللتهم بتحضير الوجبات المفضلة لكلا
+              منهم.
+            </p>
+          </div>
+          <div class="col-md-4 textFont">
+            <h5 class="mb-3">Mohsen_Hesain@gmail.com</h5>
+            <h5 class="mb-3">01275698252</h5>
+            <h5 class="mb-3">ذكر</h5>
+            <button class="small-btn">تعديل</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================ address section ================== -->
+      <div class="cooker-address">
+        <div class="headline mb-5">
+          <h2 class="text-center">العنوان</h2>
+          <hr class="mb-5">
+          <h5>لوران, 12, شارع الاقبال, الدور الثاني</h5>
+          <!-- ملاحظات -->
+          <h5>بجوار ماكدونالدز</h5>
+        </div>
+        <div>
+          <button class="small-btn"> تعديل العنوان</button>
+        </div>
+      </div>
+
+      <!-- ================ other info section ================== -->
+      <div class="cooker-address">
+        <div class="headline mb-5">
+          <h2 class="text-center">بيانات أخرى</h2>
+          <hr class="mb-5">
+          <h5>أيام العمل</h5>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <form>
+              <div class="form-group">
+                <select class="form-control">
+                  <option selected>السبت</option>
+                  <option>الأحد</option>
+                  <option>الأثنين</option>
+                  <option>الثلاثاء</option>
+                  <option>الأربعاء</option>
+                  <option>الخميس</option>
+                  <option>الجمعة</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-4">
+            <ngb-timepicker [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
+            <button class="btn btn-sm btn-outline" (click)="toggleMeridian()">
+            </button>
+          </div>
+          <i class="icon-cancel"></i>
+
+        </div>
+
+        <button class="small-btn pt-1 pb-1 mt-5">+</button>
+      </div>
+    </div>
+    <div class="text-left">
+      <button class="small-btn">حفظ</button>
+    </div>
+  </div>
+</section>

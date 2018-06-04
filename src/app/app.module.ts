@@ -31,6 +31,7 @@ import { NotificationComponent } from './notification/notification.component';
 //services
 import { QueryService } from './query.service';
 import { TransferDataService} from './transfer-data.service';
+import { CookerDataComponent } from './cooker-data/cooker-data.component';
 // import { AddNewMealComponent } from './add-new-meal/add-new-meal.component';
 
 const appRoutes: Routes = [
@@ -61,6 +62,7 @@ const appRoutes: Routes = [
     AddNewMealComponent,
     EditCookerComponent,
     NotificationComponent,
+    CookerDataComponent,
   ],
   imports: [
     BrowserModule,
