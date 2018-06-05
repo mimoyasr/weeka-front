@@ -1,4 +1,4 @@
-<aside class="cart">
+<aside #cart class="cart">
   <div class="cart-content" *ngIf="allCartMeals.size != 0">
   <h3 class="text-center mt-0">طلبك</h3>
   <div class="media" *ngFor="let product of allCartMeals">
@@ -26,8 +26,11 @@
         <h4>المجموع</h4>
       </div>
       <div class="col-6">
-          <h4 *ngIf="totalOneMeal > 0">{{totalOneMeal}} جنيه</h4>
-          <h4 *ngIf="totalOneMeal == 0">{{allCartMeals.entries().next().value[0]["mealPrice"]}} جنيه</h4>
+          <h4 *ngIf="totalOneMeal > 0">{{totalOneMeal}} جنيه</h4>  
+          <div *ngFor='let prop of allCartMeals'>
+            <h4 *ngIf="totalOneMeal == 0">{{prop.mealPrice * prop.qty}} جنيه</h4>
+          </div>       
+          <!-- <h4 *ngIf="totalOneMeal == 0">{{allCartMeals.entries().next().value[0]["mealPrice"]}} جنيه</h4> -->
           
       </div>
     </div>
@@ -47,8 +50,9 @@
           </div>
           <div class="col-6">
               <h4 *ngIf="totalOneMeal > 0">{{total}} جنيه</h4>
-              <h4 *ngIf="totalOneMeal == 0">{{1 * allCartMeals.entries().next().value[0]["mealPrice"] + delivery }} جنيه</h4>
-              
+              <div *ngFor='let prop of allCartMeals'>
+                <h4 *ngIf="totalOneMeal == 0">{{1 * prop.mealPrice * prop.qty + delivery}} جنيه</h4>
+              </div>               
           </div>
         </div>
 
