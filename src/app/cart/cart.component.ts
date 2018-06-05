@@ -1,15 +1,35 @@
-import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input, HostListener } from '@angular/core';
+import { element } from 'protractor';
 
 //Services
 import { TransferDataService } from '../transfer-data.service';
-import { element } from 'protractor';
-
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+
+  @ViewChild ('cart') cart:ElementRef;
+
+  //make cart position fixed
+  
+  // @HostListener('window:scroll') onScroll() {
+  //    console.log(window.innerHeight)
+  //     if (window.pageYOffset >= window.innerHeight) {
+
+  //       this.cart.nativeElement.style.transition = 'all 0.5s ease-in-out';
+  //       this.cart.nativeElement.style.top = 'window.innerHeight' + 'px';  
+  //       // this.cart.nativeElement.style.position = 'relative';
+  //       this.cart.nativeElement.style.bottom = '300' + 'px';
+      
+  //       console.log(this.cart.nativeElement.style.top);      
+    
+  //     }else{
+  //       this.cart.nativeElement.style.bottom = 'auto';        
+  //     }
+  // }
+
   allCartMeals:Set<object>;
   singlePrice: number;
   delivery:number;
@@ -24,11 +44,10 @@ export class CartComponent implements OnInit {
   
   ngOnInit() {
     //listen to data from the service
-    this.transfer.cast.subscribe(product => this.allCartMeals = product)
-    // this.totalOneMeal = this.allCartMeals.entries().next().value[0]["mealPrice"];
+    this.transfer.cast.subscribe(product => this.allCartMeals = product);    
     this.addPrice();
   } 
-
+  
   // Decrease And Increase Quantity
   minus(id):void{
     this.allCartMeals.forEach(element => {
@@ -59,7 +78,6 @@ export class CartComponent implements OnInit {
 
   //Delete Item From Cart
   removeItem(id):void{
-    console.log(id)
     this.allCartMeals.forEach(element => {
       if(element["id"] == id){
         this.allCartMeals.delete(element);
@@ -92,5 +110,23 @@ export class CartComponent implements OnInit {
   chefNotifications():void{
     this.transfer.cast.subscribe(product => this.allCartMeals = product )
   }
+
+  //make the cart position fixed
+  
+
+
+  // window.onscroll = function(){
+  //   console.log(this.cart)
+  
+  //   if (window.pageYOffset >= 200) {
+  
+  //     this.cart.style.display = 'none';
+  
+  //   }else{
+  
+        
+  
+  //   }
+  // };
 
 }
