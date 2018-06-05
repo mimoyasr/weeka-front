@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RatingModule } from "ngx-rating";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ImageUploadModule } from "angular2-image-upload";
+// import { ImageUploadModule } from "angular2-image-upload";
 
 
 
@@ -32,7 +32,7 @@ import { NotificationComponent } from './notification/notification.component';
 
 //services
 import { QueryService } from './query.service';
-import { TransferDataService} from './transfer-data.service';
+import { TransferDataService } from './transfer-data.service';
 import { CookerDataComponent } from './cooker-data/cooker-data.component';
 // import { AddNewMealComponent } from './add-new-meal/add-new-meal.component';
 
@@ -43,7 +43,7 @@ const appRoutes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'singleItem/:name', component: SingleItemComponent },
   { path: 'newMeal', component: AddNewMealComponent },
-  { path: 'editCooker', component: EditCookerComponent }  
+  { path: 'editCooker', component: EditCookerComponent }
 
 
 ];
@@ -74,8 +74,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     RatingModule,
-    BrowserAnimationsModule,
-    ImageUploadModule.forRoot()
+    BrowserAnimationsModule
+    // ImageUploadModule.forRoot()
   ],
   providers: [QueryService, TransferDataService],
   bootstrap: [AppComponent]

@@ -4,23 +4,23 @@
     <div class="cooker-data">
       <img class="cooker-img m-0" src="{{cookerData.cookerImg}}" alt="">
 
+      <!-- ================= show view ================== -->
       <div class="cooker-info" *ngIf="!editFlag">
         <div class="text-left">
           <button class="small-btn" (click)="editInfo()">تعديل</button>
         </div>
         <div class="row justify-content-end">
-          <div class="col-md-4">
+          <div class="col-md-5">
             <h5 class="mb-3 textFont">{{cookerData.fName}} {{cookerData.lName}}</h5>
+            <h5 class="mb-3">{{cookerData.gender}}</h5>
             <p class="mb-3 pl-2"> {{cookerData.bio}}</p>
           </div>
-          <div class="col-md-4 textFont">
-            <h5 class="mb-3"> {{cookerData.email}}</h5>
-            <h5 class="mb-3"> {{cookerData.phonePrefix}}{{cookerData.phone}}</h5>
-            <h5 class="mb-3">{{cookerData.gender}}</h5>
+          <div class="col-md-3 textFont">
           </div>
         </div>
       </div>
 
+      <!-- =============== edit view ======================= -->
       <div class="cooker-editInfo" *ngIf="editFlag">
         <form name="editForm" #editForm="ngForm" (ngSubmit)="editFunc(editForm)">
           <div class="text-left">
@@ -56,25 +56,25 @@
 
             <div class="col-md-4">
               <!-- ============ email ================= -->
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <input type="email" class="form-control mail" value="{{cookerData.email}}" placeholder="البريد الألكتروني" name="email" [(ngModel)]="cookerData.email"
                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #email="ngModel" required>
-              </div>
+              </div> -->
               <!-- validation Email message -->
-              <div *ngIf="email.invalid && (email.dirty || email.touched)">
+              <!-- <div *ngIf="email.invalid && (email.dirty || email.touched)">
                 <div class="error-msg" *ngIf="email.errors.required">
                   * هذا الحقل مطلوب
                 </div>
               </div>
               <div class="error-msg" *ngIf="email.errors && editForm.submitted">
                 * البريد الالكترونى غير صحيح
-              </div>
+              </div> -->
               <!-- ============ phone ================= -->
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <input type="text" class="form-control" value="{{cookerData.phone}}" placeholder="رقم التليفون" pattern="[0-9]{8}" name="phone"
                   #phone="ngModel" [(ngModel)]="cookerData.phone">
                 <!-- validation  message -->
-                <div *ngIf="phone.invalid && (phone.dirty || phone.touched || register.submitted)">
+              <!-- <div *ngIf="phone.invalid && (phone.dirty || phone.touched || register.submitted)">
                   <div *ngIf="phone.errors.required" class="text-danger">
                     * هذا الحقل مطلوب
                   </div>
@@ -89,13 +89,18 @@
                   <option [selected]="cookerData.phonePrefix == '010'">010</option>
 
                   <option [selected]="cookerData.phonePrefix == '011'">011</option>
+
+                  <option [selected]="cookerData.phonePrefix == '015'">015</option>
+
+                  <option [selected]="cookerData.phonePrefix == '03'">03</option>
+
                 </select>
-              </div>
+              </div> -->
               <!-- ============== gender ==================== -->
               <div class="form-group">
                 <span class="pl-2">النوع</span>
                 <div class="radio d-inline-block">
-                  <input id="radio-1" name="gender" value="male" type="radio" [(ngModel)]="cookerData.gender">
+                  <input id="radio-1" name="gender" value="male" type="radio" [(ngModel)]="cookerData.gender" [checked]="cookerData.gender == 'ذكر'">
                   <label for="radio-1" class="radio-label">ذكر</label>
                 </div>
 
@@ -105,36 +110,112 @@
                 </div>
               </div>
 
+              <a class="text-dark changePass font-weight-bold" (click)="open(content)">تغيير كلمة السر</a>
             </div>
           </div>
         </form>
+        <!-- ==================== popup change password ======================= -->
+        <ng-template #content let-c="close" let-d="dismiss">
+          <div class="modal-header">
+            <h4 class="modal-title">تغيير كلمة السر</h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <form name="changepass" #changepass="ngForm" (ngSubmit)="saveChanges(changepass)">
+              <!-- password -->
+              <div class="form-group">
+                <input type="password" name="oldPass" #oldPass="ngModel" [(ngModel)]="editedPass.oldPass" required class="form-control" placeholder="كلمة السر الحالية">
+              </div>
+              <!-- validation  message -->
+              <div *ngIf="oldPass.invalid && (oldPass.dirty || oldPass.touched || changepass.submitted)">
+                <div *ngIf="oldPass.errors.required" class="text-danger">
+                  * هذا الحقل مطلوب
+                </div>
+              </div>
+
+              <div class="form-group">
+                <input type="password" name="newPass" #newPass="ngModel" [(ngModel)]="editedPass.newPass" required class="form-control" placeholder="كلمة السر الجديدة">
+              </div>
+              <!-- validation  message -->
+              <div *ngIf="newPass.invalid && (newPass.dirty || newPass.touched || changepass.submitted)">
+                <div *ngIf="newPass.errors.required" class="text-danger">
+                  * هذا الحقل مطلوب
+                </div>
+              </div>
+
+              <div class="form-group">
+                <input type="password" name="newPass2" #newPass2="ngModel" [(ngModel)]="editedPass.newPass2" required class="form-control"
+                  placeholder="تأكيد كلمة السر">
+              </div>
+              <!-- validation  message -->
+              <div *ngIf="newPass2.invalid && (newPass2.dirty || newPass2.touched || changepass.submitted)">
+                <div *ngIf="newPass2.errors.required" class="text-danger">
+                  * هذا الحقل مطلوب
+                </div>
+              </div>
+              <div *ngIf="newPass2.touched && newPass2.value != newPass.value" class="text-danger">
+                * كلمة السر غير متطابقة
+              </div>
+
+              <button type="submit" class="btn small-btn">تغيير</button>
+              <button type="button" class="btn small-btn mr-4" (click)="c('Close click')">إلغاء</button>
+            </form>
+          </div>
+        </ng-template>
+
       </div>
     </div>
     <!-- ================ address section ================== -->
     <div class="cooker-address">
+
       <div class="headline mb-5">
-        <h2 class="text-center">العنوان</h2>
+        <h2 class="text-center">بيانات التواصل</h2>
         <hr class="mb-5">
-        <h5>لوران, 12, شارع الاقبال, الدور الثاني</h5>
-        <!-- ملاحظات -->
-        <h5>بجوار ماكدونالدز</h5>
+        <div class="text-left">
+          <button class="small-btn"> تعديل</button>
+        </div>
       </div>
-      <div>
-        <button class="small-btn"> تعديل العنوان</button>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="headline">
+            <h5 class="mb-3">العنوان:</h5>
+          </div>
+
+          <p>لوران, 12, شارع الاقبال, الدور الثاني</p>
+          <!-- ملاحظات -->
+          <p>بجوار ماكدونالدز</p>
+          <button class="btn small-btn">+</button>
+        </div>
+        <div class="col-md-6">
+          <h5 class="mb-3">الايميل و رقم التليفون:</h5>
+          <p class="mb-3"> {{cookerData.email}}</p>
+          <p class="mb-3"> {{cookerData.phonePrefix}}{{cookerData.phone}}</p>
+          <button class="btn small-btn">+</button>
+        </div>
       </div>
+
+
+
+
     </div>
 
     <!-- ================ other info section ================== -->
     <div class="cooker-address">
       <div class="headline mb-5">
-        <h2 class="text-center">بيانات أخرى</h2>
+        <h2 class="text-center">ساعات العمل</h2>
         <hr class="mb-5">
+        <div class="text-left">
+          <button class="small-btn">تعديل</button>
+        </div>
         <h5>أيام العمل</h5>
       </div>
       <div class="row">
         <div class="col-md-4">
           <form>
-            <div class="form-group">
+            <div class="form-group ml-3">
               <select class="form-control">
                 <option selected>السبت</option>
                 <option>الأحد</option>
@@ -147,11 +228,20 @@
             </div>
           </form>
         </div>
-        <div class="col-md-4">
+        <p class="mt-3">من</p>
+        <div class="col-md-3">
           <ngb-timepicker [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
           <button class="btn btn-sm btn-outline" (click)="toggleMeridian()">
           </button>
         </div>
+        <p class="mt-3">إلي</p>
+        <div class="col-md-3">
+
+          <ngb-timepicker [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
+          <button class="btn btn-sm btn-outline" (click)="toggleMeridian()">
+          </button>
+        </div>
+
         <i class="icon-cancel"></i>
 
       </div>
@@ -159,8 +249,6 @@
       <button class="small-btn pt-1 pb-1 mt-5">+</button>
     </div>
 
-    <div class="text-left">
-      <button class="small-btn">حفظ</button>
-    </div>
+
   </div>
 </section>

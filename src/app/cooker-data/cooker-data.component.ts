@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QueryService } from '../query.service';
 import { NgForm, NgModel } from '@angular/forms';
-
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-cooker-data',
@@ -12,15 +12,21 @@ export class CookerDataComponent implements OnInit {
   allData: Array<any>;
   cookerData: object;
   editFlag: boolean;
-  // editedData: object;
+  closeResult: string;
+  editedPass: object;
 
-  constructor(private query: QueryService) {
+  constructor(private query: QueryService,
+    private modalService: NgbModal) {
 
     this.allData = [];
     this.cookerData = {};
     this.getMealData();
     this.editFlag = false;
-    // this.editedData = {};
+    this.editedPass = {
+      oldPass: "",
+      newPass: "",
+      newPass2: ""
+    };
   }
 
   // ============ time picker ===============
@@ -61,10 +67,45 @@ export class CookerDataComponent implements OnInit {
     if (data.valid) {
       // post request to update cooker data object in database
       console.log(this.cookerData);
+      if (this.cookerData["gender"] == 'female') {
+        this.cookerData["gender"] = "أنثي";
+      }
+      if (this.cookerData["gender"] == 'male') {
+        this.cookerData["gender"] = "ذكر";
+      }
       this.editFlag = !this.editFlag;
     }
     else {
       console.log("data is not correct");
+    }
+  }
+
+  // ================== modal function ===================
+  open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+  // ============= change password function ===============
+  saveChanges(data: NgForm): void {
+    if (data.valid) {
+      //========== request update password ===========
+      console.log(this.editedPass);
+    } else {
+      console.log('error');
     }
   }
   ngOnInit() {
