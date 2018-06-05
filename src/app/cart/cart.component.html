@@ -1,68 +1,72 @@
 <aside #cart class="cart">
   <div class="cart-content" *ngIf="allCartMeals.size != 0">
-  <h3 class="text-center mt-0">طلبك</h3>
-  <div class="media" *ngFor="let product of allCartMeals">
-    <img class="ml-4" width="90" height="90" src={{product.image}} alt="Generic placeholder image">
-    <div class="media-body">
-      <div class="order-content d-flex justify-content-between">
-        <div class="details">
-          <h4 class="mt-0 d-inline-block meal-title">{{product.mealTitel}}</h4>          
-          <div class="price-qt d-flex align-items-center justify-content-between">
-            <div class="qty-input"><i (click)="plus(product.id)" class="more">+</i>
-              <input type="text" value={{product.qty}}/><i (click)="minus(product.id)" class="less">-</i>
+    <h3 class="text-center mt-0">طلبك</h3>
+    <div class="media" *ngFor="let product of allCartMeals">
+      <img class="ml-4" width="90" height="90" src={{product.image}} alt="Generic placeholder image">
+      <div class="media-body">
+        <div class="order-content d-flex justify-content-between">
+          <div class="details">
+            <h4 class="mt-0 d-inline-block meal-title">{{product.mealTitel}}</h4>
+            <div class="price-qt d-flex align-items-center justify-content-between">
+              <div class="qty-input">
+                <i (click)="plus(product.id)" class="more">+</i>
+                <input type="text" value={{product.qty}}/>
+                <i (click)="minus(product.id)" class="less">-</i>
+              </div>
+              <h4 class="ar-price"> {{product.mealPrice}}ج</h4>
             </div>
-            <h4 class="ar-price"> {{product.mealPrice}}ج</h4>
+          </div>
+          <i class="icon-cancel" (click)="removeItem(product.id)"></i>
         </div>
       </div>
-      <i class="icon-cancel" (click)="removeItem(product.id)"></i>
-      </div>
     </div>
-  </div>
 
-  <div class="checkout text-center">
-    <button class="btn cancel-order" (click)="cancelOrder()">إلغاء الطلب</button>
-    <div class="row">
-      <div class="col-6">
-        <h4>المجموع</h4>
-      </div>
-      <div class="col-6">
-          <h4 *ngIf="totalOneMeal > 0">{{totalOneMeal}} جنيه</h4>  
+    <div class="checkout text-center">
+      <button class="btn cancel-order" (click)="cancelOrder()">إلغاء الطلب</button>
+      <div class="row">
+        <div class="col-6">
+          <h4>المجموع</h4>
+        </div>
+        <div class="col-6">
+          <h4 *ngIf="totalOneMeal > 0">{{totalOneMeal}} جنيه</h4>
           <div *ngFor='let prop of allCartMeals'>
             <h4 *ngIf="totalOneMeal == 0">{{prop.mealPrice * prop.qty}} جنيه</h4>
-          </div>       
+          </div>
           <!-- <h4 *ngIf="totalOneMeal == 0">{{allCartMeals.entries().next().value[0]["mealPrice"]}} جنيه</h4> -->
-          
-      </div>
-    </div>
 
-    <div class="row">
-        <div class="col-6">
-            <h4>التوصيل</h4>
-        </div>
-        <div class="col-6">
-            <h4> {{delivery}} جنيه</h4>
         </div>
       </div>
 
       <div class="row">
-          <div class="col-6">
-              <h4> الإجمالى</h4>
-          </div>
-          <div class="col-6">
-              <h4 *ngIf="totalOneMeal > 0">{{total}} جنيه</h4>
-              <div *ngFor='let prop of allCartMeals'>
-                <h4 *ngIf="totalOneMeal == 0">{{1 * prop.mealPrice * prop.qty + delivery}} جنيه</h4>
-              </div>               
+        <div class="col-6">
+          <h4>التوصيل</h4>
+        </div>
+        <div class="col-6">
+          <h4> {{delivery}} جنيه</h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <h4> الإجمالى</h4>
+        </div>
+        <div class="col-6">
+          <h4 *ngIf="totalOneMeal > 0">{{total}} جنيه</h4>
+          <div *ngFor='let prop of allCartMeals'>
+            <h4 *ngIf="totalOneMeal == 0">{{1 * prop.mealPrice * prop.qty + delivery}} جنيه</h4>
           </div>
         </div>
-
-    <button class="btn checkout-btn" (click)="chefNotifications()">الحساب</button>        
+      </div>
+ 
+        <button class="btn checkout-btn" (click)="chefNotifications()">الأن</button>
+        <button class="btn checkout-btn m-0">مؤجل</button>
+    
+    </div>
   </div>
-</div>
 
-<div class="empty-cart text-center" *ngIf="allCartMeals.size == 0">
-  <i class="icon-basket"></i>
-  <h3>السلة فارغة</h3>
-</div>
+  <div class="empty-cart text-center" *ngIf="allCartMeals.size == 0">
+    <i class="icon-basket"></i>
+    <h3>السلة فارغة</h3>
+  </div>
 
 </aside>

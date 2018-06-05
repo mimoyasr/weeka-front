@@ -44,9 +44,11 @@
         }
         .checkout-btn{
             @extend .cancel-order;
+            padding: 5px 40px;
             background: $mainColor;
             color: $whiteColor;
             margin-bottom: 0px;
+            margin-left: 5px;
         }
         h4{
             margin-bottom: 25px;

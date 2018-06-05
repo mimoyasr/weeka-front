@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RatingModule } from "ngx-rating";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ImageUploadModule } from "angular2-image-upload";
+// import { ImageUploadModule } from "angular2-image-upload";
 
 
 
@@ -28,12 +28,13 @@ import { EditCookerComponent } from './edit-cooker/edit-cooker.component';
 import { NgbdRatingBasic } from './rating';
 import { AddNewMealComponent } from './add-new-meal/add-new-meal.component';
 import { NotificationComponent } from './notification/notification.component';
+import { CookerDataComponent } from './cooker-data/cooker-data.component';
+import { ClientOrderComponent } from './client-order/client-order.component';
 
 
 //services
 import { QueryService } from './query.service';
 import { TransferDataService} from './transfer-data.service';
-import { CookerDataComponent } from './cooker-data/cooker-data.component';
 // import { AddNewMealComponent } from './add-new-meal/add-new-meal.component';
 
 const appRoutes: Routes = [
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'singleItem/:name', component: SingleItemComponent },
   { path: 'newMeal', component: AddNewMealComponent },
-  { path: 'editCooker', component: EditCookerComponent }  
+  { path: 'editCooker', component: EditCookerComponent },
+  { path: 'clientOrder', component: ClientOrderComponent }   
 
 
 ];
@@ -65,6 +67,7 @@ const appRoutes: Routes = [
     EditCookerComponent,
     NotificationComponent,
     CookerDataComponent,
+    ClientOrderComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,7 +78,7 @@ const appRoutes: Routes = [
     FormsModule,
     RatingModule,
     BrowserAnimationsModule,
-    ImageUploadModule.forRoot()
+    // ImageUploadModule.forRoot()
   ],
   providers: [QueryService, TransferDataService],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, Input, HostListener } from '@angular/core';
 import { element } from 'protractor';
+import { Router } from '@angular/router';
 
 //Services
 import { TransferDataService } from '../transfer-data.service';
@@ -35,7 +36,7 @@ export class CartComponent implements OnInit {
   delivery:number;
   total:any;
   totalOneMeal:number;
-  constructor( private transfer:TransferDataService ) { 
+  constructor( private transfer:TransferDataService, private order:Router ) { 
     this.delivery = 10;
     this.total = 0;
     this.allCartMeals = new Set();   
@@ -108,7 +109,13 @@ export class CartComponent implements OnInit {
 
   //transfer the confirmed data to chef
   chefNotifications():void{
-    this.transfer.cast.subscribe(product => this.allCartMeals = product )
+    this.transfer.cast.subscribe(product => this.allCartMeals = product );
+    this.goClientOrder();
+  }
+
+  //redirct to client order
+  goClientOrder():void{
+    this.order.navigate(["/clientOrder/"]);
   }
 
   //make the cart position fixed
