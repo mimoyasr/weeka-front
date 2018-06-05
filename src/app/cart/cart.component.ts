@@ -43,7 +43,6 @@ export class CartComponent implements OnInit {
     });
     this.totalOneMeal = 0;
     this.addPrice();
-
   }
 
   plus(id):void{
@@ -73,6 +72,9 @@ export class CartComponent implements OnInit {
     this.allCartMeals.forEach(element => {
       this.singlePrice = (parseInt(element['mealPrice']) * parseInt(element['qty']));
       element['totalOneMeal'] = this.singlePrice;
+
+      // this.totalOneMeal += element['totalOneMeal'];
+
       if(this.allCartMeals.size < 2){
         this.totalOneMeal = element['totalOneMeal'];
         

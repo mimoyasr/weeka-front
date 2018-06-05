@@ -21,13 +21,17 @@
               <h2>اضافة أكلة جديدة </h2>
               <hr >
           </div>
-          <image-upload 
+          <!-- <image-upload 
             [buttonCaption]="'اختر صورة'" [url]="">
-          </image-upload>
+          </image-upload> -->
         </div>
     </div>
-    <form  name="newMeal" #newMeal="ngForm" (ngSubmit)="addNewMeal(newMeal)" novalidate>
+    <form  name="newMeal" #newMeal="ngForm" enctype="multipart/form-data" (ngSubmit)="addNewMeal(newMeal)" novalidate>
         <div class="container">
+          <input type="file" 
+          
+          (change)="onFileSelcted($event)"
+          >
 
       <div class="form-group">
           <input type="text" class="form-control"  placeholder="اسم الأكلة " name="mealName"

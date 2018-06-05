@@ -9,6 +9,9 @@ import { NgModel, NgForm } from '@angular/forms';
   styleUrls: ['./add-new-meal.component.scss']
 })
 export class AddNewMealComponent {
+  onFileSelcted(event){
+    console.log(event)
+  }  
 categories:Array<object>;
 mealData:object;
   constructor(private q:QueryService) {
