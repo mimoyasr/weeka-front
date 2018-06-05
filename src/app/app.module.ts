@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RatingModule } from "ngx-rating";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ImageUploadModule } from "angular2-image-upload";
+
 
 
 //App component
@@ -72,7 +74,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     RatingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ImageUploadModule.forRoot()
   ],
   providers: [QueryService, TransferDataService],
   bootstrap: [AppComponent]

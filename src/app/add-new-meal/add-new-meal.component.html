@@ -15,13 +15,19 @@
       </div>
     </div>
     <!-- ========== Add new meal========== -->
-    <div class="container">
-    <div class="headline">
-        <h2>اضافة أكلة جديدة </h2>
-        <hr >
+    <div class="patern">
+        <div class="container">
+          <div class="headline">
+              <h2>اضافة أكلة جديدة </h2>
+              <hr >
+          </div>
+          <image-upload 
+            [buttonCaption]="'اختر صورة'" [url]="">
+          </image-upload>
+        </div>
     </div>
-    <form name="newMeal" #newMeal="ngForm" (ngSubmit)="addNewMeal(newMeal)" novalidate>
-      <input type="file" name="mealImg" id="">
+    <form  name="newMeal" #newMeal="ngForm" (ngSubmit)="addNewMeal(newMeal)" novalidate>
+        <div class="container">
 
       <div class="form-group">
           <input type="text" class="form-control"  placeholder="اسم الأكلة " name="mealName"
@@ -41,21 +47,19 @@
               <option *ngFor="let cat of categories"  value=" {{cat.categoryName}}">{{cat.categoryName}}</option>
             </select>
             <span *ngIf="newMeal.submitted==true && newMeal.valid==false  && !cat.valid " class="text-danger">* هذا الحقل مطلوب</span>
-
-
-          </div>
+        </div>
 
 
 
      <!-- descriptipn text area -->
-        <textarea name="mealDesc" id="" cols="100" rows="10" placeholder="الوصف"
+        <textarea name="mealDesc" id="" cols="50" rows="5" class="w-100" placeholder="الوصف"
         #mealDesc="ngModel" [(ngModel)]="newMeal.mealDesc" required
         ></textarea>
 
      <!-- add button -->
-       <button type="submit"> اضافة</button> 
-       <button type="reset"> الغاء</button> 
+       <button type="submit" class="btn big-btn mt-2 ml-3"> اضافة</button> 
+       <button type="reset" class="big-btn-sconedColor"> الغاء</button> 
 
+      </div>  
     </form>
-    </div>  
 </section>

@@ -1,74 +1,164 @@
 <section class="data">
   <div class="container">
-    <img class="cooker-img" src="../../assets/images/edit-cooker/chef_pp.jpg" alt="">
 
     <div class="cooker-data">
-      <div class="cooker-info">
+      <img class="cooker-img m-0" src="{{cookerData.cookerImg}}" alt="">
+
+      <div class="cooker-info" *ngIf="!editFlag">
+        <div class="text-left">
+          <button class="small-btn" (click)="editInfo()">تعديل</button>
+        </div>
         <div class="row justify-content-end">
           <div class="col-md-4">
-            <h5 class="mb-3 textFont">محسن حسين</h5>
-            <p class="mb-3 pl-2">الأولاد هم أصعب نقاد للأكل، من الصعب جدا ارضائهم. أنا أم لأربعة بنات، طالما دللتهم بتحضير الوجبات المفضلة لكلا
-              منهم.
-            </p>
+            <h5 class="mb-3 textFont">{{cookerData.fName}} {{cookerData.lName}}</h5>
+            <p class="mb-3 pl-2"> {{cookerData.bio}}</p>
           </div>
           <div class="col-md-4 textFont">
-            <h5 class="mb-3">Mohsen_Hesain@gmail.com</h5>
-            <h5 class="mb-3">01275698252</h5>
-            <h5 class="mb-3">ذكر</h5>
-            <button class="small-btn">تعديل</button>
+            <h5 class="mb-3"> {{cookerData.email}}</h5>
+            <h5 class="mb-3"> {{cookerData.phonePrefix}}{{cookerData.phone}}</h5>
+            <h5 class="mb-3">{{cookerData.gender}}</h5>
           </div>
         </div>
       </div>
 
-      <!-- ================ address section ================== -->
-      <div class="cooker-address">
-        <div class="headline mb-5">
-          <h2 class="text-center">العنوان</h2>
-          <hr class="mb-5">
-          <h5>لوران, 12, شارع الاقبال, الدور الثاني</h5>
-          <!-- ملاحظات -->
-          <h5>بجوار ماكدونالدز</h5>
-        </div>
-        <div>
-          <button class="small-btn"> تعديل العنوان</button>
-        </div>
-      </div>
-
-      <!-- ================ other info section ================== -->
-      <div class="cooker-address">
-        <div class="headline mb-5">
-          <h2 class="text-center">بيانات أخرى</h2>
-          <hr class="mb-5">
-          <h5>أيام العمل</h5>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <form>
+      <div class="cooker-editInfo" *ngIf="editFlag">
+        <form name="editForm" #editForm="ngForm" (ngSubmit)="editFunc(editForm)">
+          <div class="text-left">
+            <button type="submit" class="small-btn">حفظ</button>
+          </div>
+          <div class="row justify-content-end">
+            <div class="col-md-4">
+              <!-- ============= first name ================== -->
               <div class="form-group">
-                <select class="form-control">
-                  <option selected>السبت</option>
-                  <option>الأحد</option>
-                  <option>الأثنين</option>
-                  <option>الثلاثاء</option>
-                  <option>الأربعاء</option>
-                  <option>الخميس</option>
-                  <option>الجمعة</option>
+                <input type="text" class="form-control" value="{{cookerData.fName}}" placeholder="الأسم الأول" #fName="ngModel" name="fName"
+                  [(ngModel)]="cookerData.fName" required>
+                <!-- validation  message -->
+                <div *ngIf="fName.invalid && (fName.dirty || fName.touched || editForm.submitted)">
+                  <div *ngIf="fName.errors.required" class="error-msg">
+                    الحقل مطلوب
+                  </div>
+                </div>
+                <!-- =============== last name ==================== -->
+                <input type="text" class="form-control" value="{{cookerData.lName}}" placeholder="الأسم الأخير" #lName="ngModel" name="lName"
+                  [(ngModel)]="cookerData.lName">
+              </div>
+              <div *ngIf="lName.invalid && (lName.dirty || lName.touched || editForm.submitted)">
+                <div *ngIf="lName.errors.required" class="error-msg">
+                  الحقل مطلوب
+                </div>
+              </div>
+
+              <!-- ===================== bio ==================== -->
+              <div class="form-group">
+                <textarea class="form-control" rows="3" placeholder="نبذة عنك.." name="bio" [(ngModel)]="cookerData.bio">{{cookerData.bio}}</textarea>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <!-- ============ email ================= -->
+              <div class="form-group">
+                <input type="email" class="form-control mail" value="{{cookerData.email}}" placeholder="البريد الألكتروني" name="email" [(ngModel)]="cookerData.email"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #email="ngModel" required>
+              </div>
+              <!-- validation Email message -->
+              <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                <div class="error-msg" *ngIf="email.errors.required">
+                  * هذا الحقل مطلوب
+                </div>
+              </div>
+              <div class="error-msg" *ngIf="email.errors && editForm.submitted">
+                * البريد الالكترونى غير صحيح
+              </div>
+              <!-- ============ phone ================= -->
+              <div class="form-group">
+                <input type="text" class="form-control" value="{{cookerData.phone}}" placeholder="رقم التليفون" pattern="[0-9]{8}" name="phone"
+                  #phone="ngModel" [(ngModel)]="cookerData.phone">
+                <!-- validation  message -->
+                <div *ngIf="phone.invalid && (phone.dirty || phone.touched || register.submitted)">
+                  <div *ngIf="phone.errors.required" class="text-danger">
+                    * هذا الحقل مطلوب
+                  </div>
+                </div>
+                <div class="text-danger" *ngIf="phone.errors && register.submitted">
+                  * رقم التليفون غير صحيح
+                </div>
+
+                <select class="form-control phone" name="phonePrefix" [(ngModel)]="cookerData.phonePrefix">
+                  <option [selected]="cookerData.phonePrefix == '012'">012</option>
+
+                  <option [selected]="cookerData.phonePrefix == '010'">010</option>
+
+                  <option [selected]="cookerData.phonePrefix == '011'">011</option>
                 </select>
               </div>
-            </form>
-          </div>
-          <div class="col-md-4">
-            <ngb-timepicker [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
-            <button class="btn btn-sm btn-outline" (click)="toggleMeridian()">
-            </button>
-          </div>
-          <i class="icon-cancel"></i>
+              <!-- ============== gender ==================== -->
+              <div class="form-group">
+                <span class="pl-2">النوع</span>
+                <div class="radio d-inline-block">
+                  <input id="radio-1" name="gender" value="male" type="radio" [(ngModel)]="cookerData.gender">
+                  <label for="radio-1" class="radio-label">ذكر</label>
+                </div>
 
-        </div>
+                <div class="radio d-inline-block">
+                  <input id="radio-2" name="gender" value="female" type="radio" [(ngModel)]="cookerData.gender">
+                  <label for="radio-2" class="radio-label ml-3">أنثى</label>
+                </div>
+              </div>
 
-        <button class="small-btn pt-1 pb-1 mt-5">+</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
+    <!-- ================ address section ================== -->
+    <div class="cooker-address">
+      <div class="headline mb-5">
+        <h2 class="text-center">العنوان</h2>
+        <hr class="mb-5">
+        <h5>لوران, 12, شارع الاقبال, الدور الثاني</h5>
+        <!-- ملاحظات -->
+        <h5>بجوار ماكدونالدز</h5>
+      </div>
+      <div>
+        <button class="small-btn"> تعديل العنوان</button>
+      </div>
+    </div>
+
+    <!-- ================ other info section ================== -->
+    <div class="cooker-address">
+      <div class="headline mb-5">
+        <h2 class="text-center">بيانات أخرى</h2>
+        <hr class="mb-5">
+        <h5>أيام العمل</h5>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <form>
+            <div class="form-group">
+              <select class="form-control">
+                <option selected>السبت</option>
+                <option>الأحد</option>
+                <option>الأثنين</option>
+                <option>الثلاثاء</option>
+                <option>الأربعاء</option>
+                <option>الخميس</option>
+                <option>الجمعة</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-4">
+          <ngb-timepicker [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
+          <button class="btn btn-sm btn-outline" (click)="toggleMeridian()">
+          </button>
+        </div>
+        <i class="icon-cancel"></i>
+
+      </div>
+
+      <button class="small-btn pt-1 pb-1 mt-5">+</button>
+    </div>
+
     <div class="text-left">
       <button class="small-btn">حفظ</button>
     </div>
