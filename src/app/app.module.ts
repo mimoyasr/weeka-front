@@ -30,11 +30,14 @@ import { AddNewMealComponent } from './add-new-meal/add-new-meal.component';
 import { NotificationComponent } from './notification/notification.component';
 import { CookerDataComponent } from './cooker-data/cooker-data.component';
 import { ClientOrderComponent } from './client-order/client-order.component';
+import { MenuComponent } from './menu/menu.component';
+
 
 
 //services
 import { QueryService } from './query.service';
 import { TransferDataService} from './transfer-data.service';
+import { MenuPageHeaderComponent } from './menu-page-header/menu-page-header.component';
 // import { AddNewMealComponent } from './add-new-meal/add-new-meal.component';
 
 const appRoutes: Routes = [
@@ -45,7 +48,9 @@ const appRoutes: Routes = [
   { path: 'singleItem/:name', component: SingleItemComponent },
   { path: 'newMeal', component: AddNewMealComponent },
   { path: 'editCooker', component: EditCookerComponent },
-  { path: 'clientOrder', component: ClientOrderComponent }   
+  { path: 'clientOrder', component: ClientOrderComponent },   
+  { path: 'menu', component:MenuComponent }   
+
 
 
 ];
@@ -68,6 +73,8 @@ const appRoutes: Routes = [
     NotificationComponent,
     CookerDataComponent,
     ClientOrderComponent,
+    MenuComponent,
+    MenuPageHeaderComponent,
   ],
   imports: [
     BrowserModule,
