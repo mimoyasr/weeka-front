@@ -84,6 +84,7 @@ export class CartComponent implements OnInit {
         this.allCartMeals.delete(element);
       }
     });
+    this.totalOneMeal = 0;
     this.addPrice();
     
   }
@@ -91,13 +92,7 @@ export class CartComponent implements OnInit {
   addPrice():void{
     this.allCartMeals.forEach(element => {
       this.singlePrice = (parseInt(element['mealPrice']) * parseInt(element['qty']));
-      element['totalOneMeal'] = this.singlePrice;
-      if(this.allCartMeals.size < 2){
-        this.totalOneMeal = element['totalOneMeal'];
-        
-      }else{
-        this.totalOneMeal = this.totalOneMeal + element['totalOneMeal'];
-      }
+        this.totalOneMeal += this.singlePrice;
     })
     this.total = this.delivery + this.totalOneMeal;
   }
@@ -118,22 +113,5 @@ export class CartComponent implements OnInit {
     this.order.navigate(["/clientOrder/"]);
   }
 
-  //make the cart position fixed
-  
-
-
-  // window.onscroll = function(){
-  //   console.log(this.cart)
-  
-  //   if (window.pageYOffset >= 200) {
-  
-  //     this.cart.style.display = 'none';
-  
-  //   }else{
-  
-        
-  
-  //   }
-  // };
 
 }

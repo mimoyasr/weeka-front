@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
+import { CartComponent } from '../cart/cart.component';
 
 // ============= service ==============
 import { QueryService } from '../query.service';
@@ -12,6 +13,8 @@ import { element } from 'protractor';
   styleUrls: ['./single-item.component.scss']
 })
 export class SingleItemComponent implements OnInit {
+
+  @ViewChild(CartComponent) child:CartComponent;
 
   singleName: string;
   singleData: object;
@@ -56,6 +59,8 @@ export class SingleItemComponent implements OnInit {
   //============ Add To Cart ==========
   addToCart():void{
       this.allCartMeals.add(this.singleData); 
+      this.child.totalOneMeal = 0;
+      this.child.addPrice();
   }
   ngOnInit() {
     //listen to data from the service
