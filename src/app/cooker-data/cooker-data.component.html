@@ -7,7 +7,7 @@
       <!-- ================= show view ================== -->
       <div class="cooker-info" *ngIf="!editFlag">
         <div class="text-left">
-          <button class="small-btn" (click)="editInfo()">تعديل</button>
+          <i class="icon-pencil" (click)="editInfo()"></i>
         </div>
         <div class="row justify-content-end">
           <div class="col-md-5">
@@ -24,7 +24,10 @@
       <div class="cooker-editInfo" *ngIf="editFlag">
         <form name="editForm" #editForm="ngForm" (ngSubmit)="editFunc(editForm)">
           <div class="text-left">
-            <button type="submit" class="small-btn">حفظ</button>
+            <button type="submit" class="bg-transparent p-0">
+              <i class="icon-ok"></i>
+            </button>
+            <!-- <button type="submit" class="small-btn">حفظ</button> -->
           </div>
           <div class="row justify-content-end">
             <div class="col-md-4">
@@ -175,7 +178,7 @@
         <h2 class="text-center">بيانات التواصل</h2>
         <hr class="mb-5">
         <div class="text-left">
-          <button class="small-btn"> تعديل</button>
+          <i class="icon-pencil"></i>
         </div>
       </div>
       <div class="row">
@@ -187,13 +190,13 @@
           <p>لوران, 12, شارع الاقبال, الدور الثاني</p>
           <!-- ملاحظات -->
           <p>بجوار ماكدونالدز</p>
-          <button class="btn small-btn">+</button>
+          <i class="icon-plus"></i>
         </div>
         <div class="col-md-6">
           <h5 class="mb-3">الايميل و رقم التليفون:</h5>
           <p class="mb-3"> {{cookerData.email}}</p>
           <p class="mb-3"> {{cookerData.phonePrefix}}{{cookerData.phone}}</p>
-          <button class="btn small-btn">+</button>
+          <i class="icon-plus"></i>
         </div>
       </div>
 
@@ -208,7 +211,7 @@
         <h2 class="text-center">ساعات العمل</h2>
         <hr class="mb-5">
         <div class="text-left">
-          <button class="small-btn">تعديل</button>
+          <i class="icon-pencil"></i>
         </div>
         <h5>أيام العمل</h5>
       </div>
@@ -242,11 +245,12 @@
           </button>
         </div>
 
-        <i class="icon-cancel"></i>
+        <i class="icon-cancel bg-transparent text-dark"></i>
 
       </div>
 
-      <button class="small-btn pt-1 pb-1 mt-5">+</button>
+      <!-- <button class="small-btn pt-1 pb-1 mt-5">+</button> -->
+      <i class="icon-plus"></i>
     </div>
 
 
