@@ -1,4 +1,4 @@
-  <!-- ==========Navbar========== -->
+  <!-- ========== Navbar ========== -->
   <div class="nav pt-4 pb-3 bg-dark text-white">
     <div class="container">
       <div class="row">
@@ -16,5 +16,95 @@
   </div>
 
   <section class="client-order">
-    
+    <div class="page-title text-center headline">
+      <h2>تأكيد طلباتك</h2>
+      <hr>
+    </div>
+    <div class="order-content">
+      <!-- ============= Order Ditailes ============= -->
+      <section class="notifications">
+        <div class="container">
+          <div class="noti-full">
+            <!-- Title -->
+            <div class="title">
+              <div class="row">
+                <!-- meal title -->
+                <div class="col-4">
+                  <h4>الوجبة</h4>
+                </div>
+                <!-- price -->
+                <div class="col-2">
+                  <h4>السعر</h4>
+                </div>
+                <!-- quantity -->
+                <div class="col-2">
+                  <h4>الكمية</h4>
+                </div>
+                <!-- total -->
+                <div class="col-2">
+                  <h4>الإجمالى</h4>
+                </div>
+                <!-- confirm -->
+                <div class="col-2">
+                  <h4>تاكيد الطلب</h4>
+                </div>
+              </div>
+            </div>
+            <!-- Content -->
+            <div class="content mt-3" *ngFor="let prop of allMealCart">
+              <div class="row align-items-center">
+                <!-- meal title -->
+                <div class="col-4">
+                  <div class="media">
+                    <img class="ml-4" width="90" height="90" src="{{prop.image}}" alt="placeholder image">
+                    <div class="media-body">
+                      <h4>{{prop.mealTitel}}</h4>
+                      <p>{{prop.mealDescription}}</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- price -->
+                <div class="col-2">
+                  <h4>{{prop.mealPrice}} ج</h4>
+                </div>
+                <!-- quantity -->
+                <div class="col-2">
+                  <h4>{{prop.qty}}</h4>
+                </div>
+                <!-- total -->
+                <div class="col-2">
+                  <h4>{{prop.totalOneMeal}} جنية</h4>
+                </div>
+                <!-- confirm -->
+                <div class="col-2">
+                  <button class="btn small-btn" (click)="confirmOrder(prop.id)">تم</button>
+                </div>
+              </div>
+              <hr>
+            </div>
+      
+            <!-- total price -->
+            <div class="total-price">
+              <div class="row">
+                <div class="col-8">
+                  <h4>المجموع</h4>
+                </div>
+                <div class="col-4">
+                  <h4> {{totalAllMeals}} جنية</h4>
+      
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Details -->
+      <section class="contact-info">
+
+      </section>
+
+
+
+    </div>
   </section>
