@@ -1,6 +1,8 @@
 @import '../../scss/variables';
 @import '../../scss/mixins';
 @import '../../scss/general';
+@import '../../scss/tabs';
+
 nav
 {
     .btn:focus{
@@ -9,6 +11,7 @@ nav
     .dropdown-item{
         padding: 10px 15px;
         text-align: right;
+        color: $headlinesColor;        
         &:hover{
             background-color: $mainColor;
             color: #fff;
@@ -17,56 +20,7 @@ nav
         background-color: transparent;
         outline: none;
         }
+
     }
 }
 
-.tabs{
-    padding: $section-space 0;
-    
-    .edit{
-        padding-top: $section-space;
-    }
-}
-
-//========= bootstrap style override =========
-:host /deep/ .nav-pills{
-    padding-bottom: $section-space;
-    justify-content: center !important;
-}
-:host /deep/ .nav-pills .nav-link.active{
-    background-color: $mainColor;
-    color:#fff;
-}
-:host /deep/ .nav-pills .nav-link{
-    color: $headlinesColor;
-    font-family: $headlinesFonts;
-    @include font-size(25px);  
-    margin-left:10px;
-    border-radius: 0; 
-}
-:host /deep/ .btn-link,
-:host /deep/ .btn-outline{
-    display: none;
-}
-:host /deep/ input.form-control{
-    border: 0;
-    border-bottom: 1px solid $textColor;
-    border-radius: 0;    
-    width: 65px;
-    &:focus{
-        box-shadow: none;
-        border-color: $sconedColor;
-    }
-}
-:host /deep/ .btn-outline-primary{
-    color: $textColor;
-    border-color: $textColor;
-    &:focus{
-        box-shadow: none;
-        outline: 0;
-    }
-    &:hover,&:active{
-        background-color: $mainColor;
-        color: #fff;
-    }
-}

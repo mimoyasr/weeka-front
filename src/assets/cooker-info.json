@@ -1,13 +1,13 @@
 [
     {
         "id": 1,
-        "fName": "محمد",
+        "fName": "هويدا",
         "lName": "محسن",
         "bio": "الأولاد هم أصعب نقاد للأكل، من الصعب جدا ارضائهم. أنا أم لأربعة بنات، طالما دللتهم بتحضير الوجبات المفضلة لكلا منهم. ",
-        "email": "Mohsen_Hesain@gmail.com",
+        "email": "Houida_Hesain@gmail.com",
         "phonePrefix": "012",
         "phone": "75698252",
-        "gender": "ذكر",
+        "gender": "أنثي",
         "district": "لوران",
         "street": "شارع الاقبال",
         "buildingNo": "12",

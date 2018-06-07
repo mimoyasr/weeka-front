@@ -31,6 +31,7 @@ export class CookerDataComponent implements OnInit {
 
   // ============ time picker ===============
   time = { hour: 13, minute: 30 };
+  time2 = { hour: 18, minute: 30 };
   meridian = true;
 
   toggleMeridian() {
@@ -53,9 +54,7 @@ export class CookerDataComponent implements OnInit {
   // ========== accessing single product from all products ========
   checkMeal(): void {
     for (let cooker of this.allData) {
-      // if (cooker.mealTitel == this.cookerData) {
       this.cookerData = cooker;
-      // }
     }
   }
   editInfo(): void {
@@ -104,6 +103,10 @@ export class CookerDataComponent implements OnInit {
     if (data.valid) {
       //========== request update password ===========
       console.log(this.editedPass);
+      this.editedPass["oldPass"] = "";
+      this.editedPass["newPass"] = "";
+      this.editedPass["newPass2"] = "";
+
     } else {
       console.log('error');
     }
