@@ -47,11 +47,15 @@ export class LoginComponent implements OnInit {
       for (const member of this.jsonData){      
         if ( member.userEmail === this.userLogin.userEmail && member.userPass === this.userLogin.userPass ){          
           console.log('you are a member'); 
+          this.checkUserFlage = false;  
+          break;        
+        }else{
+          console.log('not a member');
+          this.checkUserFlage = true;
         }
       }
     }else{
-      this.checkUserFlage = true;
-      
+    
     }
   }
 
