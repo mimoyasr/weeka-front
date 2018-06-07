@@ -38,6 +38,7 @@ import { MenuComponent } from './menu/menu.component';
 import { QueryService } from './query.service';
 import { TransferDataService} from './transfer-data.service';
 import { MenuPageHeaderComponent } from './menu-page-header/menu-page-header.component';
+import { ChefMealsComponent } from './chef-meals/chef-meals.component';
 // import { AddNewMealComponent } from './add-new-meal/add-new-meal.component';
 
 const appRoutes: Routes = [
@@ -75,6 +76,7 @@ const appRoutes: Routes = [
     ClientOrderComponent,
     MenuComponent,
     MenuPageHeaderComponent,
+    ChefMealsComponent,
   ],
   imports: [
     BrowserModule,
