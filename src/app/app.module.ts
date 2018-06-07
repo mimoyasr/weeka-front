@@ -75,7 +75,7 @@ const appRoutes: Routes = [
     FormsModule,
     RatingModule,
     BrowserAnimationsModule,
-    ImageUploadModule.forRoot()
+    ImageUploadModule.forRoot(),
   ],
   providers: [QueryService, TransferDataService],
   bootstrap: [AppComponent]

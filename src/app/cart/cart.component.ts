@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 
 //Services
 import { TransferDataService } from '../transfer-data.service';
@@ -10,11 +10,15 @@ import { element } from 'protractor';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+  @Output('childEvent')
+
   allCartMeals:Set<object>;
   singlePrice: number;
   delivery:number;
   total:any;
   totalOneMeal:number;
+  childEvent = new EventEmitter<any>();
+
   constructor( private transfer:TransferDataService ) { 
     this.delivery = 10;
     this.total = 0;
@@ -22,11 +26,15 @@ export class CartComponent implements OnInit {
     this.totalOneMeal = 0;
   }
   
+  sendToParent(value){
+    this.childEvent.emit(value);
+    }
   ngOnInit() {
     //listen to data from the service
     this.transfer.cast.subscribe(product => this.allCartMeals = product)
     // this.totalOneMeal = this.allCartMeals.entries().next().value[0]["mealPrice"];
     this.addPrice();
+    this.sendToParent(this.addPrice);
   } 
 
   // Decrease And Increase Quantity
@@ -72,9 +80,6 @@ export class CartComponent implements OnInit {
     this.allCartMeals.forEach(element => {
       this.singlePrice = (parseInt(element['mealPrice']) * parseInt(element['qty']));
       element['totalOneMeal'] = this.singlePrice;
-
-      // this.totalOneMeal += element['totalOneMeal'];
-
       if(this.allCartMeals.size < 2){
         this.totalOneMeal = element['totalOneMeal'];
         
@@ -93,6 +98,11 @@ export class CartComponent implements OnInit {
   //transfer the confirmed data to chef
   chefNotifications():void{
     this.transfer.cast.subscribe(product => this.allCartMeals = product )
+  }
+
+
+  doSomething() {
+    alert("hi")
   }
 
 }

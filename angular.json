@@ -30,7 +30,9 @@
               "./node_modules/bootstrap/scss/bootstrap.scss",
               "src/scss/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "../src/assets/js/imageUpload.js"
+            ]
           },
           "configurations": {
             "production": {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
+import { CartComponent } from '../cart/cart.component';
 
 // ============= service ==============
 import { QueryService } from '../query.service';
@@ -12,7 +13,7 @@ import { element } from 'protractor';
   styleUrls: ['./single-item.component.scss']
 })
 export class SingleItemComponent implements OnInit {
-
+  childData: any;
   singleName: string;
   singleData: object;
   mealData: Array<any>;
@@ -31,7 +32,6 @@ export class SingleItemComponent implements OnInit {
     );
 
   }
-
   //============ get data from json file ==========
   getMealData(): void {
     let path: string = "../../assets/meal-card.json";
@@ -60,7 +60,7 @@ export class SingleItemComponent implements OnInit {
   ngOnInit() {
     //listen to data from the service
     this.transfer.cast.subscribe(product => this.allCartMeals = product);
-
+    this.childData.emit()
   }
 
 
