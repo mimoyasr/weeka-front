@@ -116,7 +116,7 @@ input::-webkit-input-placeholder
 }
 
 //ancors 
-a{
+a, a:hover{
     color: $whiteColor;
     text-decoration: none;
 }

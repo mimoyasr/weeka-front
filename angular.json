@@ -31,7 +31,6 @@
               "src/scss/styles.scss"
             ],
             "scripts": [
-              "../src/assets/js/imageUpload.js"
             ]
           },
           "configurations": {

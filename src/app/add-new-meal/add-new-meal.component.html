@@ -1,104 +1,58 @@
 <section id="newMeal">
-    <!-- ==========Navbar========== -->
-    <div class="nav pt-4 pb-3 bg-dark text-white">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-2 offset-md-7">
-            <a routerLink="">
-              <img src="../assets/images/logo.png" alt="">
-            </a>
-          </div>
-          <div class="col-md-3">
-            <a class="border p-2">اسم المستخدم</a>
-          </div>
+  <!-- ==========Navbar========== -->
+  <div class="nav pt-4 pb-3 bg-dark text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2 offset-md-7">
+          <a routerLink="">
+            <img src="../assets/images/logo.png" alt="">
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a class="border p-2">اسم المستخدم</a>
         </div>
       </div>
     </div>
+    </div>
     <!-- ========== Add new meal========== -->
-    <div class="patern">
-        <div class="container">
           <div class="headline">
               <h2>اضافة أكلة جديدة </h2>
               <hr >
           </div>
-          <!-- <image-upload 
-            [buttonCaption]="'اختر صورة'" [url]="">
-          </image-upload> -->
-        </div>
-    </div>
+        
     <form  name="newMeal" #newMeal="ngForm" enctype="multipart/form-data" (ngSubmit)="addNewMeal(newMeal)" novalidate>
         <div class="container">
         
-          
-
-
-
-
-
-
-
-
-          <div class="widget">
-            <input role="uploadcare-uploader" type="hidden"
-                   data-crop="free,1:1,16:9,2:3,3:2" id="demo-widget">
-            </div>
-            
-            <p class="result">
-                Output value is <span class="result__value">null</span>
-            </p>
-            
-            <div class="files">
-              <div class="file files__item">
-              <img src="https://ucarecdn.com/bd7999c1-578c-4842-9df8-ab2e5aad7a2d/-/preview/-/format/jpeg/example.jpg" width="100">
-              </div>
-              <div class="file files__item">
-                <a href="https://ucarecdn.com/98d847b8-8c27-4375-9fcc-20bb4b555e33/Uploadcaredemodoc.docx">Document.docx</a>
-              </div>
-            </div>
-
-
-
-
-
-
-
-
-
-
+ 
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="اسم الأكلة " name="mealName" #mealName="ngModel" [(ngModel)]="newMeal.mealName"
+          required />
+      </div>
+      <!-- validation meal name -->
+      <div *ngIf="mealName.invalid && (mealName.dirty || mealName.touched)" class="text-danger">
+        <div *ngIf="mealName.errors.required">
+          * هذا الحقل مطلوب
+        </div>
+      </div>
 
 
       <div class="form-group">
-          <input type="text" class="form-control"  placeholder="اسم الأكلة " name="mealName"
-            #mealName="ngModel" [(ngModel)]="newMeal.mealName" required />
+        <select class="form-control" id="exampleFormControlSelect9" name="category" [(ngModel)]="category" required #cat="ngModel">
+          <option *ngFor="let cat of categories" value=" {{cat.categoryName}}">{{cat.categoryName}}</option>
+        </select>
+        <span *ngIf="newMeal.submitted==true && newMeal.valid==false  && !cat.valid " class="text-danger">* هذا الحقل مطلوب</span>
       </div>
-      <!-- validation meal name -->
-      <div *ngIf="mealName.invalid && (mealName.dirty || mealName.touched)" 
-      class="text-danger">
-          <div *ngIf="mealName.errors.required">
-            * هذا الحقل مطلوب
-          </div>
-        </div>
-
-
-        <div class="form-group">
-            <select class="form-control" id="exampleFormControlSelect9" name="category" [(ngModel)]="category" required #cat="ngModel">
-              <option *ngFor="let cat of categories"  value=" {{cat.categoryName}}">{{cat.categoryName}}</option>
-            </select>
-            <span *ngIf="newMeal.submitted==true && newMeal.valid==false  && !cat.valid " class="text-danger">* هذا الحقل مطلوب</span>
-        </div>
 
 
 
-     <!-- descriptipn text area -->
-        <textarea name="mealDesc" id="" cols="50" rows="5" class="w-100" placeholder="الوصف"
-        #mealDesc="ngModel" [(ngModel)]="newMeal.mealDesc" required
-        ></textarea>
+      <!-- descriptipn text area -->
+      <textarea name="mealDesc" id="" cols="50" rows="5" class="w-100" placeholder="الوصف" #mealDesc="ngModel" [(ngModel)]="newMeal.mealDesc"
+        required></textarea>
 
-     <!-- add button -->
-       <button type="submit" class="btn big-btn mt-2 ml-3"> اضافة</button> 
-       <button type="reset" class="big-btn-sconedColor"> الغاء</button> 
+      <!-- add button -->
+      <button type="submit" class="btn big-btn mt-2 ml-3"> اضافة</button>
+      <button type="reset" class="big-btn-sconedColor"> الغاء</button>
 
-      </div>  
-    </form>
+    </div>
+  </form>
 </section>
-

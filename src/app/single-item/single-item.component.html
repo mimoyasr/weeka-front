@@ -1,20 +1,6 @@
 <section>
   <!-- ==========Navbar========== -->
-  <div class="nav pt-4 pb-3 bg-dark text-white">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-2 offset-md-7">
-          <a routerLink="">
-            <img src="../assets/images/logo.png" alt="">
-          </a>
-        </div>
-        <div class="col-md-3">
-          <a routerLink="../../login" class="border p-2">تسجيل الدخول</a>
-          <a routerLink="../../becomeacooker" class="headlinesFonts pr-3">اصبح طباخ</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <app-menu-page-header></app-menu-page-header>
 
   <div class="container singleMeal">
     <div class="row">
@@ -34,13 +20,13 @@
             <div class="d-flex justify-content-between headline">
               <h2 class="card-title mb-4">{{singleData.mealTitel}}</h2>
               <h2 class="pl-5">{{singleData.mealPrice}} ج</h2>
-             <!--Start meal rating  -->
+              <!--Start meal rating  -->
               <ngb-rating [(rate)]="singleData.mealRate" max=5 [readonly]="true">
-                  <ng-template let-fill="fill">
-                    <span class="star" [class.filled]="fill === 100">&#9733;</span>
-                  </ng-template>
+                <ng-template let-fill="fill">
+                  <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                </ng-template>
               </ngb-rating>
-            <!--end meal rating -->
+              <!--end meal rating -->
             </div>
             <p class="mb-4">{{singleData.mealDescription}}</p>
             <div class="d-flex justify-content-between pl-5">
@@ -56,7 +42,7 @@
 
       <!-- =========== cart component =============== -->
       <div class="col-md-4">
-        <app-cart #child></app-cart>
+        <app-cart #cart></app-cart>
       </div>
     </div>
   </div>

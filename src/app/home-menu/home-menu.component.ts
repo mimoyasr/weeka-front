@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QueryService } from '../query.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { QueryService } from '../query.service';
 export class HomeMenuComponent implements OnInit {
   public areas: Array<object>;
 
-  constructor(private q: QueryService) {
+  constructor(private q: QueryService, private menu: Router) {
     this.areas = [];
    
    }
@@ -27,6 +28,12 @@ export class HomeMenuComponent implements OnInit {
         console.log(err);
       }
     )
+  }
+
+   // redirect to menu
+   redirectToMenu(): void {
+    this.menu.navigate(['/menu/'])
+
   }
 
   ngOnInit() {

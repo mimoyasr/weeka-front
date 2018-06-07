@@ -1,42 +1,55 @@
-import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input, HostListener } from '@angular/core';
+import { element } from 'protractor';
+import { Router } from '@angular/router';
 
 //Services
 import { TransferDataService } from '../transfer-data.service';
-import { element } from 'protractor';
-
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  @Output('childEvent')
+
+  @ViewChild ('cart') cart:ElementRef;
+
+  //make cart position fixed
+  
+  // @HostListener('window:scroll') onScroll() {
+  //    console.log(window.innerHeight)
+  //     if (window.pageYOffset >= window.innerHeight) {
+
+  //       this.cart.nativeElement.style.transition = 'all 0.5s ease-in-out';
+  //       this.cart.nativeElement.style.top = 'window.innerHeight' + 'px';  
+  //       // this.cart.nativeElement.style.position = 'relative';
+  //       this.cart.nativeElement.style.bottom = '300' + 'px';
+      
+  //       console.log(this.cart.nativeElement.style.top);      
+    
+  //     }else{
+  //       this.cart.nativeElement.style.bottom = 'auto';        
+  //     }
+  // }
 
   allCartMeals:Set<object>;
   singlePrice: number;
   delivery:number;
   total:any;
   totalOneMeal:number;
-  childEvent = new EventEmitter<any>();
-
-  constructor( private transfer:TransferDataService ) { 
+  constructor( private transfer:TransferDataService, private order:Router ) { 
     this.delivery = 10;
     this.total = 0;
     this.allCartMeals = new Set();   
     this.totalOneMeal = 0;
   }
   
-  sendToParent(value){
-    this.childEvent.emit(value);
-    }
+
   ngOnInit() {
     //listen to data from the service
-    this.transfer.cast.subscribe(product => this.allCartMeals = product)
-    // this.totalOneMeal = this.allCartMeals.entries().next().value[0]["mealPrice"];
+    this.transfer.cast.subscribe(product => this.allCartMeals = product);    
     this.addPrice();
-    this.sendToParent(this.addPrice);
   } 
-
+  
   // Decrease And Increase Quantity
   minus(id):void{
     this.allCartMeals.forEach(element => {
@@ -66,12 +79,12 @@ export class CartComponent implements OnInit {
 
   //Delete Item From Cart
   removeItem(id):void{
-    console.log(id)
     this.allCartMeals.forEach(element => {
       if(element["id"] == id){
         this.allCartMeals.delete(element);
       }
     });
+    this.totalOneMeal = 0;
     this.addPrice();
     
   }
@@ -79,13 +92,7 @@ export class CartComponent implements OnInit {
   addPrice():void{
     this.allCartMeals.forEach(element => {
       this.singlePrice = (parseInt(element['mealPrice']) * parseInt(element['qty']));
-      element['totalOneMeal'] = this.singlePrice;
-      if(this.allCartMeals.size < 2){
-        this.totalOneMeal = element['totalOneMeal'];
-        
-      }else{
-        this.totalOneMeal = this.totalOneMeal + element['totalOneMeal'];
-      }
+        this.totalOneMeal += this.singlePrice;
     })
     this.total = this.delivery + this.totalOneMeal;
   }
@@ -97,12 +104,14 @@ export class CartComponent implements OnInit {
 
   //transfer the confirmed data to chef
   chefNotifications():void{
-    this.transfer.cast.subscribe(product => this.allCartMeals = product )
+    this.transfer.cast.subscribe(product => this.allCartMeals = product );
+    this.goClientOrder();
   }
 
-
-  doSomething() {
-    alert("hi")
+  //redirct to client order
+  goClientOrder():void{
+    this.order.navigate(["/clientOrder/"]);
   }
+
 
 }

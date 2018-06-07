@@ -2,6 +2,9 @@
 @mixin backgroundImg($imgpath,$position:0 0,$size: cover,$repeat: no-repeat) {
     background: transparent url(#{$imgpath}) $repeat $position/$size;
 }
+@mixin backgroundImg2($imgpath,$position:0px 0px,$size: contain,$repeat:repeat) {
+  background: transparent url(#{$imgpath}) $repeat $position/$size;
+}
 @mixin backgroundImgContain($imgpath,$size: contain,$repeat: no-repeat) {
   background: transparent url(#{$imgpath}) $repeat;
 }

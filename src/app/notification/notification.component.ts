@@ -35,7 +35,6 @@ export class NotificationComponent implements OnInit {
         this.confirmedMeals.push(element);
       }
     })
-    console.log(this.confirmedMeals);
   }
 
   // calc total price for every meal
