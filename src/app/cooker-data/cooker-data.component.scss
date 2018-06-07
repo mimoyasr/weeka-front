@@ -43,7 +43,7 @@
                     border-bottom: 1px solid $textColor;
                     border-radius: 0;
                     &:focus{
-                        box-shadow: none;
+                        @include boxShadow(none);
                         border-color: $sconedColor;
                     }
                 }
@@ -57,7 +57,7 @@
                     border-radius: 0;
                     width: 65px;
                     &:focus{
-                        box-shadow: none;
+                        @include boxShadow(none);
                         border-color: $sconedColor;
                     }
                 }
@@ -69,30 +69,28 @@
                     cursor: pointer;
                 }
             }
-            
         }
-            .cooker-address{
-                padding-top: $section-space;
-                h5
-                {
-                    font-family: $headlinesFonts;
-                    @include font-size(18px);   
-                }
-                select, .time-picker{
-                    border: 0;
-                    border-bottom: 1px solid $textColor;
-                    border-radius: 0;
-                    &:focus{
-                        box-shadow: none;
-                        border-color: $sconedColor;
-                    }
-                }
-                // select:focus > option:hover{
-                //     background-color: red !important;
-                // }   
+        .cooker-address{
+            padding-top: $section-space;
+            h5
+            {
+                font-family: $headlinesFonts;
+                @include font-size(18px);   
             }
-        
-        
+            select{
+                border: 0;
+                border-bottom: 1px solid $textColor;
+                border-radius: 0;
+                &:focus{
+                    @include boxShadow(none);
+                    border-color: $sconedColor;
+                }
+                &:active{
+                    @include boxShadow(none);
+                    border-color: $sconedColor;
+                }
+            }
+        }
     }
     .modal-body{
         padding-left: 45px;
@@ -102,8 +100,42 @@
             border-bottom: 1px solid $textColor;
             border-radius: 0;
             &:focus{
-                box-shadow: none;
+                @include boxShadow(none);
                 border-color: $sconedColor;
             }
         }
+    }
+    // ============== bootstrap style override =============
+    :host /deep/ .btn-link,
+    :host /deep/ .btn-outline{
+        display: none;
+    }
+    :host /deep/ input.form-control{
+        border: 0;
+        border-bottom: 1px solid $textColor;
+        border-radius: 0;    
+        width: 65px;
+        &:focus{
+            @include boxShadow(none);
+            border-color: $sconedColor;
+        }
+    }
+    :host /deep/ .btn-outline-primary{
+        color: $textColor;
+        border-color: $textColor;
+        &:focus{
+            @include boxShadow(none);
+            outline: 0;
+        }
+        &:hover{
+            background-color: $mainColor;
+            color: #fff;
+            border: 1px solid $mainColor;            
+        }
+    }
+    :host /deep/ .btn-outline-primary:not(:disabled):not(.disabled):active{
+        background-color: $mainColor;
+        color: #fff;
+        border: 1px solid $mainColor;
+        @include boxShadow(none);
     }

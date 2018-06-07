@@ -7,9 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RatingModule } from "ngx-rating";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { ImageUploadModule } from "angular2-image-upload";
-
-
+import { NgxCropperModule } from 'ngx-cropper';
 
 //App component
 import { AppComponent } from './app.component';
@@ -38,6 +36,7 @@ import { MenuComponent } from './menu/menu.component';
 import { QueryService } from './query.service';
 import { TransferDataService} from './transfer-data.service';
 import { MenuPageHeaderComponent } from './menu-page-header/menu-page-header.component';
+import { ChefMealsComponent } from './chef-meals/chef-meals.component';
 // import { AddNewMealComponent } from './add-new-meal/add-new-meal.component';
 
 const appRoutes: Routes = [
@@ -75,6 +74,7 @@ const appRoutes: Routes = [
     ClientOrderComponent,
     MenuComponent,
     MenuPageHeaderComponent,
+    ChefMealsComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,7 +85,7 @@ const appRoutes: Routes = [
     FormsModule,
     RatingModule,
     BrowserAnimationsModule,
-    // ImageUploadModule.forRoot()
+    NgxCropperModule
   ],
   providers: [QueryService, TransferDataService],
   bootstrap: [AppComponent]

@@ -1,6 +1,8 @@
 @import '../../scss/variables';
 @import '../../scss/mixins';
 @import '../../scss/general';
+@import 'ngx-cropper/dist/ngx-cropper.min.css';
+
 #newMeal
 {
     padding-bottom: $section-space;
