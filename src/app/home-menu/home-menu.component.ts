@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { QueryService } from '../query.service';
 import { Router } from '@angular/router';
 
+import { NgModel, NgForm } from '@angular/forms';
+
+
+
 
 @Component({
   selector: 'app-home-menu',
@@ -10,9 +14,12 @@ import { Router } from '@angular/router';
 })
 export class HomeMenuComponent implements OnInit {
   public areas: Array<object>;
+  public selected:string;
+  
 
   constructor(private q: QueryService, private menu: Router) {
     this.areas = [];
+    this.selected="اختر منطقتك"
    
    }
    // function to get areas
@@ -29,6 +36,10 @@ export class HomeMenuComponent implements OnInit {
       }
     )
   }
+  // show selected item in button
+   showItem(item:string){
+    this.selected=item;
+  } 
 
    // redirect to menu
    redirectToMenu(): void {
