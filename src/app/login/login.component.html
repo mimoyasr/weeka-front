@@ -46,11 +46,11 @@
           </div>
 
           <!-- validation Email message -->
-          <div *ngIf="email.invalid && (email.dirty || email.touched)">
+          <div *ngIf="email.invalid && (email.dirty || email.touched || login.submitted)">
               <div class="error-msg" *ngIf="email.errors.required">
                   * هذا الحقل مطلوب
               </div>
-              <div class="error-msg" *ngIf="email.errors && login.submitted">
+              <div class="error-msg" *ngIf="email.errors && login.submitted && !email.errors.required ">
                   * البريد الالكترونى غير صحيح
               </div>
           </div>
@@ -60,7 +60,7 @@
           </div>
 
           <!-- validation Password message -->
-          <div *ngIf="pass.invalid && (pass.dirty || pass.touched)">
+          <div *ngIf="pass.invalid && (pass.dirty || pass.touched || login.submitted)">
               <div class="error-msg" *ngIf="pass.errors.required">
                   * هذا الحقل مطلوب
               </div>
@@ -71,8 +71,17 @@
                 بيانات غير صحيحة
               </div>
 
-              
-          <div class="text-left forget-pass"><a class="text-dark">نسيت كلمة السر؟</a></div>
+              <div class="d-flex justify-content-between forget-pass">
+                <div class="remember-me">
+                  <input class="styled-checkbox mr-3" id="styled-checkbox-1" type="checkbox" value="value1">
+                  <label for="styled-checkbox-1">تذكرنى</label>
+  
+                </div>
+  
+            <div><a class="text-dark">نسيت كلمة السر؟</a></div>
+                
+              </div>
+
 
           <div class="text-center">
             <button type="submit" class="btn big-btn">تسجيل الدخول</button>

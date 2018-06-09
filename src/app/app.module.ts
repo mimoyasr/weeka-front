@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RatingModule } from "ngx-rating";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgxPaginationModule} from 'ngx-pagination'; 
 // import { ImageUploadModule } from "angular2-image-upload";
 
 
@@ -92,6 +93,7 @@ const appRoutes: Routes = [
     FormsModule,
     RatingModule,
     BrowserAnimationsModule,
+    NgxPaginationModule
     // ImageUploadModule.forRoot()
   ],
   providers: [QueryService, TransferDataService],
