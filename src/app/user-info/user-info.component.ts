@@ -1,58 +1,51 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { QueryService } from '../query.service';
 import { NgForm, NgModel } from '@angular/forms';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-cooker-data',
-  templateUrl: './cooker-data.component.html',
-  styleUrls: ['./cooker-data.component.scss']
+  selector: 'app-user-info',
+  templateUrl: './user-info.component.html',
+  styleUrls: ['./user-info.component.scss']
 })
-export class CookerDataComponent implements OnInit {
+export class UserInfoComponent implements OnInit {
   allData: Array<any>;
-  cookerData: object;
+  userData: object;
   editFlag: boolean;
   closeResult: string;
   editedPass: object;
 
   constructor(private query: QueryService,
     private modalService: NgbModal) {
-
     this.allData = [];
-    this.cookerData = {};
-    this.getMealData();
+    this.userData = {};
+    this.getUserData();
     this.editFlag = false;
     this.editedPass = {};
   }
 
-  // ============ time picker ===============
-  time = { hour: 13, minute: 30 };
-  time2 = { hour: 18, minute: 30 };
-  meridian = true;
-
-  toggleMeridian() {
-    this.meridian = !this.meridian;
+  ngOnInit() {
   }
-
   //============ get data from json file ==========
-  getMealData(): void {
-    let path: string = "../../assets/cooker-info.json";
+  getUserData(): void {
+    let path: string = "../../assets/user-info.json";
     this.query.getData(path).subscribe(
       res => {
         this.allData = res;
         console.log(this.allData);
-        this.checkMeal();
+        this.checkUser();
       },
       err => { console.log(err) }
     );
   }
 
   // ========== accessing single product from all products ========
-  checkMeal(): void {
-    for (let cooker of this.allData) {
-      this.cookerData = cooker;
+  checkUser(): void {
+    for (let user of this.allData) {
+      this.userData = user;
     }
   }
+
   editInfo(): void {
     this.editFlag = !this.editFlag;
   }
@@ -61,12 +54,12 @@ export class CookerDataComponent implements OnInit {
   editFunc(data: NgForm): void {
     if (data.valid) {
       // post request to update cooker data object in database
-      console.log(this.cookerData);
-      if (this.cookerData["gender"] == 'female') {
-        this.cookerData["gender"] = "أنثي";
+      console.log(this.userData);
+      if (this.userData["gender"] == 'female') {
+        this.userData["gender"] = "أنثي";
       }
-      if (this.cookerData["gender"] == 'male') {
-        this.cookerData["gender"] = "ذكر";
+      if (this.userData["gender"] == 'male') {
+        this.userData["gender"] = "ذكر";
       }
       this.editFlag = !this.editFlag;
     }
@@ -106,8 +99,6 @@ export class CookerDataComponent implements OnInit {
     } else {
       console.log('error');
     }
-  }
-  ngOnInit() {
   }
 
 }

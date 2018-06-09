@@ -36,9 +36,11 @@ import { MenuComponent } from './menu/menu.component';
 
 //services
 import { QueryService } from './query.service';
-import { TransferDataService} from './transfer-data.service';
+import { TransferDataService } from './transfer-data.service';
 import { MenuPageHeaderComponent } from './menu-page-header/menu-page-header.component';
 import { ChefMealsComponent } from './chef-meals/chef-meals.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { UserInfoComponent } from './user-info/user-info.component';
 // import { AddNewMealComponent } from './add-new-meal/add-new-meal.component';
 
 const appRoutes: Routes = [
@@ -49,8 +51,9 @@ const appRoutes: Routes = [
   { path: 'singleItem/:name', component: SingleItemComponent },
   { path: 'newMeal', component: AddNewMealComponent },
   { path: 'editCooker', component: EditCookerComponent },
-  { path: 'clientOrder', component: ClientOrderComponent },   
-  { path: 'menu', component:MenuComponent }   
+  { path: 'clientOrder', component: ClientOrderComponent },
+  { path: 'menu', component: MenuComponent },
+  { path: 'editUser', component: EditUserComponent }
 
 
 
@@ -77,6 +80,8 @@ const appRoutes: Routes = [
     MenuComponent,
     MenuPageHeaderComponent,
     ChefMealsComponent,
+    EditUserComponent,
+    UserInfoComponent,
   ],
   imports: [
     BrowserModule,

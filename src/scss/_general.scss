@@ -99,8 +99,8 @@ body{
     background: $sconedColor;
     color: $headlinesColor;
 }
-button:focus{
-    box-shadow: none;
+button:focus, .btn:focus{
+    @include boxShadow(none);
     outline: 0;
 }
 //input placeholder color

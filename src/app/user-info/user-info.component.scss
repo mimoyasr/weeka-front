@@ -1,0 +1,42 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+@import '../../scss/general';
+@import '../../scss/profile';
+.data{
+    padding: $section-space;
+}
+
+// ============== bootstrap style override =============
+:host /deep/ .btn-link,
+:host /deep/ .btn-outline{
+    display: none;
+}
+:host /deep/ input.form-control{
+    border: 0;
+    border-bottom: 1px solid $textColor;
+    border-radius: 0;    
+    width: 65px;
+    &:focus{
+        @include boxShadow(none);
+        border-color: $sconedColor;
+    }
+}
+:host /deep/ .btn-outline-primary:not(:disabled):not(.disabled){
+    color: $textColor;
+    border-color: $textColor;
+    &:focus{
+        @include boxShadow(none);
+        outline: 0;
+    }
+    &:hover{
+        background-color: $mainColor;
+        color: #fff;
+        border: 1px solid $mainColor;            
+    }
+}
+:host /deep/ .btn-outline-primary:not(:disabled):not(.disabled):active{
+    background-color: $mainColor;
+    color: #fff;
+    border: 1px solid $mainColor;
+    @include boxShadow(none);
+}
