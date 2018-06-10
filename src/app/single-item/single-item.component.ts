@@ -57,7 +57,14 @@ export class SingleItemComponent implements OnInit {
 
   //============ Add To Cart ==========
   addToCart():void{
-      this.allCartMeals.add(this.singleData); 
+      
+      this.allCartMeals.forEach(element => {
+        if(element["id"] == this.singleData['id']){
+          element['qty'] = parseInt(element['qty']) + 1;
+        }
+      });
+      this.allCartMeals.add(this.singleData);
+    
       this.child.totalOneMeal = 0;
       this.child.addPrice();
   }

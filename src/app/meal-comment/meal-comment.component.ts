@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input ,ViewChild,ElementRef} from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { QueryService } from '../query.service';
+import { starRatingColor } from 'angular-star-rating/src/interfaces/star-rating-config.interface';
+import { transition } from '@angular/animations/src/animation_metadata';
+import { validateConfig } from '@angular/router/src/config';
 
 
 
@@ -14,13 +17,27 @@ export class MealCommentComponent implements OnInit {
   public newComment: object;
   public userComment: string;
   public userRate: number;
-  mealRate:number
+  public readonly = true;
+  public mealRate:number;
+  @Input('data') mealId :string;
+  public p: number  ;
+  collection: any[] = this.comments; 
+  public items:number;
+  public commented:boolean;
+  @ViewChild ('myeditedCommemt') myeditedCommemt:ElementRef;
+  @ViewChild ('myCommemt') myCommemt:ElementRef;
+  public editMood:boolean;
+
 
   constructor(private q: QueryService) {
     this.comments = [];
     this.getComments();
     this.newComment = {};
     this.mealRate=0;
+    this.p=1;
+    this.items=3;
+    this.commented=false;
+    this.editMood=false;
   }
 
 
@@ -43,14 +60,36 @@ export class MealCommentComponent implements OnInit {
   addNewComment(): void {
     this.newComment['userComment'] = this.userComment;
     this.newComment['mealRate'] = this.userRate;
-    this.newComment['mealId'] = "";
-    this.comments.push(this.newComment);
+    this.newComment['mealId'] = this.mealId;
+    this.newComment['userId'] = '6';
+
+    this.comments.unshift(this.newComment);
     this.userComment = "";
-
+    this.userRate = 0;
+    this.commented=true;
     console.log(this.newComment);
-
   }
 
+  //pagination function 
+  update(){
+    
+    this.items=this.items+3;
+  }
+//delete user comment
+deleteComment(){
+  this.comments.shift();
+  this.commented=false;
+}
+//edit user comment
+editComment(){
+  this.editMood=true;
+}
+// save edited comment
+saveComment(){
+ 
+  this.editMood=false;
+  console.log(this.newComment);
+}
   ngOnInit() {
 
 

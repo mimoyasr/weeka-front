@@ -8,6 +8,10 @@ import { FormsModule } from '@angular/forms';
 import { RatingModule } from "ngx-rating";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxCropperModule } from 'ngx-cropper';
+import {NgxPaginationModule} from 'ngx-pagination'; 
+// import { ImageUploadModule } from "angular2-image-upload";
+
+
 
 //App component
 import { AppComponent } from './app.component';
@@ -80,7 +84,7 @@ const appRoutes: Routes = [
     MenuComponent,
     MenuPageHeaderComponent,
     ChefMealsComponent,
-    ChefStatisticComponent,
+    ChefStatisticComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +95,9 @@ const appRoutes: Routes = [
     FormsModule,
     RatingModule,
     BrowserAnimationsModule,
-    NgxCropperModule
+    NgxCropperModule,
+    NgxPaginationModule
+    // ImageUploadModule.forRoot()
   ],
   providers: [QueryService, TransferDataService, StatisticsService],
   bootstrap: [AppComponent]
