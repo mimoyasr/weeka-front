@@ -26,6 +26,7 @@
         "angular2-image-upload": "^1.0.0-rc.1",
         "angular4-files-upload": " 1.0.2",
         "bootstrap": " 4.1.1",
+        "chart.js": "^2.7.2",
         "cookie-parser": "  1.4.3",
         "core-js": " 2.5.4",
         "debug": "  2.6.9",
@@ -34,8 +35,10 @@
         "jade": "  1.11.0",
         "jquery-ui-sass": "0.0.1",
         "morgan": "1.9.0",
+        "ngx-cropper": "^1.2.3",
         "ngx-pagination": "^3.1.1",
         "ngx-rating": "0.0.9",
+        "ngx-uploadcare-widget": "^1.0.1",
         "rxjs": "6.0.0",
         "zone.js": "0.8.26"
     },

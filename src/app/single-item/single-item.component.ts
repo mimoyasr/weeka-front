@@ -34,7 +34,6 @@ export class SingleItemComponent implements OnInit {
     );
 
   }
-
   //============ get data from json file ==========
   getMealData(): void {
     let path: string = "../../assets/meal-card.json";
@@ -72,7 +71,6 @@ export class SingleItemComponent implements OnInit {
   ngOnInit() {
     //listen to data from the service
     this.transfer.cast.subscribe(product => this.allCartMeals = product);
-
   }
 
 

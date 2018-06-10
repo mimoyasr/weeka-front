@@ -10,7 +10,7 @@
         "mealRate": "2",
         "cookerName": "محمد علي",
         "orders": "25",
-        "favorite": "false"
+        "favorite": false
     },
     {
         "id":"2",
@@ -23,7 +23,7 @@
         "mealRate": "4",
         "cookerName": "محسن حسين",
         "orders": "25",
-        "favorite": "false"
+        "favorite": true
     },
     {
         "id":"3",
@@ -36,7 +36,7 @@
         "mealRate": "1",
         "cookerName": "محمد على",
         "orders": "25",
-        "favorite": "false"
+        "favorite": false
     },
     {
         "id":"4",
@@ -49,6 +49,6 @@
         "mealRate": "5",
         "cookerName": "محمد على",
         "orders": "25",
-        "favorite": "true"
+        "favorite": true
     }
 ]

@@ -7,9 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RatingModule } from "ngx-rating";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxCropperModule } from 'ngx-cropper';
 import { NgxPaginationModule } from 'ngx-pagination';
-// import { ImageUploadModule } from "angular2-image-upload";
-
 
 
 //App component
@@ -34,19 +33,20 @@ import { ClientOrderComponent } from './client-order/client-order.component';
 import { MenuComponent } from './menu/menu.component';
 import { MenuPageHeaderComponent } from './menu-page-header/menu-page-header.component';
 import { ChefMealsComponent } from './chef-meals/chef-meals.component';
-
+import { ChefStatisticComponent } from './chef-statistic/chef-statistic.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { UserInfoComponent } from './user-info/user-info.component';
+import { UserHistoryComponent } from './user-history/user-history.component';
+import { UserFavsComponent } from './user-favs/user-favs.component';
 
 
 //services
 import { QueryService } from './query.service';
 import { TransferDataService } from './transfer-data.service';
-// import { MenuPageHeaderComponent } from './menu-page-header/menu-page-header.component';
-// import { ChefMealsComponent } from './chef-meals/chef-meals.component';
-import { EditUserComponent } from './edit-user/edit-user.component';
-import { UserInfoComponent } from './user-info/user-info.component';
-import { UserHistoryComponent } from './user-history/user-history.component';
-import { UserFavsComponent } from './user-favs/user-favs.component';
-// import { AddNewMealComponent } from './add-new-meal/add-new-meal.component';
+import { StatisticsService } from './statistics.service';
+
+//scripts
+import { Chart } from 'chart.js';
 
 const appRoutes: Routes = [
   { path: '', component: HomeGuestComponent },
@@ -56,9 +56,10 @@ const appRoutes: Routes = [
   { path: 'singleItem/:name', component: SingleItemComponent },
   { path: 'newMeal', component: AddNewMealComponent },
   { path: 'editCooker', component: EditCookerComponent },
+  { path: 'editUser', component: EditUserComponent },
   { path: 'clientOrder', component: ClientOrderComponent },
   { path: 'menu', component: MenuComponent },
-  { path: 'editUser', component: EditUserComponent }
+  { path: 'statistics', component: ChefStatisticComponent }
 
 
 
@@ -89,6 +90,7 @@ const appRoutes: Routes = [
     UserInfoComponent,
     UserHistoryComponent,
     UserFavsComponent,
+    ChefStatisticComponent
   ],
   imports: [
     BrowserModule,
@@ -99,10 +101,10 @@ const appRoutes: Routes = [
     FormsModule,
     RatingModule,
     BrowserAnimationsModule,
+    NgxCropperModule,
     NgxPaginationModule
-    // ImageUploadModule.forRoot()
   ],
-  providers: [QueryService, TransferDataService],
+  providers: [QueryService, TransferDataService, StatisticsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
