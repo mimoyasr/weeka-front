@@ -25,6 +25,8 @@ export class CookerDataComponent implements OnInit {
     this.editedPass = {};
   }
 
+  ngOnInit() { }
+
   // ============ time picker ===============
   time = { hour: 13, minute: 30 };
   time2 = { hour: 18, minute: 30 };
@@ -107,7 +109,6 @@ export class CookerDataComponent implements OnInit {
       console.log('error');
     }
   }
-  ngOnInit() {
-  }
+
 
 }

@@ -42,6 +42,8 @@ import { MenuPageHeaderComponent } from './menu-page-header/menu-page-header.com
 import { ChefMealsComponent } from './chef-meals/chef-meals.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { UserInfoComponent } from './user-info/user-info.component';
+import { UserHistoryComponent } from './user-history/user-history.component';
+import { UserFavsComponent } from './user-favs/user-favs.component';
 // import { AddNewMealComponent } from './add-new-meal/add-new-meal.component';
 
 const appRoutes: Routes = [
@@ -83,6 +85,8 @@ const appRoutes: Routes = [
     ChefMealsComponent,
     EditUserComponent,
     UserInfoComponent,
+    UserHistoryComponent,
+    UserFavsComponent,
   ],
   imports: [
     BrowserModule,

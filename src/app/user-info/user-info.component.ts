@@ -24,8 +24,8 @@ export class UserInfoComponent implements OnInit {
     this.editedPass = {};
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
+
   //============ get data from json file ==========
   getUserData(): void {
     let path: string = "../../assets/user-info.json";
