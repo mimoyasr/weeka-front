@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input ,ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-menu-page-header',
@@ -6,13 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu-page-header.component.scss']
 })
 export class MenuPageHeaderComponent implements OnInit {
- 
+  public area :string;
 
-  constructor() {
-  
+ 
+  constructor(  ) {
+    
    }
 
   ngOnInit() {
+  
   }
 
 }
