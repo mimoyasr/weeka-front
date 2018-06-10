@@ -33,7 +33,7 @@
             <h4 *ngIf="totalOneMeal == 0">{{prop.mealPrice * prop.qty}} جنيه</h4>
           </div> -->
           <h4>{{totalOneMeal}} جنيه</h4>
-          
+
           <!-- <h4 *ngIf="totalOneMeal == 0">{{allCartMeals.entries().next().value[0]["mealPrice"]}} جنيه</h4> -->
 
         </div>
@@ -56,10 +56,10 @@
           <h4>{{total}} جنيه</h4>
         </div>
       </div>
- 
-        <button class="btn checkout-btn" (click)="chefNotifications()">الأن</button>
-        <button class="btn checkout-btn m-0">مؤجل</button>
-    
+
+      <button class="btn checkout-btn" (click)="chefNotifications()">الأن</button>
+      <button class="btn checkout-btn m-0" (click)="open(content)">مؤجل</button>
+
     </div>
   </div>
 
@@ -67,5 +67,44 @@
     <i class="icon-basket"></i>
     <h3>السلة فارغة</h3>
   </div>
+
+  <!-- modal for delay the order -->
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header d-flex justify-content-between">
+      <h4 class="modal-title">الطلب مؤجل الى:</h4>
+      <button type="button" class="close p-0 m-0" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form name="modalForm" #modalForm="ngForm">
+        <div class="form-group">
+          <label for="dateOfBirth">تاريخ تسليم الطلب</label>
+          <div class="input-group mb-4">
+            <input id="dateOfBirth" class="form-control" placeholder="يوم - شهر - سنة" name="dp" ngbDatepicker #dp="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button">
+                <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+              </button>
+            </div>
+          </div>
+
+          <label for="dateOfBirth">توقيت تسليم الطلب</label>
+          <div class="input-group">
+
+            <ngb-timepicker id="timePicker" name='timePicker' [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
+
+            <hr>
+
+          </div>
+
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">حفظ</button>
+    </div>
+  </ng-template>
+
 
 </aside>
