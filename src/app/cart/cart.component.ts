@@ -81,6 +81,7 @@ export class CartComponent implements OnInit {
   removeItem(id):void{
     this.allCartMeals.forEach(element => {
       if(element["id"] == id){
+        element['qty'] = 1;
         this.allCartMeals.delete(element);
       }
     });
@@ -99,6 +100,9 @@ export class CartComponent implements OnInit {
 
   //cancel all order from cart
   cancelOrder():void{
+    this.allCartMeals.forEach(element => {
+        element['qty'] = 1;
+    });
     this.allCartMeals.clear();
   }
 

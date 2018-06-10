@@ -109,7 +109,10 @@ input::-webkit-input-placeholder
 ,input:-ms-input-placeholder{
     color: $textColor;
 }
-
+input:focus,textarea:focus{
+    box-shadow: none;
+    border-color: $sconedColor;
+}
 //validation msg color
 .error-msg{
     color: $mainColor;
@@ -182,7 +185,9 @@ border: none;
 i.star-icon{
 font-size: 1.5em;
 }
-
+i,a{
+    cursor: pointer;
+}
 .fav
 {
     position: absolute;

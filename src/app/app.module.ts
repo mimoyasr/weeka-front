@@ -29,15 +29,19 @@ import { NotificationComponent } from './notification/notification.component';
 import { CookerDataComponent } from './cooker-data/cooker-data.component';
 import { ClientOrderComponent } from './client-order/client-order.component';
 import { MenuComponent } from './menu/menu.component';
+import { MenuPageHeaderComponent } from './menu-page-header/menu-page-header.component';
+import { ChefMealsComponent } from './chef-meals/chef-meals.component';
+import { ChefStatisticComponent } from './chef-statistic/chef-statistic.component';
 
 
 
 //services
 import { QueryService } from './query.service';
-import { TransferDataService} from './transfer-data.service';
-import { MenuPageHeaderComponent } from './menu-page-header/menu-page-header.component';
-import { ChefMealsComponent } from './chef-meals/chef-meals.component';
-// import { AddNewMealComponent } from './add-new-meal/add-new-meal.component';
+import { TransferDataService } from './transfer-data.service';
+import {  StatisticsService } from './statistics.service';
+
+//scripts
+import { Chart } from 'chart.js';
 
 const appRoutes: Routes = [
   { path: '', component: HomeGuestComponent },
@@ -48,7 +52,8 @@ const appRoutes: Routes = [
   { path: 'newMeal', component: AddNewMealComponent },
   { path: 'editCooker', component: EditCookerComponent },
   { path: 'clientOrder', component: ClientOrderComponent },   
-  { path: 'menu', component:MenuComponent }   
+  { path: 'menu', component:MenuComponent } ,  
+  { path: 'statistics', component:ChefStatisticComponent } ,  
 
 
 
@@ -75,6 +80,7 @@ const appRoutes: Routes = [
     MenuComponent,
     MenuPageHeaderComponent,
     ChefMealsComponent,
+    ChefStatisticComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,7 +93,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     NgxCropperModule
   ],
-  providers: [QueryService, TransferDataService],
+  providers: [QueryService, TransferDataService, StatisticsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
