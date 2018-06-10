@@ -9,10 +9,10 @@
                 <div class="btn-group btn-group-toggle fav">
                     <label class="btn-primary custom" ngbButtonLabel>
                     <input type="checkbox" ngbButton [(ngModel)]="data.favorite">   
-                    <div *ngIf="data.favorite==false ">
+                    <div *ngIf="!data.favorite ">
                         <img class="" src="../../assets/images/not-fav.png" alt="" >
                     </div>
-                    <div *ngIf="data.favorite==true ">
+                    <div *ngIf="data.favorite">
                         <img class="" src="../../assets/images/fav.png" alt="">
                     </div>
                     </label>

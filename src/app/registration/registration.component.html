@@ -74,12 +74,12 @@
               required class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" placeholder="البريد الإلكترونى">
           </div>
           <!-- validation Email message -->
-          <div *ngIf="email.invalid && (email.dirty || email.touched)">
+          <div *ngIf="email.invalid && (email.dirty || email.touched || register.submitted)">
             <div class="text-danger" *ngIf="email.errors.required">
               * هذا الحقل مطلوب
             </div>
           </div>
-          <div class="text-danger" *ngIf="email.errors && register.submitted">
+          <div class="text-danger" *ngIf="email.errors && register.submitted && !email.errors.required">
             * البريد الالكترونى غير صحيح
           </div>
 
@@ -106,7 +106,7 @@
               * هذا الحقل مطلوب
             </div>
           </div>
-          <div *ngIf="pass2.touched && pass2.value != pass.value" class="text-danger">
+          <div *ngIf="(pass2.value != pass.value) && register.submitted && !pass2.invalid" class="text-danger">
             * كلمة السر غير متطابقة
           </div>
 
@@ -122,7 +122,7 @@
                     * هذا الحقل مطلوب
                   </div>
                 </div>
-                <div class="text-danger" *ngIf="phone.errors && register.submitted">
+                <div class="text-danger" *ngIf="phone.errors && register.submitted && !phone.errors.required">
                   * رقم التليفون غير صحيح
                 </div>
               </div>

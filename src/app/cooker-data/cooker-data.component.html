@@ -1,11 +1,11 @@
 <section class="data">
   <div class="container">
 
-    <div class="cooker-data">
-      <img class="cooker-img m-0" src="{{cookerData.cookerImg}}" alt="">
+    <div class="profile-data">
+      <img class="profile-img m-0" src="{{cookerData.cookerImg}}" alt="">
 
       <!-- ================= show view ================== -->
-      <div class="cooker-info" *ngIf="!editFlag">
+      <div class="profile-info" *ngIf="!editFlag">
         <div class="text-left">
           <button type="button" class="bg-transparent p-0">
             <i class="icon-pencil" (click)="editInfo()"></i>
@@ -13,7 +13,7 @@
         </div>
         <div class="row justify-content-end">
           <div class="col-md-5">
-            <h5 class="mb-3 textFont">{{cookerData.fName}} {{cookerData.lName}}</h5>
+            <h4 class="mb-3">{{cookerData.fName}} {{cookerData.lName}}</h4>
             <h5 class="mb-3">{{cookerData.gender}}</h5>
             <p class="mb-3 pl-2"> {{cookerData.bio}}</p>
           </div>
@@ -23,7 +23,7 @@
       </div>
 
       <!-- =============== edit view ======================= -->
-      <div class="cooker-editInfo" *ngIf="editFlag">
+      <div class="profile-editInfo" *ngIf="editFlag">
         <form name="editForm" #editForm="ngForm" (ngSubmit)="editFunc(editForm)">
           <div class="text-left">
             <button type="submit" class="bg-transparent p-0">
@@ -144,7 +144,7 @@
                 <input type="password" name="newPass" #newPass="ngModel" [(ngModel)]="editedPass.newPass" required class="form-control" placeholder="كلمة السر الجديدة">
               </div>
               <!-- validation  message -->
-              <div *ngIf="newPass.invalid && (newPass.dirty || newPass.touched || changepass.submitted)">
+              <div *ngIf="newPass.invalid && (newPass.dirty || changepass.submitted)">
                 <div *ngIf="newPass.errors.required" class="text-danger">
                   * هذا الحقل مطلوب
                 </div>
@@ -187,10 +187,11 @@
           <div class="headline">
             <h5 class="mb-3">العنوان:</h5>
           </div>
-
-          <p>لوران, 12, شارع الاقبال, الدور الثاني</p>
+          <p>
+            {{cookerData.district}},{{cookerData.buildingNo}},{{cookerData.street}},{{cookerData.floorNo}},شقة{{cookerData.flatNo}}
+          </p>
           <!-- ملاحظات -->
-          <p>بجوار ماكدونالدز</p>
+          <p>{{cookerData.notice}}</p>
           <!-- <i class="icon-plus"></i> -->
         </div>
         <div class="col-md-6">

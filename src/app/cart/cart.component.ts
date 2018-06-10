@@ -50,6 +50,7 @@ export class CartComponent implements OnInit {
     this.totalOneMeal = 0;
   }
   
+
   ngOnInit() {
     //listen to data from the service
     this.transfer.cast.subscribe(product => this.allCartMeals = product);    
@@ -70,7 +71,6 @@ export class CartComponent implements OnInit {
     });
     this.totalOneMeal = 0;
     this.addPrice();
-
   }
 
   plus(id):void{
