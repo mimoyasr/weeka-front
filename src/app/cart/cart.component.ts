@@ -108,7 +108,6 @@ export class CartComponent implements OnInit {
 
   //transfer the confirmed data to chef
   chefNotifications():void{
-    this.transfer.cast.subscribe(product => this.allCartMeals = product );
     this.goClientOrder();
   }
 
@@ -116,6 +115,8 @@ export class CartComponent implements OnInit {
   goClientOrder():void{
     this.order.navigate(["/clientOrder/"]);
   }
+
+  
 
 
 }

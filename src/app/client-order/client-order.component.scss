@@ -30,12 +30,13 @@
             }
         }
         .add-address{
-            input,textarea{
+            input,textarea,select{
                 border:none;
                 border-bottom: 1px solid $textColor; 
                 border-radius: 0;
                 &:focus{
-                    border-color: $sconedColor;                    
+                    border-color: $sconedColor;     
+                    box-shadow: none;               
                 }               
             }
         }

@@ -32,14 +32,14 @@ import { NotificationComponent } from './notification/notification.component';
 import { CookerDataComponent } from './cooker-data/cooker-data.component';
 import { ClientOrderComponent } from './client-order/client-order.component';
 import { MenuComponent } from './menu/menu.component';
+import { MenuPageHeaderComponent } from './menu-page-header/menu-page-header.component';
+import { ChefMealsComponent } from './chef-meals/chef-meals.component';
 
 
 
 //services
 import { QueryService } from './query.service';
 import { TransferDataService} from './transfer-data.service';
-import { MenuPageHeaderComponent } from './menu-page-header/menu-page-header.component';
-import { ChefMealsComponent } from './chef-meals/chef-meals.component';
 // import { AddNewMealComponent } from './add-new-meal/add-new-meal.component';
 
 const appRoutes: Routes = [
