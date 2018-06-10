@@ -46,7 +46,7 @@ import { TransferDataService } from './transfer-data.service';
 import { StatisticsService } from './statistics.service';
 
 //scripts
-import { Chart } from 'chart.js';
+// import { Chart } from 'chart.js';
 
 const appRoutes: Routes = [
   { path: '', component: HomeGuestComponent },
