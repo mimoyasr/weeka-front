@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { QueryService } from '../query.service'
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { QueryService } from '../query.service';
+import { CartComponent } from '../cart/cart.component';
+
+//Services
+import { TransferDataService } from '../transfer-data.service';
 @Component({
   selector: 'app-user-history',
   templateUrl: './user-history.component.html',
@@ -7,14 +11,18 @@ import { QueryService } from '../query.service'
 })
 export class UserHistoryComponent implements OnInit {
 
-  historyMeals: Array<any>;
+  @ViewChild(CartComponent) cart:CartComponent;  
 
-  constructor(private q: QueryService) {
+  historyMeals: Array<any>;
+  allCartMeals:Set<any>;
+  
+  constructor(private q: QueryService, private transfer:TransferDataService) {
     this.historyMeals = [];
     this.getHistoryData();
   }
 
   ngOnInit() {
+    this.transfer.cast.subscribe(product => this.allCartMeals = product);        
   }
 
   // ============== get data from server ===============
@@ -26,5 +34,19 @@ export class UserHistoryComponent implements OnInit {
       },
       err => { console.log(err) }
     );
+  }
+
+  // ============== trigger order button ==============
+  addToCartHistory(id){
+    this.historyMeals.forEach(element => {
+      
+      if(element.id == id){
+        this.allCartMeals.add(element);
+      }
+    })
+    // this.child.totalOneMeal = 0;
+    this.cart.addPrice();
+    console.log(this.cart)
+    console.log(this.allCartMeals)
   }
 }
