@@ -22,4 +22,5 @@ export class QueryService {
   getArea() {
     return this.area;
   }
+
 }
