@@ -95,39 +95,18 @@
         width: 35px;
     }
   }
+  select{
+      border:none;
+      border-bottom: 1px solid $textColor;
+  }
+  .date-btn{
+      border-radius: 0;
+      background: $mainColor;
+      color: $whiteColor;
+  }
 
-// ============== bootstrap style override =============
-:host /deep/ .btn-link,
-{
-        display: none !important;
-    }
-    :host /deep/ input.form-control{
-        border: 0;
-        border-bottom: 1px solid $textColor;
-        border-radius: 0;    
-        width: 65px;
-        &:focus{
-            @include boxShadow(none);
-            border-color: $sconedColor;
-        }
-    }
-    :host /deep/ .btn-outline-primary{
-        color: $textColor;
-        border-color: $textColor;
-        &:focus{
-            @include boxShadow(none);
-            outline: 0;
-        }
-        &:hover{
-            background-color: $mainColor;
-            color: #fff;
-            border: 1px solid $mainColor;            
-        }
-    }
-    :host /deep/ .btn-outline-primary:not(:disabled):not(.disabled):active{
-        background-color: $mainColor;
-        color: #fff;
-        border: 1px solid $mainColor;
-        @include boxShadow(none);
-    }
-
+  .custom-modal{
+      h4,label{
+          font-family: $headlinesFonts;
+      }
+  }

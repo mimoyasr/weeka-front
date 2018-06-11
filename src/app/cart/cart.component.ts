@@ -39,6 +39,7 @@ export class CartComponent implements OnInit {
   total:any;
   totalOneMeal:number;
   closeResult: String;
+  delayOrder:Object;
   constructor( 
     private transfer:TransferDataService,
     private order:Router, 
@@ -48,6 +49,12 @@ export class CartComponent implements OnInit {
     this.total = 0;
     this.allCartMeals = new Set();   
     this.totalOneMeal = 0;
+    this.delayOrder = {
+      "date":"",
+      "minuite":"",
+      "hours":"",
+      "amOrpm":""
+    }
   }
   
 
@@ -148,6 +155,10 @@ export class CartComponent implements OnInit {
 
   toggleMeridian() {
     this.meridian = !this.meridian;
+  }
+
+  saveTime():void{
+    console.log(this.delayOrder)
   }
 
 }
