@@ -11,8 +11,8 @@
 
           <div class="card-body pr-0">
             <!-- ============== favourite ================ -->
-            <img class="fav rounded-circle p-3" *ngIf="singleData.favorite=='false'; else elseCase" [(ngModel)]="singleData.favorite"
-              src="../../assets/images/not-fav.png" alt="">
+            <img class="fav rounded-circle p-3" *ngIf="!singleData.favorite; else elseCase" [(ngModel)]="singleData.favorite" src="../../assets/images/not-fav.png"
+              alt="">
             <ng-template #elseCase>
               <img class="fav rounded-circle p-3" src="../../assets/images/fav.png" alt="">
             </ng-template>
@@ -33,7 +33,7 @@
               <p class="card-title">الشيف : {{singleData.cookerName}}</p>
               <p>عدد مرات الطلب: {{singleData.orders}}</p>
             </div>
-            <button class="small-btn" (click)="addToCart()" >اطلب</button>
+            <button class="small-btn" (click)="addToCart()">اطلب</button>
 
           </div>
 

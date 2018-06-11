@@ -22,4 +22,8 @@ export class QueryService {
   getArea() {
     return this.area;
   }
+
+  postData(path: string, data): Observable<any> {
+    return this.http.post(path, data);
+  }
 }

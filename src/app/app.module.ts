@@ -47,6 +47,7 @@ import { StatisticsService } from './statistics.service';
 
 //scripts
 import { Chart } from 'chart.js';
+import { AllMealsComponent } from './all-meals/all-meals.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeGuestComponent },
@@ -90,7 +91,8 @@ const appRoutes: Routes = [
     UserInfoComponent,
     UserHistoryComponent,
     UserFavsComponent,
-    ChefStatisticComponent
+    ChefStatisticComponent,
+    AllMealsComponent
   ],
   imports: [
     BrowserModule,

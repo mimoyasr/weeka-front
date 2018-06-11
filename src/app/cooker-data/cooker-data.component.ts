@@ -20,7 +20,7 @@ export class CookerDataComponent implements OnInit {
 
     this.allData = [];
     this.cookerData = {};
-    this.getMealData();
+    this.getCookerData();
     this.editFlag = false;
     this.editedPass = {};
   }
@@ -37,7 +37,7 @@ export class CookerDataComponent implements OnInit {
   }
 
   //============ get data from json file ==========
-  getMealData(): void {
+  getCookerData(): void {
     let path: string = "../../assets/cooker-info.json";
     this.query.getData(path).subscribe(
       res => {
@@ -49,7 +49,7 @@ export class CookerDataComponent implements OnInit {
     );
   }
 
-  // ========== accessing single product from all products ========
+  // ========== accessing chef data from all data  ========
   checkMeal(): void {
     for (let cooker of this.allData) {
       this.cookerData = cooker;

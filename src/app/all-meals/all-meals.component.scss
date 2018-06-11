@@ -1,7 +1,9 @@
 @import '../../scss/variables';
 @import '../../scss/mixins';
 @import '../../scss/general';
-@import '../../scss/smallCard';
-.favourite{
-    padding-bottom: $section-space;
+@import '../../scss/activateMeal';
+.allMeals{
+    .price{
+        top: 29px;
+    }  
 }
