@@ -9,9 +9,11 @@ export class TransferDataService {
   private totalNum:number;
 
   private data = new BehaviorSubject(new Set);
+  private data2 = new BehaviorSubject([]);
 
   //let me see data from any where
   cast = this.data.asObservable();
+  cast2 = this.data2.asObservable();
 
   constructor() { }
 

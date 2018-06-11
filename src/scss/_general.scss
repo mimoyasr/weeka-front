@@ -207,21 +207,6 @@ i,a{
     float: none !important;
 }
 
-.img-ul-file-upload
-{
-    background: #ddd !important;
-    // height: 300px;
-}
-
-// .img-ul-upload
-// {
-//     width: 100%;
-//     height: 100%;
-// }
-
-
-
-
 .widget {
 	padding: 40px 100px;
 	background: #fff;
@@ -248,4 +233,15 @@ i,a{
 }
 .result__value {
 	background: #efefef;
+}
+//display none for add comments in statistics section 
+app-edit-cooker
+{
+app-meal-comment
+{
+    .empty-comment
+    {
+        display: none !important
+    }
+}
 }
