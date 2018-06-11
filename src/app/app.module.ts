@@ -25,7 +25,7 @@ import { MealCommentComponent } from './meal-comment/meal-comment.component';
 import { HomeMenuComponent } from './home-menu/home-menu.component';
 import { CartComponent } from './cart/cart.component';
 import { EditCookerComponent } from './edit-cooker/edit-cooker.component';
-import { NgbdRatingBasic } from './rating';
+// import { NgbdRatingBasic } from './rating';
 import { AddNewMealComponent } from './add-new-meal/add-new-meal.component';
 import { NotificationComponent } from './notification/notification.component';
 import { CookerDataComponent } from './cooker-data/cooker-data.component';
