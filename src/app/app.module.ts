@@ -9,6 +9,7 @@ import { RatingModule } from "ngx-rating";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxCropperModule } from 'ngx-cropper';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { HttpModule } from "@angular/http";
 
 
 //App component
@@ -38,6 +39,8 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { UserHistoryComponent } from './user-history/user-history.component';
 import { UserFavsComponent } from './user-favs/user-favs.component';
+import { PaymentComponent } from './payment/payment.component';
+import { AllMealsComponent } from './all-meals/all-meals.component';
 
 
 //services
@@ -47,7 +50,6 @@ import { StatisticsService } from './statistics.service';
 
 //scripts
 import { Chart } from 'chart.js';
-import { AllMealsComponent } from './all-meals/all-meals.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeGuestComponent },
@@ -92,7 +94,8 @@ const appRoutes: Routes = [
     UserHistoryComponent,
     UserFavsComponent,
     ChefStatisticComponent,
-    AllMealsComponent
+    AllMealsComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -104,7 +107,8 @@ const appRoutes: Routes = [
     RatingModule,
     BrowserAnimationsModule,
     NgxCropperModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    HttpModule
   ],
   providers: [QueryService, TransferDataService, StatisticsService],
   bootstrap: [AppComponent]
