@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, Input, HostListener } from '@angular/core';
 import { element } from 'protractor';
 import { Router } from '@angular/router';
+import { NgForm, NgModel } from '@angular/forms';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 //Services
 import { TransferDataService } from '../transfer-data.service';
@@ -36,11 +38,23 @@ export class CartComponent implements OnInit {
   delivery:number;
   total:any;
   totalOneMeal:number;
-  constructor( private transfer:TransferDataService, private order:Router ) { 
+  closeResult: String;
+  delayOrder:Object;
+  constructor( 
+    private transfer:TransferDataService,
+    private order:Router, 
+    private modalService: NgbModal 
+  ) { 
     this.delivery = 10;
     this.total = 0;
     this.allCartMeals = new Set();   
     this.totalOneMeal = 0;
+    this.delayOrder = {
+      "date":"",
+      "minuite":"",
+      "hours":"",
+      "amOrpm":""
+    }
   }
   
 
@@ -116,7 +130,35 @@ export class CartComponent implements OnInit {
     this.order.navigate(["/clientOrder/"]);
   }
 
-  
+  // trigger modal
+  open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
 
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
+
+  // ============ time picker ===============
+  time = { hour: 13, minute: 30 };
+  meridian = true;
+
+  toggleMeridian() {
+    this.meridian = !this.meridian;
+  }
+
+  saveTime():void{
+    console.log(this.delayOrder)
+  }
 
 }
