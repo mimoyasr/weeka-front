@@ -26,6 +26,7 @@ export class MealCardComponent implements OnInit{
   //function to get meal data from json file   
   getMealData(): void {
     let path: string = 'http://weeka.herokuapp.com/api/home';
+    // let path: string = '../../assets/meal-card.json';
     this.Q.getData(path).subscribe(
       res => {
         this.mealData = res.meals;

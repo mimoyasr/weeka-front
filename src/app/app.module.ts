@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RatingModule } from "ngx-rating";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxCropperModule } from 'ngx-cropper';
+/* import { NgxCropperModule } from 'ngx-cropper'; */
 import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpModule } from "@angular/http";
 
@@ -106,8 +106,8 @@ const appRoutes: Routes = [
     FormsModule,
     RatingModule,
     BrowserAnimationsModule,
-    NgxCropperModule,
-    NgxPaginationModule,
+/*     NgxCropperModule,
+ */    NgxPaginationModule,
     HttpModule
   ],
   providers: [QueryService, TransferDataService, StatisticsService,AuthorizationService],
