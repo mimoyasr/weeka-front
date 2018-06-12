@@ -28,13 +28,8 @@
           <h4>المجموع</h4>
         </div>
         <div class="col-6">
-          <!-- <h4 *ngIf="totalOneMeal > 0">{{totalOneMeal}} جنيه</h4>
-          <div *ngFor='let prop of allCartMeals'>
-            <h4 *ngIf="totalOneMeal == 0">{{prop.mealPrice * prop.qty}} جنيه</h4>
-          </div> -->
-          <h4>{{totalOneMeal}} جنيه</h4>
 
-          <!-- <h4 *ngIf="totalOneMeal == 0">{{allCartMeals.entries().next().value[0]["mealPrice"]}} جنيه</h4> -->
+          <h4>{{totalOneMeal}} جنيه</h4>
 
         </div>
       </div>
@@ -82,11 +77,7 @@
           <label for="dateOfBirth">تاريخ تسليم الطلب</label>
           <div class="input-group mb-4">
             <input id="dateOfBirth" [(ngModel)]="delayOrder.date" class="form-control ml-3" placeholder="يوم - شهر - سنة" name="dp" ngbDatepicker #dp="ngbDatepicker">
-            <!-- <div class="input-group-append">
-              <button class="btn date-btn" (click)="dp.toggle()" type="button">
-                <i class="icon-basket" style="width: 1.2rem; height: 1rem; cursor: pointer;"></i>
-              </button>
-            </div> -->
+
           </div>
 
           <label for="dateOfBirth">توقيت تسليم الطلب</label>

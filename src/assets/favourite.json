@@ -8,9 +8,7 @@
         "mealPrice": "65",
         "mealRate": "2",
         "cookerName": "محمد علي",
-        "date": "2/6/2018",
-        "favorite": false,
-        "isActive": true
+        "favorite": true
     },
     {
         "id": "2",
@@ -21,9 +19,7 @@
         "mealPrice": "45",
         "mealRate": "4",
         "cookerName": "محسن حسين",
-        "date": "25/5/2018",
-        "favorite": false,
-        "isActive": true
+        "favorite": true
     },
     {
         "id": "3",
@@ -34,9 +30,7 @@
         "mealPrice": "77",
         "mealRate": "1",
         "cookerName": "محسن حسين",
-        "date": "11/1/2018",
-        "favorite": true,
-        "isActive": false
+        "favorite": true
     },
     {
         "id": "4",
@@ -47,9 +41,7 @@
         "mealPrice": "33",
         "mealRate": "5",
         "cookerName": "محمد على",
-        "date": "6/10/2017",
-        "favorite": false,
-        "isActive": false
+        "favorite": true
     },
     {
         "id": "5",
@@ -60,8 +52,6 @@
         "mealPrice": "45",
         "mealRate": "4",
         "cookerName": "محسن حسين",
-        "date": "25/6/2017",
-        "favorite": true,
-        "isActive": true
+        "favorite": true
     }
 ]

@@ -60,7 +60,8 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     //listen to data from the service
-    this.transfer.cast.subscribe(product => this.allCartMeals = product);    
+    this.transfer.cast.subscribe(product => this.allCartMeals = product); 
+    this.transfer.setFunc(this.addPrice);   
     this.addPrice();
   } 
   

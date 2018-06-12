@@ -3,6 +3,8 @@
     <!-- =========== history ================= -->
     <div *ngFor="let meal of historyMeals">
       <div class="media smallCard weekaCard w-100 mb-5 align-items-center">
+        <!-- <div class="overlay rounded-circle"> -->
+
         <a routerLink="/singleItem/{{(meal.mealTitel)}}">
           <img class="cardImg" src="{{meal.image}}" alt="Generic placeholder image">
         </a>
@@ -33,9 +35,9 @@
             <div class="price-bg rounded-circle position-absolute">
             </div>
           </div>
-          <a routerLink='/singleItem/{{meal.mealTitel}}'>
-            <button class="small-btn">اطلب</button>
-          </a>
+
+            <button class="small-btn" (click)="addToCartHistory(meal.id)">اطلب</button>
+
           <div class="media-footer mb-4">
             <div class="row">
               <div class="col-md-6">
@@ -47,6 +49,8 @@
             </div>
           </div>
         </div>
+
+        <!-- </div> -->
       </div>
     </div>
     <div class="text-left">

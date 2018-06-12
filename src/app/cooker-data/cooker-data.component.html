@@ -2,7 +2,7 @@
   <div class="container">
 
     <div class="profile-data">
-      <img class="profile-img m-0" src="{{cookerData.cookerImg}}" alt="">
+      <img class="profile-img m-0" src="../../assets/images/edit-cooker/chef_pp.jpg" alt="">
 
       <!-- ================= show view ================== -->
       <div class="profile-info" *ngIf="!editFlag">
@@ -13,9 +13,9 @@
         </div>
         <div class="row justify-content-end">
           <div class="col-md-5">
-            <h4 class="mb-3">{{cookerData.fName}} {{cookerData.lName}}</h4>
-            <h5 class="mb-3">{{cookerData.gender}}</h5>
-            <p class="mb-3 pl-2"> {{cookerData.bio}}</p>
+            <h4 class="mb-3">{{chefData.fname}} {{chefData.lname}}</h4>
+            <h5 class="mb-3">{{chefData.gender}}</h5>
+            <p class="mb-3 pl-2"> {{chefData.description}}</p>
           </div>
           <div class="col-md-3 textFont">
           </div>
@@ -187,17 +187,20 @@
           <div class="headline">
             <h5 class="mb-3">العنوان:</h5>
           </div>
-          <p>
-            {{cookerData.district}},{{cookerData.buildingNo}},{{cookerData.street}},{{cookerData.floorNo}},شقة{{cookerData.flatNo}}
-          </p>
-          <!-- ملاحظات -->
-          <p>{{cookerData.notice}}</p>
+          <div *ngFor="let address of chefData.addresses">
+            <p>
+              {{address.district}},{{address.floorno}},شقة{{address.flatno}}
+            </p>
+            <!-- ملاحظات -->
+            <p>{{address.notice}}</p>
+          </div>
+
           <!-- <i class="icon-plus"></i> -->
         </div>
         <div class="col-md-6">
           <h5 class="mb-3">الايميل و رقم التليفون:</h5>
-          <p class="mb-3"> {{cookerData.email}}</p>
-          <p class="mb-3"> {{cookerData.phonePrefix}}{{cookerData.phone}}</p>
+          <p class="mb-3"> {{chefData.email}}</p>
+          <p class="mb-3"> {{chefData.number}}{{chefData.number}}</p>
           <i class="icon-plus"></i>
         </div>
       </div>
