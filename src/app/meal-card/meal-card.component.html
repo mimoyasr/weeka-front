@@ -1,8 +1,8 @@
 <div class="row">
-    <div class="col-md-12 col-lg-6 " *ngFor="let data of mealData; let i=index">
+    <div class="col-md-12 col-lg-6 lg-screen" *ngFor="let data of mealData; let i=index">
         <div class="media weekaCard w-100 mb-5 align-items-center">
             <a routerLink="/singleItem/{{(data.name)}}">
-                <img src="../assets/images/home-page/{{data.image}}" alt="Generic placeholder image">
+                <img src="../../assets/images/single-page/{{data.image}}" alt="Generic placeholder image">
             </a>
         <div class="media-body position-relative text-center">
             <!-- Start fav meal icon -->
@@ -39,13 +39,43 @@
                             <p>الشيف: {{data.chef_name}}</p>
                         </div>
                         <div class="col-md-6">
-                            <p>عدد مرات الطلب: {{data.number_of_orders}}</p>
+                            <p>عدد مرات الطلب: {{data.numbers_of_orders}}</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+
+        <div class="col-md-12 col-lg-6 sm-screen" *ngFor="let data of mealData">
+            <div class="card text-center mb-5">
+                <img class="card-img-top" src="../../assets/images/single-page/{{data.image}}" alt="Card image cap">
+                <div class="card-body">
+                <h4 class="card-title">{{data.name}}</h4>
+                <h5 class="card-price">{{data.price}}ج</h5>
+                <p class="card-text">{{data.description}}</p>
+                <a routerLink='/singleItem/{{(data.name)}}'><button class="small-btn">اطلب</button></a>
+                </div>
+            </div>
+        </div>
+
+
+
+   
+
+
+
+
+
+    
+
+
+    
+
+
+
 </div>
 
 

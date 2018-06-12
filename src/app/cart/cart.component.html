@@ -91,16 +91,13 @@
 
           <label for="dateOfBirth">توقيت تسليم الطلب</label>
           <div class="input-group">
-
             <input type="number" class="form-control ml-3" aria-describedby="emailHelp" placeholder="دقيقة" name="minuite" [(ngModel)]="delayOrder.minuite">
             <input type="number" class="form-control ml-3" aria-describedby="emailHelp" placeholder="ساعة" name="hours" [(ngModel)]="delayOrder.hours">
             <select name="amOrpm" [(ngModel)]="delayOrder.amOrpm" id="">
               <option [selected]="delayOrder.amOrpm == 'ص'" >ص</option>
               <option [selected]="delayOrder.amOrpm == 'م'">م</option>              
             </select>
-
             <hr>
-
           </div>
 
         </div>

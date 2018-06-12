@@ -1,3 +1,26 @@
 @import '../../scss/variables';
 @import '../../scss/mixins';
 @import '../../scss/general';
+.sm-screen
+    {
+        display: none;
+    }
+.sm-screen
+{
+    .card-img-top
+    {
+        height: 250px;
+    }
+}
+
+@media (max-width: 767px) { 
+    
+    .lg-screen
+    {
+        display: none;
+    }
+    .sm-screen
+    {
+        display: block;
+    }
+}
