@@ -95,7 +95,7 @@ export class CartComponent implements OnInit {
   //Delete Item From Cart
   removeItem(id):void{
     this.allCartMeals.forEach(element => {
-      if(element["id"] == id){
+      if(element["meal_id"] == id){
         element['qty'] = 1;
         this.allCartMeals.delete(element);
       }
@@ -107,7 +107,7 @@ export class CartComponent implements OnInit {
 
   addPrice():void{
     this.allCartMeals.forEach(element => {
-      this.singlePrice = (parseInt(element['mealPrice']) * parseInt(element['qty']));
+      this.singlePrice = (parseInt(element['price']) * parseInt(element['qty']));
         this.totalOneMeal += this.singlePrice;
     })
     this.total = this.delivery + this.totalOneMeal;

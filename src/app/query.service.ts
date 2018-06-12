@@ -26,4 +26,10 @@ export class QueryService {
   postData(path: string, data): Observable<any> {
     return this.http.post(path, data);
   }
+
+  // fot send token to server
+  getData2(path: string, header): Observable<any> {
+    return this.http.get(path,header);
+  }
+
 }

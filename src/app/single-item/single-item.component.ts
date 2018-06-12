@@ -45,6 +45,7 @@ export class SingleItemComponent implements OnInit {
       res => {
         this.singleData = res.data;
         console.log(this.singleData);
+        this.singleData['qty'] = 1;
       },
       err => { console.log(err) }
     );
@@ -63,7 +64,7 @@ export class SingleItemComponent implements OnInit {
   addToCart(): void {
 
     this.allCartMeals.forEach(element => {
-      if (element["id"] == this.singleData['id']) {
+      if (element["meal_id"] == this.singleData['meal_id']) {
         element['qty'] = parseInt(element['qty']) + 1;
       }
     });
