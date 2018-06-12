@@ -1,30 +1,30 @@
 <div class="row">
     <div class="col-md-12 col-lg-6 " *ngFor="let data of mealData; let i=index">
         <div class="media weekaCard w-100 mb-5 align-items-center">
-            <a routerLink="/singleItem/{{(data.name)}}">
-                <img src="../assets/images/home-page/{{data.image}}" alt="Generic placeholder image">
+            <a routerLink="/singleItem/{{data.slug}}">
+                <img class="mealImg" src="../assets/images/single-page/{{data.image}}" alt="Generic placeholder image">
             </a>
-        <div class="media-body position-relative text-center">
-            <!-- Start fav meal icon -->
+            <div class="media-body position-relative text-center">
+                <!-- Start fav meal icon -->
                 <div class="btn-group btn-group-toggle fav">
                     <label class="btn-primary custom" ngbButtonLabel>
-                    <input type="checkbox" ngbButton [(ngModel)]="data.fav">   
-                    <div *ngIf="!data.fav">
-                        <img class="" src="../../assets/images/not-fav.png" alt="" >
-                    </div>
-                    <div *ngIf="data.fav">
-                        <img class="" src="../../assets/images/fav.png" alt="">
-                    </div>
+                        <input type="checkbox" ngbButton [(ngModel)]="data.fav">
+                        <div *ngIf="!data.fav">
+                            <img class="" src="../../assets/images/not-fav.png" alt="">
+                        </div>
+                        <div *ngIf="data.fav">
+                            <img class="" src="../../assets/images/fav.png" alt="">
+                        </div>
                     </label>
                 </div>
-            <!--end fav meal icon -->
-            <!--Start meal rating  -->
-            <ngb-rating [(rate)]="data.rate" max=5 [readonly]="true">
+                <!--end fav meal icon -->
+                <!--Start meal rating  -->
+                <ngb-rating [(rate)]="data.rate" max=5 [readonly]="true">
                     <ng-template let-fill="fill">
-                      <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                        <span class="star" [class.filled]="fill === 100">&#9733;</span>
                     </ng-template>
-            </ngb-rating>
-            <!--end meal rating -->
+                </ngb-rating>
+                <!--end meal rating -->
                 <h3 class="mt-0">{{data.name}}</h3>
                 <p>{{data.description}}</p>
                 <div class="price rounded-circle position-absolute">
@@ -32,7 +32,9 @@
                     <div class="price-bg rounded-circle position-absolute">
                     </div>
                 </div>
-                <a routerLink='/singleItem/{{(data.name)}}'><button class="small-btn">اطلب</button></a>
+                <a routerLink='/singleItem/{{(data.name)}}'>
+                    <button class="small-btn">اطلب</button>
+                </a>
                 <div class="media-footer">
                     <div class="row">
                         <div class="col-md-6">
@@ -47,6 +49,3 @@
         </div>
     </div>
 </div>
-
-
-
