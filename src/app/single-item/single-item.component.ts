@@ -26,21 +26,24 @@ export class SingleItemComponent implements OnInit {
     this.singleData = {};
     this.mealData = [];
     this.allCartMeals = new Set();
-    this.getMealData();
 
     // ========= accessing name comes from url ===========    
     this.active.params.subscribe(
-      params => this.singleName = (params.name).replace(/%20/g, ' ')
+      params => {
+        this.singleName = (params.name);
+        console.log(this.singleName);
+        this.getMealData();
+
+      }
     );
 
   }
   //============ get data from json file ==========
   getMealData(): void {
-    let path: string = "http://weeka.herokuapp.com/api/menu/this.singleName";
+    let path: string = `http://weeka.herokuapp.com/api/menu/${this.singleName}`;
     this.query.getData(path).subscribe(
       res => {
-        this.singleData = res;
-        // this.checkMeal();
+        this.singleData = res.data;
         console.log(this.singleData);
       },
       err => { console.log(err) }
@@ -48,13 +51,13 @@ export class SingleItemComponent implements OnInit {
   }
 
   // ========== accessing single product from all products ========
-  checkMeal(): void {
-    for (let meal of this.mealData) {
-      if (meal.mealTitel == this.singleName) {
-        this.singleData = meal;
-      }
-    }
-  }
+  // checkMeal(): void {
+  //   for (let meal of this.mealData) {
+  //     if (meal.mealTitel == this.singleName) {
+  //       this.singleData = meal;
+  //     }
+  //   }
+  // }
 
   //============ Add To Cart ==========
   addToCart(): void {

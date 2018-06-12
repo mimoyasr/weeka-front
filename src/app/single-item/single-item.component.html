@@ -7,31 +7,38 @@
       <!-- ============= single product ============== -->
       <div class="col-md-8">
         <div class="card mb-3">
-          <img class="card-img-top" src="{{singleData.singleImg}}" alt="Card image cap">
+          <img class="card-img-top" src="../assets/images/single-page/{{singleData.image}}" alt="Card image cap">
 
           <div class="card-body pr-0">
-            <!-- ============== favourite ================ -->
-            <img class="fav rounded-circle p-3" *ngIf="!singleData.favorite; else elseCase" [(ngModel)]="singleData.favorite" src="../../assets/images/not-fav.png"
-              alt="">
-            <ng-template #elseCase>
-              <img class="fav rounded-circle p-3" src="../../assets/images/fav.png" alt="">
-            </ng-template>
+            <!-- Start fav meal icon -->
+            <div class="btn-group btn-group-toggle rounded-circle p-1 fav">
+              <label class="btn-primary custom" ngbButtonLabel>
+                <input type="checkbox" ngbButton [(ngModel)]="singleData.fav">
+                <div *ngIf="!singleData.fav">
+                  <img class="" src="../../assets/images/not-fav.png" alt="">
+                </div>
+                <div *ngIf="singleData.fav">
+                  <img class="" src="../../assets/images/fav.png" alt="">
+                </div>
+              </label>
+            </div>
+            <!--end fav meal icon -->
 
             <div class="d-flex justify-content-between headline">
-              <h2 class="card-title mb-4">{{singleData.mealTitel}}</h2>
-              <h2 class="pl-5">{{singleData.mealPrice}} ج</h2>
+              <h2 class="card-title mb-4">{{singleData.name}}</h2>
+              <h2 class="pl-5">{{singleData.price}} ج</h2>
               <!--Start meal rating  -->
-              <ngb-rating [(rate)]="singleData.mealRate" max=5 [readonly]="true">
+              <ngb-rating [(rate)]="singleData.rate" max=5 [readonly]="true">
                 <ng-template let-fill="fill">
                   <span class="star" [class.filled]="fill === 100">&#9733;</span>
                 </ng-template>
               </ngb-rating>
               <!--end meal rating -->
             </div>
-            <p class="mb-4">{{singleData.mealDescription}}</p>
+            <p class="mb-4">{{singleData.description}}</p>
             <div class="d-flex justify-content-between pl-5">
-              <p class="card-title">الشيف : {{singleData.cookerName}}</p>
-              <p>عدد مرات الطلب: {{singleData.orders}}</p>
+              <p class="card-title">الشيف : {{singleData.chef_name}}</p>
+              <p>عدد مرات الطلب: {{singleData.numbers_of_orders}}</p>
             </div>
             <button class="small-btn" (click)="addToCart()">اطلب</button>
 
@@ -48,6 +55,6 @@
   </div>
   <div class="container mealCmnts">
     <!-- ================= comments component ================ -->
-    <app-meal-comment [data]="singleData.id"></app-meal-comment>
+    <app-meal-comment [data]="singleData.meal_id"></app-meal-comment>
   </div>
 </section>
