@@ -23,6 +23,7 @@
         "@angular/router": " 6.0.2",
         "@ng-bootstrap/ng-bootstrap": " 2.0.0",
         "angular-star-rating": " 4.0.0-beta.3",
+        "angular-stripe-checkout": "^5.1.0",
         "angular2-image-upload": "^1.0.0-rc.1",
         "angular4-files-upload": " 1.0.2",
         "bootstrap": " 4.1.1",

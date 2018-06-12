@@ -14,18 +14,21 @@ export class CookerDataComponent implements OnInit {
   editFlag: boolean;
   closeResult: string;
   editedPass: object;
+  chefData: object;
 
   constructor(private query: QueryService,
     private modalService: NgbModal) {
 
-    this.allData = [];
-    this.cookerData = {};
-    this.getMealData();
+    this.chefData = {};
+    this.getChefData();
     this.editFlag = false;
     this.editedPass = {};
+    this.chefData = {};
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+
+  }
 
   // ============ time picker ===============
   time = { hour: 13, minute: 30 };
@@ -37,24 +40,17 @@ export class CookerDataComponent implements OnInit {
   }
 
   //============ get data from json file ==========
-  getMealData(): void {
-    let path: string = "../../assets/cooker-info.json";
+  getChefData(): void {
+    let path: string = 'http://weeka.herokuapp.com/api/chefs/1';
     this.query.getData(path).subscribe(
       res => {
-        this.allData = res;
-        console.log(this.allData);
-        this.checkMeal();
+        this.chefData = res.data;
+        console.log(this.chefData);
       },
       err => { console.log(err) }
     );
   }
 
-  // ========== accessing single product from all products ========
-  checkMeal(): void {
-    for (let cooker of this.allData) {
-      this.cookerData = cooker;
-    }
-  }
   editInfo(): void {
     this.editFlag = !this.editFlag;
   }
@@ -63,12 +59,12 @@ export class CookerDataComponent implements OnInit {
   editFunc(data: NgForm): void {
     if (data.valid) {
       // post request to update cooker data object in database
-      console.log(this.cookerData);
-      if (this.cookerData["gender"] == 'female') {
-        this.cookerData["gender"] = "أنثي";
+      console.log(this.chefData);
+      if (this.chefData["gender"] == 'female') {
+        this.chefData["gender"] = "أنثي";
       }
-      if (this.cookerData["gender"] == 'male') {
-        this.cookerData["gender"] = "ذكر";
+      if (this.chefData["gender"] == 'male') {
+        this.chefData["gender"] = "ذكر";
       }
       this.editFlag = !this.editFlag;
     }

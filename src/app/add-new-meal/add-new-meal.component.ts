@@ -26,7 +26,7 @@ afterPercentage:number;
 
 
     this.ngxCropperConfig = {
-      url: "", // image server url
+      url: "http://weeka.herokuapp.com/api/meal", // image server url
       maxsize: 512000, // image max size, default 500k = 512000bit
       title: 'Apply your image size and position', // edit modal title, this is default
       uploadBtnName: 'Upload Image', // default Upload Image

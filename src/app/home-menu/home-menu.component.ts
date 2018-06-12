@@ -5,6 +5,9 @@ import { NgModel, NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 
+import { TransferDataService } from '../transfer-data.service';
+
+
 @Component({
   selector: 'app-home-menu',
   templateUrl: './home-menu.component.html',
@@ -13,15 +16,16 @@ import { ActivatedRoute } from '@angular/router';
 export class HomeMenuComponent implements OnInit {
   public areas: Array<object>;
   public selected:string;
-  
+  districts: Array<object>;
  
   
 
-  constructor(private q: QueryService, private menu: Router,private a:ActivatedRoute) {
+  constructor(private q: QueryService, private menu: Router,private a:ActivatedRoute,
+    private transfer : TransferDataService 
+  ) {
     this.areas = [];
     this.selected=this.q.getArea()||'اختر منطقتك';
-    
-    
+    this.districts =[];
    }
    // function to get areas
 
@@ -51,6 +55,8 @@ export class HomeMenuComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.transfer.cast2.subscribe(product => this.districts = product);
+    console.log(this.districts)    
   }
 
 }

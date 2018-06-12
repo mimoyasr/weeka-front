@@ -28,13 +28,8 @@
           <h4>المجموع</h4>
         </div>
         <div class="col-6">
-          <!-- <h4 *ngIf="totalOneMeal > 0">{{totalOneMeal}} جنيه</h4>
-          <div *ngFor='let prop of allCartMeals'>
-            <h4 *ngIf="totalOneMeal == 0">{{prop.mealPrice * prop.qty}} جنيه</h4>
-          </div> -->
+
           <h4>{{totalOneMeal}} جنيه</h4>
-          
-          <!-- <h4 *ngIf="totalOneMeal == 0">{{allCartMeals.entries().next().value[0]["mealPrice"]}} جنيه</h4> -->
 
         </div>
       </div>
@@ -56,10 +51,10 @@
           <h4>{{total}} جنيه</h4>
         </div>
       </div>
- 
-        <button class="btn checkout-btn" (click)="chefNotifications()">الأن</button>
-        <button class="btn checkout-btn m-0">مؤجل</button>
-    
+
+      <button class="btn checkout-btn" (click)="chefNotifications()">الأن</button>
+      <button class="btn checkout-btn m-0" (click)="open(content)">مؤجل</button>
+
     </div>
   </div>
 
@@ -67,5 +62,42 @@
     <i class="icon-basket"></i>
     <h3>السلة فارغة</h3>
   </div>
+
+  <!-- modal for delay the order -->
+  <ng-template #content let-c="close" let-d="dismiss" class="custom-modal">
+    <div class="modal-header custom-modal d-flex justify-content-between">
+      <h4 class="modal-title">الطلب مؤجل الى:</h4>
+      <button type="button" class="close p-0 m-0" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form name="modalForm" #modalForm="ngForm">
+        <div class="form-group custom-modal">
+          <label for="dateOfBirth">تاريخ تسليم الطلب</label>
+          <div class="input-group mb-4">
+            <input id="dateOfBirth" [(ngModel)]="delayOrder.date" class="form-control ml-3" placeholder="يوم - شهر - سنة" name="dp" ngbDatepicker #dp="ngbDatepicker">
+
+          </div>
+
+          <label for="dateOfBirth">توقيت تسليم الطلب</label>
+          <div class="input-group">
+            <input type="number" class="form-control ml-3" aria-describedby="emailHelp" placeholder="دقيقة" name="minuite" [(ngModel)]="delayOrder.minuite">
+            <input type="number" class="form-control ml-3" aria-describedby="emailHelp" placeholder="ساعة" name="hours" [(ngModel)]="delayOrder.hours">
+            <select name="amOrpm" [(ngModel)]="delayOrder.amOrpm" id="">
+              <option [selected]="delayOrder.amOrpm == 'ص'" >ص</option>
+              <option [selected]="delayOrder.amOrpm == 'م'">م</option>              
+            </select>
+            <hr>
+          </div>
+
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer justify-content-start">
+      <button type="button" class="btn small-btn" (click)="c('Save click')" (click)="saveTime()">حفظ</button>
+    </div>
+  </ng-template>
+
 
 </aside>

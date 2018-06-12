@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row justify-content-center ">
-    <div class=" col-sm-8 home-menu">
+    <div class=" col-sm-12 col-md-8 home-menu">
       <div class="row no-gutters">
-        <div class="col-sm-9">
+        <div class="-col-sm-12 col-md-9">
           <div class="btn-group w-100 btn-group-justified">
             <div class="btn-group w-100" ngbDropdown role="group" aria-label="Button group with nested dropdown">
 
@@ -10,13 +10,13 @@
 
 
               <div class="dropdown-menu" ngbDropdownMenu>
-                <button class="dropdown-item" *ngFor="let area of areas" (click)="showItem(area.areaName)">{{area.areaName}}</button>
+                <button class="dropdown-item" *ngFor="let area of districts" (click)="showItem(area.name)">{{area.name}}</button>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-sm-3">
-          <button class="btn big-btn menu w-100" (click)=" redirectToMenu()">المنيو</button>
+        <div class="col-sm-12 col-md-3">
+          <button class="btn big-btn menu " (click)=" redirectToMenu()">المنيو</button>
         </div>
       </div>
     </div>

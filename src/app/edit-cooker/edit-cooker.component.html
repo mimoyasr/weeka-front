@@ -9,24 +9,21 @@
           </a>
         </div>
         <div class="col-md-5">
-          <div ngbDropdown placement="bottom-right" class="navdrop d-inline-block pl-3 ">
-            <button class="btn bg-transparent" id="dropdownBasic1" ngbDropdownToggle>
-              <i class="icon-down-open pl-2"></i>الحالة</button>
-            <div class="p-0 rounded-0" ngbDropdownMenu aria-labelledby="dropdownBasic1">
-              <button class="dropdown-item">متواجد</button>
-              <button class="dropdown-item">غير متواجد</button>
-            </div>
-          </div>
+          <select class="bg-transparent border-0 text-white" #status (click)="statusFunc()" name="الحالة">
+            <option value="true">متواجد</option>
+            <option value="false">غير متواجد</option>
+          </select>
+
           <div ngbDropdown placement="bottom-right" class="navdrop d-inline-block pl-3">
             <button class="btn bg-transparent" id="dropdownBasic1" ngbDropdownToggle>
-              <i class="icon-down-open pl-2"></i>أسم الطباخ
+              <i class="icon-down-open pl-2"></i>{{chefData.fname}} {{chefData.lname}}
             </button>
             <div class="p-0 rounded-0" ngbDropdownMenu aria-labelledby="dropdownBasic1">
-              <button class="dropdown-item">الصفحة الشخصية</button>
-              <button class="dropdown-item">تسجيل الخروج</button>
+              <button value="true" class="dropdown-item">الصفحة الشخصية</button>
+              <button value="false" class="dropdown-item">تسجيل الخروج</button>
             </div>
           </div>
-          <a href="#" class="border text-white p-2">إضافة أكله</a>
+          <a routerLink="/newMeal" class="border text-white p-2">إضافة أكله</a>
         </div>
 
       </div>
@@ -50,7 +47,7 @@
           اكلاتك
         </ng-template>
         <ng-template ngbTabContent>
-
+          <app-all-meals></app-all-meals>
         </ng-template>
       </ngb-tab>
 
@@ -68,7 +65,7 @@
           اموالك
         </ng-template>
         <ng-template ngbTabContent>
-
+          <app-payment></app-payment>
         </ng-template>
       </ngb-tab>
 

@@ -95,5 +95,18 @@
         width: 35px;
     }
   }
+  select{
+      border:none;
+      border-bottom: 1px solid $textColor;
+  }
+  .date-btn{
+      border-radius: 0;
+      background: $mainColor;
+      color: $whiteColor;
+  }
 
-  
+  .custom-modal{
+      h4,label{
+          font-family: $headlinesFonts;
+      }
+  }
