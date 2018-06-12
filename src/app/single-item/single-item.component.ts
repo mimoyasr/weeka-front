@@ -51,15 +51,6 @@ export class SingleItemComponent implements OnInit {
     );
   }
 
-  // ========== accessing single product from all products ========
-  // checkMeal(): void {
-  //   for (let meal of this.mealData) {
-  //     if (meal.mealTitel == this.singleName) {
-  //       this.singleData = meal;
-  //     }
-  //   }
-  // }
-
   //============ Add To Cart ==========
   addToCart(): void {
 
