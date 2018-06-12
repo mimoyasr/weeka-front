@@ -15,10 +15,13 @@ export class EditUserComponent implements OnInit {
 
   historyMeals: Array<any>;
   allCartMeals:Set<any>;
+  favouriteMeals: Array<any>;  
 
   constructor(private q: QueryService, private transfer:TransferDataService) { 
     this.historyMeals = [];
     this.getHistoryData();
+    this.favouriteMeals = [];
+    this.getFavData();
   }
 
   ngOnInit() {
@@ -35,6 +38,17 @@ export class EditUserComponent implements OnInit {
       err => { console.log(err) }
     );
   }
+
+    // ============== get data from server ===============
+    getFavData(): void {
+      let path = '../../assets/favourite.json';
+      this.q.getData(path).subscribe(
+        res => {
+          this.favouriteMeals = res;
+        },
+        err => { console.log(err) }
+      );
+    }
 
   // ============== trigger order button ==============
   addToCartHistory(id){

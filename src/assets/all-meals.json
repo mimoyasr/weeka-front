@@ -1,0 +1,57 @@
+[
+    {
+        "id": 1,
+        "image": "../assets/images/home-page/meal-card4.jpg",
+        "singleImg": "../assets/images/single-page/meal4-S.jpg",
+        "mealTitel": "الإسباجتي الإيطالي",
+        "mealPrice": "33",
+        "mealDescription": "إسباجتي باستا المطهية مع زيت الزيتون و الثوم و تقدم مع قطع طماطم ",
+        "mealRate": "5",
+        "orders": "25",
+        "isActive": false
+    },
+    {
+        "id": 2,
+        "image": "../assets/images/home-page/meal-card3.jpg",
+        "singleImg": "../assets/images/single-page/meal3-S.jpg",
+        "mealTitel": "طبق الدجاج المشوي",
+        "mealPrice": "77",
+        "mealDescription": "الدجاج المشوي الصحي و اللذيذ مع الفاصولياو شرائح الجزر و المشروم الطازج",
+        "mealRate": "1",
+        "orders": "25",
+        "isActive": true
+    },
+    {
+        "id": "3",
+        "image": "../assets/images/home-page/meal-card2.jpg",
+        "singleImg": "../assets/images/single-page/meal2-S.jpg",
+        "mealTitel": "اصابع الدجاج المقليه",
+        "mealPrice": "45",
+        "mealDescription": "أصابع الدجاج المقلية مع صوص البافلو مقدمة مع صوص الرانش",
+        "mealRate": "4",
+        "orders": "25",
+        "isActive": true
+    },
+    {
+        "id": "4",
+        "image": "../assets/images/home-page/meal-card1.jpg",
+        "singleImg": "../assets/images/single-page/meal1-S.jpg",
+        "mealTitel": "سلطة السيزر بالجمبرى",
+        "mealPrice": "65",
+        "mealDescription": "الجمبرى المشوي مع الخس الطازج و الطماطم و قطع الخبز المحمص",
+        "mealRate": "2",
+        "orders": "25",
+        "isActive": true
+    },
+    {
+        "id": 5,
+        "image": "../assets/images/home-page/meal-card3.jpg",
+        "singleImg": "../assets/images/single-page/meal3-S.jpg",
+        "mealTitel": "طبق الدجاج المشوي",
+        "mealPrice": "77",
+        "mealDescription": "الدجاج المشوي الصحي و اللذيذ مع الفاصولياو شرائح الجزر و المشروم الطازج",
+        "mealRate": "1",
+        "orders": "25",
+        "isActive": true
+    }
+]

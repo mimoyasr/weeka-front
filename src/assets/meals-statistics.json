@@ -36,6 +36,66 @@
             "MealName":"شوربة",
             "avgRate" :1
         }
-    ]
+    ],
 
+    "chefRate":
+    [
+        {
+            "month": "يناير",
+            "rate": 1
+        },
+        {
+            "month": "فبراير",
+            "rate": 2
+        },
+        {
+            "month": "مارس",
+            "rate": 2
+        },
+        {
+            "month": "ابريل",
+            "rate":4
+        },
+        {
+            "month": "مايو",
+            "rate":""
+        },
+        {
+            "month": "يونيو",
+            "rate":4
+        },
+        {
+            "month": "يوليو",
+            "rate":2
+        },
+        {
+            "month": "اغسطس",
+            "rate":""
+        },
+        {
+            "month": "سبتمبر",
+            "rate":""
+        },
+        {
+            "month": "اكتوبر",
+            "rate":""
+        },
+        {
+            "month": "نوفمبر",
+            "rate":""
+        },
+        {
+            "month": "ديسمبر",
+            "rate":""
+        }
+    ],
+    "tops":
+    [
+        {
+            "topMealName" : "اصابع الدجاج",
+            "totalMoney" : 5200,
+            "num" : 25
+        }
+    ]
+    
 }

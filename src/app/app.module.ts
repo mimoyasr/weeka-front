@@ -9,7 +9,7 @@ import { RatingModule } from "ngx-rating";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxCropperModule } from 'ngx-cropper';
 import { NgxPaginationModule } from 'ngx-pagination';
-import {HttpModule} from "@angular/http";
+import { HttpModule } from "@angular/http";
 
 
 //App component
@@ -26,7 +26,7 @@ import { MealCommentComponent } from './meal-comment/meal-comment.component';
 import { HomeMenuComponent } from './home-menu/home-menu.component';
 import { CartComponent } from './cart/cart.component';
 import { EditCookerComponent } from './edit-cooker/edit-cooker.component';
-import { NgbdRatingBasic } from './rating';
+// import { NgbdRatingBasic } from './rating';
 import { AddNewMealComponent } from './add-new-meal/add-new-meal.component';
 import { NotificationComponent } from './notification/notification.component';
 import { CookerDataComponent } from './cooker-data/cooker-data.component';
@@ -40,6 +40,7 @@ import { UserInfoComponent } from './user-info/user-info.component';
 import { UserHistoryComponent } from './user-history/user-history.component';
 import { UserFavsComponent } from './user-favs/user-favs.component';
 import { PaymentComponent } from './payment/payment.component';
+import { AllMealsComponent } from './all-meals/all-meals.component';
 
 
 //services
@@ -48,7 +49,7 @@ import { TransferDataService } from './transfer-data.service';
 import { StatisticsService } from './statistics.service';
 
 //scripts
-// import { Chart } from 'chart.js';
+import { Chart } from 'chart.js';
 
 const appRoutes: Routes = [
   { path: '', component: HomeGuestComponent },
@@ -93,6 +94,7 @@ const appRoutes: Routes = [
     UserHistoryComponent,
     UserFavsComponent,
     ChefStatisticComponent,
+    AllMealsComponent,
     PaymentComponent
   ],
   imports: [

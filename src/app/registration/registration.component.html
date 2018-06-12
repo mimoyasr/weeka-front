@@ -41,12 +41,12 @@
             <div class="row">
               <!-- first name -->
               <div class="col-6">
-                <input type="text" name="fName" #fName="ngModel" [(ngModel)]="RegisterData.fName" required class="form-control" id="exampleInputEmail1"
+                <input type="text" name="fname" #fname="ngModel" [(ngModel)]="RegisterData.fname" required class="form-control" id="exampleInputEmail1"
                   aria-describedby="emailHelp" placeholder="الأسم الأول">
 
                 <!-- validation  message -->
-                <div *ngIf="fName.invalid && (fName.dirty || fName.touched || register.submitted)">
-                  <div *ngIf="fName.errors.required" class="text-danger">
+                <div *ngIf="fname.invalid && (fname.dirty || fname.touched || register.submitted)">
+                  <div *ngIf="fname.errors.required" class="text-danger">
                     * هذا الحقل مطلوب
                   </div>
                 </div>
@@ -54,12 +54,12 @@
               </div>
               <!-- last name -->
               <div class="col-6">
-                <input type="text" name="lName" #lName="ngModel" [(ngModel)]="RegisterData.lName" required class="form-control" id="exampleInputEmail2"
+                <input type="text" name="lname" #lname="ngModel" [(ngModel)]="RegisterData.lname" required class="form-control" id="exampleInputEmail2"
                   aria-describedby="emailHelp" placeholder="الأسم الأخير">
 
                 <!-- validation  message -->
-                <div *ngIf="lName.invalid && (lName.dirty || lName.touched || register.submitted)">
-                  <div *ngIf="lName.errors.required" class="text-danger">
+                <div *ngIf="lname.invalid && (lname.dirty || lname.touched || register.submitted)">
+                  <div *ngIf="lname.errors.required" class="text-danger">
                     * هذا الحقل مطلوب
                   </div>
                 </div>
@@ -70,7 +70,7 @@
 
           <!-- email address -->
           <div class="form-group">
-            <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="userEmail" #email="ngModel" [(ngModel)]="RegisterData.userEmail"
+            <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" #email="ngModel" [(ngModel)]="RegisterData.email"
               required class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" placeholder="البريد الإلكترونى">
           </div>
           <!-- validation Email message -->
@@ -82,15 +82,18 @@
           <div class="text-danger" *ngIf="email.errors && register.submitted && !email.errors.required">
             * البريد الالكترونى غير صحيح
           </div>
+          <div class="text-danger" *ngIf="alreadyUser">
+            *البريد الالكترونى مستخدم
+          </div>
 
           <!-- password -->
           <div class="form-group">
-            <input type="password" name="pass" #pass="ngModel" [(ngModel)]="RegisterData.pass" required class="form-control" id="exampleInputEmail4"
-              aria-describedby="emailHelp" placeholder="كلمة السر">
+            <input type="password" name="password" #password="ngModel" [(ngModel)]="RegisterData.password" required class="form-control"
+              id="exampleInputEmail4" aria-describedby="emailHelp" placeholder="كلمة السر">
           </div>
           <!-- validation  message -->
-          <div *ngIf="pass.invalid && (pass.dirty || pass.touched || register.submitted)">
-            <div *ngIf="pass.errors.required" class="text-danger">
+          <div *ngIf="password.invalid && (password.dirty || password.touched || register.submitted)">
+            <div *ngIf="password.errors.required" class="text-danger">
               * هذا الحقل مطلوب
             </div>
           </div>
@@ -106,7 +109,7 @@
               * هذا الحقل مطلوب
             </div>
           </div>
-          <div *ngIf="(pass2.value != pass.value) && register.submitted && !pass2.invalid" class="text-danger">
+          <div *ngIf="(pass2.value != password.value) && register.submitted && !pass2.invalid" class="text-danger">
             * كلمة السر غير متطابقة
           </div>
 
@@ -114,26 +117,33 @@
           <div class="form-group">
             <div class="row">
               <div class="col-9">
-                <input type="text" pattern="[0-9]{7,8}" name="phone" #phone="ngModel" [(ngModel)]="RegisterData.phone" required class="form-control"
+                <input type="text" pattern="[0-9]{7,8}" name="number" #number="ngModel" [(ngModel)]="RegisterData.number" required class="form-control"
                   id="exampleInputEmail6" aria-describedby="emailHelp" placeholder="رقم التليفون">
                 <!-- validation  message -->
-                <div *ngIf="phone.invalid && (phone.dirty || phone.touched || register.submitted)">
-                  <div *ngIf="phone.errors.required" class="text-danger">
+                <div *ngIf="number.invalid && (number.dirty || number.touched || register.submitted)">
+                  <div *ngIf="number.errors.required" class="text-danger">
                     * هذا الحقل مطلوب
                   </div>
                 </div>
-                <div class="text-danger" *ngIf="phone.errors && register.submitted && !phone.errors.required">
+                <div class="text-danger" *ngIf="number.errors && register.submitted && !phone.errors.required">
                   * رقم التليفون غير صحيح
                 </div>
               </div>
               <div class="col-3">
-                <select class="form-control" name="numPref" [(ngModel)]="RegisterData.numPref" id="exampleFormControlSelect1">
-                  <option selected>012</option>
-                  <option>010</option>
-                  <option>011</option>
-                  <option>015</option>
-                  <option>03</option>
+                <select class="form-control" #provider="ngModel" name="provider_id" [(ngModel)]="RegisterData.provider_id" id="exampleFormControlSelect1"
+                  required>
+                  <option [ngValue]="1" selected>012</option>
+                  <option [ngValue]="2">010</option>
+                  <option [ngValue]="3">011</option>
+                  <option [ngValue]="4">015</option>
+                  <option [ngValue]="5">03</option>
                 </select>
+                <!-- validation  message -->
+                <div *ngIf="provider.invalid && (provider.dirty || provider.touched || register.submitted)">
+                  <div *ngIf="provider.errors.required" class="text-danger">
+                    * هذا الحقل مطلوب
+                  </div>
+                </div>
               </div>
             </div>
           </div>
