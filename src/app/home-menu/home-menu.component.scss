@@ -43,3 +43,15 @@ button.search {
 
     }
   }
+  .big-btn 
+  {
+    width: 100% !important;
+    min-width: 100%  !important;
+  }
+
+  @media (max-width: 767px) { 
+    .home-menu
+    {
+      margin: 50px;
+    }
+ }

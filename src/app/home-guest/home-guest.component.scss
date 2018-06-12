@@ -17,7 +17,7 @@
 #fold
 {
     @include backgroundImg('/assets/images/home-page/hero-img.png');
-    height:850px;
+    min-height:850px;
     position: relative;
     h1
     {
@@ -66,5 +66,32 @@
     left: 0;
     right: 0;
     // margin-bottom: 100px;
-    height: 600px;
+    min-height: 600px;
 }
+
+@media (max-width: 767px) { 
+    #fold 
+    {
+        .nav
+        {
+          text-align: center;
+        }
+      .logo,.imp-btns
+      {
+        padding-bottom: 40px;
+      }
+      #fold-data
+      {
+          position: relative;
+      }
+    }
+    #cards
+    {
+        position: relative;
+    }
+    #how-we-work
+    {
+        padding: 0
+    }
+    
+ }

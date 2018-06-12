@@ -2,21 +2,21 @@
   <div class="cart-content" *ngIf="allCartMeals.size != 0">
     <h3 class="text-center mt-0">طلبك</h3>
     <div class="media" *ngFor="let product of allCartMeals">
-      <img class="ml-4" width="90" height="90" src={{product.image}} alt="Generic placeholder image">
+      <img class="ml-4" width="90" height="90" src="../assets/images/single-page/{{product.image}}" alt="Generic placeholder image">
       <div class="media-body">
         <div class="order-content d-flex justify-content-between">
           <div class="details">
-            <h4 class="mt-0 d-inline-block meal-title">{{product.mealTitel}}</h4>
+            <h4 class="mt-0 d-inline-block meal-title">{{product.name}}</h4>
             <div class="price-qt d-flex align-items-center justify-content-between">
               <div class="qty-input">
                 <i (click)="plus(product.id)" class="more">+</i>
                 <input type="text" value={{product.qty}}/>
                 <i (click)="minus(product.id)" class="less">-</i>
               </div>
-              <h4 class="ar-price"> {{product.mealPrice}}ج</h4>
+              <h4 class="ar-price"> {{product.price}}ج</h4>
             </div>
           </div>
-          <i class="icon-cancel" (click)="removeItem(product.id)"></i>
+          <i class="icon-cancel" (click)="removeItem(product.meal_id)"></i>
         </div>
       </div>
     </div>
@@ -82,16 +82,13 @@
 
           <label for="dateOfBirth">توقيت تسليم الطلب</label>
           <div class="input-group">
-
             <input type="number" class="form-control ml-3" aria-describedby="emailHelp" placeholder="دقيقة" name="minuite" [(ngModel)]="delayOrder.minuite">
             <input type="number" class="form-control ml-3" aria-describedby="emailHelp" placeholder="ساعة" name="hours" [(ngModel)]="delayOrder.hours">
             <select name="amOrpm" [(ngModel)]="delayOrder.amOrpm" id="">
               <option [selected]="delayOrder.amOrpm == 'ص'" >ص</option>
               <option [selected]="delayOrder.amOrpm == 'م'">م</option>              
             </select>
-
             <hr>
-
           </div>
 
         </div>

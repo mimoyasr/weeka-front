@@ -34,4 +34,9 @@ export class QueryService {
   putData(path: string, data): Observable<any> {
     return this.http.put(path, data);
   }
+  // fot send token to server
+  getData2(path: string, header): Observable<any> {
+    return this.http.get(path, header);
+  }
+
 }

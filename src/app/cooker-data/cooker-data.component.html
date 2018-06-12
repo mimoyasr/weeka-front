@@ -192,8 +192,12 @@
               </select>
             </div>
           </form>
+
+          
+
         </div>
 
+        
         <p class="mt-3">من</p>
         <div class="col-md-3 time">
           <ngb-timepicker [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
@@ -212,6 +216,20 @@
 
       </div>
 
+
+
+
+
+
+      <div class="input-group">
+        <input type="number" class="form-control ml-3" aria-describedby="emailHelp" placeholder="دقيقة" name="minuite" [(ngModel)]="delayOrder.minuite">
+        <input type="number" class="form-control ml-3" aria-describedby="emailHelp" placeholder="ساعة" name="hours" [(ngModel)]="delayOrder.hours">
+        <select name="amOrpm" [(ngModel)]="delayOrder.amOrpm" id="">
+          <option [selected]="delayOrder.amOrpm == 'ص'" >ص</option>
+          <option [selected]="delayOrder.amOrpm == 'م'">م</option>              
+        </select>
+        <hr>
+      </div>
       <!-- <button class="small-btn pt-1 pb-1 mt-5">+</button> -->
       <i class="icon-plus"></i>
     </div>
