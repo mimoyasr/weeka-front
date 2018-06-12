@@ -1,6 +1,20 @@
 @import '../../scss/mixins';
+@import '../../scss/variables';
+@import '../../scss/general';
+
+
+
 
 section{
     @include backgroundImg2('../../assets/images/menu/bg.png');
-    height:1850px;
+  
+   
+    ngb-rating
+    {
+      left: -2.5%;
+      top: 38%;
+    }
+ 
+
+   
 }
