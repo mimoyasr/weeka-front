@@ -6,7 +6,7 @@
             </a>
             <div class="media-body position-relative text-center">
                 <!-- Start fav meal icon -->
-                <div class="btn-group btn-group-toggle fav">
+                <div class="btn-group btn-group-toggle fav" (click)="fav()">
                     <label class="btn-primary custom" ngbButtonLabel>
                         <input type="checkbox" ngbButton [(ngModel)]="data.fav">
                         <div *ngIf="!data.fav">
@@ -16,6 +16,7 @@
                             <img class="" src="../../assets/images/fav.png" alt="">
                         </div>
                     </label>
+                    <P>{{data.fav}}</P>
                 </div>
                 <!--end fav meal icon -->
                 <!--Start meal rating  -->

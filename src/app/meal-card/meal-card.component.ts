@@ -14,12 +14,13 @@ export class MealCardComponent implements OnInit{
 
   mealData: Array<object>;
   districts: Array<object>;
+  favBtn: object;
   constructor(private Q: QueryService,
     private toSingleView: Router , 
     private transfer : TransferDataService) {
-
     this.mealData = [];
     this.districts = [];
+    this.favBtn ={};
     this.getMealData()
   }
 
@@ -32,14 +33,24 @@ export class MealCardComponent implements OnInit{
         this.mealData = res.meals;
         this.districts = res.districts;
         console.log(this.mealData)
+        console.log(this.mealData['fav'])
         console.log(this.districts)
         this.transfer.cast2.subscribe(product => this.districts = product);    
-
       },
       err => { console.log(err) }
     );
   }
 
+  // fav():void
+  // {
+  //   let favpath: string = 'http://weeka.herokuapp.com/api/meals/{{}}/favs';
+  //   this.Q.postData(favpath,this.favBtn).subscribe(
+  //     res => {
+  //       console.log(res)
+  //     },
+  //     err => { console.log(err) }
+  //   );
+  // }
   ngOnInit(){
     
   }
