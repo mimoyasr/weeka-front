@@ -30,11 +30,11 @@ export class HomeMenuComponent implements OnInit {
    // function to get areas
 
    getAreas(): void {
-    let path: string = '../../assets/home-menu.json';
+    let path: string = 'http://weeka.herokuapp.com/api/districts';
     this.q.getData(path).subscribe(
       res => {
-        this.areas = res;
-       
+        this.areas = res.data;
+       console.log(this.areas)
       },
       err => {
         console.log(err);
@@ -50,7 +50,9 @@ export class HomeMenuComponent implements OnInit {
 
    // redirect to menu
    redirectToMenu(): void {
-    this.menu.navigate(['/menu/'],{queryParams:{'المنطقة':this.selected}})
+
+/*     get url /api/districts/{slug}/menu -> array of meals 
+ */    this.menu.navigate(['/menu/'],)
 
   }
 
