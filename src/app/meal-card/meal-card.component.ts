@@ -41,16 +41,16 @@ export class MealCardComponent implements OnInit{
     );
   }
 
-  // fav():void
-  // {
-  //   let favpath: string = 'http://weeka.herokuapp.com/api/meals/{{}}/favs';
-  //   this.Q.postData(favpath,this.favBtn).subscribe(
-  //     res => {
-  //       console.log(res)
-  //     },
-  //     err => { console.log(err) }
-  //   );
-  // }
+  fav(id,fav):void
+  {
+    let favpath: string = `http://weeka.herokuapp.com/api/meals/${id}/favs`;
+    this.Q.postData(favpath,fav).subscribe(
+      res => {
+        console.log(res)
+      },
+      err => { console.log(err) }
+    );
+  }
   ngOnInit(){
     
   }
