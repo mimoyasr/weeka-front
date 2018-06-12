@@ -7,6 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class TransferDataService {
 
   private totalNum: number;
+  private myFunc: Function;
 
   private data = new BehaviorSubject(new Set);
   private data2 = new BehaviorSubject([]);
@@ -26,12 +27,12 @@ export class TransferDataService {
     this.data.next(newData);
   }
 
-  public setFunc(val: number): void {
-    this.totalNum = val;
+  public setFunc(val: Function): void {
+    this.myFunc = val;
   }
 
-  public getFunc(): number {
-    return this.totalNum;
+  public getFunc(): Function {
+    return this.myFunc;
   }
 
 

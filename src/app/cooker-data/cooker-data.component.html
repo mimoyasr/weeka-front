@@ -187,11 +187,14 @@
           <div class="headline">
             <h5 class="mb-3">العنوان:</h5>
           </div>
-          <p>
-            <!-- {{chefData.district}},{{chefData.building no}},{{chefData.street no}},{{chefData.floorno}},شقة{{chefData.flatno}} -->
-          </p>
-          <!-- ملاحظات -->
-          <p>{{chefData.notice}}</p>
+          <div *ngFor="let address of chefData.addresses">
+            <p>
+              {{address.district}},{{address.floorno}},شقة{{address.flatno}}
+            </p>
+            <!-- ملاحظات -->
+            <p>{{address.notice}}</p>
+          </div>
+
           <!-- <i class="icon-plus"></i> -->
         </div>
         <div class="col-md-6">

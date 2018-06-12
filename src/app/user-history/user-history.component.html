@@ -35,9 +35,9 @@
             <div class="price-bg rounded-circle position-absolute">
             </div>
           </div>
-          <a routerLink='/singleItem/{{meal.mealTitel}}'>
-            <button class="small-btn">اطلب</button>
-          </a>
+
+            <button class="small-btn" (click)="addToCartHistory(meal.id)">اطلب</button>
+
           <div class="media-footer mb-4">
             <div class="row">
               <div class="col-md-6">
