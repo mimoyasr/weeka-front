@@ -9,12 +9,10 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./cooker-data.component.scss']
 })
 export class CookerDataComponent implements OnInit {
-  allData: Array<any>;
-  cookerData: object;
+  chefData: object;
   editFlag: boolean;
   closeResult: string;
   editedPass: object;
-  chefData: object;
 
   constructor(private query: QueryService,
     private modalService: NgbModal) {
@@ -23,7 +21,6 @@ export class CookerDataComponent implements OnInit {
     this.getChefData();
     this.editFlag = false;
     this.editedPass = {};
-    this.chefData = {};
   }
 
   ngOnInit() {
@@ -58,8 +55,15 @@ export class CookerDataComponent implements OnInit {
   //=========== form validation function =============
   editFunc(data: NgForm): void {
     if (data.valid) {
-      // post request to update cooker data object in database
+      // patch request to update cooker data object in database
       console.log(this.chefData);
+      let path: string = 'http://weeka.herokuapp.com/api/chefs/1';
+      this.query.patchData(path, this.chefData).subscribe(
+        res => {
+          console.log(res);
+        },
+        err => { console.log(err) }
+      );
       if (this.chefData["gender"] == 'female') {
         this.chefData["gender"] = "أنثي";
       }
@@ -95,12 +99,15 @@ export class CookerDataComponent implements OnInit {
   // ============= change password function ===============
   saveChanges(data: NgForm): void {
     if (data.valid) {
-      //========== request update password ===========
+      //========== put request to update password ===========
       console.log(this.editedPass);
-      this.editedPass["oldPass"] = "";
-      this.editedPass["newPass"] = "";
-      this.editedPass["newPass2"] = "";
-
+      let path: string = 'http://weeka.herokuapp.com/api/chefs/1';
+      this.query.putData(path, this.editedPass).subscribe(
+        res => {
+          console.log(res);
+        },
+        err => { console.log(err) }
+      );
     } else {
       console.log('error');
     }

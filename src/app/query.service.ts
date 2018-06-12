@@ -26,4 +26,12 @@ export class QueryService {
   postData(path: string, data): Observable<any> {
     return this.http.post(path, data);
   }
+
+  patchData(path: string, data): Observable<any> {
+    return this.http.patch(path, data);
+  }
+
+  putData(path: string, data): Observable<any> {
+    return this.http.put(path, data);
+  }
 }
