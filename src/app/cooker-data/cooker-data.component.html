@@ -2,7 +2,7 @@
   <div class="container">
 
     <div class="profile-data">
-      <img class="profile-img m-0" src="../../assets/images/edit-cooker/chef_pp.jpg" alt="">
+      <img class="profile-img m-0" src="../assets/images/edit-cooker/chef_pp.jpg" alt="">
 
       <!-- ================= show view ================== -->
       <div class="profile-info" *ngIf="!editFlag">
@@ -34,82 +34,41 @@
             <div class="col-md-4">
               <!-- ============= first name ================== -->
               <div class="form-group">
-                <input type="text" class="form-control" value="{{cookerData.fName}}" placeholder="الأسم الأول" #fName="ngModel" name="fName"
-                  [(ngModel)]="cookerData.fName" required>
+                <input type="text" class="form-control" value="{{chefData.fname}}" placeholder="الأسم الأول" #fname="ngModel" name="fname"
+                  [(ngModel)]="chefData.fname" required>
                 <!-- validation  message -->
-                <div *ngIf="fName.invalid && (fName.dirty || fName.touched || editForm.submitted)">
-                  <div *ngIf="fName.errors.required" class="error-msg">
+                <div *ngIf="fname.invalid && (fname.dirty || fname.touched || editForm.submitted)">
+                  <div *ngIf="fname.errors.required" class="error-msg">
                     الحقل مطلوب
                   </div>
                 </div>
                 <!-- =============== last name ==================== -->
-                <input type="text" class="form-control" value="{{cookerData.lName}}" placeholder="الأسم الأخير" #lName="ngModel" name="lName"
-                  [(ngModel)]="cookerData.lName">
+                <input type="text" class="form-control" value="{{chefData.lname}}" placeholder="الأسم الأخير" #lname="ngModel" name="lname"
+                  [(ngModel)]="chefData.lname">
               </div>
-              <div *ngIf="lName.invalid && (lName.dirty || lName.touched || editForm.submitted)">
-                <div *ngIf="lName.errors.required" class="error-msg">
+              <div *ngIf="lname.invalid && (lname.dirty || lname.touched || editForm.submitted)">
+                <div *ngIf="lname.errors.required" class="error-msg">
                   الحقل مطلوب
                 </div>
               </div>
 
               <!-- ===================== bio ==================== -->
               <div class="form-group">
-                <textarea class="form-control" rows="3" placeholder="نبذة عنك.." name="bio" [(ngModel)]="cookerData.bio">{{cookerData.bio}}</textarea>
+                <textarea class="form-control" rows="3" placeholder="نبذة عنك.." name="description" [(ngModel)]="chefData.description">{{chefData.description}}</textarea>
               </div>
             </div>
 
             <div class="col-md-4">
-              <!-- ============ email ================= -->
-              <!-- <div class="form-group">
-                <input type="email" class="form-control mail" value="{{cookerData.email}}" placeholder="البريد الألكتروني" name="email" [(ngModel)]="cookerData.email"
-                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #email="ngModel" required>
-              </div> -->
-              <!-- validation Email message -->
-              <!-- <div *ngIf="email.invalid && (email.dirty || email.touched)">
-                <div class="error-msg" *ngIf="email.errors.required">
-                  * هذا الحقل مطلوب
-                </div>
-              </div>
-              <div class="error-msg" *ngIf="email.errors && editForm.submitted">
-                * البريد الالكترونى غير صحيح
-              </div> -->
-              <!-- ============ phone ================= -->
-              <!-- <div class="form-group">
-                <input type="text" class="form-control" value="{{cookerData.phone}}" placeholder="رقم التليفون" pattern="[0-9]{8}" name="phone"
-                  #phone="ngModel" [(ngModel)]="cookerData.phone">
-                <!-- validation  message -->
-              <!-- <div *ngIf="phone.invalid && (phone.dirty || phone.touched || register.submitted)">
-                  <div *ngIf="phone.errors.required" class="text-danger">
-                    * هذا الحقل مطلوب
-                  </div>
-                </div>
-                <div class="text-danger" *ngIf="phone.errors && register.submitted">
-                  * رقم التليفون غير صحيح
-                </div>
-
-                <select class="form-control phone" name="phonePrefix" [(ngModel)]="cookerData.phonePrefix">
-                  <option [selected]="cookerData.phonePrefix == '012'">012</option>
-
-                  <option [selected]="cookerData.phonePrefix == '010'">010</option>
-
-                  <option [selected]="cookerData.phonePrefix == '011'">011</option>
-
-                  <option [selected]="cookerData.phonePrefix == '015'">015</option>
-
-                  <option [selected]="cookerData.phonePrefix == '03'">03</option>
-
-                </select>
-              </div> -->
               <!-- ============== gender ==================== -->
               <div class="form-group">
                 <span class="pl-2">النوع</span>
                 <div class="radio d-inline-block">
-                  <input id="radio-1" name="gender" value="male" type="radio" [(ngModel)]="cookerData.gender">
+                  <input id="radio-1" name="gender" value="male" type="radio" [(ngModel)]="chefData.gender">
                   <label for="radio-1" class="radio-label">ذكر</label>
                 </div>
 
                 <div class="radio d-inline-block">
-                  <input id="radio-2" name="gender" value="female" type="radio" [(ngModel)]="cookerData.gender">
+                  <input id="radio-2" name="gender" value="female" type="radio" [(ngModel)]="chefData.gender">
                   <label for="radio-2" class="radio-label ml-3">أنثى</label>
                 </div>
               </div>
@@ -189,7 +148,7 @@
           </div>
           <div *ngFor="let address of chefData.addresses">
             <p>
-              {{address.district}},{{address.floorno}},شقة{{address.flatno}}
+              {{address.district}},{{address.buildingno}},{{address.streetno}},الدور{{address.floorno}},شقة{{address.flatno}}
             </p>
             <!-- ملاحظات -->
             <p>{{address.notice}}</p>
@@ -200,7 +159,9 @@
         <div class="col-md-6">
           <h5 class="mb-3">الايميل و رقم التليفون:</h5>
           <p class="mb-3"> {{chefData.email}}</p>
-          <p class="mb-3"> {{chefData.number}}{{chefData.number}}</p>
+          <div *ngFor="let tele of chefData.telephones">
+            <p class="mb-3"> {{tele.provider_id.prefix}}{{tele.number}}</p>
+          </div>
           <i class="icon-plus"></i>
         </div>
       </div>

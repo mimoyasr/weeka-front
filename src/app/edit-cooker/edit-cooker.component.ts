@@ -35,7 +35,7 @@ export class EditCookerComponent implements OnInit {
 
   statusFunc() {
     // console.log(this.status.nativeElement.value);
-    // this.chefStat = this.status.nativeElement.value;
-    console.log(this.status);
+    this.chefStat = this.status.nativeElement.value;
+    console.log(this.chefStat);
   }
 }

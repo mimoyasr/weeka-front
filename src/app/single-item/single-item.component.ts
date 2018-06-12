@@ -45,25 +45,17 @@ export class SingleItemComponent implements OnInit {
       res => {
         this.singleData = res.data;
         console.log(this.singleData);
+        this.singleData['qty'] = 1;
       },
       err => { console.log(err) }
     );
   }
 
-  // ========== accessing single product from all products ========
-  // checkMeal(): void {
-  //   for (let meal of this.mealData) {
-  //     if (meal.mealTitel == this.singleName) {
-  //       this.singleData = meal;
-  //     }
-  //   }
-  // }
-
   //============ Add To Cart ==========
   addToCart(): void {
 
     this.allCartMeals.forEach(element => {
-      if (element["id"] == this.singleData['id']) {
+      if (element["meal_id"] == this.singleData['meal_id']) {
         element['qty'] = parseInt(element['qty']) + 1;
       }
     });
