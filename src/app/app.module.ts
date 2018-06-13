@@ -61,7 +61,7 @@ const appRoutes: Routes = [
   { path: 'editCooker', component: EditCookerComponent },
   { path: 'editUser', component: EditUserComponent },
   { path: 'clientOrder', component: ClientOrderComponent },
-  { path: 'menu', component: MenuComponent },
+  { path: ':name/menu', component: MenuComponent },
   { path: 'statistics', component: ChefStatisticComponent }
 
 
