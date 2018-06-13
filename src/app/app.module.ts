@@ -47,7 +47,7 @@ import { AllMealsComponent } from './all-meals/all-meals.component';
 import { QueryService } from './query.service';
 import { TransferDataService } from './transfer-data.service';
 import { StatisticsService } from './statistics.service';
-
+import { AuthorizationService } from './authorization.service';
 //scripts
 import { Chart } from 'chart.js';
 
@@ -110,7 +110,7 @@ const appRoutes: Routes = [
  */    NgxPaginationModule,
     HttpModule
   ],
-  providers: [QueryService, TransferDataService, StatisticsService],
+  providers: [QueryService, TransferDataService, StatisticsService,AuthorizationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
