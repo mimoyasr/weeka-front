@@ -47,6 +47,11 @@ getMeals(): void {
     }
   )
 }
+
+// add To Cart function
+addToCart(){
+  
+}
   ngOnInit() {
   }
 

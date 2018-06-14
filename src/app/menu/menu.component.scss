@@ -37,7 +37,34 @@ nav
 
     }
 }
- 
+.sm-screen
+{
+    display: none;
+}
+.sm-screen
+{
+.card-img-top
+{
+    height: 250px;
+}
+}
+
+img.mealImg{
+width: 160px;
+height: 241px;
+}
+
+@media (max-width: 767px) { 
+
+.lg-screen
+{
+    display: none;
+}
+.sm-screen
+{
+    display: block;
+}
+}
 
    
 }

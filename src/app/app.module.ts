@@ -95,7 +95,8 @@ const appRoutes: Routes = [
     UserFavsComponent,
     ChefStatisticComponent,
     AllMealsComponent,
-    PaymentComponent
+    PaymentComponent,
+  
   ],
   imports: [
     BrowserModule,
