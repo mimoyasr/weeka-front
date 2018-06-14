@@ -5,6 +5,7 @@ import {  HttpHeaders } from '@angular/common/http';
 
 //=========== services ================
 import { QueryService } from '../query.service';
+import { TransferDataService } from '../transfer-data.service';
 
 @Component({
   selector: 'app-add-new-meal',
@@ -18,13 +19,16 @@ export class AddNewMealComponent {
     console.log(event)
   }  
 categories:Array<object>;
-mealData:object;
+mealData:Object;
+loginData:Object;
 afterPercentage:number;
-  constructor(private q:QueryService) {
+  constructor(private q:QueryService,
+    private transfer : TransferDataService) {
     this.categories = [];
     this.mealData = {};
     this. getCategories()
-    this.afterPercentage = 0
+    this.afterPercentage = 0;
+    this.loginData ={}
 
    }
 
@@ -58,16 +62,17 @@ afterPercentage:number;
       this.afterPercentage = price - ( price*Percentage/100 )
       console.log(this.afterPercentage)
 
-
-
       let newMealpath: string = 'http://weeka.herokuapp.com/api/meals';
       let tokenUser = localStorage.getItem('token');
       console.log(tokenUser);
       this.q.postDataHeader(newMealpath,{
         headers : new HttpHeaders({'Authorization':`Bearer ${tokenUser}`})
-      }).subscribe(
+      },this.mealData).subscribe(
         res => {
-          console.log(res)
+          console.log(res);
+          this.loginData = this.transfer.getData(); 
+          console.log(this.loginData)  ;
+        
         },
         err => { console.log(err)
         }

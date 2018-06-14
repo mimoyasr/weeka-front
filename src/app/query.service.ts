@@ -26,10 +26,10 @@ export class QueryService {
   postData(path: string,data): Observable<any> {
     return this.http.post(path,data);
   }
-  postDataHeader(path: string,data): Observable<any> {
+  postDataHeader(path: string,header, data ?): Observable<any> {
     console.log("from service")
     console.log(data)
-    return this.http.post(path, null,data);
+    return this.http.post(path,data,header);
 
   }
 

@@ -15,8 +15,8 @@ export class MealCardComponent implements OnInit{
 
   mealData: Array<object>;
   districts: Array<object>;
-  loginData: object;
-  favBtn: object;
+  loginData: Object;
+  favBtn: Object;
   constructor(private Q: QueryService,
     private toSingleView: Router , 
     private transfer : TransferDataService) {
@@ -24,6 +24,7 @@ export class MealCardComponent implements OnInit{
     this.districts = [];
     this.favBtn ={};
     this.getMealData()
+ 
   }
 
   //function to get meal data from json file   
@@ -40,7 +41,7 @@ export class MealCardComponent implements OnInit{
         console.log(this.mealData)
         console.log(this.mealData['fav'])
         console.log(this.districts)
-        this.transfer.cast4.subscribe(product => this.loginData = product); 
+        this.loginData = this.transfer.getData(); 
         console.log(this.loginData)   
       },
       err => { console.log(err) }

@@ -42,8 +42,7 @@ export class HomeGuestComponent implements OnInit {
       }).subscribe(res2 => {
         console.log(res2);
         this.logedUser = res2;
-        this.transfer.cast4.subscribe(product => this.logedUser = product);
-
+        this.transfer.setData(this.logedUser);
       })
     }
   }
@@ -58,3 +57,7 @@ export class HomeGuestComponent implements OnInit {
   }
 
 }
+
+
+
+
