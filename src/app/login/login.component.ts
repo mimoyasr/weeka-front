@@ -43,14 +43,15 @@ export class LoginComponent implements OnInit {
             headers : new HttpHeaders({'Authorization':`Bearer ${tokenUser}`})
           }).subscribe(res2 => {
             console.log(res2);
+            this.redirect();
           })
+          
    
       },
         err => {
           this.checkUserFlage = true
         });
 
-        this.redirect();
     }
     else {
       console.log("data is not correct");

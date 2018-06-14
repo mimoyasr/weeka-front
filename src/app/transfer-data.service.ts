@@ -12,12 +12,14 @@ export class TransferDataService {
   private data = new BehaviorSubject(new Set);
   private data2 = new BehaviorSubject([]);
   private data3 = new BehaviorSubject({});
+  private data4 = new BehaviorSubject({});
 
 
   //let me see data from any where
   cast = this.data.asObservable();
   cast2 = this.data2.asObservable();
   cast3 = this.data3.asObservable();
+  cast4 = this.data4.asObservable();
 
 
   constructor() { }

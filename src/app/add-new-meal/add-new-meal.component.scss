@@ -47,3 +47,34 @@
     background: #000 !important;
 }
 
+
+input[type=file] {
+    cursor: pointer;
+    width: 180px;
+    height: 34px;
+    overflow: hidden;
+    color: transparent;
+  }
+  
+  input[type=file]:before {
+    content: 'اختر صورة لوجبتك';
+    margin: 0 auto;
+    color: #fff;
+    width: 100% !important;
+    display: block;
+    text-align: center;
+  }
+  
+  
+  input[type=file]::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  
+//   .myImage {
+//     border: 2px dashed #036df7;
+//   }
+.bgColor
+{
+  background: #ddd;
+  height: 150px;
+}

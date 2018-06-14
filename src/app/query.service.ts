@@ -23,8 +23,14 @@ export class QueryService {
     return this.area;
   }
 
-  postData(path: string, data): Observable<any> {
-    return this.http.post(path, data);
+  postData(path: string,data): Observable<any> {
+    return this.http.post(path,data);
+  }
+  postDataHeader(path: string,data): Observable<any> {
+    console.log("from service")
+    console.log(data)
+    return this.http.post(path, null,data);
+
   }
 
   patchData(path: string, data): Observable<any> {
