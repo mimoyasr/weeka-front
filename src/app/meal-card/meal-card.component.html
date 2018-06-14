@@ -6,11 +6,11 @@
             </a>
             <div class="media-body position-relative text-center">
                 <!-- Start fav meal icon -->
-                <div class="btn-group btn-group-toggle fav">
+                <div class="btn-group btn-group-toggle fav" >
                     <label class="btn-primary custom" ngbButtonLabel>
-                        <input type="checkbox" ngbButton [(ngModel)]="data.fav">
-                        <div *ngIf="!data.fav">
-                            <img class="" src="../../assets/images/not-fav.png" alt="">
+                        <input type="checkbox" ngbButton [(ngModel)]="data.fav" (click)="fav(data.meal_id)">
+                        <div *ngIf="!data.fav" >
+                            <img class="" src="../../assets/images/not-fav.png" alt="" >
                         </div>
                         <div *ngIf="data.fav">
                             <img class="" src="../../assets/images/fav.png" alt="">
@@ -42,6 +42,8 @@
                         </div>
                         <div class="col-md-6">
                             <p>عدد مرات الطلب: {{data.numbers_of_orders}}</p>
+
+                            <!-- <h3>{{loginData.data['fname']}}</h3> -->
                         </div>
                     </div>
                 </div>

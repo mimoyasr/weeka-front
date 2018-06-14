@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QueryService } from '../query.service';
 import {  HttpHeaders } from '@angular/common/http';
+import { TransferDataService } from '../transfer-data.service';
 
 @Component({
   selector: 'app-home-guest',
@@ -11,14 +12,16 @@ export class HomeGuestComponent implements OnInit {
   workData: Array<object>;
   logedUser:Object;
   token:String;
-  constructor(private Q: QueryService) {
+  constructor(private Q: QueryService,
+  private transfer : TransferDataService
+  ) {
     this.workData = [];
     this.token = localStorage.getItem('token');
     this.getWorkData();
     this.logedUser = {};
     this.getLoginedData();
+  
   }
-
   getWorkData(): void {
     let path: string = "./assets/how-we-work.json";
     this.Q.getData(path).subscribe(
@@ -39,7 +42,7 @@ export class HomeGuestComponent implements OnInit {
       }).subscribe(res2 => {
         console.log(res2);
         this.logedUser = res2;
-  
+        this.transfer.setData(this.logedUser);
       })
     }
   }
@@ -50,6 +53,11 @@ export class HomeGuestComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
 }
+
+
+
+
