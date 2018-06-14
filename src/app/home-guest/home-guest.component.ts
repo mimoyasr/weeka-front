@@ -20,8 +20,8 @@ export class HomeGuestComponent implements OnInit {
     this.getWorkData();
     this.logedUser = {};
     this.getLoginedData();
+  
   }
-
   getWorkData(): void {
     let path: string = "./assets/how-we-work.json";
     this.Q.getData(path).subscribe(

@@ -1,6 +1,8 @@
 @import '../../scss/mixins';
 @import '../../scss/variables';
 @import '../../scss/general';
+@import '../../scss/tabs';
+
 
 
 
@@ -14,6 +16,27 @@ section{
       left: -2.5%;
       top: 38%;
     }
+  
+nav
+{
+    .btn:focus{
+        @include boxShadow(none);
+    }
+    .dropdown-item{
+        padding: 10px 15px;
+        text-align: right;
+        color: $headlinesColor;        
+        &:hover{
+            background-color: $mainColor;
+            color: #fff;
+        }
+        &:focus{
+        background-color: transparent;
+        outline: none;
+        }
+
+    }
+}
  
 
    
