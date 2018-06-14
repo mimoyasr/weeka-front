@@ -5,6 +5,7 @@ import {  HttpHeaders } from '@angular/common/http';
 
 //service
 import { QueryService } from '../query.service';
+import { TransferDataService } from '../transfer-data.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ import { QueryService } from '../query.service';
 export class LoginComponent implements OnInit {
   userLogin: any;
   checkUserFlage: boolean;
-  constructor(private query: QueryService, private router: Router) {
+  constructor(private query: QueryService, private router: Router, private transfer:TransferDataService) {
     this.userLogin = {
       "email": "",
       "password": ""
@@ -43,10 +44,9 @@ export class LoginComponent implements OnInit {
             headers : new HttpHeaders({'Authorization':`Bearer ${tokenUser}`})
           }).subscribe(res2 => {
             console.log(res2);
+            this.transfer.loginData.subscribe(product => res2 = product);
             this.redirect();
           })
-          
-   
       },
         err => {
           this.checkUserFlage = true

@@ -8,11 +8,12 @@ export class TransferDataService {
 
   private totalNum: number;
   private myFunc: Function;
-
   private data = new BehaviorSubject(new Set);
   private data2 = new BehaviorSubject([]);
   private data3 = new BehaviorSubject({});
   private data4 = new BehaviorSubject({});
+  private login = new BehaviorSubject({});
+  
 
 
   //let me see data from any where
@@ -20,6 +21,8 @@ export class TransferDataService {
   cast2 = this.data2.asObservable();
   cast3 = this.data3.asObservable();
   cast4 = this.data4.asObservable();
+  loginData = this.login.asObservable();
+  
 
 
   constructor() { }
