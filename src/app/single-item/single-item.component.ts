@@ -23,6 +23,7 @@ export class SingleItemComponent implements OnInit {
   constructor(private active: ActivatedRoute,
     private query: QueryService,
     private transfer: TransferDataService) {
+
     this.singleData = {};
     this.mealData = [];
     this.allCartMeals = new Set();
@@ -38,7 +39,7 @@ export class SingleItemComponent implements OnInit {
     );
 
   }
-  //============ get data from json file ==========
+  //============ get data from server file ==========
   getMealData(): void {
     let path: string = `http://weeka.herokuapp.com/api/menu/${this.singleName}`;
     this.query.getData(path).subscribe(
