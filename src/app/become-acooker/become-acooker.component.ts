@@ -101,8 +101,7 @@ export class BecomeAcookerComponent implements OnInit {
   redirect(): void {
     this.router.navigate(['/editCooker']);
   }
+
 }
-
-
 
 

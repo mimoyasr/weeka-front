@@ -31,6 +31,7 @@ export class HomeMenuComponent implements OnInit {
     this.areas = [];
     this.selected = this.q.getArea() || 'اختر منطقتك';
     this.districts = [];
+
   }
   // function to get areas
 
