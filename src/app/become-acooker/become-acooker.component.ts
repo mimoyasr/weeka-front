@@ -98,8 +98,9 @@ onChange( event,d: any,a:string){
   redirect(): void {
     this.router.navigate(['/editCooker']);
   }
+  ngOnInit(){
+    
+  }
 }
 
-  
- 
-}
+   

@@ -20,6 +20,8 @@ export class HomeMenuComponent implements OnInit {
   public areas: Array<object>;
   public selected: string;
   public mySlug:string;
+  public closeResult:any;
+
   districts: Array<object>;
 
 
@@ -30,6 +32,7 @@ export class HomeMenuComponent implements OnInit {
     this.areas = [];
     this.selected = this.q.getArea() || 'اختر منطقتك';
     this.districts = [];
+  
   }
   // function to get areas
 
@@ -58,7 +61,7 @@ export class HomeMenuComponent implements OnInit {
     this.modalService.open(content).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      this.closeResult= `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
 
