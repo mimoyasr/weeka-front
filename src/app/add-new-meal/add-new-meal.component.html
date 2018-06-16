@@ -23,18 +23,22 @@
                 <h2>اضافة أكلة جديدة </h2>
                 <hr class="ml-auto">
             </div>
-          <!-- <ngx-cropper [config]="ngxCropperConfig"
-           (returnData)="onReturnData($event)"></ngx-cropper> -->
-            <input type="file" >
+
+      <!-- meal image input -->
+      <div class="my-5 bgColor py-4 px-5">
+        <input type="file" name="pic" #pic="ngModel" [(ngModel)]="newMeal.pic"
+        class="w-100 mt-3 mb-0 myImage p-5" value="" accept="image/*">
+      </div>
+
        <!-- meal name input -->
       <div class="form-group">
         <input type="text" class="form-control" placeholder="اسم الأكلة " 
-        name="mealName" #mealName="ngModel" [(ngModel)]="newMeal.mealName"
+        name="name" #name="ngModel" [(ngModel)]="newMeal.name"
           required />
       </div>
       <!-- validation meal name -->
-      <div *ngIf="mealName.invalid && (mealName.dirty || mealName.touched || newMeal.submitted==true)">
-        <div *ngIf="mealName.errors.required" class="text-danger">
+      <div *ngIf="name.invalid && (name.dirty || name.touched || newMeal.submitted==true)">
+        <div *ngIf="name.errors.required" class="text-danger">
           * هذا الحقل مطلوب
         </div>
       </div>
@@ -47,12 +51,13 @@
           required />
       </div>
 
+      <p>{{ afterPercentage }}</p>
 
       <!-- category input -->
       <div class="form-group">
         <select class="form-control" id="exampleFormControlSelect9"
          name="category" [(ngModel)]="category" required #cat="ngModel">
-          <option *ngFor="let cat of categories" value=" {{cat.categoryName}}">{{cat.categoryName}}</option>
+          <option *ngFor="let cat of categories" value=" {{cat.name}}">{{cat.name}}</option>
         </select>
         <span *ngIf="newMeal.submitted==true && newMeal.valid==false  && !cat.valid " class="text-danger">* هذا الحقل مطلوب</span>
       </div>
@@ -76,6 +81,5 @@
 
     </div>
   </form>
-  <p>{{ afterPercentage }}</p>
 
 </section>

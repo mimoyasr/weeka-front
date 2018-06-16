@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { QueryService } from '../query.service';
 import { NgModel, NgForm } from '@angular/forms';
 import { NgxCropperOption } from 'ngx-cropper';
+import {  HttpHeaders } from '@angular/common/http';
 
+//=========== services ================
+import { QueryService } from '../query.service';
+import { TransferDataService } from '../transfer-data.service';
 
 @Component({
   selector: 'app-add-new-meal',
@@ -16,48 +19,26 @@ export class AddNewMealComponent {
     console.log(event)
   }  
 categories:Array<object>;
-mealData:object;
+mealData:Object;
+loginData:Object;
 afterPercentage:number;
-  constructor(private q:QueryService) {
+  constructor(private q:QueryService,
+    private transfer : TransferDataService) {
     this.categories = [];
     this.mealData = {};
     this. getCategories()
-    this.afterPercentage = 0
-
-
-    this.ngxCropperConfig = {
-      url: "http://weeka.herokuapp.com/api/meal", // image server url
-      maxsize: 512000, // image max size, default 500k = 512000bit
-      title: 'Apply your image size and position', // edit modal title, this is default
-      uploadBtnName: 'Upload Image', // default Upload Image
-      uploadBtnClass:'upload-btn', // default bootstrap styles, btn btn-primary
-      cancelBtnName: 'Cancel', // default Cancel
-      cancelBtnClass: null, // default bootstrap styles, btn btn-default
-      applyBtnName: 'Apply', // default Apply
-      applyBtnClass: null, // default bootstrap styles, btn btn-primary
-      fdName: 'file', // default 'file', this is  Content-Disposition: form-data; name="file"; filename="fire.jpg"
-      aspectRatio: 1 / 1, // default 1 / 1, for example: 16 / 9, 4 / 3 ...
-      viewMode: 1 // default 0, value can be 0, 1, 2, 3
-    };
-
-
-
+    this.afterPercentage = 0;
+    this.loginData ={}
 
    }
 
-
-   public onReturnData(data: any) {
-    // Do what you want to do
-    console.log(JSON.parse(data));
-
-   }
 
 
    getCategories():void{
-    let path:string = '../../assets/categories.json';
+    let path:string = 'http://weeka.herokuapp.com/api/categories';
     this.q.getData(path).subscribe(
       res => {
-        this.categories = res;
+        this.categories = res.data;
         console.log(this.categories)
       },
       err => {
@@ -80,6 +61,24 @@ afterPercentage:number;
       let Percentage =20;
       this.afterPercentage = price - ( price*Percentage/100 )
       console.log(this.afterPercentage)
+
+      let newMealpath: string = 'http://weeka.herokuapp.com/api/meals';
+      let tokenUser = localStorage.getItem('token');
+      console.log(tokenUser);
+      this.q.postDataHeader(newMealpath,{
+        headers : new HttpHeaders({'Authorization':`Bearer ${tokenUser}`})
+      },this.mealData).subscribe(
+        res => {
+          console.log(res);
+          this.loginData = this.transfer.getData(); 
+          console.log(this.loginData)  ;
+        
+        },
+        err => { console.log(err)
+        }
+      );
+
+
 
     }
   }
