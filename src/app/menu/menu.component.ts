@@ -4,6 +4,8 @@ import { QueryService } from '../query.service';
 import { starRatingColor } from 'angular-star-rating/src/interfaces/star-rating-config.interface';
 import { validateConfig } from '@angular/router/src/config';
 import { concat } from 'rxjs/internal/observable/concat';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-menu',
@@ -15,7 +17,7 @@ export class MenuComponent implements OnInit {
   public meals:Array<object>;
   public slugName:string;
 
-  constructor(private q: QueryService,private active: ActivatedRoute) {
+  constructor(private q: QueryService,private active: ActivatedRoute,private cooker: Router) {
     this.meals=[];
    
     // ========= accessing name comes from url ===========    
@@ -46,6 +48,17 @@ getMeals(): void {
       console.log(err);
     }
   )
+}
+
+// add To Cart function
+addToCart(){
+  
+}
+//redirect to cooker profile
+redirectToCooker(d:string){
+  console.log(d);
+  this.cooker.navigate([`/cookerprofile/${d}`]);
+
 }
   ngOnInit() {
   }

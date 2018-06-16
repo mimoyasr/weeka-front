@@ -27,6 +27,7 @@ export class MealCommentComponent implements OnInit {
   @ViewChild ('myeditedCommemt') myeditedCommemt:ElementRef;
   @ViewChild ('myCommemt') myCommemt:ElementRef;
   public editMood:boolean;
+  
 
 
   constructor(private q: QueryService) {
@@ -44,10 +45,10 @@ export class MealCommentComponent implements OnInit {
   //function to get comments from json file   
 
   getComments(): void {
-    let path: string = '../../assets/meal-comment.json';
+    let path: string = 'http://weeka.herokuapp.com/api/districts/${district_slug}/menu/${meal_slug}';
     this.q.getData(path).subscribe(
       res => {
-        this.comments = res;
+        this.comments = res.data.reviews;
         // console.log(this.comments);
       },
       err => {
