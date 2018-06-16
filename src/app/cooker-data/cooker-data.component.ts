@@ -44,7 +44,6 @@ export class CookerDataComponent implements OnInit {
     return this.query.getData2(path, {
       headers: new HttpHeaders({ 'Authorization': `Bearer ${tokenUser}` })
     }).subscribe(res => {
-      console.log(res);
       this.loggedInID = res.data.id;
       console.log(this.loggedInID);
       this.getChefData();
@@ -73,7 +72,11 @@ export class CookerDataComponent implements OnInit {
       // patch request to update cooker data object in database
       console.log(this.chefData);
       let path: string = `http://weeka.herokuapp.com/api/chefs/${this.loggedInID}`;
-      this.query.patchData(path, this.chefData).subscribe(
+      let tokenUser = localStorage.getItem('token');
+      console.log(tokenUser);
+      this.query.patchData(path, {
+        headers: new HttpHeaders({ 'Authorization': `Bearer ${tokenUser}` })
+      }, this.chefData).subscribe(
         res => {
           console.log(res);
         },
@@ -98,7 +101,11 @@ export class CookerDataComponent implements OnInit {
       //========== put request to update password ===========
       console.log(this.editedPass);
       let path: string = `http://weeka.herokuapp.com/api/chefs/${this.loggedInID}`;
-      this.query.putData(path, this.editedPass).subscribe(
+      let tokenUser = localStorage.getItem('token');
+      console.log(tokenUser);
+      this.query.putData(path, {
+        headers: new HttpHeaders({ 'Authorization': `Bearer ${tokenUser}` })
+      }, this.editedPass).subscribe(
         res => {
           console.log(res);
         },

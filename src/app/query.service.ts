@@ -23,24 +23,24 @@ export class QueryService {
     return this.area;
   }
 
-  postData(path: string,data): Observable<any> {
-    return this.http.post(path,data);
+  postData(path: string, data): Observable<any> {
+    return this.http.post(path, data);
   }
-  postDataHeader(path: string,header, data ?): Observable<any> {
+  postDataHeader(path: string, header, data?): Observable<any> {
     console.log("from service")
     console.log(data)
-    return this.http.post(path,data,header);
+    return this.http.post(path, data, header);
 
   }
 
-  patchData(path: string, data): Observable<any> {
-    return this.http.patch(path, data);
+  patchData(path: string, header, data): Observable<any> {
+    return this.http.patch(path, header, data);
   }
 
-  putData(path: string, data): Observable<any> {
-    return this.http.put(path, data);
+  putData(path: string, header, data): Observable<any> {
+    return this.http.put(path, header, data);
   }
-  // fot send token to server
+  // for send token to server
   getData2(path: string, header): Observable<any> {
     return this.http.get(path, header);
   }
