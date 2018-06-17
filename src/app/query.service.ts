@@ -8,6 +8,8 @@ import { starRatingColor } from 'angular-star-rating/src/interfaces/star-rating-
 })
 export class QueryService {
   private area: string;
+  private mealslug:string;
+  private districtslug:string;
 
   constructor(private http: HttpClient) {
   }
@@ -44,5 +46,21 @@ export class QueryService {
   getData2(path: string, header): Observable<any> {
     return this.http.get(path, header);
   }
+
+  // get data from single item
+  set_Meal_dist(dist:string,meal:string){
+   
+    this.districtslug=dist;
+    this.mealslug=meal;
+
+
+  }
+  getMeal(){
+    return this.mealslug;
+  }
+  getDist(){
+    return this.districtslug;
+  }
+
 
 }
