@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
 
   // submit login form function
   loginData(userData: NgForm): void {
+    console.log(userData)
     if (userData.valid) {
       // ====== post request to login users ===========
       let path = 'http://weeka.herokuapp.com/api/login';
