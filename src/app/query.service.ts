@@ -9,6 +9,8 @@ import { starRatingColor } from 'angular-star-rating/src/interfaces/star-rating-
 export class QueryService {
   private area: string;
   private chefData: object;
+  private mealslug: string;
+  private districtslug: string;
 
   constructor(private http: HttpClient) {
     this.chefData = {};
@@ -52,4 +54,20 @@ export class QueryService {
   getChefData() {
     return this.chefData;
   }
+  // get data from single item
+  set_Meal_dist(dist: string, meal: string) {
+
+    this.districtslug = dist;
+    this.mealslug = meal;
+
+
+  }
+  getMeal() {
+    return this.mealslug;
+  }
+  getDist() {
+    return this.districtslug;
+  }
+
+
 }

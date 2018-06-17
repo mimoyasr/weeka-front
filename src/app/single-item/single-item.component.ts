@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { CartComponent } from '../cart/cart.component';
+import { MealCommentComponent } from '../meal-comment/meal-comment.component'
 
 // ============= service ==============
 import { QueryService } from '../query.service';
@@ -15,6 +16,8 @@ import { element } from 'protractor';
 export class SingleItemComponent implements OnInit {
 
   @ViewChild(CartComponent) child: CartComponent;
+  @ViewChild( MealCommentComponent) comment:  MealCommentComponent;
+
 
   singleName: string;
   singleData: object;
@@ -47,6 +50,10 @@ export class SingleItemComponent implements OnInit {
         this.singleData = res.data;
         console.log(this.singleData);
         this.singleData['qty'] = 1;
+        console.log(res.data['district_slug']);
+        console.log(res.data['slug']);
+        this.query.set_Meal_dist(res.data['district_slug'],res.data['slug']);
+        this.comment.getComments();
       },
       err => { console.log(err) }
     );
