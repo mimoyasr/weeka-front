@@ -8,8 +8,10 @@ import { starRatingColor } from 'angular-star-rating/src/interfaces/star-rating-
 })
 export class QueryService {
   private area: string;
+  private chefData: object;
 
   constructor(private http: HttpClient) {
+    this.chefData = {};
   }
 
   getData(path: string): Observable<any> {
@@ -17,7 +19,6 @@ export class QueryService {
   }
   setArea(val: string) {
     this.area = val;
-
   }
   getArea() {
     return this.area;
@@ -45,4 +46,10 @@ export class QueryService {
     return this.http.get(path, header);
   }
 
+  setChefData(val: object) {
+    this.chefData = val;
+  }
+  getChefData() {
+    return this.chefData;
+  }
 }

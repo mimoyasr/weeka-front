@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { QueryService } from '../query.service';
 import { HttpHeaders } from '@angular/common/http';
+import { CookerDataComponent } from '../cooker-data/cooker-data.component';
+import { AllMealsComponent } from '../all-meals/all-meals.component';
 
 @Component({
   selector: 'app-edit-cooker',
@@ -10,14 +12,15 @@ import { HttpHeaders } from '@angular/common/http';
 export class EditCookerComponent implements OnInit {
 
   @ViewChild('status') status: ElementRef;
+  @ViewChild('data') data: CookerDataComponent;
+  @ViewChild('allMeals') allMeals: AllMealsComponent;
+
   chefStat: boolean;
   chefData: object;
-  loggedInID: number;
 
   constructor(private query: QueryService) {
 
     this.chefData = {};
-
     this.loggedIn();
   }
 
@@ -33,23 +36,14 @@ export class EditCookerComponent implements OnInit {
     return this.query.getData2(path, {
       headers: new HttpHeaders({ 'Authorization': `Bearer ${tokenUser}` })
     }).subscribe(res => {
-      console.log(res);
-      this.loggedInID = res.data.id;
-      console.log(this.loggedInID);
-      this.getChefData();
+      console.log(res.data);
+      this.query.setChefData(res.data);
+      this.chefData = res.data;
+      this.data.getchef();
+      this.allMeals.getMeals();
     })
   }
 
-  getChefData(): void {
-    let path = `http://weeka.herokuapp.com/api/chefs/${this.loggedInID}`;
-    this.query.getData(path).subscribe(
-      res => {
-        this.chefData = res.data;
-        console.log(this.chefData);
-      },
-      err => { console.log(err) }
-    );
-  }
 
   statusFunc() {
     // console.log(this.status.nativeElement.value);
