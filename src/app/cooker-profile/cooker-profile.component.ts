@@ -61,6 +61,9 @@ getData(): void {
        console.log(this.workinghours);
 
        console.log(this.meals);
+       this.meals.forEach(elem => {
+        elem['qty'] = 1;
+      })
 
        
     },
@@ -72,7 +75,7 @@ getData(): void {
 // add to cart function
 addToCart(mealId){
   this.meals.forEach(element => {
-    if (element["id"] == mealId) {
+    if (element["meal_id"] == mealId) {
       this.allCartMeals.add(element);
     }
   });
