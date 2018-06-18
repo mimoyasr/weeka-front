@@ -14,8 +14,8 @@
 
             <p [ngClass]="{'hide':editMood==true}">{{obj.comment}}</p>
             <!-- if user click edit icon  -->
-            <textarea *ngIf="obj.userId==6" [ngClass]="{'hide':editMood==false}" name="comment" id="comment" cols="70" rows="2" [(ngModel)]="obj.userComment"></textarea>
-            <button *ngIf="obj.userId==6" class="small-btn " [ngClass]="{'hide':editMood==false}" (click)="saveComment()">حفظ</button>
+            <textarea *ngIf="obj.user_id==logedUser.user_id" [ngClass]="{'hide':editMood==false}" name="comment" id="comment" cols="70" rows="2" [(ngModel)]="obj.userComment"></textarea>
+            <button *ngIf="obj.user_id==logedUser.user_id" class="small-btn " [ngClass]="{'hide':editMood==false}" (click)="saveComment()">حفظ</button>
 
 
 
@@ -27,7 +27,7 @@
                 </span>
               </small>
               &nbsp;&nbsp;
-              <span class="text-left" *ngIf="obj.userId==6">
+              <span class="text-left" *ngIf="obj.user_id==logedUser.user_id">
                 <i class="icon-trash-empty" (click)="deleteComment()"></i>
                 <i class="icon-pencil" (click)="editComment()"></i>
               </span>
@@ -55,7 +55,7 @@
 
 
     <!-- empty comment -->
-    <div class="empty-comment">
+    <div class="empty-comment" *ngIf="!commentState&&token">
     <div class="headline text-center mt-5">
       <h2>أضف تعليق</h2>
       <hr>
@@ -63,9 +63,9 @@
     <div class="row mb-4">
       <div class="col-sm-8 p-0 ">
         <div class="media  mt-3 p-0">
-          <img class=" p-4 mt-1 " src="" alt="Generic placeholder image">
+          <img class=" p-4 mt-1 " src="../assets/images/meal-comment/{{logedUser.image}}" alt="Generic placeholder image">
           <div class="media-body pt-4 pb-4 pr-1 pl-4 ">
-            <h5 class="mt-0 font-weight-bold">سارة احمد</h5>
+            <h5 class="mt-0 font-weight-bold">{{logedUser.fname}} {{logedUser.lname}}</h5>
             <textarea name="comment" id="comment" cols="70" rows="2" placeholder="أضف تعليق" [(ngModel)]="userComment"></textarea>
             <p class="card-text">
 

@@ -10,6 +10,7 @@ export class QueryService {
   private area: string;
   private mealslug:string;
   private districtslug:string;
+  private commentState:boolean;
 
   constructor(private http: HttpClient) {
   }
@@ -55,12 +56,21 @@ export class QueryService {
 
 
   }
+  setState(state:boolean){
+    this.commentState=state;
+  }
   getMeal(){
     return this.mealslug;
   }
   getDist(){
     return this.districtslug;
   }
+
+  getState(){
+    return this.commentState;
+  }
+
+
 
 
 }

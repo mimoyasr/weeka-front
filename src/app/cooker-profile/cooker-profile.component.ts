@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ArgumentOutOfRangeError } from 'rxjs/internal/util/ArgumentOutOfRangeError';
 import {  HttpHeaders } from '@angular/common/http';
 import { TransferDataService } from '../transfer-data.service';
+import { concat } from 'rxjs/internal/observable/concat';
 
 
 @Component({
@@ -30,6 +31,8 @@ export class CookerProfileComponent implements OnInit {
      this.meals=[];
      this.token = localStorage.getItem('token');
      this.logedUser = {};
+     this.getLoginedData();
+     
 
 
       // ========= accessing id comes from url ===========    
@@ -54,10 +57,8 @@ getData(): void {
       this.meals=res.data['menu'];
       this.workinghours=res.data['working_hours'];
 
-       console.log(this.cookerData);
-       console.log(this.workinghours);
-
-       console.log(this.meals);
+       console.log(this.token)
+       console.log(this.logedUser);
 
        
     },
