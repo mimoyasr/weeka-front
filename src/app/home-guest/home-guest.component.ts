@@ -12,6 +12,7 @@ export class HomeGuestComponent implements OnInit {
   workData: Array<object>;
   logedUser:Object;
   token:String;
+  userType: string
   constructor(private Q: QueryService,
   private transfer : TransferDataService
   ) {
@@ -42,6 +43,8 @@ export class HomeGuestComponent implements OnInit {
       }).subscribe(res2 => {
         console.log(res2);
         this.logedUser = res2;
+        this.userType = res2.data['type'];
+        console.log(this.userType)
         this.transfer.setData(this.logedUser);
       })
     }

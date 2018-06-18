@@ -1,13 +1,30 @@
 
- <nav class="bg-dark pt-4 pb-2 text-white">
+ <nav class="bg-dark pt-3 pb-3 text-white">
     <div class="container">
-      <div class="row justify-content-between">
+      <div class="row justify-content-between ">
         <div class="col-md-2">
           <a routerLink="">
             <img src="../assets/images/logo.png" alt="">
           </a>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-3  align-self-center">
+            <div class=" imp-btns" *ngIf="!token">
+                <a routerLink="/login" class="border p-2">تسجيل الدخول</a>
+                <a routerLink="/becomeacooker" class="headlinesFonts pr-3">اصبح طباخ</a>
+              </div>
+    
+              <div ngbDropdown placement="bottom-right" class="navdrop d-inline-block pl-3" *ngIf="token && logedUser.data">
+                <button class="btn bg-transparent" id="dropdownBasic1" ngbDropdownToggle>
+                  <i class="icon-down-open pl-2"></i>{{logedUser.data.fname}} {{logedUser.data.lname}}
+                </button>
+                <div class="p-0 rounded-0" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <a routerLink="/editUser"><button value="true" class="dropdown-item">الصفحة الشخصية</button></a>
+                  <button value="false" class="dropdown-item" (click)="logout()">تسجيل الخروج</button>
+                </div>
+                <a routerLink="/becomeacooker" class="headlinesFonts pr-3">اصبح طباخ</a>
+              </div>
+
+            
          
         </div>
 
@@ -27,17 +44,19 @@
               
                   <div class=" bg-white p-3">
                     <h4 class="mb-3 pt-4">{{cookerData.name}}</h4>
-                    
+   
                     <p class="mb-4 "> {{cookerData.description}}</p>
-                    <h6>ايام العمل: <span>من{{cookerData.working_hours.from_hour}}</span></h6>
+                    <h6 >ايام العمل: <span *ngFor="let hour of workinghours">({{hour.day}}({{hour.from_hour}}:{{hour.from_min}}-{{hour.to_hour}}:{{hour.to_min}}</span></h6>
                     <h6> عدد مرات الطلب:  <span>{{cookerData.no_of_orders}}</span></h6>
-                <!--Start meal rating  -->
-                <ngb-rating [(rate)]="cookerData.rate" max=5 [readonly]="true">
-                    <ng-template let-fill="fill">
-                      <span class="star" [class.filled]="fill === 100">&#9733;</span>
-                    </ng-template>
-                  </ngb-rating>
-                  <!--end meal rating -->
+                         <!--Start meal rating  -->
+                         <ngb-rating [(rate)]="cookerData.rate" max=5 [readonly]="true">
+                            <ng-template let-fill="fill">
+                              <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                            </ng-template>
+                          </ngb-rating>
+                          <!--end meal rating -->
+              
+              
  
                   </div>
                   <div class="col-md-3 textFont">

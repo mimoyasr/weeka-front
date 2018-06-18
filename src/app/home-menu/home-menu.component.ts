@@ -19,9 +19,10 @@ import { starRatingColor } from 'angular-star-rating/src/interfaces/star-rating-
 export class HomeMenuComponent implements OnInit {
   public areas: Array<object>;
   public selected: string;
-  public mySlug:string;
+  public mySlug: string;
   districts: Array<object>;
-  closeResult;
+  closeResult: string;
+
 
 
   constructor(private q: QueryService, private menu: Router, private a: ActivatedRoute,
@@ -30,6 +31,7 @@ export class HomeMenuComponent implements OnInit {
     this.areas = [];
     this.selected = this.q.getArea() || 'اختر منطقتك';
     this.districts = [];
+
   }
   // function to get areas
 
@@ -46,10 +48,10 @@ export class HomeMenuComponent implements OnInit {
     )
   }
   // show selected item in button
-  showItem(item: string,s:string) {
+  showItem(item: string, s: string) {
     this.selected = item;
     this.q.setArea(item);
-    this.mySlug=s;
+    this.mySlug = s;
     console.log(this.mySlug);
 
   }
@@ -74,14 +76,14 @@ export class HomeMenuComponent implements OnInit {
 
 
   // redirect to menu
-  redirectToMenu(d: any,s:string): void {
+  redirectToMenu(d: any, s: string): void {
 
     if (this.selected == "اختر منطقتك") {
       console.log("error");
       this.open(d);
     }
     else {
-      this.menu.navigate([`${this.mySlug}/menu/`] );
+      this.menu.navigate([`${this.mySlug}/menu/`]);
       console.log(s);
     }
   }

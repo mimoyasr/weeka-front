@@ -3,8 +3,8 @@ import { NgModel, NgForm } from '@angular/forms';
 import { QueryService } from '../query.service';
 import { ArgumentOutOfRangeError } from 'rxjs/internal/util/ArgumentOutOfRangeError';
 import { starRatingColor } from 'angular-star-rating/src/interfaces/star-rating-config.interface';
-import { NgbModal  } from '@ng-bootstrap/ng-bootstrap/modal/modal';
-import {  ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap/modal/modal';
+import { ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { SrvRecord } from 'dns';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
 import { Router } from '@angular/router';
@@ -20,22 +20,25 @@ import { Router } from '@angular/router';
 export class BecomeAcookerComponent implements OnInit {
   public cookerData: object;
   public areas: Array<object>;
-  public provider_id:string;
-  public district_id:string;
-  public gender:string;
-  public anotherArea:string;
+  public provider_id: string;
+  public district_id: string;
+  public gender: string;
+  public anotherArea: string;
   closeResult: string;
-  
-  constructor(private q: QueryService,private modalService: NgbModal, private router: Router) {
-    this.cookerData = {  
+
+  constructor(private q: QueryService, private modalService: NgbModal, private router: Router) {
+    this.cookerData = {
     };
     this.areas = [];
     this.getAreas();
-    this.provider_id='010';
-    this.district_id='المنطقة';
-    this.gender="male";
+    this.provider_id = '010';
+    this.district_id = 'المنطقة';
+    this.gender = "male";
     // منطقة اخري 
-    this.anotherArea="";
+    this.anotherArea = "";
+  }
+
+  ngOnInit() {
   }
 
   // pop up to get cooker area
@@ -57,13 +60,13 @@ export class BecomeAcookerComponent implements OnInit {
     }
   }
 
-  
-onChange( event,d: any,a:string){
-  if(a=="اخري"){
-    this.open(d);
 
+  onChange(event, d: any, a: string) {
+    if (a == "اخري") {
+      this.open(d);
+
+    }
   }
-}
   //function to get areas from json file   
 
   getAreas(): void {
@@ -88,8 +91,8 @@ onChange( event,d: any,a:string){
       this.cookerData = data.value;
       let path = 'http://weeka.herokuapp.com/api/chefs';
       this.q.postData(path, this.cookerData).subscribe(res => this.redirect(),
-      err => { console.log("invalid info")});
-      
+        err => { console.log("invalid info") });
+
     }
   }
 
@@ -99,11 +102,6 @@ onChange( event,d: any,a:string){
     this.router.navigate(['/editCooker']);
   }
 
-  ngOnInit(){
-    
-  }
 }
 
-  
- 
 

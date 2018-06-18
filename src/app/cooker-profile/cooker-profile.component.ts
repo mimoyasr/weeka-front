@@ -3,6 +3,7 @@ import { QueryService } from '../query.service';
 import { ActivatedRoute } from '@angular/router';
 import { ArgumentOutOfRangeError } from 'rxjs/internal/util/ArgumentOutOfRangeError';
 import { CartComponent } from '../cart/cart.component';
+import {  HttpHeaders } from '@angular/common/http';
 import { TransferDataService } from '../transfer-data.service';
 
 
@@ -17,15 +18,23 @@ export class CookerProfileComponent implements OnInit {
   
   public cookerData:Array<object>;
   public meals:Array<object>;
+  public workinghours:Array<object>;
+  public rate=3;
+  logedUser:Object;
+  token:String;
+
   public cookerId:string;
   public allCartMeals: Set<any>;
 
 
   constructor(private q: QueryService,private active: ActivatedRoute, private transfer: TransferDataService) {
   
-    this.cookerData=[];
-    this.meals=[];
-   
+     this.cookerData=[];
+     this.meals=[];
+     this.token = localStorage.getItem('token');
+     this.logedUser = {};
+
+
       // ========= accessing id comes from url ===========    
       this.active.params.subscribe(
         params => {
@@ -44,9 +53,15 @@ getData(): void {
     res => {
     
       this.cookerData = res.data;
+
       this.meals=res.data['menu'];
+      this.workinghours=res.data['working_hours'];
+
        console.log(this.cookerData);
+       console.log(this.workinghours);
+
        console.log(this.meals);
+
        
     },
     err => {
@@ -67,8 +82,24 @@ addToCart(mealId){
   this.child.addPrice();
 
 }
-
-
+ // get logined user data
+ getLoginedData() {
+  if(this.token){
+    let path2 = "http://weeka.herokuapp.com/api/profile";
+    return this.q.getData2(path2, {
+      headers: new HttpHeaders({ 'Authorization': `Bearer ${this.token}` })
+    }).subscribe(res2 => {
+      console.log(res2);
+      this.logedUser = res2;
+      this.transfer.setData(this.logedUser);
+    })
+  }
+}
+// function to log out
+logout(){
+  localStorage.removeItem('token');
+  window.location.reload();
+}
   ngOnInit() {
     this.transfer.cast.subscribe(product => this.allCartMeals = product);    
   }

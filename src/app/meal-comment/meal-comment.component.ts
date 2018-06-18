@@ -4,6 +4,7 @@ import { QueryService } from '../query.service';
 import { starRatingColor } from 'angular-star-rating/src/interfaces/star-rating-config.interface';
 import { transition } from '@angular/animations/src/animation_metadata';
 import { validateConfig } from '@angular/router/src/config';
+import { concat } from 'rxjs/internal/observable/concat';
 
 
 
@@ -20,6 +21,8 @@ export class MealCommentComponent implements OnInit {
   public readonly = true;
   public mealRate:number;
   @Input('data') mealId :string;
+  public mealslug:string;
+  public distslug :string;
   public p: number  ;
   collection: any[] = this.comments; 
   public items:number;
@@ -32,24 +35,29 @@ export class MealCommentComponent implements OnInit {
 
   constructor(private q: QueryService) {
     this.comments = [];
-    this.getComments();
     this.newComment = {};
     this.mealRate=0;
     this.p=1;
     this.items=3;
     this.commented=false;
     this.editMood=false;
-  }
+    
+   
+/*     this.getComments();
+ */  }
 
 
   //function to get comments from json file   
 
   getComments(): void {
-    let path: string = 'http://weeka.herokuapp.com/api/districts/${district_slug}/menu/${meal_slug}';
+    this.mealslug=this.q.getMeal();
+    this.distslug=this.q.getDist();
+   
+    let path: string = `http://weeka.herokuapp.com/api/districts/${this.distslug}/menu/${this.mealslug}`;
     this.q.getData(path).subscribe(
       res => {
         this.comments = res.data.reviews;
-        // console.log(this.comments);
+         console.log(this.comments);
       },
       err => {
         console.log(err);
@@ -92,7 +100,6 @@ saveComment(){
   console.log(this.newComment);
 }
   ngOnInit() {
-
 
   }
 

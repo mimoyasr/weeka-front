@@ -8,11 +8,11 @@
     <div class="row mb-2" *ngFor="let obj of comments | paginate: { itemsPerPage: items, currentPage: p }">
       <div class="col-sm-8 p-0">
         <div class="media  mt-3 p-0">
-          <img class=" p-4 mt-1 " src="{{obj.userImage}}" alt="Generic placeholder image">
+          <img class=" p-4 mt-1 " src="../assets/images/meal-comment/{{obj.image}}" alt="Generic placeholder image">
           <div class="media-body pt-4 pb-4 pr-0 pl-4 ">
-            <h5 class="mt-0 font-weight-bold">{{obj.userName}}</h5>
+            <h5 class="mt-0 font-weight-bold">{{obj.username}}</h5>
 
-            <p [ngClass]="{'hide':editMood==true}">{{obj.userComment}}</p>
+            <p [ngClass]="{'hide':editMood==true}">{{obj.comment}}</p>
             <!-- if user click edit icon  -->
             <textarea *ngIf="obj.userId==6" [ngClass]="{'hide':editMood==false}" name="comment" id="comment" cols="70" rows="2" [(ngModel)]="obj.userComment"></textarea>
             <button *ngIf="obj.userId==6" class="small-btn " [ngClass]="{'hide':editMood==false}" (click)="saveComment()">حفظ</button>
@@ -35,7 +35,7 @@
 
           </div>
           <!--Start meal rating  -->
-          <ngb-rating [(rate)]="obj.mealRate" max=5 [readonly]="true">
+          <ngb-rating [(rate)]="obj.rate" max=5 [readonly]="true">
             <ng-template let-fill="fill">
               <span class="star" [class.filled]="fill === 100">&#9733;</span>
             </ng-template>
