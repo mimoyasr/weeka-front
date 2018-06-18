@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { QueryService } from '../query.service';
 import { ActivatedRoute } from '@angular/router';
 import { ArgumentOutOfRangeError } from 'rxjs/internal/util/ArgumentOutOfRangeError';
+import { CartComponent } from '../cart/cart.component';
 import {  HttpHeaders } from '@angular/common/http';
 import { TransferDataService } from '../transfer-data.service';
 
@@ -12,6 +13,9 @@ import { TransferDataService } from '../transfer-data.service';
   styleUrls: ['./cooker-profile.component.scss']
 })
 export class CookerProfileComponent implements OnInit {
+
+  @ViewChild(CartComponent) child: CartComponent;
+  
   public cookerData:Array<object>;
   public meals:Array<object>;
   public workinghours:Array<object>;
@@ -20,11 +24,10 @@ export class CookerProfileComponent implements OnInit {
   token:String;
 
   public cookerId:string;
+  public allCartMeals: Set<any>;
 
 
-
-  constructor(private q: QueryService,private active: ActivatedRoute,
-    private transfer : TransferDataService) {
+  constructor(private q: QueryService,private active: ActivatedRoute, private transfer: TransferDataService) {
   
      this.cookerData=[];
      this.meals=[];
@@ -67,7 +70,16 @@ getData(): void {
   )
 }
 // add to cart function
-addToCart(){
+addToCart(mealId){
+  this.meals.forEach(element => {
+    if (element["id"] == mealId) {
+      this.allCartMeals.add(element);
+    }
+  });
+
+  console.log(this.allCartMeals)
+  this.child.totalOneMeal = 0;
+  this.child.addPrice();
 
 }
  // get logined user data
@@ -89,6 +101,7 @@ logout(){
   window.location.reload();
 }
   ngOnInit() {
+    this.transfer.cast.subscribe(product => this.allCartMeals = product);    
   }
 
 }

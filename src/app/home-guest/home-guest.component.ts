@@ -3,6 +3,7 @@ import { QueryService } from '../query.service';
 import { HttpHeaders } from '@angular/common/http';
 import { TransferDataService } from '../transfer-data.service';
 import { EditUserComponent } from '../edit-user/edit-user.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-guest',
@@ -18,7 +19,8 @@ export class HomeGuestComponent implements OnInit {
   token: String;
   userType: string
   constructor(private Q: QueryService,
-    private transfer: TransferDataService
+    private transfer: TransferDataService,
+    private router: Router
   ) {
     this.workData = [];
     this.token = localStorage.getItem('token');
@@ -50,7 +52,7 @@ export class HomeGuestComponent implements OnInit {
         this.userType = res2.data['type'];
         console.log(this.userType)
         this.transfer.setData(this.logedUser);
-        this.userData.getUserData();
+        // this.userData.getUserData();
       })
     }
   }
@@ -60,6 +62,14 @@ export class HomeGuestComponent implements OnInit {
     window.location.reload();
   }
 
+  redirect(): void {
+    if (this.userType == 'chef') {
+      this.router.navigate(['/editCooker']);
+    }
+    else {
+      this.router.navigate(['/editUser']);
+    }
+  }
   ngOnInit() {
 
   }

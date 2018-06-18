@@ -33,7 +33,7 @@ export class CartComponent implements OnInit {
   //     }
   // }
 
-  allCartMeals:Set<object>;
+  allCartMeals:Set<any>;
   singlePrice: number;
   delivery:number;
   total:any;
@@ -47,7 +47,7 @@ export class CartComponent implements OnInit {
   ) { 
     this.delivery = 10;
     this.total = 0;
-    this.allCartMeals = new Set();   
+    // this.allCartMeals = new Set();   
     this.totalOneMeal = 0;
     this.delayOrder = {
       "date":"",
@@ -68,7 +68,7 @@ export class CartComponent implements OnInit {
   // Decrease And Increase Quantity
   minus(id):void{
     this.allCartMeals.forEach(element => {
-      if(element["id"] == id){
+      if(element["meal_id"] == id){
         if(parseInt(element['qty']) < 2){
           element['qty'] = 1;
         }else{
@@ -83,7 +83,7 @@ export class CartComponent implements OnInit {
 
   plus(id):void{
     this.allCartMeals.forEach(element => {
-      if(element["id"] == id){
+      if(element["meal_id"] == id){
         element['qty'] = parseInt(element['qty']) + 1;
       }
     });  

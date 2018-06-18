@@ -9,9 +9,9 @@
             <h4 class="mt-0 d-inline-block meal-title">{{product.name}}</h4>
             <div class="price-qt d-flex align-items-center justify-content-between">
               <div class="qty-input">
-                <i (click)="plus(product.id)" class="more">+</i>
+                <i (click)="plus(product.meal_id)" class="more">+</i>
                 <input type="text" value={{product.qty}}/>
-                <i (click)="minus(product.id)" class="less">-</i>
+                <i (click)="minus(product.meal_id)" class="less">-</i>
               </div>
               <h4 class="ar-price"> {{product.price}}ج</h4>
             </div>

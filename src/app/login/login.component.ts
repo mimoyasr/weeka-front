@@ -44,7 +44,8 @@ export class LoginComponent implements OnInit {
           return this.query.getData2(path2,{
             headers : new HttpHeaders({'Authorization':`Bearer ${tokenUser}`})
           }).subscribe(res2 => {
-            console.log(res2);
+            console.log(res2.data['id']);
+            let userID = localStorage.setItem('userID',res2.data['id']);
             this.transfer.loginData.subscribe(product => res2 = product);
             this.redirect();
           })

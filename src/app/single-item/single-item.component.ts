@@ -29,7 +29,7 @@ export class SingleItemComponent implements OnInit {
 
     this.singleData = {};
     this.mealData = [];
-    this.allCartMeals = new Set();
+    // this.allCartMeals = new Set();
 
     // ========= accessing name comes from url ===========    
     this.active.params.subscribe(
