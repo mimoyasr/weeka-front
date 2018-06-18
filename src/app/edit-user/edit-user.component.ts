@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { QueryService } from '../query.service';
 import { CartComponent } from '../cart/cart.component';
+import { HttpHeaders } from '@angular/common/http';
 
 //Services
 import { TransferDataService } from '../transfer-data.service';
@@ -11,50 +12,35 @@ import { TransferDataService } from '../transfer-data.service';
 })
 export class EditUserComponent implements OnInit {
 
-  @ViewChild(CartComponent) cart:CartComponent;  
-
+  @ViewChild(CartComponent) cart: CartComponent;
+  userData: object;
+  allCartMeals: Set<any>;
   historyMeals: Array<any>;
-  allCartMeals:Set<any>;
-  favouriteMeals: Array<any>;  
+  // favouriteMeals: Array<any>;
 
-  constructor(private q: QueryService, private transfer:TransferDataService) { 
+  constructor(private query: QueryService, private transfer: TransferDataService) {
+
+    this.userData = {};
     this.historyMeals = [];
-    this.getHistoryData();
-    this.favouriteMeals = [];
-    this.getFavData();
+
   }
 
   ngOnInit() {
-    this.transfer.cast.subscribe(product => this.allCartMeals = product);   
+    this.transfer.cast.subscribe(product => this.allCartMeals = product);
   }
 
-  // ============== get data from server ===============
-  getHistoryData(): void {
-    let path = '../../assets/history.json';
-    this.q.getData(path).subscribe(
-      res => {
-        this.historyMeals = res;
-      },
-      err => { console.log(err) }
-    );
+  getUserData() {
+    this.userData = this.transfer.getData();
+    console.log(this.userData);
   }
 
-    // ============== get data from server ===============
-    getFavData(): void {
-      let path = '../../assets/favourite.json';
-      this.q.getData(path).subscribe(
-        res => {
-          this.favouriteMeals = res;
-        },
-        err => { console.log(err) }
-      );
-    }
+
 
   // ============== trigger order button ==============
-  addToCartHistory(id){
+  addToCartHistory(id) {
     this.historyMeals.forEach(element => {
-      
-      if(element.id == id){
+
+      if (element.id == id) {
         this.allCartMeals.add(element);
       }
     })

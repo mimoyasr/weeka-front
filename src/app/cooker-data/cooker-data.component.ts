@@ -14,13 +14,14 @@ export class CookerDataComponent implements OnInit {
   editFlag: boolean;
   closeResult: string;
   editedPass: object;
-  loggedInID: number;
+  loggedInID: string;
 
   constructor(private query: QueryService,
     private modalService: NgbModal) {
 
     this.editFlag = false;
     this.editedPass = {};
+    this.loggedInID = localStorage.getItem('userID');
   }
 
   ngOnInit() {

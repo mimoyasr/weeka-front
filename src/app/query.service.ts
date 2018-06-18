@@ -11,6 +11,7 @@ export class QueryService {
   private chefData: object;
   private mealslug: string;
   private districtslug: string;
+  private userData: object;
 
   constructor(private http: HttpClient) {
     this.chefData = {};
@@ -29,10 +30,8 @@ export class QueryService {
   postData(path: string, data): Observable<any> {
     return this.http.post(path, data);
   }
-  postDataHeader(path: string, header, data?): Observable<any> {
-    console.log("from service")
-    console.log(data)
-    return this.http.post(path, data, header);
+  postDataHeader(path: string,header, data ?): Observable<any> {
+    return this.http.post(path,header,data);
 
   }
 
@@ -48,12 +47,15 @@ export class QueryService {
     return this.http.get(path, header);
   }
 
+  //============ setter & getter for chef data =============
   setChefData(val: object) {
     this.chefData = val;
   }
   getChefData() {
     return this.chefData;
   }
+
+
   // get data from single item
   set_Meal_dist(dist: string, meal: string) {
 
@@ -67,6 +69,14 @@ export class QueryService {
   }
   getDist() {
     return this.districtslug;
+  }
+
+  //============ setter & getter for user data =============
+  setUserData(val: object) {
+    this.userData = val;
+  }
+  getUserData() {
+    return this.userData;
   }
 
 

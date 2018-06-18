@@ -43,6 +43,7 @@ export class EditCookerComponent implements OnInit {
       console.log(this.allMeals)
       this.allMeals.getMeals();
       
+      // this.allMeals.getMeals();
     })
   }
 

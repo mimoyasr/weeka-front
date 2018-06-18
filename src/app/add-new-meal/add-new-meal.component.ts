@@ -64,6 +64,8 @@ afterPercentage:number;
 
       let newMealpath: string = 'http://weeka.herokuapp.com/api/meals';
       let tokenUser = localStorage.getItem('token');
+      let userID = localStorage.getItem('userID');
+      this.mealData['chef_id'] = userID;
       console.log(tokenUser);
       this.q.postDataHeader(newMealpath,{
         headers : new HttpHeaders({'Authorization':`Bearer ${tokenUser}`})
@@ -72,7 +74,7 @@ afterPercentage:number;
           console.log(res);
           this.loginData = this.transfer.getData(); 
           console.log(this.loginData)  ;
-        
+          
         },
         err => { console.log(err)
         }
