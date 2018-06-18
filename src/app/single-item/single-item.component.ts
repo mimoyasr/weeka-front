@@ -25,7 +25,7 @@ export class SingleItemComponent implements OnInit {
     private transfer: TransferDataService) {
     this.singleData = {};
     this.mealData = [];
-    this.allCartMeals = new Set();
+    // this.allCartMeals = new Set();
 
     // ========= accessing name comes from url ===========    
     this.active.params.subscribe(

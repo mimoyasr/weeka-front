@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { QueryService } from '../query.service';
 import { ActivatedRoute } from '@angular/router';
 import { ArgumentOutOfRangeError } from 'rxjs/internal/util/ArgumentOutOfRangeError';
+import { CartComponent } from '../cart/cart.component';
+import { TransferDataService } from '../transfer-data.service';
 
 
 @Component({
@@ -10,12 +12,16 @@ import { ArgumentOutOfRangeError } from 'rxjs/internal/util/ArgumentOutOfRangeEr
   styleUrls: ['./cooker-profile.component.scss']
 })
 export class CookerProfileComponent implements OnInit {
+
+  @ViewChild(CartComponent) child: CartComponent;
+  
   public cookerData:Array<object>;
   public meals:Array<object>;
   public cookerId:string;
+  public allCartMeals: Set<any>;
 
 
-  constructor(private q: QueryService,private active: ActivatedRoute) {
+  constructor(private q: QueryService,private active: ActivatedRoute, private transfer: TransferDataService) {
   
     this.cookerData=[];
     this.meals=[];
@@ -49,12 +55,22 @@ getData(): void {
   )
 }
 // add to cart function
-addToCart(){
+addToCart(mealId){
+  this.meals.forEach(element => {
+    if (element["id"] == mealId) {
+      this.allCartMeals.add(element);
+    }
+  });
+
+  console.log(this.allCartMeals)
+  this.child.totalOneMeal = 0;
+  this.child.addPrice();
 
 }
 
 
   ngOnInit() {
+    this.transfer.cast.subscribe(product => this.allCartMeals = product);    
   }
 
 }

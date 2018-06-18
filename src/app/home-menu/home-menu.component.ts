@@ -21,7 +21,7 @@ export class HomeMenuComponent implements OnInit {
   public selected: string;
   public mySlug:string;
   districts: Array<object>;
-
+  closeResult;
 
 
   constructor(private q: QueryService, private menu: Router, private a: ActivatedRoute,
