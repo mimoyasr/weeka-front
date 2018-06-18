@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { QueryService } from '../query.service';
-import {  HttpHeaders } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { TransferDataService } from '../transfer-data.service';
+import { EditUserComponent } from '../edit-user/edit-user.component';
 
 @Component({
   selector: 'app-home-guest',
@@ -9,19 +10,22 @@ import { TransferDataService } from '../transfer-data.service';
   styleUrls: ['./home-guest.component.scss']
 })
 export class HomeGuestComponent implements OnInit {
+
+  @ViewChild('userData') userData: EditUserComponent;
+
   workData: Array<object>;
-  logedUser:Object;
-  token:String;
+  logedUser: Object;
+  token: String;
   userType: string
   constructor(private Q: QueryService,
-  private transfer : TransferDataService
+    private transfer: TransferDataService
   ) {
     this.workData = [];
     this.token = localStorage.getItem('token');
     this.getWorkData();
     this.logedUser = {};
     this.getLoginedData();
-  
+
   }
   getWorkData(): void {
     let path: string = "./assets/how-we-work.json";
@@ -36,7 +40,7 @@ export class HomeGuestComponent implements OnInit {
 
   // get logined user data
   getLoginedData() {
-    if(this.token){
+    if (this.token) {
       let path2 = "http://weeka.herokuapp.com/api/profile";
       return this.Q.getData2(path2, {
         headers: new HttpHeaders({ 'Authorization': `Bearer ${this.token}` })
@@ -46,11 +50,12 @@ export class HomeGuestComponent implements OnInit {
         this.userType = res2.data['type'];
         console.log(this.userType)
         this.transfer.setData(this.logedUser);
+        this.userData.getUserData();
       })
     }
   }
 
-  logout(){
+  logout() {
     localStorage.removeItem('token');
     window.location.reload();
   }
