@@ -3,6 +3,7 @@ import { QueryService } from '../query.service';
 import { HttpHeaders } from '@angular/common/http';
 import { CartComponent } from '../cart/cart.component';
 import { UserInfoComponent } from '../user-info/user-info.component';
+import { Router } from '@angular/router';
 
 //Services
 import { TransferDataService } from '../transfer-data.service';
@@ -25,7 +26,9 @@ export class EditUserComponent implements OnInit {
   favMeals: Array<any>;
   favFlag: boolean;
 
-  constructor(private query: QueryService, private transfer: TransferDataService) {
+  constructor(private query: QueryService,
+    private transfer: TransferDataService,
+    private cooker: Router) {
 
     this.userData = {};
     this.loggedIn();
@@ -88,6 +91,13 @@ export class EditUserComponent implements OnInit {
     })
     this.cart.totalOneMeal = 0;
     this.cart.addPrice();
+  }
+
+  //redirect to cooker profile
+  redirectToCooker(d: string) {
+    console.log(d);
+    this.cooker.navigate([`/cookerprofile/${d}`]);
+
   }
 
 }

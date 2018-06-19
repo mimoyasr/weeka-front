@@ -73,7 +73,7 @@
                 <div class="media-footer mb-4">
                   <div class="row">
                     <div class="col-md-6">
-                      <p>الشيف: {{meal.chef_name}}</p>
+                      <button class="bg-transparent text-dark" (click)="redirectToCooker(meal.chef_id)">الشيف: {{meal.chef_name}}</button>
                     </div>
                     <div class="col-md-6">
 
