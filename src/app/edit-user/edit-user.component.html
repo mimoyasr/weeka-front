@@ -35,10 +35,10 @@
       <section class="history">
         <div class="container">
           <!-- =========== history ================= -->
-          <div *ngFor="let meal of favMeals">
+          <div *ngFor="let meal of favMeals ; let prop of homeImg">
             <div class="media smallCard weekaCard w-100 mb-5 align-items-center">
               <a routerLink="/singleItem/{{(meal.slug)}}">
-                <img class="cardImg" src="{{meal.image}}" alt="Generic placeholder image">
+                <img class="cardImg" src="../assets/images/home-page/{{prop.image}}" alt="Generic placeholder image">
               </a>
               <div class="media-body position-relative text-center">
                 <!-- Start fav meal icon -->
@@ -102,10 +102,10 @@
       <section class="favourite">
         <div class="container">
           <!-- =========== favourite ================= -->
-          <div *ngFor="let meal of favMeals">
+          <div *ngFor="let meal of favMeals ; let prop of homeImg">
             <div class="media smallCard weekaCard w-100 mb-5 align-items-center">
               <a routerLink="/singleItem/{{meal.slug}}">
-                <img class="cardImg" src="{{meal.image}}" alt="Generic placeholder image">
+                <img class="cardImg" src="../assets/images/home-page/{{prop.image}}" alt="Generic placeholder image">
               </a>
               <div class="media-body position-relative text-center">
                 <!-- Start fav meal icon -->
@@ -138,7 +138,7 @@
                 <div class="media-footer mb-4">
                   <div class="row">
                     <div class="col-md-6">
-                      <p>الشيف: {{meal.chef_name}}</p>
+                      <button class="bg-transparent text-dark" (click)="redirectToCooker(meal.chef_id)">الشيف: {{meal.chef_name}}</button>
                     </div>
                     <div class="col-md-6">
                     </div>

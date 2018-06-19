@@ -25,6 +25,7 @@ export class EditUserComponent implements OnInit {
   mealID: number;
   favMeals: Array<any>;
   favFlag: boolean;
+  homeImg: Array<any>;
 
   constructor(private query: QueryService,
     private transfer: TransferDataService,
@@ -37,6 +38,8 @@ export class EditUserComponent implements OnInit {
     this.favMealsID = [];
     this.favMeals = [];
     this.favFlag = false;
+    this.homeImg = [];
+
   }
 
   ngOnInit() {
@@ -60,6 +63,7 @@ export class EditUserComponent implements OnInit {
       this.getFavMeals();
       this.data.getUserData();
       this.favFlag = true;
+      this.getHomeImg();
     })
   }
 
@@ -98,6 +102,16 @@ export class EditUserComponent implements OnInit {
     console.log(d);
     this.cooker.navigate([`/cookerprofile/${d}`]);
 
+  }
+
+  getHomeImg(): void {
+    let path: string = "./assets/images-home.json";
+    this.query.getData(path).subscribe(
+      res => {
+        this.homeImg = res;
+      },
+      err => { console.log(err) }
+    );
   }
 
 }

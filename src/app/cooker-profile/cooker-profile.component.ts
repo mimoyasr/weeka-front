@@ -6,6 +6,7 @@ import { CartComponent } from '../cart/cart.component';
 import { HttpHeaders } from '@angular/common/http';
 import { TransferDataService } from '../transfer-data.service';
 import { concat } from 'rxjs/internal/observable/concat';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -23,19 +24,22 @@ export class CookerProfileComponent implements OnInit {
   public rate = 3;
   logedUser: Object;
   token: String;
-
   public cookerId: string;
   public allCartMeals: Set<any>;
+  homeImg: Array<object>;
 
 
-  constructor(private q: QueryService, private active: ActivatedRoute, private transfer: TransferDataService) {
+  constructor(private q: QueryService,
+    private active: ActivatedRoute,
+    private transfer: TransferDataService,
+    private cooker: Router) {
 
     this.cookerData = [];
     this.meals = [];
     this.token = localStorage.getItem('token');
     this.logedUser = {};
     this.getLoginedData();
-
+    this.homeImg = [];
 
 
     // ========= accessing id comes from url ===========    
@@ -81,6 +85,7 @@ export class CookerProfileComponent implements OnInit {
           elem['qty'] = 1;
         })
 
+        this.getHomeImg();
 
       },
       err => {
@@ -122,5 +127,20 @@ export class CookerProfileComponent implements OnInit {
   ngOnInit() {
     this.transfer.cast.subscribe(product => this.allCartMeals = product);
   }
+  getHomeImg(): void {
+    let path: string = "./assets/images-home.json";
+    this.q.getData(path).subscribe(
+      res => {
+        this.homeImg = res;
+      },
+      err => { console.log(err) }
+    );
+  }
 
+  //redirect to cooker profile
+  redirectToCooker(d: string) {
+    console.log(d);
+    this.cooker.navigate([`/cookerprofile/${d}`]);
+
+  }
 }
