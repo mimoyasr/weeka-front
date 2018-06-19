@@ -68,6 +68,19 @@ export class CookerProfileComponent implements OnInit {
           elem['qty'] = 1;
         })
 
+        this.cookerData = res.data;
+
+        this.meals = res.data['menu'];
+        this.workinghours = res.data['working_hours'];
+
+        console.log(this.cookerData);
+        console.log(this.workinghours);
+
+        console.log(this.meals);
+        this.meals.forEach(elem => {
+          elem['qty'] = 1;
+        })
+
 
       },
       err => {

@@ -316,8 +316,27 @@
 
 
     <div class="text-center mt-5">
-      <button class="btn big-btn" (click)='confirmOrderFinal()'>تأكيد الطلب</button>
+      <button class="btn big-btn" (click)='confirmOrderFinal()' (click)="open(content)">تأكيد الطلب</button>
     </div>
+
+
+    <!-- modal -->
+
+    <ng-template #content let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title">تأكيد الطلب</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          
+        </button>
+      </div>
+      <div class="modal-body">
+        <h5>تم تأكيد الطلب بنجاح وسيصلك خلال 60 دقيقة</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="redirctMenu()" (click)="c('Save click')">تم</button>
+      </div>
+    </ng-template>
+
 
   </div>
 </section>

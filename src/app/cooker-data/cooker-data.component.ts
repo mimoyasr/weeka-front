@@ -15,6 +15,7 @@ export class CookerDataComponent implements OnInit {
   closeResult: string;
   editedPass: object;
   loggedInID: string;
+  dayRow: Array<any>;
 
   constructor(private query: QueryService,
     private modalService: NgbModal) {
@@ -22,6 +23,7 @@ export class CookerDataComponent implements OnInit {
     this.editFlag = false;
     this.editedPass = {};
     this.loggedInID = localStorage.getItem('userID');
+    this.dayRow = [1];
   }
 
   ngOnInit() { }
@@ -112,6 +114,10 @@ export class CookerDataComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  addNewRow(): void {
+
   }
 
 }

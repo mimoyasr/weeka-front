@@ -17,7 +17,8 @@ export class HomeGuestComponent implements OnInit {
   workData: Array<object>;
   logedUser: Object;
   token: String;
-  userType: string
+  userType: string;
+  userTypeCheck: boolean;
   constructor(private Q: QueryService,
     private transfer: TransferDataService,
     private router: Router
@@ -27,6 +28,7 @@ export class HomeGuestComponent implements OnInit {
     this.getWorkData();
     this.logedUser = {};
     this.getLoginedData();
+    this.userTypeCheck = false;
 
   }
   getWorkData(): void {
@@ -40,6 +42,7 @@ export class HomeGuestComponent implements OnInit {
     );
   }
 
+
   // get logined user data
   getLoginedData() {
     if (this.token) {
@@ -51,6 +54,7 @@ export class HomeGuestComponent implements OnInit {
         this.logedUser = res2;
         this.userType = res2.data['type'];
         console.log(this.userType)
+        this.checkChef();
         this.transfer.setData(this.logedUser);
         // this.userData.getUserData();
       })
@@ -70,6 +74,16 @@ export class HomeGuestComponent implements OnInit {
       this.router.navigate(['/editUser']);
     }
   }
+
+  checkChef(): void {
+    if (this.userType == 'chef') {
+      this.userTypeCheck = true;
+    }
+    else {
+      this.userTypeCheck = false;
+    }
+  }
+
   ngOnInit() {
 
   }
