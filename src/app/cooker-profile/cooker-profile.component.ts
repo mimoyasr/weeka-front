@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { QueryService } from '../query.service';
 import { ActivatedRoute } from '@angular/router';
 import { ArgumentOutOfRangeError } from 'rxjs/internal/util/ArgumentOutOfRangeError';
+import { CartComponent } from '../cart/cart.component';
 import {  HttpHeaders } from '@angular/common/http';
 import { TransferDataService } from '../transfer-data.service';
 import { concat } from 'rxjs/internal/observable/concat';
@@ -13,6 +14,9 @@ import { concat } from 'rxjs/internal/observable/concat';
   styleUrls: ['./cooker-profile.component.scss']
 })
 export class CookerProfileComponent implements OnInit {
+
+  @ViewChild(CartComponent) child: CartComponent;
+  
   public cookerData:Array<object>;
   public meals:Array<object>;
   public workinghours:Array<object>;
@@ -21,11 +25,10 @@ export class CookerProfileComponent implements OnInit {
   token:String;
 
   public cookerId:string;
+  public allCartMeals: Set<any>;
 
 
-
-  constructor(private q: QueryService,private active: ActivatedRoute,
-    private transfer : TransferDataService) {
+  constructor(private q: QueryService,private active: ActivatedRoute, private transfer: TransferDataService) {
   
      this.cookerData=[];
      this.meals=[];
@@ -57,8 +60,18 @@ getData(): void {
       this.meals=res.data['menu'];
       this.workinghours=res.data['working_hours'];
 
+<<<<<<< HEAD
        console.log(this.token)
        console.log(this.logedUser);
+=======
+       console.log(this.cookerData);
+       console.log(this.workinghours);
+
+       console.log(this.meals);
+       this.meals.forEach(elem => {
+        elem['qty'] = 1;
+      })
+>>>>>>> 9ca75faca4adf8cd76c8ea69b1417fb53a7b8272
 
        
     },
@@ -68,7 +81,16 @@ getData(): void {
   )
 }
 // add to cart function
-addToCart(){
+addToCart(mealId){
+  this.meals.forEach(element => {
+    if (element["meal_id"] == mealId) {
+      this.allCartMeals.add(element);
+    }
+  });
+
+  console.log(this.allCartMeals)
+  this.child.totalOneMeal = 0;
+  this.child.addPrice();
 
 }
  // get logined user data
@@ -90,6 +112,7 @@ logout(){
   window.location.reload();
 }
   ngOnInit() {
+    this.transfer.cast.subscribe(product => this.allCartMeals = product);    
   }
 
 }

@@ -59,7 +59,7 @@ export class ClientOrderComponent implements OnInit {
   // calc total price for every meal  
   calcTotalOneMeal():void{
     this.allMealCart.forEach(element => {
-      this.totalOneMeal = (parseInt(element['qty']) * parseInt(element['mealPrice']));
+      this.totalOneMeal = (parseInt(element['qty']) * parseInt(element['price']));
       element["totalOneMeal"] = this.totalOneMeal;
       this.totalAllMeals = this.totalAllMeals + element["totalOneMeal"];
     })
@@ -68,7 +68,7 @@ export class ClientOrderComponent implements OnInit {
   //delete one item 
   confirmOrder(id):void{
     this.allMealCart.forEach(element => {
-      if(element['id']==id){
+      if(element['meal_id']==id){
         this.allMealCart.delete(element);
         this.totalAllMeals = 0;
         this.calcTotalOneMeal();        

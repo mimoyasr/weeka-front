@@ -19,7 +19,7 @@
               <i class="icon-down-open pl-2"></i>{{logedUser.data.fname}} {{logedUser.data.lname}}
             </button>
             <div class="p-0 rounded-0" ngbDropdownMenu aria-labelledby="dropdownBasic1">
-              <a routerLink="/editUser"><button value="true" class="dropdown-item">الصفحة الشخصية</button></a>
+              <a (click)=" redirect()"><button value="true" class="dropdown-item">الصفحة الشخصية</button></a>
               <button value="false" class="dropdown-item" (click)="logout()">تسجيل الخروج</button>
             </div>
             <a routerLink="becomeacooker" class="headlinesFonts pr-3">اصبح طباخ</a>

@@ -14,20 +14,24 @@ export class CookerDataComponent implements OnInit {
   editFlag: boolean;
   closeResult: string;
   editedPass: object;
-  loggedInID: number;
+  loggedInID: string;
 
   constructor(private query: QueryService,
     private modalService: NgbModal) {
 
-    this.chefData = {};
     this.editFlag = false;
     this.editedPass = {};
-
-    this.loggedIn();
+    this.loggedInID = localStorage.getItem('userID');
   }
 
-  ngOnInit() { }
+  ngOnInit() {
 
+  }
+
+  getchef() {
+    this.chefData = this.query.getChefData();
+    console.log(this.chefData);
+  }
   // ============ time picker ===============
   time = { hour: 13, minute: 30 };
   time2 = { hour: 18, minute: 30 };
@@ -36,35 +40,10 @@ export class CookerDataComponent implements OnInit {
   toggleMeridian() {
     this.meridian = !this.meridian;
   }
-  // ============== get loggedin chef data ==============
-  loggedIn() {
-    // for authorization
-    let path = "http://weeka.herokuapp.com/api/profile";
-    let tokenUser = localStorage.getItem('token');
-    return this.query.getData2(path, {
-      headers: new HttpHeaders({ 'Authorization': `Bearer ${tokenUser}` })
-    }).subscribe(res => {
-      this.loggedInID = res.data.id;
-      console.log(this.loggedInID);
-      this.getChefData();
-    })
-  }
-  //============ get loggedin chef data from server ==========
-  getChefData(): void {
-    let path: string = `http://weeka.herokuapp.com/api/chefs/${this.loggedInID}`;
-    this.query.getData(path).subscribe(
-      res => {
-        this.chefData = res.data;
-        console.log(this.chefData);
-      },
-      err => { console.log(err) }
-    );
-  }
 
   editInfo(): void {
     this.editFlag = !this.editFlag;
   }
-
 
   //=========== form validation function =============
   editFunc(data: NgForm): void {
@@ -72,8 +51,10 @@ export class CookerDataComponent implements OnInit {
       // patch request to update cooker data object in database
       console.log(this.chefData);
       let path: string = `http://weeka.herokuapp.com/api/chefs/${this.loggedInID}`;
+
       let tokenUser = localStorage.getItem('token');
       console.log(tokenUser);
+
       this.query.patchData(path, {
         headers: new HttpHeaders({ 'Authorization': `Bearer ${tokenUser}` })
       }, this.chefData).subscribe(

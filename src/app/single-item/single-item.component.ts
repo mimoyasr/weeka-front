@@ -29,7 +29,7 @@ export class SingleItemComponent implements OnInit {
 
     this.singleData = {};
     this.mealData = [];
-    this.allCartMeals = new Set();
+    // this.allCartMeals = new Set();
 
     // ========= accessing name comes from url ===========    
     this.active.params.subscribe(
@@ -55,8 +55,8 @@ export class SingleItemComponent implements OnInit {
         console.log(res.data['district_slug']);
         console.log(res.data['slug']);
         this.query.set_Meal_dist(res.data['district_slug'],res.data['slug']);
-        this.query.setState(res.data['comment_state']);
-        this.comment.getComments();
+/*         this.query.setState(res.data['comment_state']);
+ */        this.comment.getComments();
       },
       err => { console.log(err) }
     );

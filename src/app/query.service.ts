@@ -8,11 +8,14 @@ import { starRatingColor } from 'angular-star-rating/src/interfaces/star-rating-
 })
 export class QueryService {
   private area: string;
-  private mealslug:string;
-  private districtslug:string;
+  private chefData: object;
+  private mealslug: string;
+  private districtslug: string;
+  private userData: object;
   private commentState:boolean;
 
   constructor(private http: HttpClient) {
+    this.chefData = {};
   }
 
   getData(path: string): Observable<any> {
@@ -20,7 +23,6 @@ export class QueryService {
   }
   setArea(val: string) {
     this.area = val;
-
   }
   getArea() {
     return this.area;
@@ -29,10 +31,8 @@ export class QueryService {
   postData(path: string, data): Observable<any> {
     return this.http.post(path, data);
   }
-  postDataHeader(path: string, header, data?): Observable<any> {
-    console.log("from service")
-    console.log(data)
-    return this.http.post(path, data, header);
+  postDataHeader(path: string,header, data ?): Observable<any> {
+    return this.http.post(path,header,data);
 
   }
 
@@ -48,29 +48,37 @@ export class QueryService {
     return this.http.get(path, header);
   }
 
+  //============ setter & getter for chef data =============
+  setChefData(val: object) {
+    this.chefData = val;
+  }
+  getChefData() {
+    return this.chefData;
+  }
+
+
   // get data from single item
-  set_Meal_dist(dist:string,meal:string){
-   
-    this.districtslug=dist;
-    this.mealslug=meal;
+  set_Meal_dist(dist: string, meal: string) {
+
+    this.districtslug = dist;
+    this.mealslug = meal;
 
 
   }
-  setState(state:boolean){
-    this.commentState=state;
-  }
-  getMeal(){
+  getMeal() {
     return this.mealslug;
   }
-  getDist(){
+  getDist() {
     return this.districtslug;
   }
 
-  getState(){
-    return this.commentState;
+  //============ setter & getter for user data =============
+  setUserData(val: object) {
+    this.userData = val;
   }
-
-
+  getUserData() {
+    return this.userData;
+  }
 
 
 }
