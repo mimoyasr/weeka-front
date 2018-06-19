@@ -20,15 +20,20 @@ export class EditUserComponent implements OnInit {
   loggedInID: string;
   allCartMeals: Set<any>;
   historyMeals: Array<any>;
+  favMealsID: Array<any>;
+  mealID: number;
+  favMeals: Array<any>;
+  favFlag: boolean;
 
   constructor(private query: QueryService, private transfer: TransferDataService) {
 
     this.userData = {};
-    this.historyMeals = [];
     this.loggedIn();
     this.loggedInID = localStorage.getItem('userID');
-
-
+    this.historyMeals = [];
+    this.favMealsID = [];
+    this.favMeals = [];
+    this.favFlag = false;
   }
 
   ngOnInit() {
@@ -47,15 +52,37 @@ export class EditUserComponent implements OnInit {
       console.log(res.data);
       this.query.setUserData(res.data);
       this.userData = res.data;
+      this.historyMeals = this.userData['inqueries'];
+      this.favMealsID = this.userData['favs'];
+      this.getFavMeals();
       this.data.getUserData();
+      this.favFlag = true;
     })
+  }
+
+  // ================ fav meals ============
+  getFavMeals() {
+    for (let meal of this.favMealsID) {
+      this.mealID = meal.meal_id;
+      let path = `http://weeka.herokuapp.com/api/meals/${this.mealID}`;
+      this.query.getData(path).subscribe(
+        res => {
+          this.favMeals.push(res.data);
+
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    }
+    console.log(this.favMeals);
   }
 
   // ============== trigger order button ==============
   addToCartHistory(id) {
-    this.historyMeals.forEach(element => {
+    this.favMeals.forEach(element => {
 
-      if (element.id == id) {
+      if (element.meal_id == id) {
         this.allCartMeals.add(element);
       }
     })

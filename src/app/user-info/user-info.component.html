@@ -1,7 +1,7 @@
 <section class="data">
   <div class="container">
-    <div class="profile-data">
-      <img class="profile-img m-0" src="{{userData.src}}" alt="">
+    <div class="profile-data" *ngIf="userData">
+      <img class="profile-img m-0" src="../assets/images/edit-cooker/chef_pp.jpg" alt="">
 
       <!-- ================= show view ================== -->
       <div class="profile-info" *ngIf="!editFlag">
@@ -12,17 +12,21 @@
         </div>
         <div class="row justify-content-end">
           <div class="col-md-4">
-            <h3 class="mb-3 headlinesFonts">{{userData.fName}} {{userData.lName}}</h3>
+            <h3 class="mb-3 headlinesFonts">{{userData.fname}} {{userData.lname}}</h3>
             <h5 class="mb-3">{{userData.gender}}</h5>
             <h5 class="mb-3">{{userData.email}}</h5>
           </div>
           <div class="col-md-4 textFont">
-            <h5 class="mb-3">{{userData.phonePrefix}}{{userData.phone}}</h5>
-            <p>
-              {{userData.district}},{{userData.buildingNo}},{{userData.street}},{{userData.floorNo}},شقة{{userData.flatNo}}
-            </p>
-            <!-- ملاحظات -->
-            <p>{{userData.notice}}</p>
+            <div *ngFor="let tele of userData.telephones">
+              <p class="mb-3"> {{tele.provider_id.prefix}}{{tele.number}}</p>
+            </div>
+            <div *ngFor="let address of userData.addresses">
+              <p>
+                {{address.district}},{{address.buildingno}},{{address.streetno}},الدور{{address.floorno}},شقة{{address.flatno}}
+              </p>
+              <!-- ملاحظات -->
+              <p>{{address.notice}}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -38,20 +42,20 @@
             <div class="col-md-4">
               <!-- ============= first name ================== -->
               <div class="form-group mb-3">
-                <input type="text" class="form-control" value="{{userData.fName}}" placeholder="الأسم الأول" #fName="ngModel" name="fName"
-                  [(ngModel)]="userData.fName" required>
+                <input type="text" class="form-control" value="{{userData.fname}}" placeholder="الأسم الأول" #fname="ngModel" name="fname"
+                  [(ngModel)]="userData.fname" required>
                 <!-- validation  message -->
-                <div *ngIf="fName.invalid && (fName.dirty || fName.touched || editForm.submitted)">
-                  <div *ngIf="fName.errors.required" class="error-msg">
+                <div *ngIf="fname.invalid && (fname.dirty || fname.touched || editForm.submitted)">
+                  <div *ngIf="fname.errors.required" class="error-msg">
                     الحقل مطلوب
                   </div>
                 </div>
                 <!-- =============== last name ==================== -->
-                <input type="text" class="form-control" value="{{userData.lName}}" placeholder="الأسم الأخير" #lName="ngModel" name="lName"
-                  [(ngModel)]="userData.lName">
+                <input type="text" class="form-control" value="{{userData.lname}}" placeholder="الأسم الأخير" #lname="ngModel" name="lname"
+                  [(ngModel)]="userData.lname">
               </div>
-              <div *ngIf="lName.invalid && (lName.dirty || lName.touched || editForm.submitted)">
-                <div *ngIf="lName.errors.required" class="error-msg">
+              <div *ngIf="lname.invalid && (lname.dirty || lname.touched || editForm.submitted)">
+                <div *ngIf="lname.errors.required" class="error-msg">
                   الحقل مطلوب
                 </div>
               </div>
@@ -89,9 +93,9 @@
             <div class="col-md-4">
 
               <!-- ============ phone ================= -->
-              <div class="form-group mb-3">
-                <input type="text" class="form-control" value="{{userData.phone}}" placeholder="رقم التليفون" pattern="[0-9]{8}" name="phone"
-                  #phone="ngModel" [(ngModel)]="userData.phone">
+              <div class="form-group mb-3" *ngFor="let tele of userData.telephones">
+                <input type="text" class="form-control" value="{{tele.number}}" placeholder="رقم التليفون" pattern="[0-9]{8}" name="phone"
+                  #phone="ngModel" [(ngModel)]="tele.number">
                 <!-- validation  message -->
                 <div *ngIf="phone.invalid && (phone.dirty || phone.touched || editForm.submitted)">
                   <div *ngIf="phone.errors.required" class="text-danger">
@@ -102,16 +106,16 @@
                   * رقم التليفون غير صحيح
                 </div>
 
-                <select class="form-control phone" name="phonePrefix" [(ngModel)]="userData.phonePrefix">
-                  <option [selected]="userData.phonePrefix == '012'">012</option>
+                <select class="form-control phone" name="phonePrefix" [(ngModel)]="tele.provider_id.prefix">
+                  <option [selected]="tele.provider_id.prefix == '012'">012</option>
 
-                  <option [selected]="userData.phonePrefix == '010'">010</option>
+                  <option [selected]="tele.provider_id.prefix == '010'">010</option>
 
-                  <option [selected]="userData.phonePrefix == '011'">011</option>
+                  <option [selected]="tele.provider_id.prefix == '011'">011</option>
 
-                  <option [selected]="userData.phonePrefix == '015'">015</option>
+                  <option [selected]="tele.provider_id.prefix == '015'">015</option>
 
-                  <option [selected]="userData.phonePrefix == '03'">03</option>
+                  <option [selected]="tele.provider_id.prefix == '03'">03</option>
 
                 </select>
               </div>
@@ -132,44 +136,45 @@
           </div>
           <div class="modal-body">
 
-            <form name="changepass" #changepass="ngForm" (ngSubmit)="saveChanges(changepass)">
+            <form name="changepass" #changepass="ngForm">
               <!-- password -->
               <div class="form-group">
-                <input type="password" name="oldPass" #oldPass="ngModel" [(ngModel)]="editedPass.oldPass" required class="form-control" placeholder="كلمة السر الحالية">
+                <input type="password" name="old_password" #old_password="ngModel" [(ngModel)]="editedPass.old_password" required class="form-control"
+                  placeholder="كلمة السر الحالية">
               </div>
               <!-- validation  message -->
-              <div *ngIf="oldPass.invalid && (oldPass.dirty || oldPass.touched || changepass.submitted)">
-                <div *ngIf="oldPass.errors.required" class="text-danger">
+              <div *ngIf="old_password.invalid && (old_password.dirty || old_password.touched || changepass.submitted)">
+                <div *ngIf="old_password.errors.required" class="text-danger">
                   * هذا الحقل مطلوب
                 </div>
               </div>
 
               <div class="form-group">
-                <input type="password" name="newPass" #newPass="ngModel" [(ngModel)]="editedPass.newPass" required class="form-control" placeholder="كلمة السر الجديدة">
+                <input type="password" name="password" #password="ngModel" [(ngModel)]="editedPass.password" required class="form-control"
+                  placeholder="كلمة السر الجديدة">
               </div>
               <!-- validation  message -->
-              <div *ngIf="newPass.invalid && (newPass.dirty || changepass.submitted)">
-                <div *ngIf="newPass.errors.required" class="text-danger">
+              <div *ngIf="password.invalid && (password.dirty || changepass.submitted)">
+                <div *ngIf="password.errors.required" class="text-danger">
                   * هذا الحقل مطلوب
                 </div>
               </div>
 
               <div class="form-group">
-                <input type="password" name="newPass2" #newPass2="ngModel" [(ngModel)]="editedPass.newPass2" required class="form-control"
+                <input type="password" name="password2" #password2="ngModel" [(ngModel)]="editedPass.password2" required class="form-control"
                   placeholder="تأكيد كلمة السر">
               </div>
               <!-- validation  message -->
-              <div *ngIf="newPass2.invalid && (newPass2.dirty || newPass2.touched || changepass.submitted)">
-                <div *ngIf="newPass2.errors.required" class="text-danger">
+              <div *ngIf="password2.invalid && (password2.dirty || password2.touched || changepass.submitted)">
+                <div *ngIf="password2.errors.required" class="text-danger">
                   * هذا الحقل مطلوب
                 </div>
               </div>
-              <div *ngIf="newPass2.touched && newPass2.value != newPass.value" class="text-danger">
+              <div *ngIf="password2.touched && password2.value != password.value" class="text-danger">
                 * كلمة السر غير متطابقة
               </div>
 
-              <button type="submit" class="btn small-btn mt-3">تغيير</button>
-              <button type="button" class="btn small-btn mr-4 mt-3" (click)="c('Close click')">إلغاء</button>
+              <button type="button" class="btn small-btn mr-4 mt-3" (click)="saveChanges()" (click)="c('Close click')">تغيير</button>
             </form>
           </div>
         </ng-template>

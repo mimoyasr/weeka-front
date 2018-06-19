@@ -24,7 +24,8 @@
   </div>
 </nav>
 <app-user-info #data></app-user-info>
-<div class="container">
+
+<div class="container" *ngIf="favFlag">
   <div class="headline mb-5">
     <h2 class="text-center">طلباتك السابقة</h2>
     <hr class="mb-5">
@@ -34,9 +35,9 @@
       <section class="history">
         <div class="container">
           <!-- =========== history ================= -->
-          <div *ngFor="let meal of historyMeals">
+          <div *ngFor="let meal of favMeals">
             <div class="media smallCard weekaCard w-100 mb-5 align-items-center">
-              <a routerLink="/singleItem/{{(meal.mealTitel)}}">
+              <a routerLink="/singleItem/{{(meal.slug)}}">
                 <img class="cardImg" src="{{meal.image}}" alt="Generic placeholder image">
               </a>
               <div class="media-body position-relative text-center">
@@ -54,28 +55,28 @@
                 </div>
                 <!--end fav meal icon -->
                 <!--Start meal rating  -->
-                <ngb-rating [(rate)]="meal.mealRate" max=5 [readonly]="true">
+                <ngb-rating [(rate)]="meal.rate" max=5 [readonly]="true">
                   <ng-template let-fill="fill">
                     <span class="star" [class.filled]="fill === 100">&#9733;</span>
                   </ng-template>
                 </ngb-rating>
                 <!--end meal rating -->
-                <h3 class="mt-0 mb-4">{{meal.mealTitel}}</h3>
+                <h3 class="mt-0 mb-4">{{meal.name}}</h3>
                 <div class="price rounded-circle position-absolute">
-                  <h3> {{meal.mealPrice}} ج </h3>
+                  <h3> {{meal.price}} ج </h3>
                   <div class="price-bg rounded-circle position-absolute">
                   </div>
                 </div>
 
-                <button class="small-btn" (click)="addToCartHistory(meal.id)">اطلب</button>
+                <button class="small-btn" (click)="addToCartHistory(meal.meal_id)">اطلب</button>
 
                 <div class="media-footer mb-4">
                   <div class="row">
                     <div class="col-md-6">
-                      <p>الشيف: {{meal.cookerName}}</p>
+                      <p>الشيف: {{meal.chef_name}}</p>
                     </div>
                     <div class="col-md-6">
-                      <p> التاريخ : {{meal.date}}</p>
+
                     </div>
                   </div>
                 </div>
@@ -101,9 +102,9 @@
       <section class="favourite">
         <div class="container">
           <!-- =========== favourite ================= -->
-          <div *ngFor="let meal of favouriteMeals">
+          <div *ngFor="let meal of favMeals">
             <div class="media smallCard weekaCard w-100 mb-5 align-items-center">
-              <a routerLink="/singleItem/{{(meal.mealTitel)}}">
+              <a routerLink="/singleItem/{{meal.slug}}">
                 <img class="cardImg" src="{{meal.image}}" alt="Generic placeholder image">
               </a>
               <div class="media-body position-relative text-center">
@@ -121,23 +122,23 @@
                 </div>
                 <!--end fav meal icon -->
                 <!--Start meal rating  -->
-                <ngb-rating [(rate)]="meal.mealRate" max=5 [readonly]="true">
+                <ngb-rating [(rate)]="meal.rate" max=5 [readonly]="true">
                   <ng-template let-fill="fill">
                     <span class="star" [class.filled]="fill === 100">&#9733;</span>
                   </ng-template>
                 </ngb-rating>
                 <!--end meal rating -->
-                <h3 class="mt-0 mb-4">{{meal.mealTitel}}</h3>
+                <h3 class="mt-0 mb-4">{{meal.name}}</h3>
                 <div class="price rounded-circle position-absolute">
-                  <h3> {{meal.mealPrice}} ج </h3>
+                  <h3> {{meal.price}} ج </h3>
                   <div class="price-bg rounded-circle position-absolute">
                   </div>
                 </div>
-                <button class="small-btn" (click)="addToCartHistory(meal.id)">اطلب</button>
+                <button class="small-btn" (click)="addToCartHistory(meal.meal_id)">اطلب</button>
                 <div class="media-footer mb-4">
                   <div class="row">
                     <div class="col-md-6">
-                      <p>الشيف: {{meal.cookerName}}</p>
+                      <p>الشيف: {{meal.chef_name}}</p>
                     </div>
                     <div class="col-md-6">
                     </div>
