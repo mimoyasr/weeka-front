@@ -37,9 +37,11 @@ export class SingleItemComponent implements OnInit {
         this.singleName = (params.name);
         console.log(this.singleName);
         this.getMealData();
+        
 
       }
     );
+   
 
   }
   //============ get data from server file ==========
@@ -53,7 +55,8 @@ export class SingleItemComponent implements OnInit {
         console.log(res.data['district_slug']);
         console.log(res.data['slug']);
         this.query.set_Meal_dist(res.data['district_slug'],res.data['slug']);
-        this.comment.getComments();
+/*         this.query.setState(res.data['comment_state']);
+ */        this.comment.getComments();
       },
       err => { console.log(err) }
     );

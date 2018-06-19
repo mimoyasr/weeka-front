@@ -5,6 +5,7 @@ import { ArgumentOutOfRangeError } from 'rxjs/internal/util/ArgumentOutOfRangeEr
 import { CartComponent } from '../cart/cart.component';
 import {  HttpHeaders } from '@angular/common/http';
 import { TransferDataService } from '../transfer-data.service';
+import { concat } from 'rxjs/internal/observable/concat';
 
 
 @Component({
@@ -33,6 +34,8 @@ export class CookerProfileComponent implements OnInit {
      this.meals=[];
      this.token = localStorage.getItem('token');
      this.logedUser = {};
+     this.getLoginedData();
+     
 
 
       // ========= accessing id comes from url ===========    
@@ -57,6 +60,10 @@ getData(): void {
       this.meals=res.data['menu'];
       this.workinghours=res.data['working_hours'];
 
+<<<<<<< HEAD
+       console.log(this.token)
+       console.log(this.logedUser);
+=======
        console.log(this.cookerData);
        console.log(this.workinghours);
 
@@ -64,6 +71,7 @@ getData(): void {
        this.meals.forEach(elem => {
         elem['qty'] = 1;
       })
+>>>>>>> 9ca75faca4adf8cd76c8ea69b1417fb53a7b8272
 
        
     },

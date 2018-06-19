@@ -87,7 +87,7 @@
           </div>
           <div class="modal-body">
 
-            <form name="changepass" #changepass="ngForm" (ngSubmit)="saveChanges(changepass)">
+            <form name="changepass" #changepass="ngForm">
               <!-- password -->
               <div class="form-group">
                 <input type="password" name="old_password" #oldPassword="ngModel" [(ngModel)]="editedPass.old_password" required class="form-control"
@@ -101,32 +101,32 @@
               </div>
 
               <div class="form-group">
-                <input type="password" name="new_password" #newPassword="ngModel" [(ngModel)]="editedPass.new_password" required class="form-control"
+                <input type="password" name="password" #password="ngModel" [(ngModel)]="editedPass.password" required class="form-control"
                   placeholder="كلمة السر الجديدة">
               </div>
               <!-- validation  message -->
-              <div *ngIf="newPassword.invalid && (newPassword.dirty || changepass.submitted)">
-                <div *ngIf="newPassword.errors.required" class="text-danger">
+              <div *ngIf="password.invalid && (password.dirty || changepass.submitted)">
+                <div *ngIf="password.errors.required" class="text-danger">
                   * هذا الحقل مطلوب
                 </div>
               </div>
 
               <div class="form-group">
-                <input type="password" name="new_password2" #newPass2="ngModel" [(ngModel)]="editedPass.new_password2" required class="form-control"
+                <input type="password" name="password" #password2="ngModel" [(ngModel)]="editedPass.password2" required class="form-control"
                   placeholder="تأكيد كلمة السر">
               </div>
               <!-- validation  message -->
-              <div *ngIf="newPass2.invalid && (newPass2.dirty || newPass2.touched || changepass.submitted)">
-                <div *ngIf="newPass2.errors.required" class="text-danger">
+              <div *ngIf="password2.invalid && (password2.dirty || password2.touched || changepass.submitted)">
+                <div *ngIf="password2.errors.required" class="text-danger">
                   * هذا الحقل مطلوب
                 </div>
               </div>
-              <div *ngIf="newPass2.touched && newPass2.value != newPassword.value" class="text-danger">
+              <div *ngIf="password2.touched && password2.value != password.value" class="text-danger">
                 * كلمة السر غير متطابقة
               </div>
 
-              <button type="submit" class="btn small-btn mt-3">تغيير</button>
-              <button type="button" class="btn small-btn mr-4 mt-3" (click)="c('Close click')">إلغاء</button>
+              <!-- <button type="submit" class="btn small-btn mt-3">تغيير</button> -->
+              <button type="button" class="btn small-btn mr-4 mt-3" (click)="saveChanges()" (click)="c('Close click')">تغيير</button>
             </form>
           </div>
         </ng-template>
