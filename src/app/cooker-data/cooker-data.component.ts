@@ -116,8 +116,8 @@ export class CookerDataComponent implements OnInit {
     }
   }
 
-  addNewRow(): void {
-
+  addNewRow():void{
+    this.dayRow.push(1);
   }
 
 }

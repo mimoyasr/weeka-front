@@ -1,16 +1,16 @@
 <div class="row">
-    <div class="col-md-12 col-lg-6 lg-screen" *ngFor="let data of mealData; let i=index; let prop of homeImg" >
+    <div class="col-md-12 col-lg-6 lg-screen" *ngFor="let data of mealData; let i=index; let prop of homeImg">
         <div class="media weekaCard w-100 mb-5 align-items-center">
-            <a routerLink="/singleItem/{{data.slug}}" >
+            <a routerLink="/singleItem/{{data.slug}}">
                 <img class="mealImg" src="../assets/images/home-page/{{prop.image}}" alt="Generic placeholder image">
             </a>
             <div class="media-body position-relative text-center">
                 <!-- Start fav meal icon -->
-                <div class="btn-group btn-group-toggle fav" >
+                <div class="btn-group btn-group-toggle fav">
                     <label class="btn-primary custom" ngbButtonLabel>
                         <input type="checkbox" ngbButton [(ngModel)]="data.fav" (click)="fav(data.meal_id)">
-                        <div *ngIf="!data.fav" >
-                            <img class="" src="../../assets/images/not-fav.png" alt="" >
+                        <div *ngIf="!data.fav">
+                            <img class="" src="../../assets/images/not-fav.png" alt="">
                         </div>
                         <div *ngIf="data.fav">
                             <img class="" src="../../assets/images/fav.png" alt="">
@@ -38,7 +38,9 @@
                 <div class="media-footer">
                     <div class="row">
                         <div class="col-md-6">
-                            <p>الشيف: {{data.chef_name}}</p>
+                            <button class="bg-transparent text-dark" (click)="redirectToCooker(data.chef_id)">
+                                <p>الشيف: {{data.chef_name}}</p>
+                            </button>
                         </div>
                         <div class="col-md-6">
                             <p>عدد مرات الطلب: {{data.numbers_of_orders}}</p>
@@ -53,34 +55,33 @@
 
 
 
-        <div class="col-md-12 col-lg-6 sm-screen" *ngFor="let data of mealData">
-            <div class="card text-center mb-5">
-                <img class="card-img-top" src="../../assets/images/single-page/{{data.image}}" alt="Card image cap">
-                <div class="card-body">
+    <div class="col-md-12 col-lg-6 sm-screen" *ngFor="let data of mealData">
+        <div class="card text-center mb-5">
+            <img class="card-img-top" src="../../assets/images/single-page/{{data.image}}" alt="Card image cap">
+            <div class="card-body">
                 <h4 class="card-title">{{data.name}}</h4>
                 <h5 class="card-price">{{data.price}}ج</h5>
                 <p class="card-text">{{data.description}}</p>
-                <a routerLink='/singleItem/{{(data.name)}}'><button class="small-btn">اطلب</button></a>
-                </div>
+                <a routerLink='/singleItem/{{(data.name)}}'>
+                    <button class="small-btn">اطلب</button>
+                </a>
             </div>
         </div>
-
-
-
-   
-
+    </div>
 
 
 
 
-    
 
 
-    
+
+
+
+
+
+
+
 
 
 
 </div>
-
-
-

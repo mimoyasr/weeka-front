@@ -82,6 +82,13 @@ export class MealCardComponent implements OnInit {
 
 
   }
+
+  redirectToCooker(d: string) {
+    console.log(d);
+    this.toSingleView.navigate([`/cookerprofile/${d}`]);
+
+  }
+
   ngOnInit() {
 
   }

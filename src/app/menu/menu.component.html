@@ -13,10 +13,10 @@
               <ng-template ngbTabContent>
                 <div class="row">
                   <div class="col-sm-8 ">
-                    <div *ngFor="let data of meals">
+                    <div *ngFor="let data of meals; let prop of homeImg">
                       <div class="media weekaCard w-100 mb-5 align-items-center">
                         <a routerLink="/singleItem/{{data.slug}}">
-                          <img class="mealImg" src="../assets/images/single-page/{{data.image}}" alt="Generic placeholder image">
+                          <img class="mealImg" src="../assets/images/home-page/{{prop.image}}" alt="Generic placeholder image">
                         </a>
                         <div class="media-body position-relative text-center">
                           <!-- Start fav meal icon -->

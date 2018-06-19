@@ -75,7 +75,9 @@ export class EditUserComponent implements OnInit {
       this.query.getData(path).subscribe(
         res => {
           this.favMeals.push(res.data);
-
+          this.favMeals.forEach(elem => {
+            elem['qty'] = 1;
+          })
         },
         err => {
           console.log(err);
@@ -88,11 +90,10 @@ export class EditUserComponent implements OnInit {
   // ============== trigger order button ==============
   addToCartHistory(id) {
     this.favMeals.forEach(element => {
-
-      if (element.meal_id == id) {
+      if (element["meal_id"] == id) {
         this.allCartMeals.add(element);
       }
-    })
+    });
     this.cart.totalOneMeal = 0;
     this.cart.addPrice();
   }

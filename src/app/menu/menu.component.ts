@@ -22,9 +22,12 @@ export class MenuComponent implements OnInit {
   public meals: Array<object>;
   public slugName: string;
   public allCartMeals: Set<any>;
+  homeImg:Array<object>;
 
   constructor(private q: QueryService, private active: ActivatedRoute, private cooker: Router, private transfer: TransferDataService) {
     this.meals = [];
+    this.homeImg = [];
+    
     // this.allCartMeals = new Set();
 
     // ========= accessing name comes from url ===========    
@@ -78,6 +81,20 @@ export class MenuComponent implements OnInit {
     this.cooker.navigate([`/cookerprofile/${d}`]);
 
   }
+
+
+  getHomeImg(): void {
+    let path: string = "./assets/images-home.json";
+    this.q.getData(path).subscribe(
+      res => {
+        this.homeImg = res;
+      },
+      err => { console.log(err) }
+    );
+  }
+
+
+
   ngOnInit() {
     this.transfer.cast.subscribe(product => this.allCartMeals = product);
   }
