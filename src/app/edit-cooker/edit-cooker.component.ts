@@ -15,13 +15,16 @@ export class EditCookerComponent implements OnInit {
   @ViewChild('data') data: CookerDataComponent;
   @ViewChild('allMeals') allMeals: AllMealsComponent;
 
-  chefStat: boolean;
+  chefStat: object;
   chefData: object;
+  loggedInID: string;
 
   constructor(private query: QueryService) {
 
     this.chefData = {};
     this.loggedIn();
+    this.loggedInID = localStorage.getItem('userID');
+    this.chefStat = {};
   }
 
   ngOnInit() {
@@ -40,14 +43,30 @@ export class EditCookerComponent implements OnInit {
       this.query.setChefData(res.data);
       this.chefData = res.data;
       this.data.getchef();
-      // this.allMeals.getMeals();
     })
   }
 
-
+  //========== send put request to change chef state ===========
   statusFunc() {
-    // console.log(this.status.nativeElement.value);
-    this.chefStat = this.status.nativeElement.value;
-    console.log(this.chefStat);
+    this.chefStat['state'] = this.status.nativeElement.value;
+    console.log(this.chefStat['state']);
+    if (this.chefStat['state']) {
+      this.chefData['state'] = "true";
+    }
+    else {
+      this.chefData['state'] = "false";
+    }
+    // patch request to update cooker data object in database
+    let path: string = `http://weeka.herokuapp.com/api/chefs/${this.loggedInID}`;
+    let tokenUser = localStorage.getItem('token');
+    console.log(tokenUser);
+    return this.query.putData(path, this.chefStat, {
+      headers: new HttpHeaders({ 'Authorization': `Bearer ${tokenUser}` })
+    }).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => { console.log(err) }
+    );
   }
 }

@@ -9,7 +9,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./user-info.component.scss']
 })
 export class UserInfoComponent implements OnInit {
-  allData: Array<any>;
+
   userData: object;
   editFlag: boolean;
   closeResult: string;
@@ -17,7 +17,7 @@ export class UserInfoComponent implements OnInit {
 
   constructor(private query: QueryService,
     private modalService: NgbModal) {
-    this.allData = [];
+
     this.userData = {};
     this.getUserData();
     this.editFlag = false;
@@ -28,23 +28,15 @@ export class UserInfoComponent implements OnInit {
 
   //============ get data from json file ==========
   getUserData(): void {
-    let path: string = "../../assets/user-info.json";
-    this.query.getData(path).subscribe(
-      res => {
-        this.allData = res;
-        console.log(this.allData);
-        this.checkUser();
-      },
-      err => { console.log(err) }
-    );
+    this.userData = this.query.getUserData();
   }
 
   // ========== accessing single product from all products ========
-  checkUser(): void {
-    for (let user of this.allData) {
-      this.userData = user;
-    }
-  }
+  // checkUser(): void {
+  //   for (let user of this.allData) {
+  //     this.userData = user;
+  //   }
+  // }
 
   editInfo(): void {
     this.editFlag = !this.editFlag;

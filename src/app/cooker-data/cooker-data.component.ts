@@ -15,6 +15,7 @@ export class CookerDataComponent implements OnInit {
   closeResult: string;
   editedPass: object;
   loggedInID: string;
+  chefGender: string;
 
   constructor(private query: QueryService,
     private modalService: NgbModal) {
@@ -46,30 +47,26 @@ export class CookerDataComponent implements OnInit {
   }
 
   //=========== form validation function =============
-  editFunc(data: NgForm): void {
+  editFunc(data: NgForm) {
     if (data.valid) {
       // patch request to update cooker data object in database
-      console.log(this.chefData);
       let path: string = `http://weeka.herokuapp.com/api/chefs/${this.loggedInID}`;
 
       let tokenUser = localStorage.getItem('token');
       console.log(tokenUser);
+      console.log(this.chefData);
+      this.editFlag = !this.editFlag;
 
-      this.query.patchData(path, {
+      return this.query.patchData(path, this.chefData, {
         headers: new HttpHeaders({ 'Authorization': `Bearer ${tokenUser}` })
-      }, this.chefData).subscribe(
+      }).subscribe(
         res => {
           console.log(res);
+          this.chefData = res.data;
         },
         err => { console.log(err) }
       );
-      if (this.chefData["gender"] == 'female') {
-        this.chefData["gender"] = "أنثي";
-      }
-      if (this.chefData["gender"] == 'male') {
-        this.chefData["gender"] = "ذكر";
-      }
-      this.editFlag = !this.editFlag;
+
     }
     else {
       console.log("data is not correct");
@@ -78,23 +75,25 @@ export class CookerDataComponent implements OnInit {
 
   // ============= change password function ===============
   saveChanges(data: NgForm): void {
-    if (data.valid) {
-      //========== put request to update password ===========
-      console.log(this.editedPass);
-      let path: string = `http://weeka.herokuapp.com/api/chefs/${this.loggedInID}`;
-      let tokenUser = localStorage.getItem('token');
-      console.log(tokenUser);
-      this.query.putData(path, {
-        headers: new HttpHeaders({ 'Authorization': `Bearer ${tokenUser}` })
-      }, this.editedPass).subscribe(
-        res => {
-          console.log(res);
-        },
-        err => { console.log(err) }
-      );
-    } else {
-      console.log('error');
-    }
+
+    //========== put request to update password ===========
+    console.log(this.editedPass);
+    let path: string = `http://weeka.herokuapp.com/api/chefs/${this.loggedInID}`;
+    let tokenUser = localStorage.getItem('token');
+    console.log(tokenUser);
+    this.query.patchData(path, this.editedPass, {
+      headers: new HttpHeaders({ 'Authorization': `Bearer ${tokenUser}` })
+    }).subscribe(
+      res => {
+        console.log(res);
+        alert("Password changed successfully");
+      },
+      err => {
+        console.log(err)
+        alert("Password is invalid!");
+      }
+    );
+
   }
 
   // ================== modal function ===================

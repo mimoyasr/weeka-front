@@ -30,17 +30,17 @@ export class QueryService {
   postData(path: string, data): Observable<any> {
     return this.http.post(path, data);
   }
-  postDataHeader(path: string,header, data ?): Observable<any> {
-    return this.http.post(path,header,data);
+  postDataHeader(path: string, header, data?): Observable<any> {
+    return this.http.post(path, header, data);
 
   }
 
-  patchData(path: string, header, data): Observable<any> {
-    return this.http.patch(path, header, data);
+  patchData(path: string, data, header): Observable<any> {
+    return this.http.patch(path, data, header);
   }
 
-  putData(path: string, header, data): Observable<any> {
-    return this.http.put(path, header, data);
+  putData(path: string, data, header): Observable<any> {
+    return this.http.put(path, data, header);
   }
   // for send token to server
   getData2(path: string, header): Observable<any> {

@@ -19,7 +19,9 @@
               <i class="icon-down-open pl-2"></i>{{logedUser.data.fname}} {{logedUser.data.lname}}
             </button>
             <div class="p-0 rounded-0" ngbDropdownMenu aria-labelledby="dropdownBasic1">
-              <a (click)=" redirect()"><button value="true" class="dropdown-item">الصفحة الشخصية</button></a>
+              <a (click)=" redirect()">
+                <button value="true" class="dropdown-item">الصفحة الشخصية</button>
+              </a>
               <button value="false" class="dropdown-item" (click)="logout()">تسجيل الخروج</button>
             </div>
             <a routerLink="becomeacooker" class="headlinesFonts pr-3">اصبح طباخ</a>
@@ -61,12 +63,12 @@
 </section>
 
 
-<a routerLink="editCooker">
+<!-- <a routerLink="editCooker">
   <button class="btn small-btn">edit chef</button>
 </a>
 <a routerLink="editUser">
   <button class="btn small-btn mr-4">edit user</button>
-</a>
+</a> -->
 
 <!-- <app-edit-cooker></app-edit-cooker> -->
 <!-- <app-edit-cooker></app-edit-cooker> -->

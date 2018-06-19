@@ -23,7 +23,7 @@ export class AllMealsComponent implements OnInit {
     this.modal = false;
     this.chefData = {};
     this.chefMeals = [];
-
+    this.getMeals();
   }
 
   ngOnInit() {
@@ -31,8 +31,8 @@ export class AllMealsComponent implements OnInit {
 
   getMeals() {
     this.chefData = this.query.getChefData();
-    // this.chefMeals = this.chefData['menu'];
-    console.log(this.chefData);
+    this.chefMeals = this.chefData['meals'];
+    console.log(this.chefMeals);
   }
   // ============== get loggedin chef data ==============
   // loggedIn() {

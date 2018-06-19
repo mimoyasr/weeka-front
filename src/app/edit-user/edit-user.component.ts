@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { QueryService } from '../query.service';
-import { CartComponent } from '../cart/cart.component';
 import { HttpHeaders } from '@angular/common/http';
+import { CartComponent } from '../cart/cart.component';
+import { UserInfoComponent } from '../user-info/user-info.component';
 
 //Services
 import { TransferDataService } from '../transfer-data.service';
@@ -13,15 +14,20 @@ import { TransferDataService } from '../transfer-data.service';
 export class EditUserComponent implements OnInit {
 
   @ViewChild(CartComponent) cart: CartComponent;
+  @ViewChild('data') data: UserInfoComponent;
+
   userData: object;
+  loggedInID: string;
   allCartMeals: Set<any>;
   historyMeals: Array<any>;
-  // favouriteMeals: Array<any>;
 
   constructor(private query: QueryService, private transfer: TransferDataService) {
 
     this.userData = {};
     this.historyMeals = [];
+    this.loggedIn();
+    this.loggedInID = localStorage.getItem('userID');
+
 
   }
 
@@ -29,12 +35,21 @@ export class EditUserComponent implements OnInit {
     this.transfer.cast.subscribe(product => this.allCartMeals = product);
   }
 
-  getUserData() {
-    this.userData = this.transfer.getData();
-    console.log(this.userData);
+  // ============== get logged in user data ==============
+  loggedIn() {
+    // for authorization
+    let path = "http://weeka.herokuapp.com/api/profile";
+    let tokenUser = localStorage.getItem('token');
+
+    return this.query.getData2(path, {
+      headers: new HttpHeaders({ 'Authorization': `Bearer ${tokenUser}` })
+    }).subscribe(res => {
+      console.log(res.data);
+      this.query.setUserData(res.data);
+      this.userData = res.data;
+      this.data.getUserData();
+    })
   }
-
-
 
   // ============== trigger order button ==============
   addToCartHistory(id) {
