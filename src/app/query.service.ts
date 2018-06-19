@@ -12,6 +12,7 @@ export class QueryService {
   private mealslug: string;
   private districtslug: string;
   private userData: object;
+  private commentState:boolean;
 
   constructor(private http: HttpClient) {
     this.chefData = {};
