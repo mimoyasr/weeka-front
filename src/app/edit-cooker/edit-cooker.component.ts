@@ -40,8 +40,8 @@ export class EditCookerComponent implements OnInit {
       this.query.setChefData(res.data);
       this.chefData = res.data;
       this.data.getchef();
-      console.log(this.allMeals)
-      this.allMeals.getMeals();
+      // console.log(this.allMeals)
+      // this.allMeals.getMeals();
       
       // this.allMeals.getMeals();
     })

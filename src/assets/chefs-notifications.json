@@ -1,0 +1,50 @@
+[
+    {
+        "meal_id": 1,
+        "qty":"70",
+        "image": "../assets/images/home-page/meal-card4.jpg",
+        "singleImg": "../assets/images/single-page/meal4-S.jpg",
+        "name": "الإسباجتي الإيطالي",
+        "price": "33",
+        "mealDescription": "إسباجتي باستا المطهية مع زيت الزيتون و الثوم و تقدم مع قطع طماطم ",
+        "mealRate": "5",
+        "orders": "25",
+        "isActive": false
+    },
+    {
+        "meal_id": 2,
+        "qty":"62",
+        "image": "../assets/images/home-page/meal-card3.jpg",
+        "singleImg": "../assets/images/single-page/meal3-S.jpg",
+        "name": "طبق الدجاج المشوي",
+        "price": "77",
+        "mealDescription": "الدجاج المشوي الصحي و اللذيذ مع الفاصولياو شرائح الجزر و المشروم الطازج",
+        "mealRate": "1",
+        "orders": "25",
+        "isActive": true
+    },
+    {
+        "meal_id": "3",
+        "qty":"40",
+        "image": "../assets/images/home-page/meal-card2.jpg",
+        "singleImg": "../assets/images/single-page/meal2-S.jpg",
+        "name": "اصابع الدجاج المقليه",
+        "price": "45",
+        "mealDescription": "أصابع الدجاج المقلية مع صوص البافلو مقدمة مع صوص الرانش",
+        "mealRate": "4",
+        "orders": "25",
+        "isActive": true
+    },
+    {
+        "meal_id": "4",
+        "qty":"155",
+        "image": "../assets/images/home-page/meal-card1.jpg",
+        "singleImg": "../assets/images/single-page/meal1-S.jpg",
+        "name": "سلطة السيزر بالجمبرى",
+        "price": "65",
+        "mealDescription": "الجمبرى المشوي مع الخس الطازج و الطماطم و قطع الخبز المحمص",
+        "mealRate": "2",
+        "orders": "25",
+        "isActive": true
+    }
+]

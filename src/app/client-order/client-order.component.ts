@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { element } from 'protractor';
 import { NgForm, NgModel } from '@angular/forms';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 //service
 import { TransferDataService } from '../transfer-data.service';
@@ -25,9 +26,12 @@ export class ClientOrderComponent implements OnInit {
   phoneDetail:String;
   addNewPhoneMode:boolean;
   newPhone:Object;
+  closeResult: String;
+  
   constructor(
     private transfer:TransferDataService,
-    private data: QueryService
+    private data: QueryService,
+    private modalService: NgbModal 
   ) {
     this.transfer.cast.subscribe(product => this.allMealCart = product );  
     this.totalAllMeals = 0;   
@@ -154,5 +158,24 @@ export class ClientOrderComponent implements OnInit {
   confirmOrderFinal():void{
     this.transfer.cast.subscribe(product => this.allMealCart = product );
   }
+
+    // trigger modal
+    open(content) {
+      this.modalService.open(content).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+    }
+  
+    private getDismissReason(reason: any): string {
+      if (reason === ModalDismissReasons.ESC) {
+        return 'by pressing ESC';
+      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+        return 'by clicking on a backdrop';
+      } else {
+        return  `with: ${reason}`;
+      }
+    }
 
 }
