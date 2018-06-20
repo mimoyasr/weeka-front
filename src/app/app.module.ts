@@ -7,7 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RatingModule } from "ngx-rating";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-/* import { NgxCropperModule } from 'ngx-cropper'; */
 import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpModule } from "@angular/http";
 
@@ -27,8 +26,6 @@ import { HomeMenuComponent } from './home-menu/home-menu.component';
 import { CartComponent } from './cart/cart.component';
 import { EditCookerComponent } from './edit-cooker/edit-cooker.component';
 import { CookerProfileComponent } from './cooker-profile/cooker-profile.component';
-
-// import { NgbdRatingBasic } from './rating';
 import { AddNewMealComponent } from './add-new-meal/add-new-meal.component';
 import { NotificationComponent } from './notification/notification.component';
 import { CookerDataComponent } from './cooker-data/cooker-data.component';
@@ -43,6 +40,8 @@ import { UserHistoryComponent } from './user-history/user-history.component';
 import { UserFavsComponent } from './user-favs/user-favs.component';
 import { PaymentComponent } from './payment/payment.component';
 import { AllMealsComponent } from './all-meals/all-meals.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { TermsComponent } from './terms/terms.component';
 
 
 //services
@@ -65,7 +64,9 @@ const appRoutes: Routes = [
   { path: 'clientOrder', component: ClientOrderComponent },
   { path: ':name/menu', component: MenuComponent },
   { path: 'statistics', component: ChefStatisticComponent },
-  { path: 'cookerprofile/:id', component: CookerProfileComponent }
+  { path: 'cookerprofile/:id', component: CookerProfileComponent },
+  { path: 'contactUs', component: ContactUsComponent },
+  { path: 'terms', component: TermsComponent }
 
 
 
@@ -100,7 +101,9 @@ const appRoutes: Routes = [
     AllMealsComponent,
     PaymentComponent,
     CookerProfileComponent,
-  
+    ContactUsComponent,
+    TermsComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -115,7 +118,7 @@ const appRoutes: Routes = [
  */    NgxPaginationModule,
     HttpModule
   ],
-  providers: [QueryService, TransferDataService, StatisticsService,AuthorizationService],
+  providers: [QueryService, TransferDataService, StatisticsService, AuthorizationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
