@@ -1,0 +1,48 @@
+<section class="allMeals">
+  <div class="container">
+    <div class="row" *ngIf="chefData">
+      <div class="col-md-12 col-lg-6" *ngFor="let data of chefMeals">
+        <div class="media weekaCard w-100 mb-5 align-items-center">
+          <img class="mealImg" src="../assets/images/single-page/{{data.image}}" alt="Generic placeholder image">
+          <div class="media-body position-relative text-center">
+            <!--Start meal rating  -->
+            <ngb-rating [(rate)]="data.rate" max=5 [readonly]="true">
+              <ng-template let-fill="fill">
+                <span class="star" [class.filled]="fill === 100">&#9733;</span>
+              </ng-template>
+            </ngb-rating>
+            <!--end meal rating -->
+            <h3 class="mt-0">{{data.name}}</h3>
+            <p>{{data.description}}</p>
+            <div class="price rounded-circle position-absolute">
+              <h3> {{data.price}} ج </h3>
+              <div class="price-bg rounded-circle position-absolute">
+              </div>
+            </div>
+
+            <div class="media-footer">
+              <div class="row">
+
+                <div class="col-md-6">
+                  <p>عدد مرات الطلب: {{data.average}}</p>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="radios-list">
+                    <label class="toggle d-inline-block">
+                      <input #toggle (click)="toggleFunc()" type="checkbox" [checked]="data.state == true" />
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

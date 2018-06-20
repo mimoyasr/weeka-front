@@ -1,0 +1,47 @@
+<section class="">
+   <!-- ==========Navbar========== -->
+   <div class="nav pt-4   text-white">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2 offset-md-7">
+            <a routerLink="">
+              <img src="../assets/images/logo.png" alt="">
+            </a>
+          </div>
+          <div class="col-md-3" *ngIf="!token">
+            <a routerLink="/login" class="border p-2">تسجيل الدخول</a>
+            <a routerLink="/becomeacooker" class="headlinesFonts pr-3">اصبح طباخ</a>
+          </div>
+
+          <div ngbDropdown placement="bottom-right" class="navdrop d-inline-block pl-3" *ngIf="token && logedUser.data">
+            <button class="btn bg-transparent" id="dropdownBasic1" ngbDropdownToggle>
+              <i class="icon-down-open pl-2"></i>{{logedUser.data.fname}} {{logedUser.data.lname}}
+            </button>
+            <div class="p-0 rounded-0" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <a (click)=" redirect()">
+                <button value="true" class="dropdown-item">الصفحة الشخصية</button>
+              </a>
+              <button value="false" class="dropdown-item" (click)="logout()">تسجيل الخروج</button>
+            </div>
+            <a routerLink="becomeacooker" class="headlinesFonts pr-3" *ngIf="!userTypeCheck">اصبح طباخ</a>
+            <a routerLink="newMeal" class="headlinesFonts pr-3" *ngIf="userTypeCheck">اضافه اكله</a>
+          </div>
+
+
+
+
+        </div>
+      </div>
+    </div>
+
+   <!-- ==========Search========== -->
+   <div class="container  h-100  ">
+     <div class="row h-75 align-items-center">
+       <div class="col-sm-12">
+          <app-home-menu ></app-home-menu>
+       </div>
+     </div>
+   </div>
+ 
+   
+</section>

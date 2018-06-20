@@ -1,0 +1,60 @@
+.radios-list * {
+    display: block;
+  }
+  .radios-list *:not(:first-child) {
+    margin-top: 3px;
+  }
+  .toggle {
+    display: inline-block;
+    width: 60px;
+    padding: 2px;
+    border: 3px solid #ccc;
+    border-radius: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .toggle input[type="checkbox"] {
+    display: none;
+  }
+  .toggle input[type="checkbox"]:checked + .toggle-slider {
+    margin-left: -26px;
+    background: $mainColor;
+  }
+  .toggle .toggle-slider {
+    width: 18px;
+    height: 18px;
+    background: #ccc;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    margin-left: 32px;
+    transition: all 0.3s ease;
+  
+  }
+  .toggle .toggle-slider::before {
+    content: "Off";
+    left: -30px;
+  }
+  .toggle .toggle-slider::after {
+    content: "On";
+    right: -30px;
+  }
+  .toggle .toggle-slider::before,
+  .toggle .toggle-slider::after {
+    position: absolute;
+    display: inline-block;
+    width: 28px;
+    text-align: center;
+    line-height: 18px;
+    padding-right: 6px;
+  }
+  .checkbox {
+    display: block;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  .checkbox input[type="checkbox"] {
+    display: none;
+  }

@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div *ngIf="chart">
+        <canvas id="canvas">{{ chart }}</canvas>
+      </div>
+    </div>
+    <div class="col-md-6" *ngFor='let top of tops'>
+      <div >
+        <p>{{top.num}}</p>
+        <p>{{top.topMealName}}</p>
+        <p>{{top.totalMoney}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10">
+      <div *ngIf="chart">
+        <canvas id="canvas2">{{ chart2 }}</canvas>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <app-meal-comment></app-meal-comment>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+@import '../../scss/mixins';
+@import '../../scss/variables';
+@import '../../scss/general';
+@import '../../scss/profile';
+@import '../../scss/tabs';
+
+header{
+    height: 500px;
+    @include backgroundImg('/assets/images/cooker-profile/pattern-.png');
+    h4,h6{
+        color: $headlinesColor;
+        font-family: $headlinesFonts;
+    }
+    p,span{
+       color:  $textColor;
+    }
+    ngb-rating
+    {
+      left: -1%;
+      top: 38%;
+    }
+
+}
+section{
+
+  
+
+    .sm-screen
+{
+    display: none;
+}
+.sm-screen
+{
+.card-img-top
+{
+    height: 250px;
+}
+}
+
+img.mealImg{
+width: 160px;
+height: 241px;
+}
+
+@media (max-width: 767px) { 
+
+.lg-screen
+{
+    display: none;
+}
+.sm-screen
+{
+    display: block;
+}
+}
+
+}

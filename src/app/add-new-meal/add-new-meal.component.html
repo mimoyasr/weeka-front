@@ -1,0 +1,85 @@
+<section id="newMeal">
+  <!-- ==========Navbar========== -->
+  <div class="nav pt-4 pb-3 bg-dark text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2 offset-md-7">
+          <a routerLink="">
+            <img src="../assets/images/logo.png" alt="">
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a class="border p-2">اسم المستخدم</a>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!-- ========== Add new meal========== -->
+         
+        
+    <form  name="newMeal" #newMeal="ngForm" enctype="multipart/form-data" (ngSubmit)="addNewMeal(newMeal)" novalidate>
+        <div class="container">
+            <div class="headline">
+                <h2>اضافة أكلة جديدة </h2>
+                <hr class="ml-auto">
+            </div>
+
+      <!-- meal image input -->
+      <div class="my-5 bgColor py-4 px-5">
+        <input type="file" 
+        class="w-100 mt-3 mb-0 myImage p-5" value="" accept="image/*">
+      </div>
+
+       <!-- meal name input -->
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="اسم الأكلة " 
+        name="name" #name="ngModel" [(ngModel)]="newMeal.name"
+          required />
+      </div>
+      <!-- validation meal name -->
+      <div *ngIf="name.invalid && (name.dirty || name.touched || newMeal.submitted==true)">
+        <div *ngIf="name.errors.required" class="text-danger">
+          * هذا الحقل مطلوب
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <input type="number" min="0" max="500" class="form-control" 
+        placeholder="سعر الاكلة " 
+        name="price" #price="ngModel" [(ngModel)]="price.mealName"
+          required />
+      </div>
+
+      <p>{{ afterPercentage }}</p>
+
+      <!-- category input -->
+      <div class="form-group">
+        <select class="form-control" id="exampleFormControlSelect9"
+         name="category_id" [(ngModel)]="category_id" required #cat="ngModel">
+          <option *ngFor="let cat of categories" [ngValue]="cat.id">{{cat.name}}</option>
+        </select>
+        <span *ngIf="newMeal.submitted==true && newMeal.valid==false  && !cat.valid " class="text-danger">* هذا الحقل مطلوب</span>
+      </div>
+
+      <input type="text" name="preparation_time" [(ngModel)]="newMeal.preparation_time" >
+
+      <!-- descriptipn text area -->
+      <textarea name="desc" #desc="ngModel" [(ngModel)]="newMeal.desc"
+      id="" cols="50" rows="5" class="w-100" placeholder="الوصف" 
+        required></textarea>
+         <!-- validation descriptipn text area -->
+      <div *ngIf="desc.invalid && (desc.dirty || desc.touched || newMeal.submitted==true)">
+        <div *ngIf="desc.errors.required" class="text-danger">
+          * هذا الحقل مطلوب
+        </div>
+      </div>
+
+      <!-- add button -->
+      <button type="submit" class="btn big-btn mt-2 ml-3"> اضافة</button>
+      <button type="reset" class="big-btn-sconedColor"> الغاء</button>
+
+    </div>
+  </form>
+
+</section>

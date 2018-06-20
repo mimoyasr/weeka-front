@@ -1,0 +1,70 @@
+@import '../../scss/mixins';
+@import '../../scss/variables';
+@import '../../scss/general';
+@import '../../scss/tabs';
+
+
+
+
+
+section{
+    @include backgroundImg2('../../assets/images/menu/bg.png');
+  
+   
+    ngb-rating
+    {
+      left: -2.5%;
+      top: 38%;
+    }
+  
+nav
+{
+    .btn:focus{
+        @include boxShadow(none);
+    }
+    .dropdown-item{
+        padding: 10px 15px;
+        text-align: right;
+        color: $headlinesColor;        
+        &:hover{
+            background-color: $mainColor;
+            color: #fff;
+        }
+        &:focus{
+        background-color: transparent;
+        outline: none;
+        }
+
+    }
+}
+.sm-screen
+{
+    display: none;
+}
+.sm-screen
+{
+.card-img-top
+{
+    height: 250px;
+}
+}
+
+img.mealImg{
+width: 160px;
+height: 241px;
+}
+
+@media (max-width: 767px) { 
+
+.lg-screen
+{
+    display: none;
+}
+.sm-screen
+{
+    display: block;
+}
+}
+
+   
+}

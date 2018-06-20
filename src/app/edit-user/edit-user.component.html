@@ -1,0 +1,157 @@
+<!-- ==========Navbar========== -->
+<nav class="bg-dark pt-4 pb-2 text-white">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-md-2">
+        <a routerLink="">
+          <img src="../assets/images/logo.png" alt="">
+        </a>
+      </div>
+      <div class="col-md-4">
+        <div ngbDropdown placement="bottom-right" class="navdrop d-inline-block pl-3">
+          <button class="btn bg-transparent" id="dropdownBasic1" ngbDropdownToggle>
+            <i class="icon-down-open pl-2"></i>{{userData.fname}} {{userData.lname}}
+          </button>
+          <div class="p-0 rounded-0" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button class="dropdown-item">الصفحة الشخصية</button>
+            <button class="dropdown-item">تسجيل الخروج</button>
+          </div>
+        </div>
+        <a href="#" class="text-white p-2">اصبح طباخ</a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+<app-user-info #data></app-user-info>
+
+<div class="container" *ngIf="favFlag">
+  <div class="headline mb-5">
+    <h2 class="text-center">طلباتك السابقة</h2>
+    <hr class="mb-5">
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <section class="history">
+        <div class="container">
+          <!-- =========== history ================= -->
+          <div *ngFor="let meal of favMeals ; let prop of homeImg">
+            <div class="media smallCard weekaCard w-100 mb-5 align-items-center">
+              <a routerLink="/singleItem/{{(meal.slug)}}">
+                <img class="cardImg" src="../assets/images/home-page/{{prop.image}}" alt="Generic placeholder image">
+              </a>
+              <div class="media-body position-relative text-center">
+                <!-- Start fav meal icon -->
+                <div class="btn-group btn-group-toggle fav">
+                  <label class="btn-primary custom" ngbButtonLabel>
+                    <input type="checkbox" ngbButton [(ngModel)]="meal.favorite">
+                    <div *ngIf="meal.favorite==false ">
+                      <img class="" src="../../assets/images/not-fav.png" alt="">
+                    </div>
+                    <div *ngIf="meal.favorite==true ">
+                      <img class="" src="../../assets/images/fav.png" alt="">
+                    </div>
+                  </label>
+                </div>
+                <!--end fav meal icon -->
+                <!--Start meal rating  -->
+                <ngb-rating [(rate)]="meal.rate" max=5 [readonly]="true">
+                  <ng-template let-fill="fill">
+                    <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                  </ng-template>
+                </ngb-rating>
+                <!--end meal rating -->
+                <h3 class="mt-0 mb-4">{{meal.name}}</h3>
+                <div class="price rounded-circle position-absolute">
+                  <h3> {{meal.price}} ج </h3>
+                  <div class="price-bg rounded-circle position-absolute">
+                  </div>
+                </div>
+
+                <button class="small-btn" (click)="addToCartHistory(meal.meal_id)">اطلب</button>
+
+                <div class="media-footer mb-4">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <button class="bg-transparent text-dark" (click)="redirectToCooker(meal.chef_id)">الشيف: {{meal.chef_name}}</button>
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-left">
+            <button class="btn big-btn">المزيد</button>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="col-md-4">
+      <app-cart></app-cart>
+    </div>
+  </div>
+  <div class="headline mb-5">
+    <h2 class="text-center"> اكلاتك المفضلة</h2>
+    <hr class="mb-5">
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <section class="favourite">
+        <div class="container">
+          <!-- =========== favourite ================= -->
+          <div *ngFor="let meal of favMeals ; let prop of homeImg">
+            <div class="media smallCard weekaCard w-100 mb-5 align-items-center">
+              <a routerLink="/singleItem/{{meal.slug}}">
+                <img class="cardImg" src="../assets/images/home-page/{{prop.image}}" alt="Generic placeholder image">
+              </a>
+              <div class="media-body position-relative text-center">
+                <!-- Start fav meal icon -->
+                <div class="btn-group btn-group-toggle fav">
+                  <label class="btn-primary custom" ngbButtonLabel>
+                    <input type="checkbox" ngbButton [(ngModel)]="meal.favorite">
+                    <div *ngIf="meal.favorite==false ">
+                      <img class="" src="../../assets/images/not-fav.png" alt="">
+                    </div>
+                    <div *ngIf="meal.favorite==true ">
+                      <img class="" src="../../assets/images/fav.png" alt="">
+                    </div>
+                  </label>
+                </div>
+                <!--end fav meal icon -->
+                <!--Start meal rating  -->
+                <ngb-rating [(rate)]="meal.rate" max=5 [readonly]="true">
+                  <ng-template let-fill="fill">
+                    <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                  </ng-template>
+                </ngb-rating>
+                <!--end meal rating -->
+                <h3 class="mt-0 mb-4">{{meal.name}}</h3>
+                <div class="price rounded-circle position-absolute">
+                  <h3> {{meal.price}} ج </h3>
+                  <div class="price-bg rounded-circle position-absolute">
+                  </div>
+                </div>
+                <button class="small-btn" (click)="addToCartHistory(meal.meal_id)">اطلب</button>
+                <div class="media-footer mb-4">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <button class="bg-transparent text-dark" (click)="redirectToCooker(meal.chef_id)">الشيف: {{meal.chef_name}}</button>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-left">
+            <button class="btn big-btn">المزيد</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

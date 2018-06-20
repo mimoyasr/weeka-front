@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row justify-content-center ">
+    <div class=" col-sm-12 col-md-8 home-menu">
+      <div class="row no-gutters">
+        <div class="-col-sm-12 col-md-9">
+          <div class="btn-group w-100 btn-group-justified">
+            <div class="btn-group w-100" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+
+              <button class="btn search text-righ" ngbDropdownToggle (click)="getAreas()">{{ selected }}</button>
+
+
+              <div class="dropdown-menu" ngbDropdownMenu>
+                <button class="dropdown-item" *ngFor="let area of areas" (click)="showItem(area.name,area.slug)">{{area.name}}</button>
+       
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-3">
+          
+          <button class="btn big-btn menu " (click)=" redirectToMenu(content)" >المنيو</button>
+               <!-- modal -->
+              
+              <ng-template #content let-c="close"   let-d="dismiss">
+                  <div class="modal-header">
+                  </div>
+                  <div class="modal-body">
+                      <h4 class="modal-title">من فضلك ادخل منطقتك</h4>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-light" (click)="c('Close click')"><i class="icon-cancel"></i></button>
+                  </div>
+                </ng-template>
+      
+            
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

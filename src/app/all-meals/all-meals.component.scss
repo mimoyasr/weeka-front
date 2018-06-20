@@ -1,0 +1,14 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+@import '../../scss/general';
+@import '../../scss/activateMeal';
+.allMeals{
+    .price{
+        top: 29px;
+    }  
+    img.mealImg{
+        width: 160px;
+        height: 241px;
+    }
+    
+}
