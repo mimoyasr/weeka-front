@@ -15,8 +15,7 @@ export class CookerDataComponent implements OnInit {
   closeResult: string;
   editedPass: object;
   loggedInID: string;
-  chefGender: string;
-  dayRow:Array<any>;
+  dayRow: Array<any>;
 
   constructor(private query: QueryService,
     private modalService: NgbModal) {
@@ -27,14 +26,14 @@ export class CookerDataComponent implements OnInit {
     this.dayRow = [1];
   }
 
-  ngOnInit() {
+  ngOnInit() { }
 
-  }
-
+  // ============= function to call from parent component ===========
   getchef() {
     this.chefData = this.query.getChefData();
     console.log(this.chefData);
   }
+
   // ============ time picker ===============
   time = { hour: 13, minute: 30 };
   time2 = { hour: 18, minute: 30 };
@@ -78,7 +77,7 @@ export class CookerDataComponent implements OnInit {
   // ============= change password function ===============
   saveChanges(data: NgForm): void {
 
-    //========== put request to update password ===========
+    //========== patch request to update password ===========
     console.log(this.editedPass);
     let path: string = `http://weeka.herokuapp.com/api/chefs/${this.loggedInID}`;
     let tokenUser = localStorage.getItem('token');

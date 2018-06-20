@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { QueryService } from '../query.service';
 import { NgForm, NgModel } from '@angular/forms';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-info',
@@ -11,6 +12,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 export class UserInfoComponent implements OnInit {
 
   userData: object;
+  loggedInID: string;
   editFlag: boolean;
   closeResult: string;
   editedPass: object;
@@ -19,45 +21,67 @@ export class UserInfoComponent implements OnInit {
     private modalService: NgbModal) {
 
     this.userData = {};
-    this.getUserData();
     this.editFlag = false;
     this.editedPass = {};
+    this.loggedInID = localStorage.getItem('userID');
   }
 
   ngOnInit() { }
 
-  //============ get data from json file ==========
+  // ============= function to call from parent component ===========
   getUserData(): void {
     this.userData = this.query.getUserData();
   }
-
-  // ========== accessing single product from all products ========
-  // checkUser(): void {
-  //   for (let user of this.allData) {
-  //     this.userData = user;
-  //   }
-  // }
 
   editInfo(): void {
     this.editFlag = !this.editFlag;
   }
 
   //=========== form validation function =============
-  editFunc(data: NgForm): void {
+  editFunc(data: NgForm) {
     if (data.valid) {
-      // post request to update cooker data object in database
+      // patch request to update cooker data object in database
+      let path: string = `http://weeka.herokuapp.com/api/chefs/${this.loggedInID}`;
+
+      let tokenUser = localStorage.getItem('token');
+      console.log(tokenUser);
       console.log(this.userData);
-      if (this.userData["gender"] == 'female') {
-        this.userData["gender"] = "أنثي";
-      }
-      if (this.userData["gender"] == 'male') {
-        this.userData["gender"] = "ذكر";
-      }
       this.editFlag = !this.editFlag;
+
+      return this.query.patchData(path, this.userData, {
+        headers: new HttpHeaders({ 'Authorization': `Bearer ${tokenUser}` })
+      }).subscribe(
+        res => {
+          console.log(res);
+          this.userData = res.data;
+        },
+        err => { console.log(err) }
+      );
     }
     else {
       console.log("data is not correct");
     }
+  }
+
+  // ============= change password function ===============
+  saveChanges(data: NgForm): void {
+    //========== patch request to update password ===========
+    console.log(this.editedPass);
+    let path: string = `http://weeka.herokuapp.com/api/chefs/${this.loggedInID}`;
+    let tokenUser = localStorage.getItem('token');
+    console.log(tokenUser);
+    this.query.patchData(path, this.editedPass, {
+      headers: new HttpHeaders({ 'Authorization': `Bearer ${tokenUser}` })
+    }).subscribe(
+      res => {
+        console.log(res);
+        alert("Password changed successfully");
+      },
+      err => {
+        console.log(err)
+        alert("Password is invalid!");
+      }
+    );
   }
 
   // ================== modal function ===================
@@ -76,20 +100,6 @@ export class UserInfoComponent implements OnInit {
       return 'by clicking on a backdrop';
     } else {
       return `with: ${reason}`;
-    }
-  }
-
-  // ============= change password function ===============
-  saveChanges(data: NgForm): void {
-    if (data.valid) {
-      //========== request update password ===========
-      console.log(this.editedPass);
-      this.editedPass["oldPass"] = "";
-      this.editedPass["newPass"] = "";
-      this.editedPass["newPass2"] = "";
-
-    } else {
-      console.log('error');
     }
   }
 
