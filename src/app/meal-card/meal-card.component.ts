@@ -17,13 +17,14 @@ export class MealCardComponent implements OnInit{
   districts: Array<object>;
   loginData: Object;
   favBtn: Object;
-  homeImg:Array<object>;
+  homeImg:Array<object>;  
+  
   constructor(private Q: QueryService,
     private toSingleView: Router , 
     private transfer : TransferDataService) {
     this.mealData = [];
     this.districts = [];
-    this.homeImg = [];
+    this.homeImg = [];        
     this.favBtn ={};
     this.getMealData()
  
@@ -81,6 +82,13 @@ export class MealCardComponent implements OnInit{
 
     
   }
+
+  redirectToCooker(d: string) {
+    console.log(d);
+    this.toSingleView.navigate([`/cookerprofile/${d}`]);
+
+  }
+
   ngOnInit(){
     
   }
