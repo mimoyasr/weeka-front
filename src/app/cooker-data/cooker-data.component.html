@@ -179,7 +179,9 @@
         </div>
         <h5>أيام العمل</h5>
       </div>
-      <div class="row">
+
+
+      <div class="row" *ngFor='let prop of dayRow'>
         <div class="col-md-4 ">
           <form>
             <div class="form-group ml-3">
@@ -233,7 +235,7 @@
         <hr>
       </div> -->
       <!-- <button class="small-btn pt-1 pb-1 mt-5">+</button> -->
-      <i class="icon-plus"></i>
+      <i class="icon-plus" (click)="addNewRow()"></i>
     </div>
 
 

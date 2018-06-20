@@ -17,11 +17,13 @@ export class MealCardComponent implements OnInit{
   districts: Array<object>;
   loginData: Object;
   favBtn: Object;
+  homeImg:Array<object>;
   constructor(private Q: QueryService,
     private toSingleView: Router , 
     private transfer : TransferDataService) {
     this.mealData = [];
     this.districts = [];
+    this.homeImg = [];
     this.favBtn ={};
     this.getMealData()
  
@@ -43,10 +45,22 @@ export class MealCardComponent implements OnInit{
         console.log(this.districts)
         this.loginData = this.transfer.getData(); 
         console.log(this.loginData)   
+        this.getHomeImg();
       },
       err => { console.log(err) }
     );
   }
+
+  getHomeImg(): void {
+    let path: string = "./assets/images-home.json";
+    this.Q.getData(path).subscribe(
+      res => {
+        this.homeImg = res;
+      },
+      err => { console.log(err) }
+    );
+  }
+
 // post meal fav request
   fav(id)
   {

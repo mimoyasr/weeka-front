@@ -11,7 +11,8 @@
           </div>
           <div class="col-md-6 col-xl-3 imp-btns" *ngIf="!token">
             <a routerLink="login" class="border p-2">تسجيل الدخول</a>
-            <a routerLink="becomeacooker" class="headlinesFonts pr-3">اصبح طباخ</a>
+            <a routerLink="becomeacooker" class="headlinesFonts pr-3" >اصبح طباخ</a>
+            
           </div>
 
           <div ngbDropdown placement="bottom-right" class="navdrop d-inline-block pl-3" *ngIf="token && logedUser.data">
@@ -24,7 +25,8 @@
               </a>
               <button value="false" class="dropdown-item" (click)="logout()">تسجيل الخروج</button>
             </div>
-            <a routerLink="becomeacooker" class="headlinesFonts pr-3">اصبح طباخ</a>
+            <a routerLink="becomeacooker" class="headlinesFonts pr-3" *ngIf="!userTypeCheck">اصبح طباخ</a>
+            <a routerLink="newMeal" class="headlinesFonts pr-3" *ngIf="userTypeCheck">اضافه اكله</a>
           </div>
 
         </div>

@@ -324,33 +324,18 @@
 
     <ng-template #content let-c="close" let-d="dismiss">
       <div class="modal-header">
-        <h4 class="modal-title">Profile update</h4>
+        <h4 class="modal-title">تأكيد الطلب</h4>
         <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-          <span aria-hidden="true">&times;</span>
+          
         </button>
       </div>
       <div class="modal-body">
-        <h2>تم تأكيد الطلب بنجاح وسيصلك خلال 60 دقيقة</h2>
+        <h5>تم تأكيد الطلب بنجاح وسيصلك خلال 60 دقيقة</h5>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+        <button type="button" class="btn btn-outline-dark" (click)="redirctMenu()" (click)="c('Save click')">تم</button>
       </div>
     </ng-template>
-
-    <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   </div>
